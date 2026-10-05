@@ -816,6 +816,10 @@ export const contactPage = {
  * Anthony's own list on the call: "hospitality, startups, agencies,
  * e-commerce... and there might just be like corporate relocation."
  * These five are also the homepage ICP grid, not just a dropdown.
+ *
+ * 10/5: "Hospitality" renamed "Corporate housing" (slug corporate-housing;
+ * the old URL redirects in next.config.ts) and the order set to Tom's
+ * content doc: housing, relocation, startups, agencies, e-commerce.
  */
 /** The /industries overview page. PLACEHOLDER copy. */
 export const industriesPage = {
@@ -825,12 +829,12 @@ export const industriesPage = {
 
 export const industries = [
   {
-    slug: "hospitality",
-    navLabel: "Hospitality",
+    slug: "corporate-housing",
+    navLabel: "Corporate housing",
     icon: "home",
-    name: "Hospitality and short-term rentals",
+    name: "Corporate housing",
     subhead:
-      "We help hospitality and short-term rental operators hire Latin America's top 1% talent.",
+      "Staff corporate housing, mid-term, and short-term rentals, from reservations to turnovers.",
     problemHeadline: "Occupancy does not wait for a hire",
     problemBody:
       "Guest volume climbs, the reservations inbox fills, and the person holding it together is doing three jobs. The last remote assistant you tried needed a script for every guest message.",
@@ -840,7 +844,7 @@ export const industries = [
       "You are turning down bookings because nobody can handle the coordination.",
       "You tried a VA for guest messaging and got someone who could not make a judgment call.",
     ],
-    rolesHeadline: "The roles we fill most in hospitality",
+    rolesHeadline: "Here are the roles we fill most across corporate housing, mid-term, and short-term rentals",
     roles: [
       "Reservations Manager",
       "Operations Manager",
@@ -850,6 +854,35 @@ export const industries = [
     ],
     rolesCloser:
       "These are the roles our own founder hired for himself over ten years in this industry, which is why our recruiting is deepest here.",
+  },
+  {
+    slug: "corporate-relocation",
+    navLabel: "Corporate relocation",
+    /** Shorter label for the homepage "Built for your industry" tiles. */
+    tileLabel: "Relocation",
+    icon: "pin",
+    name: "Corporate relocation",
+    subhead:
+      "We help relocation management companies, movers, and immigration and tax providers hire Latin America's top 1% talent.",
+    problemHeadline: "Assignment volume moves faster than hiring does",
+    problemBody:
+      "A client wins a contract and suddenly you are coordinating twice the assignments with the same team. The work lands on people who are already at capacity, and clients notice before you do.",
+    triggers: [
+      "Assignment volume spikes and coordination falls behind.",
+      "Your client services lead leaves in the middle of assignment season.",
+      "You are quoting work you are not sure you can staff.",
+      "You tried offshore support and your clients could tell.",
+    ],
+    rolesHeadline: "The roles we fill most in relocation",
+    roles: [
+      "Operations Coordinator",
+      "Account Manager",
+      "Client Services Lead",
+      "Quality Assurance Specialist",
+      "Bookkeeper",
+    ],
+    rolesCloser:
+      "Same time zone as your clients, client-ready English, and people who understand that a delayed assignment is somebody's family waiting in a hotel.",
   },
   {
     slug: "startups",
@@ -931,35 +964,6 @@ export const industries = [
     ],
     rolesCloser:
       "People who treat a support ticket like a customer, not a queue to clear.",
-  },
-  {
-    slug: "corporate-relocation",
-    navLabel: "Corporate relocation",
-    /** Shorter label for the homepage "Built for your industry" tiles. */
-    tileLabel: "Relocation",
-    icon: "pin",
-    name: "Corporate relocation",
-    subhead:
-      "We help relocation management companies, movers, and immigration and tax providers hire Latin America's top 1% talent.",
-    problemHeadline: "Assignment volume moves faster than hiring does",
-    problemBody:
-      "A client wins a contract and suddenly you are coordinating twice the assignments with the same team. The work lands on people who are already at capacity, and clients notice before you do.",
-    triggers: [
-      "Assignment volume spikes and coordination falls behind.",
-      "Your client services lead leaves in the middle of assignment season.",
-      "You are quoting work you are not sure you can staff.",
-      "You tried offshore support and your clients could tell.",
-    ],
-    rolesHeadline: "The roles we fill most in relocation",
-    roles: [
-      "Operations Coordinator",
-      "Account Manager",
-      "Client Services Lead",
-      "Quality Assurance Specialist",
-      "Bookkeeper",
-    ],
-    rolesCloser:
-      "Same time zone as your clients, client-ready English, and people who understand that a delayed assignment is somebody's family waiting in a hotel.",
   },
 ] as const;
 
