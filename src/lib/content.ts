@@ -827,7 +827,7 @@ export const industries = [
   {
     slug: "hospitality",
     navLabel: "Hospitality",
-    icon: "building",
+    icon: "home",
     name: "Hospitality and short-term rentals",
     subhead:
       "We help hospitality and short-term rental operators hire Latin America's top 1% talent.",
@@ -854,7 +854,7 @@ export const industries = [
   {
     slug: "startups",
     navLabel: "Startups",
-    icon: "rocket",
+    icon: "trend",
     name: "Startups",
     subhead:
       "We help startups hire Latin America's top 1% talent without the overhead of a full US team.",
@@ -881,7 +881,7 @@ export const industries = [
   {
     slug: "agencies",
     navLabel: "Agencies",
-    icon: "megaphone",
+    icon: "layers",
     name: "Marketing and creative agencies",
     subhead:
       "We help marketing, creative and digital agencies hire Latin America's top 1% talent.",
@@ -908,7 +908,7 @@ export const industries = [
   {
     slug: "ecommerce",
     navLabel: "E-commerce",
-    icon: "cart",
+    icon: "bag",
     name: "E-commerce and B2B SaaS",
     subhead:
       "We help e-commerce and B2B SaaS companies hire Latin America's top 1% talent.",
@@ -937,7 +937,7 @@ export const industries = [
     navLabel: "Corporate relocation",
     /** Shorter label for the homepage "Built for your industry" tiles. */
     tileLabel: "Relocation",
-    icon: "globe",
+    icon: "pin",
     name: "Corporate relocation",
     subhead:
       "We help relocation management companies, movers, and immigration and tax providers hire Latin America's top 1% talent.",

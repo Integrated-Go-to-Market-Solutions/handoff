@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Icon, type IconName } from "../icon";
 import { LogoMarquee } from "./logo-marquee";
@@ -12,8 +11,9 @@ import { credibilityStats, industries } from "@/lib/content";
  * underneath. "Trusted by teams that keep moving forward" and the "See the
  * roles" button were cut on the call.
  *
- * The culture footage behind the panel is now its still frame, not the
- * looping video, to keep homepage motion down on phones (Tom, 10/5).
+ * No photo behind the panel: the culture footage was cut (10/5) so the
+ * hero's team photo isn't followed straight away by a second photo, and to
+ * keep homepage motion down on phones.
  * The logo band rides white because most of the logo files are dark
  * artwork; the loop runs ~15% slower than 46s.
  */
@@ -26,12 +26,6 @@ export function CredibilityStrip() {
       {/* White logo band on top: a clear seam between the hero and this section. */}
       <div className="relative z-10 border-b border-ink/10 bg-white py-3">
         <LogoMarquee bare durationSeconds={53} exclude={["fragomen"]} />
-      </div>
-
-      <div className="absolute inset-0 grayscale" aria-hidden="true">
-        <Image src="/video/culture.jpg" alt="" fill sizes="100vw" className="object-cover" />
-        <div className="absolute inset-0 bg-ink/80" />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-transparent to-ink/80" />
       </div>
 
       <div className="shell relative pt-14 md:pt-16">
@@ -55,7 +49,7 @@ export function CredibilityStrip() {
                   >
                     <Icon
                       name={industry.icon as IconName}
-                      strokeWidth={2}
+                      strokeWidth={1.25}
                       className="h-10 w-10 text-cyan md:h-12 md:w-12"
                     />
                     <span className="text-sm font-semibold uppercase leading-tight tracking-[0.04em] text-white md:text-base">
