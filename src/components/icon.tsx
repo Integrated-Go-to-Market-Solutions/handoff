@@ -111,6 +111,20 @@ const paths = {
       <circle cx="12" cy="9.7" r="2.3" />
     </>
   ),
+  award: (
+    <>
+      <circle cx="12" cy="9" r="5.5" />
+      <path d="m8.6 13.3-1.1 7.2 4.5-2.4 4.5 2.4-1.1-7.2" />
+    </>
+  ),
+  users: (
+    <>
+      <circle cx="9" cy="8.5" r="3" />
+      <path d="M3.5 19.5a5.5 5.5 0 0 1 11 0" />
+      <path d="M15.5 5.8a3 3 0 0 1 0 5.4" />
+      <path d="M17 14.3a5.5 5.5 0 0 1 3.5 5.2" />
+    </>
+  ),
   building: (
     <>
       <rect x="5" y="4" width="14" height="16.5" rx="1" />
@@ -190,6 +204,10 @@ export function Icon({
 }
 
 /** The cyan-stroke badge these icons sit in on card layouts. */
+/**
+ * Why LATAM's icon. Matches the homepage industry tiles (10/5): a bare,
+ * thin-stroke line icon with no ring around it, in the section's royal blue.
+ */
 export function IconBadge({
   name,
   className = "",
@@ -197,11 +215,5 @@ export function IconBadge({
   name: IconName;
   className?: string;
 }) {
-  return (
-    <span
-      className={`inline-flex h-12 w-12 items-center justify-center rounded-full border-2 border-royal bg-white text-royal transition-colors duration-300 group-hover:bg-royal group-hover:text-white ${className}`}
-    >
-      <Icon name={name} />
-    </span>
-  );
+  return <Icon name={name} strokeWidth={1.25} className={`h-10 w-10 text-royal md:h-12 md:w-12 ${className}`} />;
 }

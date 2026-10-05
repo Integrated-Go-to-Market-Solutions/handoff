@@ -84,7 +84,7 @@ export const whyLatam = {
     {
       title: "Talent quality",
       tagline: "What makes LATAM great for hiring",
-      icon: "star",
+      icon: "award",
       bullets: [
         "Deep pool of educated, professional talent",
         "Strong English proficiency across key markets",
@@ -106,7 +106,7 @@ export const whyLatam = {
     {
       title: "Cultural fit",
       tagline: "A world of talent close to your culture",
-      icon: "handshake",
+      icon: "users",
       bullets: [
         "Strong alignment with U.S. business culture",
         "Clear communication, proactive problem-solving",

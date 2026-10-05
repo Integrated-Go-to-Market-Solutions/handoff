@@ -5,11 +5,10 @@ import { whyLatam } from "@/lib/content";
 /**
  * Straight from the sales deck's "Why LATAM" slide — same three reasons,
  * same bullets. Per direct instruction: light gray background, reasons
- * listed without numbers, icons in the
- * cyan-outline treatment from the brand guide's Elements Usage page.
+ * listed without numbers.
  *
- * Royal blue is the section's accent: the icon rings and the icons
- * themselves at rest. The headline is black.
+ * Royal blue is the section's accent: the thin line icons, matched to the
+ * homepage industry tiles (10/5). The headline is black.
  *
  * The LATAM outline was removed 10/5: the talent map above already places
  * the region, so this section doesn't need a second geography anchor. A
@@ -32,7 +31,7 @@ export function WhyLatam() {
               delay={i * 100}
               className="group h-full rounded-[var(--radius-card)] border-2 border-ink/10 bg-white/85 p-6 shadow-sm transition-[border-color,box-shadow] duration-300 hover:border-royal/40 hover:shadow-md md:p-7"
             >
-              <IconBadge name={category.icon as IconName} className="h-14 w-14" />
+              <IconBadge name={category.icon as IconName} />
               <h3 className="display mt-5 text-xl leading-tight text-ink">
                 {category.title}
               </h3>
