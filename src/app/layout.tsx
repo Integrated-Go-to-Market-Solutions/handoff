@@ -15,9 +15,9 @@ const rubik = Rubik({
   display: "swap",
 });
 
-const siteTitle = "Handoff | The Best of LATAM. AI Trained. Here to Stay.";
+const siteTitle = "Handoff | The Best of LATAM. AI Powered People. Here to Stay.";
 const siteDescription =
-  "We help the best US companies hire Latin America's top 1% talent — vetted, AI-trained, and ready to make an impact from day one.";
+  "We help the best US companies hire Latin America's top 1% talent — vetted, AI powered, and ready to make an impact from day one.";
 
 export const metadata: Metadata = {
   title: siteTitle,

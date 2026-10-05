@@ -50,13 +50,13 @@ export const hero = {
   headline: [
     { text: "The best of" },
     { text: "LATAM.", tone: "royal" },
-    { text: "AI trained." },
+    { text: "AI Powered People." },
     { text: "Here to stay.", tone: "cyan" },
   ] as { text: string; tone?: "royal" | "cyan" }[],
   /** One entry per line in the live hero. `headline` above still feeds /v2. */
   headlineLines: [
     { text: "The best of LATAM." },
-    { text: "AI trained." },
+    { text: "AI Powered People." },
     { text: "Here to stay.", tone: "cyan" },
   ] as { text: string; tone?: "cyan" }[],
   imageAlt: "The Handoff team",
@@ -290,7 +290,7 @@ export const modelsCompare = {
   rows: [
     {
       label: "Full recruiting process",
-      note: "Sourcing, vetting, assessments, shortlist, AI-trained talent, guarantee",
+      note: "Sourcing, vetting, assessments, shortlist, AI Powered People, guarantee",
       values: [true, true],
     },
     { label: "Who employs them", values: ["You", { text: "Handoff", accent: true }] },
@@ -310,7 +310,7 @@ export const modelsShared = {
     "Candidate sourcing",
     "Multi-round vetting",
     "Skills and culture assessments",
-    "AI-trained talent",
+    "AI Powered People",
     "A curated shortlist",
     "The hiring guarantee",
   ],
@@ -517,8 +517,8 @@ export const dayInLife = {
  * block does, immediately after the process, where the vetting claim lands.
  */
 export const aiTrained = {
-  eyebrow: "AI trained",
-  headline: "What “AI trained” actually means",
+  eyebrow: "AI Powered People",
+  headline: "What “AI Powered People” actually means",
   body: "Every person we place already works with AI tools daily. The judgement stays human. The busywork does not.",
   topicsLabel: "Training includes",
   topics: ["AI fundamentals", "Mastering prompts", "Ongoing new courses"],

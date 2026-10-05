@@ -28,12 +28,13 @@ export function HeroBright({ subhead }: { subhead?: string } = {}) {
       <div className="shell relative z-10 text-center">
         <Eyebrow className="mb-5 md:mb-6">{hero.eyebrow}</Eyebrow>
         {/* Line 1 big, the two short claims together on line 2. Both sized off
-            the viewport so neither line wraps or overflows. */}
+            the viewport so neither line wraps or overflows. Line 2 divides by
+            19, not 15, since "AI Powered People." is longer than "AI trained." */}
         <h1 className="display text-bone [line-height:1.08]">
           <span className="hero-rise block whitespace-nowrap text-[clamp(1.5rem,calc((100vw-56px)/10.4),7rem)]">
             {hero.headlineLines[0].text}
           </span>
-          <span className="mt-2 block whitespace-nowrap text-[clamp(1rem,calc((100vw-56px)/15),3.6rem)] md:mt-3">
+          <span className="mt-2 block whitespace-nowrap text-[clamp(1rem,calc((100vw-56px)/19),3.6rem)] md:mt-3">
             {hero.headlineLines.slice(1).map((line, i) => (
               <span
                 key={line.text}
