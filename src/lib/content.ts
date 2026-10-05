@@ -131,6 +131,17 @@ export const proofStats = [
 ] as const;
 
 /**
+ * The thin KPI ribbon under the homepage industries. The three Tom named on
+ * the 10/5 call: the two existing figures plus "top 1% of talent", which
+ * Anthony confirmed in the Pulse answers.
+ */
+export const credibilityStats = [
+  { value: "$50K+", label: "Saved per hire" },
+  { value: "96%+", label: "Client retention" },
+  { value: "Top 1%", label: "Of talent" },
+] as const;
+
+/**
  * Sample talent for the hero, not the Handoff team. Anthony, verbatim:
  * "instead of the team on the top, how you have it now, we would want...
  * a sampling that would focus on talent, like Miguel, AI developer... not
