@@ -4,7 +4,7 @@ import { Reveal } from "@/components/reveal";
 import { Eyebrow, Pill } from "@/components/brand";
 import { Icon, type IconName } from "@/components/icon";
 import { ClientQuotes } from "@/components/sections/client-quotes";
-import { Cta } from "@/components/sections/cta";
+import { Finale } from "@/components/sections/finale";
 import { resultsPage, caseStudies } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -224,7 +224,7 @@ export default function ResultsPage() {
 
       <ClientQuotes />
 
-      <Cta />
+      <Finale />
     </>
   );
 }

@@ -4,7 +4,9 @@ import { useState } from "react";
 import { Eyebrow } from "../brand";
 import { Reveal } from "../reveal";
 import { Icon, type IconName } from "../icon";
-import { process, hiringHighwayVideo } from "@/lib/content";
+import { process as currentProcess, legacyProcess, hiringHighwayVideo } from "@/lib/content";
+
+const process = { ...legacyProcess, eyebrow: currentProcess.eyebrow };
 
 /* Subtler per direct feedback: the gradient is now just the outline, a
    light card underneath instead of a bold colour fill. */

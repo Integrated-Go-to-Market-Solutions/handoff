@@ -12,18 +12,21 @@ import { NextResponse } from "next/server";
  * the Forms or CRM Objects API here. Do not put the token in client code.
  */
 
+/** The two-step form (Change 12): the role first, then contact details. */
 type Payload = {
+  role?: string;
+  roleOther?: string; // only when role is "Other"
+  headcount?: string;
+  timeline?: string;
   name?: string;
   email?: string;
   company?: string;
-  website?: string;
-  area?: string;
-  model?: string;
-  details?: string;
+  message?: string; // optional
   fax?: string; // honeypot
 };
 
 const isEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
+const text = (value: unknown, max = 200) => String(value ?? "").trim().slice(0, max);
 
 export async function POST(request: Request) {
   let body: Payload;
@@ -39,24 +42,18 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   }
 
-  const required: (keyof Payload)[] = [
-    "name",
-    "email",
-    "company",
-    "area",
-    "model",
-    "details",
-  ];
-  const missing = required.filter((key) => !String(body[key] ?? "").trim());
+  const required: (keyof Payload)[] = ["role", "headcount", "timeline", "name", "email", "company"];
+  if (body.role === "Other") required.push("roleOther");
+  const missing = required.filter((key) => !text(body[key]));
 
   if (missing.length > 0) {
     return NextResponse.json(
-      { error: "Please fill in every required field." },
+      { error: "Please fill in every required field.", missing },
       { status: 400 },
     );
   }
 
-  if (!isEmail(String(body.email))) {
+  if (!isEmail(text(body.email))) {
     return NextResponse.json(
       { error: "That email address does not look right." },
       { status: 400 },
@@ -64,13 +61,14 @@ export async function POST(request: Request) {
   }
 
   console.log("[handoff] new lead", {
-    name: body.name,
-    email: body.email,
-    company: body.company,
-    website: body.website || null,
-    area: body.area,
-    model: body.model,
-    details: String(body.details).slice(0, 500),
+    role: text(body.role),
+    roleOther: body.role === "Other" ? text(body.roleOther) : null,
+    headcount: text(body.headcount),
+    timeline: text(body.timeline),
+    name: text(body.name),
+    email: text(body.email),
+    company: text(body.company),
+    message: text(body.message, 2000) || null,
     receivedAt: new Date().toISOString(),
   });
 

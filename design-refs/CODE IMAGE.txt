@@ -1,0 +1,85 @@
+<div style="width: 100%; height: 100%; position: relative; opacity: 0.70">
+    <div style="width: 7058.77px; height: 5984.34px; left: 0px; top: 7058.77px; position: absolute; transform: rotate(-90deg); transform-origin: top left; background: linear-gradient(180deg, #1F1F1F 0%, #434343 100%)"></div>
+    <div style="width: 203.46px; height: 203.46px; left: 4365.58px; top: 4565.49px; position: absolute; border-radius: 9999px; border: 7.39px #238272 solid"></div>
+    <div style="width: 246.30px; height: 246.30px; left: 4345.06px; top: 4544.97px; position: absolute; border-radius: 9999px; border: 3.69px #238272 solid"></div>
+    <div style="width: 152.60px; height: 152.60px; left: 4391.45px; top: 4591.37px; position: absolute; border-radius: 9999px; border: 11.08px #238272 solid"></div>
+    <div style="width: 112.44px; height: 111.55px; left: 4410.20px; top: 4610.11px; position: absolute; border-radius: 9999px; border: 14.77px #238272 solid"></div>
+    <div style="width: 67.82px; height: 67.82px; left: 4432.51px; top: 4632.42px; position: absolute; background: #238272; border-radius: 9999px"></div>
+    <div style="width: 203.46px; height: 203.46px; left: 2545.03px; top: 3254.57px; position: absolute; border-radius: 9999px; border: 7.39px #238272 solid"></div>
+    <div style="width: 246.30px; height: 246.30px; left: 2524.49px; top: 3234.05px; position: absolute; border-radius: 9999px; border: 3.69px #238272 solid"></div>
+    <div style="width: 152.60px; height: 152.60px; left: 2570.90px; top: 3280.46px; position: absolute; border-radius: 9999px; border: 11.08px #238272 solid"></div>
+    <div style="width: 112.44px; height: 111.55px; left: 2589.65px; top: 3299.20px; position: absolute; border-radius: 9999px; border: 14.77px #238272 solid"></div>
+    <div style="width: 67.82px; height: 67.82px; left: 2611.95px; top: 3321.50px; position: absolute; background: #238272; border-radius: 9999px"></div>
+    <div style="width: 850.83px; height: 795.19px; left: 2808.24px; top: 2231.01px; position: absolute; transform: rotate(173deg); transform-origin: top left; outline: 9.23px #238272 solid; outline-offset: -4.62px"></div>
+    <div style="width: 997.32px; height: 2844.59px; left: 2189.45px; top: 3019.12px; position: absolute; transform: rotate(-52deg); transform-origin: top left; outline: 9.23px #238272 solid; outline-offset: -4.62px"></div>
+    <div style="width: 538.27px; height: 1956.25px; left: 4010.38px; top: 6595.47px; position: absolute; transform: rotate(-167deg); transform-origin: top left; outline: 9.23px #238272 solid; outline-offset: -4.62px"></div>
+    <div style="width: 2155.63px; height: 1634.54px; left: 3305.67px; top: 4203.26px; position: absolute; transform: rotate(-90deg); transform-origin: top left; outline: 9.23px #238272 solid; outline-offset: -4.62px"></div>
+    <div style="width: 1615.45px; height: 1998.65px; left: 3191.80px; top: 3800.74px; position: absolute; transform: rotate(-104deg); transform-origin: top left; outline: 9.23px #238272 solid; outline-offset: -4.62px"></div>
+    <div style="width: 2667.72px; height: 2433.72px; left: 6004.31px; top: 5608.34px; position: absolute; transform: rotate(160deg); transform-origin: top left; outline: 9.23px #238272 solid; outline-offset: -4.62px"></div>
+    <div style="width: 2939px; height: 100px; left: 3370.16px; top: 5010.01px; position: absolute; transform: rotate(-90deg); transform-origin: top left; outline: 9.23px #238272 solid; outline-offset: -4.62px"></div>
+    <div style="width: 1380.89px; height: 724.16px; left: 3350.74px; top: 2019.28px; position: absolute; transform: rotate(90deg); transform-origin: top left; outline: 9.23px #238272 solid; outline-offset: -4.62px"></div>
+    <div style="width: 203.46px; height: 203.46px; left: 2702.09px; top: 2130.17px; position: absolute; border-radius: 9999px; border: 7.39px #238272 solid"></div>
+    <div style="width: 246.30px; height: 246.30px; left: 2681.56px; top: 2109.64px; position: absolute; border-radius: 9999px; border: 3.69px #238272 solid"></div>
+    <div style="width: 152.60px; height: 152.60px; left: 2727.96px; top: 2156.05px; position: absolute; border-radius: 9999px; border: 11.08px #238272 solid"></div>
+    <div style="width: 112.44px; height: 111.55px; left: 2746.71px; top: 2174.79px; position: absolute; border-radius: 9999px; border: 14.77px #238272 solid"></div>
+    <div style="width: 67.82px; height: 67.82px; left: 2769.01px; top: 2197.10px; position: absolute; background: #238272; border-radius: 9999px"></div>
+    <div style="width: 267.92px; height: 1214.18px; padding-left: 187.81px; padding-right: 187.81px; padding-top: 75.69px; padding-bottom: 75.69px; left: 3625.27px; top: 2171.49px; position: absolute; transform: rotate(-90deg); transform-origin: top left; background: #252525; border-radius: 520.35px; outline: 5px white solid; outline-offset: -5px; justify-content: center; align-items: center; gap: 47.30px; display: inline-flex">
+        <div style="color: white; font-size: 95.78px; font-family: Rubik; font-weight: 500; text-transform: uppercase; word-wrap: break-word">AP/AR specialist</div>
+    </div>
+    <div style="width: 203.46px; height: 203.46px; left: 1796.38px; top: 1448.39px; position: absolute; border-radius: 9999px; border: 7.39px #238272 solid"></div>
+    <div style="width: 246.30px; height: 246.30px; left: 1775.86px; top: 1427.86px; position: absolute; border-radius: 9999px; border: 3.69px #238272 solid"></div>
+    <div style="width: 152.60px; height: 152.60px; left: 1822.26px; top: 1474.26px; position: absolute; border-radius: 9999px; border: 11.08px #238272 solid"></div>
+    <div style="width: 112.44px; height: 111.55px; left: 1841.02px; top: 1493px; position: absolute; border-radius: 9999px; border: 14.77px #238272 solid"></div>
+    <div style="width: 67.82px; height: 67.82px; left: 1863.31px; top: 1515.32px; position: absolute; background: #238272; border-radius: 9999px; border: 3.69px #238272 solid"></div>
+    <div style="width: 203.46px; height: 203.46px; left: 4837.80px; top: 4100.56px; position: absolute; border-radius: 9999px; border: 7.39px #238272 solid"></div>
+    <div style="width: 246.30px; height: 246.30px; left: 4817.27px; top: 4080.03px; position: absolute; border-radius: 9999px; border: 3.69px #238272 solid"></div>
+    <div style="width: 152.60px; height: 152.60px; left: 4863.69px; top: 4126.44px; position: absolute; border-radius: 9999px; border: 11.08px #238272 solid"></div>
+    <div style="width: 112.44px; height: 111.55px; left: 4882.42px; top: 4145.18px; position: absolute; border-radius: 9999px; border: 14.77px #238272 solid"></div>
+    <div style="width: 67.82px; height: 67.82px; left: 4904.74px; top: 4167.49px; position: absolute; background: #238272; border-radius: 9999px"></div>
+    <div style="width: 1871px; height: 1709px; left: 903.16px; top: 2911.01px; position: absolute; transform: rotate(-90deg); transform-origin: top left; outline: 9.23px #238272 solid; outline-offset: -4.61px"></div>
+    <div style="width: 249.66px; height: 1757.88px; padding-left: 187.81px; padding-right: 187.81px; padding-top: 70.55px; padding-bottom: 70.55px; left: 1170.07px; top: 1154px; position: absolute; transform: rotate(-90deg); transform-origin: top left; background: #252525; border-radius: 485.04px; outline: 5px white solid; outline-offset: -5px; justify-content: center; align-items: center; gap: 44.09px; display: inline-flex">
+        <div style="color: white; font-size: 95.78px; font-family: Rubik; font-weight: 500; text-transform: uppercase; word-wrap: break-word">digital marketing manager</div>
+    </div>
+    <div style="width: 249.66px; height: 1486.50px; padding-left: 187.81px; padding-right: 187.81px; padding-top: 70.55px; padding-bottom: 70.55px; left: 2130.70px; top: 1673.29px; position: absolute; transform: rotate(-90deg); transform-origin: top left; background: #252525; border-radius: 485.04px; outline: 5px white solid; outline-offset: -5px; justify-content: center; align-items: center; gap: 44.09px; display: inline-flex">
+        <div style="color: white; font-size: 95.78px; font-family: Rubik; font-weight: 500; text-transform: uppercase; word-wrap: break-word">Full stack developer</div>
+    </div>
+    <div style="width: 267.92px; height: 1625.48px; padding-left: 187.81px; padding-right: 187.81px; padding-top: 75.69px; padding-bottom: 75.69px; left: 3256.52px; top: 3438.17px; position: absolute; transform: rotate(-90deg); transform-origin: top left; background: #252525; border-radius: 520.35px; outline: 5px white solid; outline-offset: -5px; justify-content: center; align-items: center; gap: 47.30px; display: inline-flex">
+        <div style="color: white; font-size: 95.78px; font-family: Rubik; font-weight: 500; text-transform: uppercase; word-wrap: break-word">RELOCATION COORDINATOR</div>
+    </div>
+    <div style="width: 232.59px; height: 1701.54px; padding-left: 187.81px; padding-right: 187.81px; padding-top: 59.14px; padding-bottom: 59.14px; left: 4713px; top: 4790.60px; position: absolute; transform: rotate(-90deg); transform-origin: top left; background: #252525; border-radius: 406.56px; outline: 5px white solid; outline-offset: -5px; justify-content: center; align-items: center; gap: 36.96px; display: inline-flex">
+        <div style="color: white; font-size: 95.78px; font-family: Rubik; font-weight: 500; text-transform: uppercase; word-wrap: break-word">guest services specialist</div>
+    </div>
+    <div style="width: 256.58px; height: 1016.98px; padding-left: 187.81px; padding-right: 187.81px; padding-top: 65.08px; padding-bottom: 65.08px; left: 1342.17px; top: 3039.07px; position: absolute; transform: rotate(-90deg); transform-origin: top left; background: #252525; border-radius: 447.43px; outline: 5px white solid; outline-offset: -5px; justify-content: center; align-items: center; gap: 40.68px; display: inline-flex">
+        <div style="color: white; font-size: 95.78px; font-family: Rubik; font-weight: 500; text-transform: uppercase; word-wrap: break-word">AI specialist</div>
+    </div>
+    <div style="width: 232.59px; height: 1541.90px; padding-left: 187.81px; padding-right: 187.81px; padding-top: 59.14px; padding-bottom: 59.14px; left: 1658.17px; top: 5137.34px; position: absolute; transform: rotate(-90deg); transform-origin: top left; background: #252525; border-radius: 406.56px; outline: 5px white solid; outline-offset: -5px; justify-content: center; align-items: center; gap: 36.96px; display: inline-flex">
+        <div style="color: white; font-size: 95.78px; font-family: Rubik; font-weight: 500; text-transform: uppercase; word-wrap: break-word">reservations manager</div>
+    </div>
+    <div style="width: 268.21px; height: 2189.84px; padding-left: 187.81px; padding-right: 187.81px; padding-top: 75.69px; padding-bottom: 75.69px; left: 1036.08px; top: 6560.22px; position: absolute; transform: rotate(-90deg); transform-origin: top left; background: #252525; border-radius: 520.35px; outline: 5px white solid; outline-offset: -5px; justify-content: center; align-items: center; gap: 47.30px; display: inline-flex">
+        <div style="color: white; font-size: 95.78px; font-family: Rubik; font-weight: 500; text-transform: uppercase; word-wrap: break-word">Sales Development Representative</div>
+    </div>
+    <div style="width: 362.77px; height: 362.77px; left: 3204.13px; top: 2219.31px; position: absolute; transform: rotate(-90deg); transform-origin: top left; background: #3DD3BA; overflow: hidden; border-radius: 281.46px; outline: 8.96px white solid; outline-offset: -8.96px">
+        <img style="width: 501.63px; height: 436.39px; left: -36.73px; top: 0px; position: absolute" src="https://placehold.co/502x436" />
+    </div>
+    <div style="width: 362.77px; height: 362.77px; left: 4959px; top: 3485.39px; position: absolute; transform: rotate(-90deg); transform-origin: top left; background: #3DD3BA; overflow: hidden; border-radius: 1008.21px; outline: 8.96px white solid; outline-offset: -8.96px">
+        <img style="width: 439.84px; height: 549.58px; left: 0.01px; top: -30.71px; position: absolute" src="https://placehold.co/440x550" />
+    </div>
+    <div style="width: 362.77px; height: 362.77px; left: 767.28px; top: 1221.65px; position: absolute; transform: rotate(-90deg); transform-origin: top left; opacity: 0.90; background: #3DD3BA; overflow: hidden; border-radius: 259.81px; outline: 8.96px white solid; outline-offset: -8.96px">
+        <img style="width: 461.20px; height: 506.84px; left: -49.31px; top: -37.16px; position: absolute" src="https://placehold.co/461x507" />
+    </div>
+    <div style="width: 362.77px; height: 362.77px; left: 4284.96px; top: 4849.78px; position: absolute; transform: rotate(-90deg); transform-origin: top left; background: #3DD3BA; overflow: hidden; border-radius: 1008.21px; outline: 8.96px white solid; outline-offset: -8.96px">
+        <img style="width: 514.82px; height: 508.62px; left: -69.42px; top: -47.42px; position: absolute" src="https://placehold.co/515x509" />
+    </div>
+    <div style="width: 362.77px; height: 362.77px; left: 2408.78px; top: 3072.78px; position: absolute; transform: rotate(-90deg); transform-origin: top left; background: #3DD3BA; overflow: hidden; border-radius: 1008.21px; outline: 8.96px white solid; outline-offset: -8.96px">
+        <img style="width: 472px; height: 472px; left: 0px; top: 2.67px; position: absolute" src="https://placehold.co/472x472" />
+    </div>
+    <div style="width: 362.77px; height: 362.77px; left: 1715.93px; top: 1732.29px; position: absolute; transform: rotate(-90deg); transform-origin: top left; background: #3DD3BA; overflow: hidden; border-radius: 1008.21px; outline: 8.96px white solid; outline-offset: -8.96px">
+        <img style="width: 689.59px; height: 599.55px; left: -163.55px; top: -53.41px; position: absolute" src="https://placehold.co/690x600" />
+    </div>
+    <div style="width: 362.77px; height: 362.77px; left: 3262.02px; top: 5195.78px; position: absolute; transform: rotate(-90deg); transform-origin: top left; background: #3DD3BA; overflow: hidden; border-radius: 1008.21px; outline: 8.96px white solid; outline-offset: -8.96px">
+        <img style="width: 378.89px; height: 518.95px; left: 0.02px; top: 0.06px; position: absolute" src="https://placehold.co/379x519" />
+    </div>
+    <div style="width: 362.77px; height: 362.77px; left: 3289px; top: 6607.78px; position: absolute; transform: rotate(-90deg); transform-origin: top left; background: #3DD3BA; overflow: hidden; border-radius: 1008.21px; outline: 8.96px white solid; outline-offset: -8.96px">
+        <img style="width: 643.33px; height: 713.28px; left: -140.44px; top: -79.89px; position: absolute" src="https://placehold.co/643x713" />
+    </div>
+</div>

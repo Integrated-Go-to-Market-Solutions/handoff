@@ -55,3 +55,8 @@ _brand/
 .vercel
 .env*
 scratch/
+
+# Local session notes
+CLAUDE.md
+REVIEW.md
+.claude/settings.json

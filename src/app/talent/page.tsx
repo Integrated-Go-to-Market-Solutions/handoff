@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Reveal } from "@/components/reveal";
 import { Eyebrow } from "@/components/brand";
-import { Cta } from "@/components/sections/cta";
+import { Finale } from "@/components/sections/finale";
 import { talentPage, roleGroups } from "@/lib/content";
 
 const groupAccents = [
@@ -72,7 +72,7 @@ export default function TalentPage() {
         </div>
       </section>
 
-      <Cta />
+      <Finale />
     </>
   );
 }

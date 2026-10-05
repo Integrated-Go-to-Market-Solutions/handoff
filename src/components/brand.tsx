@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { hero } from "@/lib/content";
 
 /**
  * The real lockup from "Handoff Logo 2025" (Nico flagged the old hand-drawn
@@ -16,7 +17,7 @@ export function LogoLock({ className = "" }: { className?: string }) {
       aria-label="Handoff home"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/brand/logo-dark.svg" alt="Handoff" className="h-8 w-auto" />
+      <img src="/brand/logo-light.svg" alt="Handoff" className="h-8 w-auto" />
     </Link>
   );
 }
@@ -51,18 +52,22 @@ export function Button({
     lg: "px-9 py-5 text-[1rem]",
   };
   const variants = {
-    cyan: "bg-cyan text-ink hover:bg-ink hover:text-cyan",
+    cyan: "bg-cyan text-ink ring-2 ring-inset ring-cyan hover:bg-ink hover:text-cyan",
     ink: "bg-ink text-bone hover:bg-royal hover:text-white",
     ghost: "border-2 border-ink/20 text-ink hover:border-ink hover:bg-ink hover:text-bone",
     ghostDark:
       "border-2 border-white/25 text-bone hover:border-cyan hover:text-cyan",
   };
+  // External links (e.g. a Calendly booking page) open in a new tab.
+  const external = /^https?:\/\//.test(href);
   return (
     <Link
       href={href}
       className={`${base} ${sizes[size]} ${variants[variant]} ${className}`}
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
     >
       {children}
+      {external && <span className="sr-only"> (opens in a new tab)</span>}
       <span className="transition-transform duration-300 group-hover:translate-x-1">
         &rarr;
       </span>
@@ -120,5 +125,15 @@ export function Pill({
     >
       {children}
     </span>
+  );
+}
+
+/**
+ * The site's existing line under a CTA button (`hero.note`), used under every
+ * primary CTA in the page body. Not in the header.
+ */
+export function CtaNote({ tone = "onDark", className = "" }: { tone?: "onDark" | "onLight"; className?: string }) {
+  return (
+    <p className={`text-sm ${tone === "onDark" ? "text-bone/60" : "text-ink/55"} ${className}`}>{hero.note}</p>
   );
 }

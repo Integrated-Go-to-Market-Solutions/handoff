@@ -88,6 +88,20 @@ export function ShortlistIcon({ className = "", cut = "#282828" }: IconProps) {
 }
 
 /** 06: a handshake mark. Employed, onboarded, and we stay on. */
+/**
+ * The check mark from the Handoff logo (public/brand/logo-*.svg): the lower
+ * white shape left visible under the cyan one, traced as a single polygon
+ * from the logo's own coordinates. STAND-IN until Handoff sends its
+ * official check icon. Drawn solid in `cut` so it reads on the cyan disc.
+ */
+export function HandoffCheckIcon({ className = "", cut = "#1f1f1f" }: IconProps) {
+  return (
+    <svg viewBox="-11 110 300 300" className={className} aria-hidden="true">
+      <path d="M0 250.941L111.907 364L278.305 203.321L234.35 157.63L111.907 275.959L44.47 207.77Z" fill={cut} />
+    </svg>
+  );
+}
+
 export function StayIcon({ className = "", cut = "#1f1f1f" }: IconProps) {
   return (
     <svg viewBox="0 0 64 64" className={className} aria-hidden="true">

@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
-import { HiringHighway } from "@/components/sections/hiring-highway";
-import { Cta } from "@/components/sections/cta";
+import { HiringTimeline } from "@/components/sections/hiring-timeline";
+import { PromoVideo } from "@/components/sections/promo-video";
+import { Finale } from "@/components/sections/finale";
 
 export const metadata: Metadata = {
   title: "How it works | Handoff",
   description:
-    "The Hiring Highway: the six steps every Handoff hire goes through, from scoping the role to the day we onboard them and stay on.",
+    "The Hands-off Hiring System: the four steps every Handoff hire goes through, from discovery to the guarantee.",
 };
 
 export default function HowItWorksPage() {
   return (
     <>
-      <HiringHighway />
-      <Cta />
+      <HiringTimeline />
+      <PromoVideo />
+      <Finale />
     </>
   );
 }

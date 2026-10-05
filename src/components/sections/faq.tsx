@@ -16,12 +16,12 @@ function FaqItem({ q, a, delay }: { q: string; a: string; delay: number }) {
 
   return (
     <Reveal delay={delay}>
-      <div className="py-6">
+      <div>
         <button
           type="button"
           onClick={() => setOpen((value) => !value)}
           aria-expanded={open}
-          className="flex w-full cursor-pointer items-center justify-between gap-6 text-left text-lg font-semibold text-ink transition-colors hover:text-royal"
+          className="flex w-full cursor-pointer items-center justify-between gap-6 py-6 text-left text-lg font-semibold text-ink transition-colors hover:text-royal"
         >
           <span className={open ? "text-royal" : undefined}>{q}</span>
           <span className="relative h-4 w-4 shrink-0">
@@ -38,7 +38,7 @@ function FaqItem({ q, a, delay }: { q: string; a: string; delay: number }) {
           style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
         >
           <div className="overflow-hidden">
-            <p className="mt-4 max-w-[68ch] leading-relaxed text-ink/70">{a}</p>
+            <p className="mb-6 mt-4 max-w-[68ch] leading-relaxed text-ink/70">{a}</p>
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@ import { HeroBright } from "@/components/sections/hero-bright";
 import { Stats } from "@/components/sections/stats";
 import { Models } from "@/components/sections/models";
 import { ClientQuotes } from "@/components/sections/client-quotes";
-import { Cta } from "@/components/sections/cta";
+import { Finale } from "@/components/sections/finale";
 import { industries } from "@/lib/content";
 
 /**
@@ -108,9 +108,9 @@ export default async function IndustryPage({
         </div>
       </section>
 
-      <Models />
+      <Models detailed />
       <ClientQuotes />
-      <Cta />
+      <Finale />
     </>
   );
 }

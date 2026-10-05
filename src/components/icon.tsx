@@ -166,7 +166,7 @@ export function IconBadge({
 }) {
   return (
     <span
-      className={`inline-flex h-12 w-12 items-center justify-center rounded-full border border-cyan/30 bg-cyan/10 text-cyan ${className}`}
+      className={`inline-flex h-12 w-12 items-center justify-center rounded-full border-2 border-royal bg-white text-royal transition-colors duration-300 group-hover:bg-royal group-hover:text-white ${className}`}
     >
       <Icon name={name} />
     </span>
