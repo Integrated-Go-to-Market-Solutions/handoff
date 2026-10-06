@@ -35,8 +35,18 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${rubik.variable} ${textFace.variable} ${serifFace.variable}`}>
       <body className="min-h-screen bg-ink pb-20 text-bone antialiased md:pb-0">
+        {/* Keyboard users can jump past the menu (UX QA, 10/6). Hidden until
+            it gets keyboard focus. */}
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-cyan focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-ink"
+        >
+          Skip to content
+        </a>
         <SiteHeader />
-        <main>{children}</main>
+        <main id="main" tabIndex={-1} className="outline-none">
+          {children}
+        </main>
         <SiteFooter />
         <MobileCta />
       </body>
