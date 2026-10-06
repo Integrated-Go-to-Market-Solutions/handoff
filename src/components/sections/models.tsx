@@ -184,7 +184,7 @@ function CompareModels({ asPage = false }: { asPage?: boolean }) {
                         {service && (
                           <Link
                             href={`/services/${service.slug}`}
-                            className="text-[0.7rem] font-semibold text-cyan hover:underline sm:text-sm"
+                            className="-my-2 py-2 text-[0.7rem] font-semibold text-cyan hover:underline sm:text-sm"
                           >
                             See {name} <span aria-hidden="true">&rarr;</span>
                           </Link>

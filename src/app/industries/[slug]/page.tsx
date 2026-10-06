@@ -64,13 +64,15 @@ export default async function IndustryPage({
       <section className="halftone relative overflow-hidden bg-ink section-py-tight text-bone">
         <div className="shell relative">
           <nav aria-label="Breadcrumb" className="mb-6 text-sm font-medium text-bone/60">
-            <Link href="/" className="transition-colors hover:text-cyan">
+            {/* Links get a 36px-tall tap area; the negative margin keeps the
+                trail's spacing (UX QA, 10/6). */}
+            <Link href="/" className="-my-2.5 inline-block py-2.5 transition-colors hover:text-cyan">
               Home
             </Link>
             <span aria-hidden="true" className="mx-2">
               &rarr;
             </span>
-            <Link href="/industries" className="transition-colors hover:text-cyan">
+            <Link href="/industries" className="-my-2.5 inline-block py-2.5 transition-colors hover:text-cyan">
               Industries
             </Link>
             <span aria-hidden="true" className="mx-2">

@@ -45,12 +45,12 @@ export function SiteFooter() {
           {columns.map((col) => (
             <div key={col.title}>
               <h2 className="eyebrow text-bone">{col.title}</h2>
-              <ul className="mt-4 space-y-3">
+              <ul className="mt-2.5">
                 {col.links.map((link) => (
                   <li key={link.label}>
                     {"soon" in link && link.soon ? (
                       // Not built yet: a label with a "Soon" tag, as in the menu.
-                      <span className="inline-flex items-center gap-2 text-base font-medium text-bone/40">
+                      <span className="inline-flex items-center gap-2 py-1.5 text-base font-medium text-bone/40">
                         {link.label}
                         <span className="rounded-full border border-white/15 px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-[0.1em] text-bone/50">
                           Soon
@@ -59,7 +59,7 @@ export function SiteFooter() {
                     ) : (
                       <Link
                         href={link.href}
-                        className="text-base font-medium text-bone/75 transition-colors hover:text-cyan"
+                        className="inline-block py-1.5 text-base font-medium text-bone/75 transition-colors hover:text-cyan"
                       >
                         {link.label}
                       </Link>

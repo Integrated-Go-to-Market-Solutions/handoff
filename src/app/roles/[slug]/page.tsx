@@ -54,7 +54,9 @@ export default async function DepartmentPage({
       <section className="relative overflow-hidden bg-ink section-py-tight text-bone">
         <div className="shell relative">
           <nav aria-label="Breadcrumb" className="mb-6 text-sm font-medium text-bone/60">
-            <Link href="/roles" className="transition-colors hover:text-cyan">
+            {/* Links get a 36px-tall tap area; the negative margin keeps the
+                trail's spacing (UX QA, 10/6). */}
+            <Link href="/roles" className="-my-2.5 inline-block py-2.5 transition-colors hover:text-cyan">
               Roles
             </Link>
             <span aria-hidden="true" className="mx-2">

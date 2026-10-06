@@ -83,7 +83,9 @@ export default async function ServicePage({
       <section className="halftone relative overflow-hidden bg-ink section-py-tight text-bone">
         <div className="shell relative">
           <nav aria-label="Breadcrumb" className="mb-6 text-sm font-medium text-bone/60">
-            <Link href="/" className="transition-colors hover:text-cyan">
+            {/* Links get a 36px-tall tap area; the negative margin keeps the
+                trail's spacing (UX QA, 10/6). */}
+            <Link href="/" className="-my-2.5 inline-block py-2.5 transition-colors hover:text-cyan">
               Home
             </Link>
             <span aria-hidden="true" className="mx-2">
@@ -151,7 +153,7 @@ export default async function ServicePage({
                 <p className="mt-3 flex-1 text-pretty text-base leading-relaxed text-ink/80 md:text-lg">{service.bestFit}</p>
                 <Link
                   href={`/services/${service.other.slug}`}
-                  className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-ink underline-offset-4 hover:underline"
+                  className="-mb-2.5 mt-3.5 inline-flex items-center gap-1.5 py-2.5 text-sm font-bold text-ink underline-offset-4 hover:underline"
                 >
                   {service.other.label} <span aria-hidden="true">&rarr;</span>
                 </Link>
