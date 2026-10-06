@@ -190,7 +190,9 @@ export function VibesPlayer({ clips }: { clips: Clip[] }) {
       </div>
 
       {/* Phones: where you are in the swipe row. */}
-      <div className="relative mt-5 flex justify-center gap-2 md:hidden">
+      {/* Each dot sits in a 44px tap area; only the dot itself shows (UX QA,
+          10/6: the bare 8px dots were too small to tap). */}
+      <div className="relative mt-3 flex justify-center md:hidden">
         {clips.map((clip, i) => (
           <button
             key={clip.slug}
@@ -198,10 +200,15 @@ export function VibesPlayer({ clips }: { clips: Clip[] }) {
             aria-label={`Show ${clip.name}`}
             aria-current={i === active}
             onClick={() => cards.current[i]?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" })}
-            className={`h-2 rounded-full transition-all duration-500 motion-reduce:transition-none ${
-              i === active ? "w-7 bg-cyan" : "w-2 bg-white/30"
-            }`}
-          />
+            className="grid h-11 min-w-11 place-items-center px-1"
+          >
+            <span
+              aria-hidden="true"
+              className={`block h-2 rounded-full transition-all duration-500 motion-reduce:transition-none ${
+                i === active ? "w-7 bg-cyan" : "w-2 bg-white/30"
+              }`}
+            />
+          </button>
         ))}
       </div>
     </div>
