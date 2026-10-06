@@ -2,12 +2,12 @@ import Link from "next/link";
 import { Icon, type IconName } from "../icon";
 import { KpiRibbon } from "../kpi-ribbon";
 import { LogoMarquee } from "./logo-marquee";
-import { industries } from "@/lib/content";
+import { industries, industriesStrip } from "@/lib/content";
 
 /**
  * Homepage section 2, reworked per the 10/5 call: it does one job, the
  * industries. The logo band stays on top. Below it: an industries headline
- * (Tom's Industries-page line, standing in until the final copy), the five
+ * (Tom's copy for the industries point Anthony asked for, 10/5), the five
  * industry tiles at a larger size, and a thin, static ribbon of three KPIs
  * underneath. "Trusted by teams that keep moving forward" and the "See the
  * roles" button were cut on the call.
@@ -33,10 +33,13 @@ export function CredibilityStrip() {
         <div className="rounded-[var(--radius-card)] border border-white/10 bg-ink-100/90 px-4 py-8 backdrop-blur-md sm:px-8 md:px-12 md:py-12">
           <h2
             id="credibility-heading"
-            className="display mx-auto max-w-[22ch] text-balance text-center text-[clamp(1.6rem,4.4vw,3rem)] leading-tight text-white"
+            className="display mx-auto max-w-[30ch] text-balance text-center text-[clamp(1.6rem,4.4vw,3rem)] leading-tight text-white"
           >
-            Hire talent that already knows your industry.
+            {industriesStrip.headline}
           </h2>
+          <p className="mx-auto mt-5 max-w-[68ch] text-balance text-center text-base leading-relaxed text-bone/75 md:text-lg">
+            {industriesStrip.body}
+          </p>
 
           {/* Phones: one row that scrolls, bleeding to the panel edge so the
               cut-off tile reads as "more this way". 640px up: five equal tiles. */}

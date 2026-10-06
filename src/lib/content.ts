@@ -134,6 +134,18 @@ export const proofStats = [
 ] as const;
 
 /**
+ * Homepage section 2 copy (Tom's T3 from the 10/5 call, workshopped 10/5).
+ * Headline and line A: Anthony's point that the talent has worked in the
+ * client's industry ("two to five years", his words on the call; confirm
+ * before launch). Line B: Tom's point that Handoff doesn't put forward
+ * anyone outside the field.
+ */
+export const industriesStrip = {
+  headline: "Hire people who have already done this work in your industry.",
+  body: "The people we place have spent two to five years in industries like yours, so they arrive knowing how the work runs. We don't put forward candidates from outside your field.",
+};
+
+/**
  * The thin KPI ribbon under the homepage industries. The three Tom named on
  * the 10/5 call: the two existing figures plus "top 1% of talent", which
  * Anthony confirmed in the Pulse answers.
