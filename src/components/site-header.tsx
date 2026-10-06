@@ -1,9 +1,25 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { departments, nav } from "@/lib/content";
 import type { NavItem } from "@/lib/content";
+
+/**
+ * Dropdowns open on hover and stay open while focus is inside them (for the
+ * keyboard). A clicked link keeps focus after the page changes, which left
+ * one dropdown stuck open under the next (Tom, 10/6). These release that
+ * focus: on clicking a menu link, and on hovering a different dropdown.
+ */
+const releaseFocus = (e: React.MouseEvent<HTMLElement>) => e.currentTarget.blur();
+
+function releaseFocusOutside(e: React.MouseEvent<HTMLElement>) {
+  const active = document.activeElement;
+  if (active instanceof HTMLElement && active.closest("header") && !e.currentTarget.contains(active)) {
+    active.blur();
+  }
+}
 
 /** A menu entry that isn't built yet: a plain label with a "Soon" tag, not a link. */
 function SoonItem({ label, className = "" }: { label: string; className?: string }) {
@@ -24,9 +40,10 @@ function SoonItem({ label, className = "" }: { label: string; className?: string
  */
 function NavGroup({ item }: { item: NavItem }) {
   return (
-    <div className="group relative">
+    <div className="group relative" onMouseEnter={releaseFocusOutside}>
       <Link
         href={item.href}
+        onClick={releaseFocus}
         className="flex items-center gap-1 whitespace-nowrap text-[0.93rem] font-medium text-bone/70 transition-colors hover:text-bone group-focus-within:text-bone"
       >
         {item.label}
@@ -55,6 +72,7 @@ function NavGroup({ item }: { item: NavItem }) {
               ) : (
                 <Link
                   href={child.href}
+                  onClick={releaseFocus}
                   className="block rounded-xl px-4 py-3 text-[0.93rem] font-medium text-bone/75 transition-colors hover:bg-white/5 hover:text-cyan"
                 >
                   {child.label}
@@ -79,9 +97,10 @@ function RolesMega({ item }: { item: NavItem }) {
   const department = departments[active];
 
   return (
-    <div className="group relative">
+    <div className="group relative" onMouseEnter={releaseFocusOutside}>
       <Link
         href={item.href}
+        onClick={releaseFocus}
         className="flex items-center gap-1 whitespace-nowrap text-[0.93rem] font-medium text-bone/70 transition-colors hover:text-bone group-focus-within:text-bone"
       >
         {item.label}
@@ -110,6 +129,7 @@ function RolesMega({ item }: { item: NavItem }) {
                   href={`/roles/${d.slug}`}
                   onMouseEnter={() => setActive(i)}
                   onFocus={() => setActive(i)}
+                  onClick={releaseFocus}
                   className={`flex items-center justify-between rounded-xl px-4 py-2.5 text-[0.9rem] font-medium transition-colors ${
                     i === active ? "bg-white/5 text-cyan" : "text-bone/75 hover:text-cyan"
                   }`}
@@ -124,6 +144,7 @@ function RolesMega({ item }: { item: NavItem }) {
             <li className="mt-1 border-t border-white/10 pt-1">
               <Link
                 href="/roles"
+                onClick={releaseFocus}
                 className="block rounded-xl px-4 py-2.5 text-[0.9rem] font-semibold text-bone transition-colors hover:text-cyan"
               >
                 All Roles
@@ -139,6 +160,7 @@ function RolesMega({ item }: { item: NavItem }) {
             </ul>
             <Link
               href={`/roles/${department.slug}`}
+              onClick={releaseFocus}
               className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-cyan hover:underline"
             >
               See {department.name} Roles <span aria-hidden="true">&rarr;</span>
@@ -189,6 +211,13 @@ function HeaderCtas({ block = false, onNavigate }: { block?: boolean; onNavigate
  */
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  // A new page: let go of any focus left in the header so no dropdown stays open.
+  useEffect(() => {
+    const active = document.activeElement;
+    if (active instanceof HTMLElement && active.closest("header")) active.blur();
+  }, [pathname]);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
