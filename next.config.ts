@@ -14,6 +14,9 @@ const nextConfig: NextConfig = {
       },
       // The roles hub moved to /roles on 10/5 (Anthony's department list).
       { source: "/talent", destination: "/roles", permanent: true },
+      // Services is a menu label, not a page; a typed /services lands on the
+      // first service (Tom, 10/6).
+      { source: "/services", destination: "/services/direct-hire", permanent: false },
     ];
   },
 };
