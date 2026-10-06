@@ -134,7 +134,10 @@ function CompareModels() {
             <h2 className="text-balance text-[clamp(1.7rem,4vw,2.9rem)] font-bold leading-tight text-white">
               {modelsIntro.headline}
             </h2>
-            <p className="mt-2 text-base font-medium text-bone/80 md:text-xl">
+            <p className="mx-auto mt-3 text-pretty text-base leading-relaxed text-bone/75 md:text-lg">
+              {modelsIntro.subhead}
+            </p>
+            <p className="mt-4 text-base font-medium text-bone/80 md:text-xl">
               {modelsIntro.startingAt.label}{" "}
               <span className="font-semibold text-cyan">{modelsIntro.startingAt.price}</span>
             </p>
@@ -145,7 +148,7 @@ function CompareModels() {
             <div className="overflow-x-auto [scrollbar-width:thin]">
               <div
                 role="table"
-                aria-label="Compare Recruitment and placement with Managed staffing"
+                aria-label="Compare Direct Hire with Managed Staffing"
                 // Templates inline: arbitrary grid-template classes did not
                 // generate reliably here, and rows must not auto-place.
                 style={{
@@ -204,9 +207,12 @@ function CompareModels() {
             </div>
           </Reveal>
 
-          <p className="mx-auto mt-8 max-w-[60ch] text-balance text-center text-xs leading-relaxed text-smoke md:text-sm">
-            {modelsCompare.footnote}
+          <p className="mx-auto mt-8 text-balance text-center text-xs leading-relaxed text-smoke md:text-sm">
+            {modelsCompare.footnote} {modelsIntro.addOns}
           </p>
+          <div className="mt-6 text-center">
+            <Button href={site.bookCall}>{modelsIntro.cta}</Button>
+          </div>
         </div>
       </div>
     </section>

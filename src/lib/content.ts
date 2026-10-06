@@ -288,36 +288,54 @@ export const models = [
 ];
 
 /**
- * Pricing section header (homepage and industry pages). PLACEHOLDER: the
- * starting-price line is new copy from the brief, pending approval.
+ * Pricing section header: Tom's content doc (Pricing tab), 10/5. Anthony
+ * confirmed $1,600 is the talent's monthly salary, not Handoff's fee, so
+ * the line says so.
  */
 export const modelsIntro = {
-  headline: "2 ways to work together",
-  startingAt: { label: "Starting at", price: "$1,600/month" },
+  headline: "Two ways to work together",
+  subhead: "Pick the model that fits how you want to bring on talent. Both run on the same Hands-Off Hiring System.",
+  startingAt: { label: "Talent salaries start at", price: "$1,600/month" },
+  addOns: "Add‑ons are available on either model.",
+  cta: "Book a call",
 };
 
 /**
- * The homepage / industry-page pricing comparison (`Models detailed`), from
- * the 10/5 "compact" design: shared features as one row, differences
- * itemised. `true` = check, `false` = dash, a string = that text (`accent`
- * marks the value shown in the brand green). /v2 keeps `models` above.
+ * The pricing comparison (`Models detailed`), Umair's 10/5 compact table
+ * with the content doc's copy (10/5): the doc's "Both models include"
+ * points as shared rows, Managed Staffing's "What's included" as the
+ * differences, and each model's "Fits when" line as Best for. `true` =
+ * check, `false` = dash, a string = that text (`accent` marks the value
+ * shown in the brand green). /v2 keeps `models` above.
  */
 export const modelsCompare = {
-  columns: ["Recruitment and placement", "Managed staffing"],
+  columns: ["Direct Hire", "Managed Staffing"],
   /** Index of the highlighted column. */
   featured: 1,
   rows: [
     {
-      label: "Full recruiting process",
-      note: "Sourcing, vetting, assessments, shortlist, AI Powered People, guarantee",
+      label: "The Hands-Off Hiring System",
+      note: "Sourcing, the Vet, and a shortlist of two for each role",
       values: [true, true],
     },
-    { label: "Who employs them", values: ["You", { text: "Handoff", accent: true }] },
-    { label: "Payroll and compliance", values: [false, true] },
-    { label: "Equipment and tools", values: [false, true] },
-    { label: "Supervision and performance", values: [false, true] },
-    { label: "Replacement support", values: [false, true] },
-    { label: "Best for", values: ["One great hire", "Building a team"] },
+    { label: "Talent screened for skills, English, and AI fluency", values: [true, true] },
+    { label: "Work in your time zone, with client-ready English", values: [true, true] },
+    {
+      label: "The guarantee",
+      note: "$1,000 off your next search if none of the first four fits",
+      values: [true, true],
+    },
+    { label: "Who employs them", values: ["You contract them directly", { text: "Handoff, as employer of record", accent: true }] },
+    { label: "Payroll", values: [false, true] },
+    { label: "HR and compliance", values: [false, true] },
+    { label: "Benefits", values: [false, true] },
+    { label: "Equipment and IT", values: [false, true] },
+    { label: "Performance management", values: [false, true] },
+    { label: "Retention support", values: [false, true] },
+    {
+      label: "Best for",
+      values: ["When you want them on your own team", "When you want us to carry the employment, compliance, and support"],
+    },
   ] as { label: string; note?: string; values: (boolean | string | { text: string; accent: boolean })[] }[],
   footnote: "One-time placement fee of 25% of first-year salary applies to both.",
 };
