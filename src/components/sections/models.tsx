@@ -1,7 +1,8 @@
 import { Button, Pill } from "../brand";
 import { Reveal } from "../reveal";
 import { TypedPoints } from "../typed-points";
-import { models, modelsCompare, modelsFootnote, modelsIntro, site } from "@/lib/content";
+import Link from "next/link";
+import { models, modelsCompare, modelsFootnote, modelsIntro, services, site } from "@/lib/content";
 
 /* Two equally strong gradients with the same cyan outline, so neither
    option reads as the lesser choice. Each card also carries its own list in
@@ -168,16 +169,28 @@ function CompareModels() {
                   <span role="columnheader" className="sr-only">
                     Feature
                   </span>
-                  {columns.map((name, c) => (
-                    <span
-                      key={name}
-                      role="columnheader"
-                      style={{ gridColumn: c + 2 }}
-                      className={`${cell} py-4 font-semibold leading-snug text-white md:py-5`}
-                    >
-                      {name}
-                    </span>
-                  ))}
+                  {columns.map((name, c) => {
+                    const service = services.find((entry) => entry.name === name);
+                    return (
+                      <span
+                        key={name}
+                        role="columnheader"
+                        style={{ gridColumn: c + 2 }}
+                        className={`${cell} flex-col gap-1 py-4 font-semibold leading-snug text-white md:py-5`}
+                      >
+                        {name}
+                        {/* The doc's "See Direct Hire" / "See Managed Staffing" links. */}
+                        {service && (
+                          <Link
+                            href={`/services/${service.slug}`}
+                            className="text-[0.7rem] font-semibold text-cyan hover:underline sm:text-sm"
+                          >
+                            See {name} <span aria-hidden="true">&rarr;</span>
+                          </Link>
+                        )}
+                      </span>
+                    );
+                  })}
                 </div>
 
                 {rows.map((row, r) => {
