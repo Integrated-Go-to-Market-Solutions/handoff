@@ -22,7 +22,7 @@ export function WhyLatam() {
           <h2 className="display text-[clamp(2.1rem,4.8vw,3.7rem)] text-ink">
             {whyLatam.headline}
           </h2>
-          <p className="mt-5 max-w-[52ch] text-lg leading-relaxed text-ink/70 md:text-xl">
+          <p className="mt-5 text-lg leading-relaxed text-ink/70 md:text-xl">
             {whyLatam.subhead}
           </p>
         </Reveal>

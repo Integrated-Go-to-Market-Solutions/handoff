@@ -23,11 +23,11 @@ export default function RolesPage() {
     <>
       <section className="relative overflow-hidden bg-ink section-py-tight text-bone">
         <div className="shell relative">
-          <Reveal className="max-w-4xl">
+          <Reveal>
             <h1 className="display text-[clamp(2.5rem,6vw,4.6rem)] text-bone">
               {rolesPage.headline}
             </h1>
-            <p className="mt-5 max-w-[62ch] text-lg font-medium leading-relaxed text-bone/80">
+            <p className="mt-5 text-lg font-medium leading-relaxed text-bone/80">
               {rolesPage.subhead}
             </p>
           </Reveal>
@@ -64,7 +64,7 @@ export default function RolesPage() {
             ))}
           </ul>
 
-          <p className="mt-10 max-w-[62ch] border-l-4 border-cyan pl-5 text-base leading-relaxed text-bone/80 md:text-lg">
+          <p className="mt-10 border-l-4 border-cyan pl-5 text-base leading-relaxed text-bone/80 md:text-lg">
             {rolesPage.closing}
           </p>
           <div className="mt-8">
