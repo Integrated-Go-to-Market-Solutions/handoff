@@ -732,7 +732,7 @@ export const faqs = [
   },
   {
     q: "We are not ready to hire someone full time.",
-    a: "Then we are honestly not your fit yet, and we will say so rather than sell you something that will not work. Handoff exists for companies committing to a real hire who can own an area of the business.",
+    a: "Then we are not your fit yet, and we will say so rather than sell you something that will not work. Handoff exists for companies committing to a real hire who can own an area of the business.",
   },
   {
     q: "What if the person does not work out?",
