@@ -231,7 +231,7 @@ export function TalentMap() {
           <h2 className="display text-[clamp(2.1rem,4.8vw,3.7rem)]">
             {talentMap.heading.before}{" "}
             <Link
-              href="/talent"
+              href="/roles"
               className="text-cyan underline decoration-cyan/35 decoration-[0.08em] underline-offset-[0.12em] transition-colors hover:decoration-cyan focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan"
             >
               {talentMap.heading.link}

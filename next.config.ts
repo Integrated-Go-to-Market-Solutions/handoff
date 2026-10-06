@@ -12,6 +12,8 @@ const nextConfig: NextConfig = {
         destination: "/industries/corporate-housing",
         permanent: true,
       },
+      // The roles hub moved to /roles on 10/5 (Anthony's department list).
+      { source: "/talent", destination: "/roles", permanent: true },
     ];
   },
 };

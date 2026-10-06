@@ -15,7 +15,7 @@ const columns = [
   {
     title: "Talent",
     links: [
-      { label: "Roles you can hire", href: "/talent" },
+      { label: "Roles you can hire", href: "/roles" },
       ...industries.map((industry) => ({
         label: industry.navLabel,
         href: `/industries/${industry.slug}`,

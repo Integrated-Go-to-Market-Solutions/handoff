@@ -19,7 +19,7 @@ export const site = {
    * new tab automatically.
    */
   bookingUrl: "/contact",
-  seeTalent: "/talent",
+  seeTalent: "/roles",
 };
 
 export const socialLinks = [
@@ -174,7 +174,7 @@ export const sampleTalent = [
 export const talentMap = {
   heading: { before: "Meet your", link: "talent" },
   intro: "The roles we place most, from Mexico to Patagonia. Hover or tap a pin to see who you could be working with.",
-  cta: { label: "Explore all roles", href: "/talent" },
+  cta: { label: "Explore all roles", href: "/roles" },
   salaryLabel: "Salary benchmark",
   profiles: [
     { name: "Valeria", city: "Guadalajara", country: "Mexico", role: "Digital Marketing Manager", salary: "$2,500–$3,500/mo", photo: "/images/team/jazmin-esparza.webp" },
@@ -753,6 +753,161 @@ export const roleGroups = [
   },
 ];
 
+/**
+ * Department pages (/roles/[slug]). Anthony's list from the 10/5 Pulse
+ * answers, verbatim: "Department Nav (industry-agnostic, primary
+ * structure)", modeled on hirewithnear.com/hire/marketing. The last two
+ * sat below a divider in his list and stay last here.
+ *
+ * Per the 10/5 call: each page leads with that department's role video,
+ * then the full role list; a single role links to booking a call, not to
+ * its own page. `video` stays empty until Handoff's role footage is in the
+ * repo, and the page renders no video slot without one (empty "coming
+ * soon" placeholders were cut from the site on 9/8).
+ */
+export type Department = {
+  slug: string;
+  name: string;
+  roles: readonly string[];
+  video?: { src: string; poster: string };
+};
+
+export const departments: readonly Department[] = [
+  {
+    slug: "data-ai",
+    name: "Data & AI",
+    roles: [
+      "AI Developer / AI Engineer",
+      "Machine Learning Engineer",
+      "Data Scientist",
+      "Data Engineer",
+      "Data Analyst",
+      "Database Developer/Administrator",
+      "BI Analyst",
+      "Automation/Prompt Engineer",
+    ],
+  },
+  {
+    slug: "software-engineering",
+    name: "Software Engineering",
+    roles: [
+      "Full-Stack Developer",
+      "Front-End Developer",
+      "Back-End Developer",
+      "Mobile Developer (iOS/Android)",
+      "DevOps Engineer",
+      "QA Engineer",
+      "Web Developer (Shopify/Webflow/WordPress)",
+      "Software Architect (senior/lead)",
+    ],
+  },
+  {
+    slug: "customer-support",
+    name: "Customer Support",
+    roles: [
+      "Customer Support Representative",
+      "Customer Success Manager",
+      "Technical Support Specialist",
+      "Help Desk/IT Support Specialist",
+      "Chat/Email Support Specialist",
+      "Order & Returns Support Specialist",
+    ],
+  },
+  {
+    slug: "design",
+    name: "Design",
+    roles: [
+      "UI/UX Designer",
+      "Product Designer",
+      "Graphic Designer",
+      "Web Designer",
+      "Brand Designer",
+      "Motion Designer/Video Editor",
+    ],
+  },
+  {
+    slug: "finance-accounting",
+    name: "Finance & Accounting",
+    roles: [
+      "Bookkeeper",
+      "Staff Accountant",
+      "AP/AR Specialist",
+      "Payroll Specialist",
+      "Financial Analyst",
+      "Controller (senior)",
+    ],
+  },
+  {
+    slug: "marketing",
+    name: "Marketing",
+    roles: [
+      "Marketing Coordinator",
+      "Content Writer/Strategist",
+      "SEO Specialist",
+      "Social Media Manager",
+      "Paid Media/PPC Specialist",
+      "Email/Lifecycle Marketing Specialist",
+      "Marketing Ops/Automation Specialist",
+    ],
+  },
+  {
+    slug: "sales",
+    name: "Sales",
+    roles: [
+      "SDR/BDR",
+      "Account Executive",
+      "Sales Operations Specialist",
+      "CRM Administrator",
+      "Lead Generation Specialist",
+    ],
+  },
+  {
+    slug: "admin-operations",
+    name: "VAs, Admin & Operations",
+    roles: [
+      "Executive Assistant",
+      "Administrative Assistant",
+      "Operations Coordinator",
+      "Operations Manager",
+      "Project Manager",
+      "General Virtual Assistant",
+    ],
+  },
+  {
+    slug: "corporate-housing-mtr",
+    name: "Corporate Housing & MTR",
+    roles: [
+      "Reservations Specialist",
+      "Guest Services Coordinator",
+      "Leasing Coordinator",
+      "Property/Portfolio Coordinator",
+      "Turnover Coordinator",
+      "Revenue/Pricing Analyst",
+    ],
+  },
+  {
+    slug: "corporate-relocation",
+    name: "Corporate Relocation",
+    roles: [
+      "Relocation Coordinator",
+      "Destination Services Coordinator",
+      "Relocation Counselor",
+      "Global Mobility Coordinator",
+      "Expense & Reimbursement Coordinator",
+    ],
+  },
+];
+
+/** Copy for the roles hub and department pages: Tom's content doc, Roles tab. */
+export const rolesPage = {
+  headline: "Roles we place",
+  subhead:
+    "We fill roles across departments and seniority, from specialists to department heads. These are the ones we place most.",
+  closing:
+    "This is a sample of the roles we fill most, not the limit. If the one you need is not here, tell us.",
+  cta: "Book a call",
+};
+
 export const talentPage = {
   eyebrow: "Who you could be hiring",
   headline: "Here's what the top 1%",
@@ -994,7 +1149,7 @@ export const nav: NavItem[] = [
       { label: "All industries", href: "/industries" },
     ],
   },
-  { label: "Roles", href: "/talent" },
+  { label: "Roles", href: "/roles" },
   { label: "Results", href: "/results" },
   { label: "Pricing", href: "/#models" },
   { label: "About", href: "/about" },
