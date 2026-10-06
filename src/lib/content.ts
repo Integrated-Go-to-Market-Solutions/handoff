@@ -980,6 +980,12 @@ export const contactPage = {
  * e-commerce... and there might just be like corporate relocation."
  * These five are also the homepage ICP grid, not just a dropdown.
  *
+ * Copy is Tom's content doc (Industry Pages tabs), 10/5. Each role names
+ * the department page it links to; a role with no clear department in
+ * Anthony's list (QA Specialist, Account Manager) is left unlinked.
+ * proofLogos are only the names the doc marks as cleared; caseStudy points
+ * at an existing /results write-up.
+ *
  * 10/5: "Hospitality" renamed "Corporate housing" (slug corporate-housing;
  * the old URL redirects in next.config.ts) and the order set to Tom's
  * content doc: housing, relocation, startups, agencies, e-commerce.
@@ -995,57 +1001,60 @@ export const industries = [
     slug: "corporate-housing",
     navLabel: "Corporate housing",
     icon: "home",
-    name: "Corporate housing",
+    name: "Corporate Housing",
     subhead:
       "Staff corporate housing, mid-term, and short-term rentals, from reservations to turnovers.",
-    problemHeadline: "Occupancy does not wait for a hire",
+    problemHeadline: "Hire ahead of your busy season",
     problemBody:
-      "Guest volume climbs, the reservations inbox fills, and the person holding it together is doing three jobs. The last remote assistant you tried needed a script for every guest message.",
+      "Occupancy climbs, the reservations inbox fills, and someone on your team is covering three jobs at once. Hiring for it in the US does not pencil out at these margins, and the last remote assistant you tried needed a script for routine bookings and messages.",
     triggers: [
       "Peak season arrives and your reservations team is underwater.",
       "Your operations manager gives notice and takes the vendor relationships with them.",
-      "You are turning down bookings because nobody can handle the coordination.",
-      "You tried a VA for guest messaging and got someone who could not make a judgment call.",
+      "You are turning down units because your team cannot keep up with the coordination.",
+      "You tried a VA for guest and resident messages and got someone who could not make a judgment call.",
     ],
     rolesHeadline: "Here are the roles we fill most across corporate housing, mid‑term, and short‑term rentals",
     roles: [
-      "Reservations Manager",
-      "Operations Manager",
-      "Guest Services Coordinator",
-      "Quality Assurance Specialist",
-      "Bookkeeper",
+      { name: "Reservations Manager", department: "corporate-housing-mtr" },
+      { name: "Operations Manager", department: "admin-operations" },
+      { name: "Quality Assurance Specialist" },
+      { name: "Guest and Resident Coordinator", department: "corporate-housing-mtr" },
+      { name: "Bookkeeper", department: "finance-accounting" },
     ],
     rolesCloser:
-      "These are the roles our own founder hired for himself over ten years in this industry, which is why our recruiting is deepest here.",
+      "Our founder spent over a decade hiring in this industry. It is where our recruiting is deepest and where we are surest of the fit.",
+    proofLogos: ["oasis", "united-corporate-housing", "dwellworks"],
+    caseStudy: null,
   },
   {
     slug: "corporate-relocation",
     navLabel: "Corporate relocation",
-    /** Shorter label for the homepage "Built for your industry" tiles. */
     tileLabel: "Relocation",
     icon: "pin",
-    name: "Corporate relocation",
+    name: "Corporate Relocation",
     subhead:
-      "We help relocation management companies, movers, and immigration and tax providers hire Latin America's top 1% talent.",
-    problemHeadline: "Assignment volume moves faster than hiring does",
+      "Scale relocation with coordinators who work in your clients' time zone.",
+    problemHeadline: "New contracts arrive faster than you can staff them",
     problemBody:
-      "A client wins a contract and suddenly you are coordinating twice the assignments with the same team. The work lands on people who are already at capacity, and clients notice before you do.",
+      "A client wins a contract and suddenly you are coordinating twice the assignments with the same team. Adding a US coordinator takes three months and costs more than the account can carry. The work lands on people who are already at capacity, and clients notice before you do.",
     triggers: [
       "Assignment volume spikes and coordination falls behind.",
       "Your client services lead leaves in the middle of assignment season.",
       "You are quoting work you are not sure you can staff.",
-      "You tried offshore support and your clients could tell.",
+      "You tried cheaper offshore support and the quality did not hold up.",
     ],
-    rolesHeadline: "The roles we fill most in relocation",
+    rolesHeadline: "Here are the roles we fill most in relocation",
     roles: [
-      "Operations Coordinator",
-      "Account Manager",
-      "Client Services Lead",
-      "Quality Assurance Specialist",
-      "Bookkeeper",
+      { name: "Operations Coordinator", department: "admin-operations" },
+      { name: "Account Manager" },
+      { name: "Client Services Lead", department: "customer-support" },
+      { name: "Quality Assurance Specialist" },
+      { name: "Bookkeeper", department: "finance-accounting" },
     ],
     rolesCloser:
-      "Same time zone as your clients, client-ready English, and people who understand that a delayed assignment is somebody's family waiting in a hotel.",
+      "Talent you choose yourself, in your clients' time zone, with client-ready English and the AI skills to move faster on the same work. They know a delayed move is a family waiting in a hotel.",
+    proofLogos: [],
+    caseStudy: "global-relocation",
   },
   {
     slug: "startups",
@@ -1053,80 +1062,86 @@ export const industries = [
     icon: "trend",
     name: "Startups",
     subhead:
-      "We help startups hire Latin America's top 1% talent without the overhead of a full US team.",
-    problemHeadline: "You need a right hand, not a headcount line",
+      "Get startup roles off your plate, owned by talent that already works with AI.",
+    problemHeadline: "Still doing every job yourself?",
     problemBody:
-      "Every hour spent on operations is an hour not spent on the product. A US generalist is expensive and slow to hire, and a cheap freelancer needs more management than the work it saves.",
+      "The company is growing, and now there is more work than there are people to do it. You are still running support, ops, and the books yourself at night.",
     triggers: [
-      "You are the bottleneck for everything that is not building the product.",
-      "Your first ops hire needs to wear five hats, not one.",
-      "You raised a round and need to move fast without bloating headcount.",
-      "You tried a freelancer platform and got someone who disappeared mid-project.",
+      "You are growing faster than you can hire, and you are covering the gap yourself.",
+      "A US hire for this role costs more runway than you can give it.",
+      "This is your first 3rd party hire, and you are not sure how to get it right.",
+      "You tried a freelancer and spent more time managing them than the work gave back.",
     ],
-    rolesHeadline: "The roles we fill most for startups",
+    rolesHeadline: "Here are the roles we fill most for startups",
     roles: [
-      "Executive Assistant",
-      "Operations Generalist",
-      "Customer Success Manager",
-      "Marketing Specialist",
-      "Bookkeeper",
+      { name: "Executive Assistant / Chief of Staff", department: "admin-operations" },
+      { name: "Operations Manager", department: "admin-operations" },
+      { name: "Full Stack Developer", department: "software-engineering" },
+      { name: "AI & Automations Developer", department: "data-ai" },
+      { name: "Customer Support Lead", department: "customer-support" },
     ],
     rolesCloser:
-      "Founders do not have time to manage a hire. We vet for people who can run with ambiguity from day one.",
+      "Talent you pick yourself, in your working hours, with client-ready English and real AI skills, there to own the role and not just clear tasks.",
+    proofLogos: [],
+    caseStudy: null,
   },
   {
     slug: "agencies",
     navLabel: "Agencies",
     icon: "layers",
-    name: "Marketing and creative agencies",
+    name: "Agencies",
     subhead:
-      "We help marketing, creative and digital agencies hire Latin America's top 1% talent.",
-    problemHeadline: "Billable hours should not depend on who quits next",
+      "Add agency delivery that scales with the account, end to end.",
+    problemHeadline: "Is client work growing faster than your team?",
     problemBody:
-      "Client work does not pause for a hiring search. Every open seat is a project at risk, and the wrong hire shows up in the client relationship, not just the payroll.",
+      "You win an account and need the delivery capacity this month, not next quarter. Every US hire you add to service the work takes a bite out of the margin. The freelancers you lean on disappear mid-project, and your senior people are doing production they should be reviewing.",
     triggers: [
-      "A client account grows faster than your bench can cover.",
-      "Your best account manager leaves mid-retainer.",
-      "You are turning down new business because you cannot staff it.",
-      "You tried offshore production help and the client could tell.",
+      "You won a new account and need delivery capacity now.",
+      "Adding a US hire to service the work eats the margin on it.",
+      "You are staffing client work with freelancers who go quiet mid-project.",
+      "Your senior people are producing work instead of reviewing it.",
     ],
-    rolesHeadline: "The roles we fill most for agencies",
+    rolesHeadline: "Here are the roles we fill most for agencies",
     roles: [
-      "Account Manager",
-      "Media Buyer",
-      "Social Media Manager",
-      "UI/UX Designer",
-      "Project Manager",
+      { name: "Digital Marketing Manager", department: "marketing" },
+      { name: "Media Buyer", department: "marketing" },
+      { name: "Graphic / Motion Designer", department: "design" },
+      { name: "Project Manager", department: "admin-operations" },
+      { name: "SEO Specialist", department: "marketing" },
     ],
     rolesCloser:
-      "Client-ready English, and people who understand that a missed deadline is somebody else's client call.",
+      "Talent you choose yourself, in your time zone, with the AI skills to carry client work end to end, so your senior team reviews instead of produces.",
+    proofLogos: [],
+    caseStudy: null,
   },
   {
     slug: "ecommerce",
     navLabel: "E-commerce",
     icon: "bag",
-    name: "E-commerce and B2B SaaS",
+    name: "E-Commerce",
     subhead:
-      "We help e-commerce and B2B SaaS companies hire Latin America's top 1% talent.",
-    problemHeadline: "Growth exposes every gap in the back office",
+      "Staff e-commerce to stay open through every spike, calls handled.",
+    problemHeadline: "The store has to stay open even when you're short-staffed",
     problemBody:
-      "Orders, support tickets and ad spend all scale faster than a small team can keep up with by hand. Hiring locally for these roles rarely makes sense at these margins.",
+      "Support tickets, returns, and order problems arrive whether or not you have the people to handle them. A launch or a sales spike leaves you underwater on service and fulfillment. You are clearing the inbox yourself at midnight, and the VA you hired sends every decision back to you.",
     triggers: [
-      "Support tickets pile up faster than your team can answer them.",
-      "You are running paid media without anyone dedicated to optimizing it.",
-      "Your marketplace listings need constant upkeep nobody has time for.",
-      "You tried a cheap VA for customer support and your reviews showed it.",
+      "Tickets and returns pile up faster than your team clears them.",
+      "A launch or a sales spike leaves service and fulfillment behind.",
+      "You are answering customer email after hours.",
+      "You hired a VA who escalated every refund and every upset customer back to you.",
     ],
-    rolesHeadline: "The roles we fill most in e-commerce",
+    rolesHeadline: "Here are the roles we fill most in e-commerce",
     roles: [
-      "Marketplace Manager",
-      "Customer Success Manager",
-      "Media Buyer",
-      "Social Media Manager",
-      "Bookkeeper",
+      { name: "Customer Support Specialist", department: "customer-support" },
+      { name: "Operations / Fulfillment Coordinator", department: "admin-operations" },
+      { name: "Email / Retention Marketing Manager", department: "marketing" },
+      { name: "Paid Media Buyer", department: "marketing" },
+      { name: "Bookkeeper", department: "finance-accounting" },
     ],
     rolesCloser:
-      "People who treat a support ticket like a customer, not a queue to clear.",
+      "Talent you choose yourself, with the assurance to handle a refund or an upset customer without sending it back to you, on your hours.",
+    proofLogos: [],
+    caseStudy: null,
   },
 ] as const;
 
