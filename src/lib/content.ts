@@ -1064,15 +1064,15 @@ export const talentPage = {
  * language stays general until Anthony confirms what can be stated (doc
  * note). The reels are the talent-culture clips the doc names ("a day with
  * Handoff" and remote culture), already in /public/videos.
- * PLACEHOLDER: the apply button points at /contact until a talent
- * application form or page exists.
+ * The apply button goes to Handoff's existing application page on the
+ * live site (Tom, 10/5).
  */
 export const careersPage = {
   eyebrow: "Careers",
   headline: "Build your career with a team that has your back.",
   subhead: "Handoff places Latin American professionals inside top US companies, and stays with you after you are hired.",
   body: "You are not a profile in a database here. We learn what you do well, match you to a company where it fits, and stay in your corner once you are placed. If one role ends, we work to find you the next one.",
-  cta: { label: "Apply to join our talent pool", href: "/contact" },
+  cta: { label: "Apply to join our talent pool", href: "https://talenthandoff.com/join-us" },
   whyHeadline: "Why Handoff",
   why: [
     {
