@@ -14,7 +14,6 @@ const columns = [
     title: "Company",
     links: [
       { label: "How It Works", href: "/how-it-works" },
-      { label: "Results", href: "/results" },
       { label: "About", href: "/about" },
       { label: "Careers", href: "/careers" },
     ],
@@ -22,6 +21,7 @@ const columns = [
   menuColumn("Industries"),
   menuColumn("Roles"),
   menuColumn("Services"),
+  menuColumn("Resources"),
   {
     title: "Get Started",
     links: [
@@ -36,8 +36,9 @@ export function SiteFooter() {
     <footer className="relative overflow-hidden bg-ink text-bone">
 
       <div className="shell relative py-16">
-        <div className="grid gap-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-[1.2fr_repeat(5,1fr)]">
-          <div>
+        <div className="grid gap-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
+          {/* Logo on its own row, so six link columns fit beneath it. */}
+          <div className="sm:col-span-2 md:col-span-3 lg:col-span-6">
             <LogoLock />
           </div>
 
@@ -46,13 +47,23 @@ export function SiteFooter() {
               <h4 className="eyebrow text-bone">{col.title}</h4>
               <ul className="mt-4 space-y-3">
                 {col.links.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-base font-medium text-bone/75 transition-colors hover:text-cyan"
-                    >
-                      {link.label}
-                    </Link>
+                  <li key={link.label}>
+                    {"soon" in link && link.soon ? (
+                      // Not built yet: a label with a "Soon" tag, as in the menu.
+                      <span className="inline-flex items-center gap-2 text-base font-medium text-bone/40">
+                        {link.label}
+                        <span className="rounded-full border border-white/15 px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-[0.1em] text-bone/50">
+                          Soon
+                        </span>
+                      </span>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="text-base font-medium text-bone/75 transition-colors hover:text-cyan"
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
