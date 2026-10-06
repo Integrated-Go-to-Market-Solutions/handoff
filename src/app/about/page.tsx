@@ -4,7 +4,7 @@ import { TalentCard } from "@/components/talent-card";
 import { Soul } from "@/components/sections/soul";
 import { ValuesVideo } from "@/components/sections/values-video";
 import { aboutPage, site, socialLinks, team } from "@/lib/content";
-import { Button } from "@/components/brand";
+import { Button, cardGlow, cardTones } from "@/components/brand";
 
 function SocialMark({ platform }: { platform: "youtube" | "linkedin" | "instagram" }) {
   if (platform === "linkedin") {
@@ -100,16 +100,18 @@ export default function AboutPage() {
             <h2 className="display text-[clamp(1.8rem,4vw,3rem)]">{aboutPage.winWin.headline}</h2>
           </Reveal>
           <div className="mt-8 grid gap-4 md:grid-cols-2">
-            {aboutPage.winWin.sides.map((side, i) => (
-              <Reveal key={side.title} delay={i * 90} className="h-full">
-                <div className="h-full rounded-[var(--radius-card)] border border-white/10 bg-white/[0.04] p-7 md:p-8">
-                  <h3 className="text-base font-semibold uppercase tracking-[0.04em] text-cyan md:text-lg">
-                    {side.title}
-                  </h3>
-                  <p className="mt-3 text-pretty text-base leading-relaxed text-bone/80 md:text-lg">{side.body}</p>
-                </div>
-              </Reveal>
-            ))}
+            {/* Royal for the companies, cyan for the talent (10/5 color pass). */}
+            {aboutPage.winWin.sides.map((side, i) => {
+              const tone = cardTones[i === 0 ? 1 : 0];
+              return (
+                <Reveal key={side.title} delay={i * 90} className="h-full">
+                  <div className={`h-full rounded-[var(--radius-card)] p-7 md:p-8 ${cardGlow} ${tone.card}`}>
+                    <h3 className="text-base font-semibold uppercase tracking-[0.04em] md:text-lg">{side.title}</h3>
+                    <p className={`mt-3 text-pretty text-base leading-relaxed md:text-lg ${tone.muted}`}>{side.body}</p>
+                  </div>
+                </Reveal>
+              );
+            })}
           </div>
           <p className="mt-8 text-pretty border-l-4 border-cyan pl-5 text-base leading-relaxed text-bone/80 md:text-lg">
             {aboutPage.winWin.closer}
@@ -124,7 +126,7 @@ export default function AboutPage() {
 
       <ValuesVideo />
 
-      <section className="bg-ink pb-16 text-bone md:pb-20">
+      <section className="bg-ink section-py text-bone">
         <div className="shell">
           <Reveal>
             <h2 className="display text-[clamp(1.8rem,4vw,3rem)]">{aboutPage.teamHeadline}</h2>
