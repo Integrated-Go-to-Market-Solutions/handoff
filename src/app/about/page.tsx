@@ -3,7 +3,8 @@ import { Reveal } from "@/components/reveal";
 import { TalentCard } from "@/components/talent-card";
 import { Soul } from "@/components/sections/soul";
 import { ValuesVideo } from "@/components/sections/values-video";
-import { proof, socialLinks, team } from "@/lib/content";
+import { aboutPage, site, socialLinks, team } from "@/lib/content";
+import { Button } from "@/components/brand";
 
 function SocialMark({ platform }: { platform: "youtube" | "linkedin" | "instagram" }) {
   if (platform === "linkedin") {
@@ -50,8 +51,7 @@ function SocialMark({ platform }: { platform: "youtube" | "linkedin" | "instagra
 
 export const metadata: Metadata = {
   title: "About | Handoff",
-  description:
-    "Handoff is a Latin American company placing Latin American talent inside US companies. Meet the team, all hired through the same process we run for clients.",
+  description: aboutPage.lead,
 };
 
 export default function AboutPage() {
@@ -59,20 +59,12 @@ export default function AboutPage() {
     <>
       <section className="relative overflow-hidden bg-ink section-py-hero">
         <div className="shell relative">
-          <Reveal className="max-w-4xl">
-            <h1 className="display text-[clamp(2.5rem,6vw,4.6rem)] text-bone">
-              {proof.headline}
-              <br />
-              <span className="text-cyan">{proof.headlineAccent}</span>
-            </h1>
-          </Reveal>
-          <Reveal delay={90} className="max-w-4xl">
-            <p className="mt-6 max-w-[62ch] text-lg leading-relaxed text-bone/70">
-              {proof.body}
-            </p>
+          <Reveal>
+            <h1 className="display text-[clamp(2.5rem,6vw,4.6rem)] text-bone">{aboutPage.headline}</h1>
+            <p className="mt-6 text-pretty text-lg leading-relaxed text-bone/75 md:text-xl">{aboutPage.lead}</p>
           </Reveal>
 
-          <Reveal delay={150} className="max-w-4xl">
+          <Reveal delay={150}>
             <nav aria-label="Handoff social media" className="mt-8 flex flex-wrap gap-4">
               {socialLinks.map((social) => (
                 <a
@@ -96,20 +88,69 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-ink pb-16 md:pb-20">
-        <div className="shell flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 sm:grid sm:grid-cols-3 sm:overflow-visible lg:grid-cols-4">
+      {/* Why Handoff exists, in Anthony's words from the 10/5 call. */}
+      <section className="relative overflow-hidden bg-ink pb-16 text-bone md:pb-24">
+        <div className="shell relative">
+          <Reveal>
+            <h2 className="display text-[clamp(2rem,4.8vw,3.6rem)]">{aboutPage.gap.headline}</h2>
+            <p className="mt-6 text-pretty text-lg leading-relaxed text-bone/75 md:text-xl">{aboutPage.gap.body}</p>
+          </Reveal>
+
+          <Reveal delay={90} className="mt-16">
+            <h2 className="display text-[clamp(1.8rem,4vw,3rem)]">{aboutPage.winWin.headline}</h2>
+          </Reveal>
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+            {aboutPage.winWin.sides.map((side, i) => (
+              <Reveal key={side.title} delay={i * 90} className="h-full">
+                <div className="h-full rounded-[var(--radius-card)] border border-white/10 bg-white/[0.04] p-7 md:p-8">
+                  <h3 className="text-base font-semibold uppercase tracking-[0.04em] text-cyan md:text-lg">
+                    {side.title}
+                  </h3>
+                  <p className="mt-3 text-pretty text-base leading-relaxed text-bone/80 md:text-lg">{side.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <p className="mt-8 text-pretty border-l-4 border-cyan pl-5 text-base leading-relaxed text-bone/80 md:text-lg">
+            {aboutPage.winWin.closer}
+          </p>
+
+          <Reveal className="mt-16">
+            <h2 className="display text-[clamp(1.8rem,4vw,3rem)]">{aboutPage.founder.headline}</h2>
+            <p className="mt-6 text-pretty text-lg leading-relaxed text-bone/75 md:text-xl">{aboutPage.founder.body}</p>
+          </Reveal>
+        </div>
+      </section>
+
+      <ValuesVideo />
+
+      <section className="bg-ink pb-16 text-bone md:pb-20">
+        <div className="shell">
+          <Reveal>
+            <h2 className="display text-[clamp(1.8rem,4vw,3rem)]">{aboutPage.teamHeadline}</h2>
+          </Reveal>
+        </div>
+        <div className="shell mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 sm:grid sm:grid-cols-3 sm:overflow-visible lg:grid-cols-4">
           {team.map((person, i) => (
             <TalentCard key={person.slug} {...person} index={i} />
           ))}
         </div>
       </section>
 
-      <ValuesVideo />
-
       {/* Same Alma-over-the-footage section as the homepage, per direct
           instruction, in place of the old quote-and-panel layout. */}
       <Soul variant="dictionary" />
 
+      <section className="bg-ink section-py-tight text-bone">
+        <div className="shell">
+          <Reveal>
+            <p className="display text-[clamp(1.5rem,3.2vw,2.4rem)] leading-tight">{aboutPage.close}</p>
+            <div className="mt-8">
+              <Button href={site.bookCall}>{aboutPage.cta}</Button>
+            </div>
+          </Reveal>
+        </div>
+      </section>
     </>
   );
 }
