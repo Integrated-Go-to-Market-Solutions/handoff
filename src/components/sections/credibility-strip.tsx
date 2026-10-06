@@ -31,7 +31,7 @@ export function CredibilityStrip() {
       </div>
 
       <div className="shell relative pt-14 md:pt-16">
-        <div className="rounded-[var(--radius-card)] border-2 border-cyan bg-gradient-to-br from-royal to-azure px-4 py-8 shadow-[0_0_44px_-14px_rgba(61,214,189,0.55)] sm:px-8 md:px-12 md:py-12">
+        <div className="rounded-[var(--radius-card)] border-2 border-cyan bg-gradient-to-br from-royal to-azure-deep px-4 py-8 shadow-[0_0_44px_-14px_rgba(61,214,189,0.55)] sm:px-8 md:px-12 md:py-12">
           <h2
             id="credibility-heading"
             className="display mx-auto max-w-[30ch] text-balance text-center text-[clamp(1.6rem,4.4vw,3rem)] leading-tight text-white"

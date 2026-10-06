@@ -63,11 +63,11 @@ export default function IndustriesPage() {
             })}
             {/* The catch-all fills the grid's sixth slot (Tom, 10/5). */}
             <Reveal as="li" delay={350} className="h-full">
-              <div className="flex h-full flex-col rounded-[var(--radius-card)] border-2 border-cyan bg-gradient-to-br from-royal to-azure p-7 text-bone shadow-[0_0_28px_-10px_rgba(61,214,189,0.6)] md:p-8">
+              <div className="flex h-full flex-col rounded-[var(--radius-card)] border-2 border-cyan bg-gradient-to-br from-royal to-azure-deep p-7 text-bone shadow-[0_0_28px_-10px_rgba(61,214,189,0.6)] md:p-8">
                 <h2 className="text-base font-semibold uppercase tracking-[0.04em] text-white md:text-lg">
                   {industriesPage.otherHeadline}
                 </h2>
-                <p className="mt-2 flex-1 text-[0.95rem] leading-relaxed text-bone/85">{industriesPage.otherBody}</p>
+                <p className="mt-2 flex-1 text-[0.95rem] leading-relaxed text-bone/90">{industriesPage.otherBody}</p>
                 <div className="mt-6">
                   <Button href={site.bookCall}>{industriesPage.cta}</Button>
                 </div>

@@ -36,6 +36,13 @@
    */
   --color-azure: #5b7cff;
 
+  /*
+   * The light end of the royal gradients behind text. Azure itself was too
+   * light there: white text fell to 3.6:1 and body text to 2.7:1 (UX QA,
+   * 10/6). This keeps white at 6.7:1 and bone/85 at 4.5:1.
+   */
+  --color-azure-deep: #3650c6;
+
   --font-sans: var(--font-rubik), ui-sans-serif, system-ui, sans-serif;
   /* Gotham is the brand's second face. No font files have been supplied,
      so this stack picks up Gotham the moment it is installed and falls

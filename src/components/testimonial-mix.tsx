@@ -6,7 +6,7 @@ import { clientQuotes } from "@/lib/content";
 /* Same accents as the live ClientQuotes cards. */
 const cardAccents = [
   { card: "bg-gradient-to-br from-cyan to-cyan-dim text-ink", mark: "text-ink/25", meta: "text-ink/70", avatar: "bg-ink text-cyan" },
-  { card: "bg-gradient-to-br from-royal to-azure text-bone", mark: "text-bone/30", meta: "text-bone/70", avatar: "bg-bone text-royal" },
+  { card: "bg-gradient-to-br from-royal to-azure-deep text-bone", mark: "text-bone/30", meta: "text-bone/70", avatar: "bg-bone text-royal" },
   { card: "bg-gradient-to-br from-ink-300 to-ink text-bone", mark: "text-cyan/50", meta: "text-bone/65", avatar: "bg-cyan text-ink" },
 ] as const;
 

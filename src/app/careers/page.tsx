@@ -96,7 +96,7 @@ export default function CareersPage() {
             })}
           </ol>
 
-          <div className="mt-12 rounded-[var(--radius-card)] border-2 border-cyan bg-gradient-to-br from-royal to-azure p-7 text-center shadow-[0_0_44px_-14px_rgba(61,214,189,0.55)] md:p-10">
+          <div className="mt-12 rounded-[var(--radius-card)] border-2 border-cyan bg-gradient-to-br from-royal to-azure-deep p-7 text-center shadow-[0_0_44px_-14px_rgba(61,214,189,0.55)] md:p-10">
             <Button href={careersPage.cta.href} size="lg">
               {careersPage.cta.label}
             </Button>

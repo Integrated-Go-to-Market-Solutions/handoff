@@ -17,14 +17,14 @@ const accents = [
     body: "text-ink/80",
   },
   {
-    front: "bg-gradient-to-br from-royal to-azure text-bone",
+    front: "bg-gradient-to-br from-royal to-azure-deep text-bone",
     back: "bg-gradient-to-br from-white to-bone text-ink",
     ring: "border-bone/60 text-bone",
     body: "text-bone/85",
   },
   {
     front: "bg-gradient-to-br from-white to-bone text-ink",
-    back: "bg-gradient-to-br from-royal to-azure text-bone",
+    back: "bg-gradient-to-br from-royal to-azure-deep text-bone",
     ring: "border-cyan text-cyan-dim",
     body: "text-ink/75",
   },

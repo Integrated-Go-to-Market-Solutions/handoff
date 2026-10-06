@@ -10,7 +10,7 @@ import { proofStats } from "@/lib/content";
    animate count-up on entrance. Photos removed per direct instruction —
    the numbers are the primary visual focus now. */
 const cardAccents = [
-  { card: "bg-gradient-to-br from-royal to-azure text-bone", label: "text-bone/75" },
+  { card: "bg-gradient-to-br from-royal to-azure-deep text-bone", label: "text-bone/75" },
   { card: "bg-gradient-to-br from-cyan to-cyan-dim text-ink", label: "text-ink/70" },
   { card: "bg-gradient-to-br from-white to-bone text-ink", label: "text-ink/65" },
   { card: "bg-gradient-to-br from-ink-300 to-ink text-bone", label: "text-bone/70" },

@@ -211,7 +211,7 @@ export default async function IndustryPage({
             <Reveal>
               <Link
                 href={`/results#${study.slug}`}
-                className="group block rounded-[var(--radius-card)] bg-gradient-to-br from-royal to-azure p-7 text-bone transition-transform duration-300 hover:-translate-y-1 md:p-10"
+                className="group block rounded-[var(--radius-card)] bg-gradient-to-br from-royal to-azure-deep p-7 text-bone transition-transform duration-300 hover:-translate-y-1 md:p-10"
               >
                 <p className="eyebrow text-sm text-bone/75">Case study &middot; {study.tag}</p>
                 <h2 className="display mt-4 text-[clamp(1.6rem,3.4vw,2.6rem)] leading-tight">{study.title}</h2>
