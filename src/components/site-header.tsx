@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { nav } from "@/lib/content";
+import { departments, nav } from "@/lib/content";
 import type { NavItem } from "@/lib/content";
 
 /**
@@ -47,6 +47,88 @@ function NavGroup({ item }: { item: NavItem }) {
             </li>
           ))}
         </ul>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Roles mega menu, after Near's "Find a Hire" menu (10/5): departments down
+ * the left, and the hovered or focused department's roles on the right,
+ * with a link into that department's page. Opens like NavGroup: hover for
+ * the mouse, focus-within for the keyboard.
+ */
+function RolesMega({ item }: { item: NavItem }) {
+  const [active, setActive] = useState(0);
+  const department = departments[active];
+
+  return (
+    <div className="group relative">
+      <Link
+        href={item.href}
+        className="flex items-center gap-1 whitespace-nowrap text-[0.93rem] font-medium text-bone/70 transition-colors hover:text-bone group-focus-within:text-bone"
+      >
+        {item.label}
+        <svg
+          viewBox="0 0 12 8"
+          className="h-2 w-2.5 transition-transform duration-200 group-hover:rotate-180"
+          aria-hidden="true"
+        >
+          <path
+            d="M1 1.5 6 6.5 11 1.5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </Link>
+
+      <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-4 opacity-0 transition-opacity duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+        <div className="grid w-[40rem] grid-cols-[15rem_1fr] rounded-[var(--radius-card)] border border-white/10 bg-ink-100 p-2 shadow-xl">
+          <ul className="border-r border-white/10 pr-2">
+            {departments.map((d, i) => (
+              <li key={d.slug}>
+                <Link
+                  href={`/roles/${d.slug}`}
+                  onMouseEnter={() => setActive(i)}
+                  onFocus={() => setActive(i)}
+                  className={`flex items-center justify-between rounded-xl px-4 py-2.5 text-[0.9rem] font-medium transition-colors ${
+                    i === active ? "bg-white/5 text-cyan" : "text-bone/75 hover:text-cyan"
+                  }`}
+                >
+                  {d.name}
+                  <span aria-hidden="true" className={i === active ? "opacity-100" : "opacity-0"}>
+                    &rarr;
+                  </span>
+                </Link>
+              </li>
+            ))}
+            <li className="mt-1 border-t border-white/10 pt-1">
+              <Link
+                href="/roles"
+                className="block rounded-xl px-4 py-2.5 text-[0.9rem] font-semibold text-bone transition-colors hover:text-cyan"
+              >
+                All roles
+              </Link>
+            </li>
+          </ul>
+          <div className="px-6 py-3">
+            <p className="eyebrow text-xs text-bone/50">{department.name}</p>
+            <ul className="mt-3 space-y-2 text-[0.9rem] leading-snug text-bone/80">
+              {department.roles.map((role) => (
+                <li key={role}>{role}</li>
+              ))}
+            </ul>
+            <Link
+              href={`/roles/${department.slug}`}
+              className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-cyan hover:underline"
+            >
+              See {department.name} roles <span aria-hidden="true">&rarr;</span>
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -135,7 +217,9 @@ export function SiteHeader() {
 
         <nav className="hidden items-center gap-6 lg:flex lg:gap-5 xl:gap-9">
           {nav.map((item) =>
-            item.children ? (
+            item.mega ? (
+              <RolesMega key={item.href} item={item} />
+            ) : item.children ? (
               <NavGroup key={item.href} item={item} />
             ) : (
               <Link

@@ -1164,6 +1164,8 @@ export type NavItem = {
   href: string;
   /** Renders as a dropdown on desktop and an indented group on mobile. */
   children?: { label: string; href: string }[];
+  /** Desktop renders the department mega menu instead of a plain dropdown. */
+  mega?: boolean;
 };
 
 export const nav: NavItem[] = [
@@ -1171,15 +1173,29 @@ export const nav: NavItem[] = [
   {
     label: "Industries",
     href: "/industries",
+    // "All industries" leads the list, as on Near's menu (10/5).
     children: [
+      { label: "All industries", href: "/industries" },
       ...industries.map((industry) => ({
         label: industry.navLabel,
         href: `/industries/${industry.slug}`,
       })),
-      { label: "All industries", href: "/industries" },
     ],
   },
-  { label: "Roles", href: "/roles" },
+  {
+    // Near-style mega menu on desktop: departments left, the hovered
+    // department's roles right (10/5). Phones get the departments as a list.
+    label: "Roles",
+    href: "/roles",
+    mega: true,
+    children: [
+      { label: "All roles", href: "/roles" },
+      ...departments.map((department) => ({
+        label: department.name,
+        href: `/roles/${department.slug}`,
+      })),
+    ],
+  },
   { label: "Results", href: "/results" },
   { label: "Pricing", href: "/#models" },
   { label: "About", href: "/about" },
