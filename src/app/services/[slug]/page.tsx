@@ -21,6 +21,36 @@ export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
 }
 
+/**
+ * Two-way switch between the service pages (Tom, 10/5: visitors got stuck
+ * on one model). Shown under the hero and again above the final CTA; the
+ * current page is the filled option.
+ */
+function ServiceSwitch({ current, className = "" }: { current: string; className?: string }) {
+  return (
+    <nav aria-label="Switch service" className={className}>
+      <ul className="inline-flex rounded-full border border-white/15 bg-white/[0.04] p-1">
+        {services.map((s) => {
+          const active = s.slug === current;
+          return (
+            <li key={s.slug}>
+              <Link
+                href={`/services/${s.slug}`}
+                aria-current={active ? "page" : undefined}
+                className={`block whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition-colors sm:px-5 ${
+                  active ? "bg-cyan text-ink" : "text-bone/75 hover:text-cyan"
+                }`}
+              >
+                {s.name}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+  );
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -58,6 +88,7 @@ export default async function ServicePage({
             </span>
             <span className="text-bone/85">{service.name}</span>
           </nav>
+          <ServiceSwitch current={service.slug} className="mb-8" />
           <Reveal>
             <Eyebrow className="mb-4">Two ways to work together</Eyebrow>
             <h1 className="display text-[clamp(2.5rem,6vw,4.6rem)] text-bone">{service.name}</h1>
@@ -115,8 +146,9 @@ export default async function ServicePage({
             </Reveal>
           </div>
 
-          <div className="mt-10">
+          <div className="mt-10 flex flex-wrap items-center gap-4">
             <Button href={site.bookCall}>Book a call</Button>
+            <ServiceSwitch current={service.slug} />
           </div>
         </div>
       </section>
