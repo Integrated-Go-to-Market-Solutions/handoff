@@ -18,10 +18,13 @@ export function WhyLatam() {
   return (
     <section className="relative overflow-hidden bg-bone pb-10 pt-24 text-ink md:pb-12 md:pt-[8.5rem]">
       <div className="shell relative">
-        <Reveal className="max-w-3xl">
+        <Reveal className="max-w-5xl">
           <h2 className="display text-[clamp(2.1rem,4.8vw,3.7rem)] text-ink">
             {whyLatam.headline}
           </h2>
+          <p className="mt-5 max-w-[52ch] text-lg leading-relaxed text-ink/70 md:text-xl">
+            {whyLatam.subhead}
+          </p>
         </Reveal>
 
         <div className="mt-14 grid gap-5 md:grid-cols-3">

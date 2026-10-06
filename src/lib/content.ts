@@ -79,7 +79,10 @@ export const hero = {
  * watermark instead of a literal map graphic.
  */
 export const whyLatam = {
-  headline: "Why LATAM",
+  /** Renamed 10/5 per Tom's suggestion on the call, which Anthony agreed to. */
+  headline: "Why US teams work nearshore with LATAM talent",
+  /** Drawn only from the card bullets below (business hours, US expectations). */
+  subhead: "They work your business hours and already know how US teams run.",
   categories: [
     {
       title: "Talent quality",
