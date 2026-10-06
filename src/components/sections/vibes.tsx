@@ -33,13 +33,13 @@ export function Vibes({
       }`}
     >
       <div className="shell relative z-10">
-        <Reveal className="max-w-4xl">
+        <Reveal>
           <h2 className="display text-[clamp(2.1rem,4.8vw,3.7rem)]">
             {vibes.headline}{" "}
             <span className="swipe">{vibes.headlineAccent}</span>
             {vibes.headlineAfter}
           </h2>
-          <p className="mt-6 max-w-[58ch] text-lg leading-relaxed text-bone/70">
+          <p className="mt-6 text-lg leading-relaxed text-bone/70">
             {vibes.body}
           </p>
         </Reveal>

@@ -1007,7 +1007,7 @@ export const industries = [
       "You are turning down bookings because nobody can handle the coordination.",
       "You tried a VA for guest messaging and got someone who could not make a judgment call.",
     ],
-    rolesHeadline: "Here are the roles we fill most across corporate housing, mid-term, and short-term rentals",
+    rolesHeadline: "Here are the roles we fill most across corporate housing, mid‑term, and short‑term rentals",
     roles: [
       "Reservations Manager",
       "Operations Manager",

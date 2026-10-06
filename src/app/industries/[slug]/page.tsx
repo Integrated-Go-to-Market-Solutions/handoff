@@ -53,11 +53,11 @@ export default async function IndustryPage({
 
       <section className="relative overflow-hidden bg-ink section-py text-bone">
         <div className="shell relative">
-          <Reveal className="max-w-3xl">
+          <Reveal>
             <h2 className="display text-[clamp(2rem,4.8vw,3.6rem)]">
               {industry.problemHeadline}
             </h2>
-            <p className="mt-6 max-w-[58ch] text-base leading-relaxed text-bone/70 md:text-lg">
+            <p className="mt-6 text-base leading-relaxed text-bone/70 md:text-lg">
               {industry.problemBody}
             </p>
           </Reveal>
@@ -83,18 +83,18 @@ export default async function IndustryPage({
       </section>
 
       <section className="relative overflow-hidden bg-ink section-py text-bone">
-        <div className="shell relative grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+        {/* Stacked, not side by side (10/5): the content doc's roles
+            headlines run long, and in a half-width column they broke into
+            five or six lines. */}
+        <div className="shell relative">
           <Reveal>
-            <h2 className="display max-w-[16ch] text-[clamp(1.9rem,4.2vw,3.1rem)]">
+            <h2 className="display text-[clamp(1.9rem,4.2vw,3.1rem)]">
               {industry.rolesHeadline}
             </h2>
-            <p className="mt-6 max-w-[46ch] border-l-4 border-cyan pl-5 text-base leading-relaxed text-bone/80 md:text-lg">
-              {industry.rolesCloser}
-            </p>
           </Reveal>
 
-          <Reveal delay={110}>
-            <ul className="grid gap-3 sm:grid-cols-2">
+          <Reveal delay={110} className="mt-10">
+            <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {industry.roles.map((role) => (
                 <li
                   key={role}
@@ -105,6 +105,10 @@ export default async function IndustryPage({
               ))}
             </ul>
           </Reveal>
+
+          <p className="mt-8 border-l-4 border-cyan pl-5 text-base leading-relaxed text-bone/80 md:text-lg">
+            {industry.rolesCloser}
+          </p>
         </div>
       </section>
 

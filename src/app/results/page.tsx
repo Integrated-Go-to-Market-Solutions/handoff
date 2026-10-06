@@ -202,9 +202,9 @@ export default function ResultsPage() {
       {/* The stories, as posters that link down to the full write-ups. */}
       <section className="hw-dots relative overflow-hidden bg-ink section-py text-bone" aria-label="Case studies">
         <div className="shell relative">
-          <Reveal className="max-w-3xl">
+          <Reveal>
             <h2 className="display text-[clamp(2.1rem,4.8vw,3.7rem)]">The stories</h2>
-            <p className="mt-6 max-w-[58ch] text-lg leading-relaxed text-bone/70">
+            <p className="mt-6 text-lg leading-relaxed text-bone/70">
               Two real engagements, written up with the client&rsquo;s numbers and the client&rsquo;s words.
             </p>
           </Reveal>
