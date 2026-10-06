@@ -1328,7 +1328,7 @@ export const industries = [
   },
   {
     slug: "ecommerce",
-    navLabel: "E-commerce",
+    navLabel: "E-Commerce",
     icon: "bag",
     name: "E-Commerce",
     descriptor: "Keep the store open through every spike and handle the calls.",
@@ -1372,13 +1372,13 @@ export type NavItem = {
 };
 
 export const nav: NavItem[] = [
-  { label: "How it works", href: "/how-it-works" },
+  { label: "How It Works", href: "/how-it-works" },
   {
     label: "Industries",
     href: "/industries",
-    // "All industries" leads the list, as on Near's menu (10/5).
+    // "All Industries" leads the list, as on Near's menu (10/5).
     children: [
-      { label: "All industries", href: "/industries" },
+      { label: "All Industries", href: "/industries" },
       ...industries.map((industry) => ({
         label: industry.navLabel,
         href: `/industries/${industry.slug}`,
@@ -1392,7 +1392,7 @@ export const nav: NavItem[] = [
     href: "/roles",
     mega: true,
     children: [
-      { label: "All roles", href: "/roles" },
+      { label: "All Roles", href: "/roles" },
       ...departments.map((department) => ({
         label: department.name,
         href: `/roles/${department.slug}`,
@@ -1406,7 +1406,7 @@ export const nav: NavItem[] = [
     href: "/services",
     children: [
       ...services.map((service) => ({ label: service.name, href: `/services/${service.slug}` })),
-      { label: "Compare the two", href: "/#models" },
+      { label: "Compare the Two", href: "/#models" },
     ],
   },
   { label: "Results", href: "/results" },

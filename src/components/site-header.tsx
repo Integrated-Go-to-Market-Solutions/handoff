@@ -110,7 +110,7 @@ function RolesMega({ item }: { item: NavItem }) {
                 href="/roles"
                 className="block rounded-xl px-4 py-2.5 text-[0.9rem] font-semibold text-bone transition-colors hover:text-cyan"
               >
-                All roles
+                All Roles
               </Link>
             </li>
           </ul>
@@ -125,7 +125,7 @@ function RolesMega({ item }: { item: NavItem }) {
               href={`/roles/${department.slug}`}
               className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-cyan hover:underline"
             >
-              See {department.name} roles <span aria-hidden="true">&rarr;</span>
+              See {department.name} Roles <span aria-hidden="true">&rarr;</span>
             </Link>
           </div>
         </div>

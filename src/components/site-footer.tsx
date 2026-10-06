@@ -13,7 +13,7 @@ const columns = [
   {
     title: "Company",
     links: [
-      { label: "How it works", href: "/how-it-works" },
+      { label: "How It Works", href: "/how-it-works" },
       { label: "Pricing", href: "/#models" },
       { label: "Results", href: "/results" },
       { label: "About", href: "/about" },
@@ -24,7 +24,7 @@ const columns = [
   menuColumn("Roles"),
   menuColumn("Services"),
   {
-    title: "Get started",
+    title: "Get Started",
     links: [
       { label: "Talk to Our Team", href: site.bookCall },
       { label: "hello@handoff.com", href: "mailto:hello@handoff.com" },
