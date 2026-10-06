@@ -3,7 +3,7 @@ import { VideoLoop } from "../video-loop";
 import { aboutPage } from "@/lib/content";
 
 /**
- * The Handoff Values reel on /about: Humanize, Hustle, Connect on the left
+ * The Handoff Values reel on /about: Humanize, Connect, Hustle on the left
  * (Anthony, 10/5 call), the 9:16 clip right.
  */
 export function ValuesVideo() {

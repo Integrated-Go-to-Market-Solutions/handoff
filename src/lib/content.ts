@@ -434,7 +434,7 @@ export const team = [
 /**
  * About page copy (10/5). Built from Tom's content doc (headline, lead,
  * founder, close) and Anthony's words on the 10/5 call (opportunity gap,
- * win-win, Humanize/Hustle/Connect). The value one-liners are from the live
+ * win-win, Humanize/Connect/Hustle). The value one-liners are from the live
  * talenthandoff.com/about, with "We make $hit happen" softened: no
  * profanity on the site (Tom). "Paid above market" is Anthony's phrase from
  * the call and still needs his OK to publish.
@@ -468,9 +468,10 @@ export const aboutPage = {
   values: {
     headline: "What we live by",
     items: [
+      // Order per Tom (10/6): Humanize, Connect, Hustle.
       { name: "Humanize", line: "People come first in everything we do." },
-      { name: "Hustle", line: "We make it happen." },
       { name: "Connect", line: "Relationships are the heart of our business." },
+      { name: "Hustle", line: "We make it happen." },
     ],
   },
   teamHeadline: "Our team",
