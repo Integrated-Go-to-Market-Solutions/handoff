@@ -124,7 +124,8 @@ function CompareValue({ value, delay }: { value: (typeof modelsCompare.rows)[num
   return <span className={value.accent ? "text-cyan" : "text-bone/90"}>{value.text}</span>;
 }
 
-function CompareModels() {
+function CompareModels({ asPage = false }: { asPage?: boolean }) {
+  const Heading = asPage ? "h1" : "h2";
   const { columns, rows, featured } = modelsCompare;
   const cell = "flex items-center justify-center px-1.5 py-3.5 text-center sm:px-4 md:py-4";
   return (
@@ -132,9 +133,9 @@ function CompareModels() {
       <div className="shell relative">
         <div className="mx-auto max-w-5xl rounded-[var(--radius-card)] border border-white/10 bg-ink-100 px-3 py-9 sm:px-8 md:px-10 md:py-12">
           <Reveal className="text-center">
-            <h2 className="text-balance text-[clamp(1.7rem,4vw,2.9rem)] font-bold leading-tight text-white">
+            <Heading className="text-balance text-[clamp(1.7rem,4vw,2.9rem)] font-bold leading-tight text-white">
               {modelsIntro.headline}
-            </h2>
+            </Heading>
             <p className="mx-auto mt-3 text-pretty text-base leading-relaxed text-bone/75 md:text-lg">
               {modelsIntro.subhead}
             </p>
@@ -232,6 +233,7 @@ function CompareModels() {
   );
 }
 
-export function Models({ detailed = false }: { detailed?: boolean } = {}) {
-  return detailed ? <CompareModels /> : <ClassicModels />;
+/** `asPage`: on /pricing the section headline is the page's h1. */
+export function Models({ detailed = false, asPage = false }: { detailed?: boolean; asPage?: boolean } = {}) {
+  return detailed ? <CompareModels asPage={asPage} /> : <ClassicModels />;
 }

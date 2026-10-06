@@ -14,8 +14,8 @@ const nextConfig: NextConfig = {
       },
       // The roles hub moved to /roles on 10/5 (Anthony's department list).
       { source: "/talent", destination: "/roles", permanent: true },
-      // No services overview page; the pricing section compares the two.
-      { source: "/services", destination: "/#models", permanent: false },
+      // No services overview page; /pricing compares the two.
+      { source: "/services", destination: "/pricing", permanent: false },
     ];
   },
 };

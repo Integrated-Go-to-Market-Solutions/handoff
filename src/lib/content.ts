@@ -1400,17 +1400,14 @@ export const nav: NavItem[] = [
     ],
   },
   {
-    // Near-style Services dropdown (10/5): the two models, plus the
-    // pricing comparison that sets them side by side.
+    // Near-style Services dropdown (10/5): the two models. The side-by-side
+    // comparison is Pricing, so it isn't repeated here.
     label: "Services",
     href: "/services",
-    children: [
-      ...services.map((service) => ({ label: service.name, href: `/services/${service.slug}` })),
-      { label: "Compare the Two", href: "/#models" },
-    ],
+    children: services.map((service) => ({ label: service.name, href: `/services/${service.slug}` })),
   },
   { label: "Results", href: "/results" },
-  { label: "Pricing", href: "/#models" },
+  { label: "Pricing", href: "/pricing" },
   { label: "About", href: "/about" },
 ];
 

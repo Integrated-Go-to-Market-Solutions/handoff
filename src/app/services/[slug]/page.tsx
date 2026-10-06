@@ -89,7 +89,7 @@ export default async function ServicePage({
             <span aria-hidden="true" className="mx-2">
               &rarr;
             </span>
-            <Link href="/#models" className="transition-colors hover:text-cyan">
+            <Link href="/pricing" className="transition-colors hover:text-cyan">
               Pricing
             </Link>
             <span aria-hidden="true" className="mx-2">
