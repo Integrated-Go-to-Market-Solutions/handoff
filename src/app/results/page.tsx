@@ -200,7 +200,7 @@ export default function ResultsPage() {
       </section>
 
       {/* The stories, as posters that link down to the full write-ups. */}
-      <section className="hw-dots relative overflow-hidden bg-ink section-py text-bone" aria-label="Case studies">
+      <section id="case-studies" className="hw-dots relative scroll-mt-[72px] overflow-hidden bg-ink section-py text-bone" aria-label="Case studies">
         <div className="shell relative">
           <Reveal>
             <h2 className="display text-[clamp(2.1rem,4.8vw,3.7rem)]">The stories</h2>

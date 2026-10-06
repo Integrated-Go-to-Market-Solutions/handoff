@@ -5,6 +5,18 @@ import { useEffect, useState } from "react";
 import { departments, nav } from "@/lib/content";
 import type { NavItem } from "@/lib/content";
 
+/** A menu entry that isn't built yet: a plain label with a "Soon" tag, not a link. */
+function SoonItem({ label, className = "" }: { label: string; className?: string }) {
+  return (
+    <span className={`flex items-center justify-between gap-3 font-medium text-bone/40 ${className}`}>
+      {label}
+      <span className="rounded-full border border-white/15 px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.1em] text-bone/50">
+        Soon
+      </span>
+    </span>
+  );
+}
+
 /**
  * Desktop dropdown. Opens on hover for the mouse and on focus-within for the
  * keyboard, so the industry pages are reachable either way without a click
@@ -37,13 +49,17 @@ function NavGroup({ item }: { item: NavItem }) {
       <div className="invisible absolute left-0 top-full z-50 pt-4 opacity-0 transition-opacity duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
         <ul className="min-w-[15rem] rounded-[var(--radius-card)] border border-white/10 bg-ink-100 p-2 shadow-xl">
           {item.children?.map((child) => (
-            <li key={child.href}>
-              <Link
-                href={child.href}
-                className="block rounded-xl px-4 py-3 text-[0.93rem] font-medium text-bone/75 transition-colors hover:bg-white/5 hover:text-cyan"
-              >
-                {child.label}
-              </Link>
+            <li key={child.label}>
+              {child.soon ? (
+                <SoonItem label={child.label} className="px-4 py-3 text-[0.93rem]" />
+              ) : (
+                <Link
+                  href={child.href}
+                  className="block rounded-xl px-4 py-3 text-[0.93rem] font-medium text-bone/75 transition-colors hover:bg-white/5 hover:text-cyan"
+                >
+                  {child.label}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
@@ -274,14 +290,18 @@ export function SiteHeader() {
                 {item.children && (
                   <ul className="-mt-2 pb-5 pl-1">
                     {item.children.map((child) => (
-                      <li key={child.href}>
-                        <Link
-                          href={child.href}
-                          onClick={() => setOpen(false)}
-                          className="block py-3 text-base font-medium text-bone/60 transition-colors hover:text-bone"
-                        >
-                          {child.label}
-                        </Link>
+                      <li key={child.label}>
+                        {child.soon ? (
+                          <SoonItem label={child.label} className="py-3 text-base" />
+                        ) : (
+                          <Link
+                            href={child.href}
+                            onClick={() => setOpen(false)}
+                            className="block py-3 text-base font-medium text-bone/60 transition-colors hover:text-bone"
+                          >
+                            {child.label}
+                          </Link>
+                        )}
                       </li>
                     ))}
                   </ul>

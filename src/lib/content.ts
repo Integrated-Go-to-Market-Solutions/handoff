@@ -1365,8 +1365,11 @@ export const industries = [
 export type NavItem = {
   label: string;
   href: string;
-  /** Renders as a dropdown on desktop and an indented group on mobile. */
-  children?: { label: string; href: string }[];
+  /**
+   * Renders as a dropdown on desktop and an indented group on mobile. A
+   * child with `soon` shows as a non-clickable "Soon" placeholder.
+   */
+  children?: { label: string; href: string; soon?: boolean }[];
   /** Desktop renders the department mega menu instead of a plain dropdown. */
   mega?: boolean;
 };
@@ -1400,14 +1403,27 @@ export const nav: NavItem[] = [
     ],
   },
   {
-    // Near-style Services dropdown (10/5): the two models. The side-by-side
-    // comparison is Pricing, so it isn't repeated here.
+    // Near-style Services dropdown (10/5): the two models, and the
+    // side-by-side comparison on /pricing (Tom, 10/6: pricing lives here).
     label: "Services",
     href: "/services",
-    children: services.map((service) => ({ label: service.name, href: `/services/${service.slug}` })),
+    children: [
+      ...services.map((service) => ({ label: service.name, href: `/services/${service.slug}` })),
+      { label: "Compare the Two", href: "/pricing" },
+    ],
   },
   { label: "Results", href: "/results" },
-  { label: "Pricing", href: "/pricing" },
+  {
+    // Replaces Pricing in the top menu (Tom, 10/6). Placeholder: only the
+    // case studies exist so far; Blog and Calculator show as "Soon".
+    label: "Resources",
+    href: "/results#case-studies",
+    children: [
+      { label: "Case Studies", href: "/results#case-studies" },
+      { label: "Blog", href: "#", soon: true },
+      { label: "Calculator", href: "#", soon: true },
+    ],
+  },
   { label: "About", href: "/about" },
 ];
 
