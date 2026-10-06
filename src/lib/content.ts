@@ -1551,10 +1551,16 @@ export const resultsPage = {
   headline: "What happens after the hire",
   headlineAccent: "is the whole point.",
   body: "Placing someone is the easy half. These are the numbers and the stories from companies that made the hire and kept the person.",
+  /**
+   * Anthony's confirmed figures from the 10/5 Pulse, retention first (Tom).
+   * Time to hire is phrased as he asked: the top two within 2 weeks, not a
+   * placement date. The case-study figures that sat here stay in the case
+   * study cards and write-ups below.
+   */
   numbers: [
-    { value: "96%", label: "Retention rate, relocation case study" },
-    { value: "$2.3M", label: "Additional revenue, CMO case study" },
-    { value: "50%", label: "Faster time-to-hire, relocation case study" },
+    { value: "92%", label: "Of placements still with their company after a year" },
+    { value: "2 weeks", label: "To your top two candidates" },
+    { value: "Top 1%", label: "Of talent" },
   ],
   videos: {
     headline: "Video testimonials",
