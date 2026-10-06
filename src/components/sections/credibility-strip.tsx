@@ -5,7 +5,8 @@ import { LogoMarquee } from "./logo-marquee";
 import { industries, industriesStrip } from "@/lib/content";
 
 /**
- * Homepage section 2, reworked per the 10/5 call: it does one job, the
+ * Homepage section 2, reworked per the 10/5 call (and given color the
+ * same day: a royal panel, Tom): it does one job, the
  * industries. The logo band stays on top. Below it: an industries headline
  * (Tom's copy for the industries point Anthony asked for, 10/5), the five
  * industry tiles at a larger size, and a thin, static ribbon of three KPIs
@@ -30,14 +31,14 @@ export function CredibilityStrip() {
       </div>
 
       <div className="shell relative pt-14 md:pt-16">
-        <div className="rounded-[var(--radius-card)] border border-white/10 bg-ink-100/90 px-4 py-8 backdrop-blur-md sm:px-8 md:px-12 md:py-12">
+        <div className="rounded-[var(--radius-card)] border-2 border-cyan bg-gradient-to-br from-royal to-azure px-4 py-8 shadow-[0_0_44px_-14px_rgba(61,214,189,0.55)] sm:px-8 md:px-12 md:py-12">
           <h2
             id="credibility-heading"
             className="display mx-auto max-w-[30ch] text-balance text-center text-[clamp(1.6rem,4.4vw,3rem)] leading-tight text-white"
           >
             {industriesStrip.headline}
           </h2>
-          <p className="mx-auto mt-5 max-w-[68ch] text-balance text-center text-base leading-relaxed text-bone/75 md:text-lg">
+          <p className="mx-auto mt-5 max-w-[68ch] text-balance text-center text-base leading-relaxed text-bone/90 md:text-lg">
             {industriesStrip.body}
           </p>
 
@@ -49,7 +50,7 @@ export function CredibilityStrip() {
                 <li key={industry.slug} className="w-[9rem] shrink-0 snap-start sm:w-auto">
                   <Link
                     href={`/industries/${industry.slug}`}
-                    className="group flex h-full flex-col items-center justify-center gap-4 rounded-[var(--radius-card)] border-2 border-white/15 px-3 py-7 text-center transition-colors duration-300 hover:border-cyan hover:bg-white/[0.04] focus-visible:border-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan/40 motion-reduce:transition-none md:py-10"
+                    className="group flex h-full flex-col items-center justify-center gap-4 rounded-[var(--radius-card)] border-2 border-white/30 bg-white/[0.06] px-3 py-7 text-center transition-colors duration-300 hover:border-cyan hover:bg-white/[0.12] focus-visible:border-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan/40 motion-reduce:transition-none md:py-10"
                   >
                     <Icon
                       name={industry.icon as IconName}
@@ -66,7 +67,7 @@ export function CredibilityStrip() {
           </nav>
 
           {/* Thin, static KPI ribbon. */}
-          <KpiRibbon className="mt-8 border-t border-white/10 pt-6 md:mt-10 md:pt-8" />
+          <KpiRibbon className="mt-8 border-t border-white/20 pt-6 md:mt-10 md:pt-8" />
         </div>
       </div>
     </section>

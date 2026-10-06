@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Reveal } from "@/components/reveal";
-import { Button, CtaNote, Eyebrow } from "@/components/brand";
+import { Button, CtaNote, Eyebrow, cardGlow, cardTones } from "@/components/brand";
 import { KpiRibbon } from "@/components/kpi-ribbon";
 import { WhyLatam } from "@/components/sections/why-latam";
 import { HiringHighway } from "@/components/sections/hiring-highway";
@@ -117,36 +117,40 @@ export default async function IndustryPage({
         </section>
       )}
 
-      {/* The problem and the four triggers. */}
-      <section className="relative overflow-hidden bg-ink section-py text-bone">
+      {/* The problem and the four triggers, on light gray with the site's
+          colored cards (10/5: color pass). */}
+      <section className="relative overflow-hidden bg-bone section-py text-ink">
         <div className="shell relative">
           <Reveal>
             <h2 className="display text-[clamp(2rem,4.8vw,3.6rem)]">{industry.problemHeadline}</h2>
-            <p className="mt-6 text-base leading-relaxed text-bone/70 md:text-lg">
+            <p className="mt-6 text-pretty text-base leading-relaxed text-ink/70 md:text-lg">
               {industry.problemBody}
             </p>
           </Reveal>
 
           <ul className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {industry.triggers.map((trigger, i) => (
-              <Reveal key={trigger} delay={i * 90} as="li" className="h-full">
-                <div className="flex h-full flex-col justify-between rounded-[var(--radius-card)] border border-white/10 bg-white/[0.04] p-6">
-                  <span className="display text-2xl text-cyan" aria-hidden="true">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <p className="mt-8 text-base font-semibold leading-snug text-bone">{trigger}</p>
-                </div>
-              </Reveal>
-            ))}
+            {industry.triggers.map((trigger, i) => {
+              const tone = cardTones[i % cardTones.length];
+              return (
+                <Reveal key={trigger} delay={i * 90} as="li" className="h-full">
+                  <div className={`flex h-full flex-col justify-between rounded-[var(--radius-card)] p-6 ${cardGlow} ${tone.card}`}>
+                    <span className={`display text-2xl ${tone.accent}`} aria-hidden="true">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <p className="mt-8 text-base font-semibold leading-snug">{trigger}</p>
+                  </div>
+                </Reveal>
+              );
+            })}
           </ul>
 
-          <KpiRibbon className="mt-14 border-t border-white/10 pt-8" />
+          <KpiRibbon tone="light" className="mt-14 border-t border-ink/10 pt-8" />
         </div>
       </section>
 
       {/* The roles. Each links to its department page (10/5 call); a role
           with no clear department in Anthony's list stays plain. */}
-      <section className="relative overflow-hidden bg-ink pb-16 text-bone md:pb-24">
+      <section className="relative overflow-hidden bg-ink section-py text-bone">
         <div className="shell relative">
           <Reveal>
             <h2 className="display text-[clamp(1.9rem,4.2vw,3.1rem)]">{industry.rolesHeadline}</h2>
@@ -170,7 +174,7 @@ export default async function IndustryPage({
                   </>
                 );
                 const box =
-                  "flex h-full items-center justify-between gap-4 rounded-[var(--radius-card)] border border-white/10 bg-white/[0.04] px-6 py-5";
+                  "flex h-full items-center justify-between gap-4 rounded-[var(--radius-card)] border-2 border-cyan/30 bg-ink-100 px-6 py-5";
                 return (
                   <li key={role.name}>
                     {department ? (

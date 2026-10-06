@@ -137,3 +137,19 @@ export function CtaNote({ tone = "onDark", className = "" }: { tone?: "onDark" |
     <p className={`text-sm ${tone === "onDark" ? "text-bone/60" : "text-ink/55"} ${className}`}>{hero.note}</p>
   );
 }
+
+/**
+ * The site's colored card set, shared so new pages match Results, the stat
+ * tiles and the testimonials (10/5, Tom: "we need to add color"): cyan,
+ * royal and carbon gradients plus a light card, each outlined in cyan with
+ * a soft glow. Cycle through them with `cardTones[i % cardTones.length]`.
+ */
+export const cardTones = [
+  { card: "bg-gradient-to-br from-cyan to-cyan-dim text-ink", muted: "text-ink/75", accent: "text-ink" },
+  { card: "bg-gradient-to-br from-royal to-azure text-bone", muted: "text-bone/85", accent: "text-bone" },
+  { card: "bg-gradient-to-br from-ink-300 to-ink text-bone", muted: "text-bone/75", accent: "text-cyan" },
+  { card: "bg-gradient-to-br from-white to-bone text-ink", muted: "text-ink/70", accent: "text-royal" },
+] as const;
+
+export const cardGlow =
+  "border-2 border-cyan shadow-[0_0_28px_-10px_rgba(61,214,189,0.6)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_0_36px_-6px_rgba(61,214,189,0.75)]";
