@@ -444,34 +444,56 @@ export const process = {
   headline: "Four steps. One person who sticks.",
   /** Same headline, split so the last word can carry the cyan swipe. */
   headlineParts: { before: "Four steps. One person who", swipe: "sticks", after: "." },
-  body: "Every hire goes through the same four steps, no shortcuts. That is how the right person lands in the right seat and stays there.",
+  /** Intro under the title (homepage and /how-it-works): Tom's content doc, 10/5. */
+  body: "A four-step process that keeps the sourcing and screening with us. You make one decision at the end: which finalist to place.",
   lede: "Nobody skips a step, not even when you needed someone yesterday. About 21 days start to finish, and you'll know exactly where things stand the whole way.",
+  /**
+   * Step copy: Tom's content doc (How It Works tab), 10/5. The Vet's
+   * checklist and closing line show on /how-it-works; the compact homepage
+   * card shows only `body`.
+   */
   steps: [
     {
       n: "01",
       title: "Discovery",
-      body: "We get aligned on exactly what \"right\" looks like for this role, this team, this culture. No generic job description. No guesswork.",
+      body: "We learn the role, the team it joins, and what a strong fit looks like to you. That profile sets the bar for the search.",
     },
     {
       n: "02",
       title: "The Vet",
-      body: "We start with 200 candidates. Video submissions. Skills testing. Culture fit. AI fluency. Round after round of interviews on our side, so you never have to sit through the ones who aren't it.",
+      body: "We start with roughly 200 candidates and screen down.",
+      bulletsLead: "Each one runs through:",
+      bullets: [
+        "Video submissions",
+        "English proficiency",
+        "A skills assessment for the role",
+        "AI literacy",
+        "Intelligence and motivation",
+        "Recruiter interviews",
+      ],
+      after: "Only the candidates who clear the full screen move forward.",
     },
     {
       n: "03",
       title: "The Shortlist",
-      body: "You see two. That's it. Two candidates, delivered inside Alma with salary expectations, availability, everything you need, ready to book time on their calendar directly.",
+      body: "You see two. We bring you two candidates matched to the role, with their video, assessment results, and our notes. You interview both and choose.",
     },
     {
       n: "04",
       title: "The Guarantee",
-      body: "If neither of your first four candidates is the one, you get $1,000 off. We don't say that because we expect to pay it out. We say it because we're that confident in who we send you.",
+      body: "If none of the first four candidates fits, your next search is $1,000 off. We run the screening, so a miss is on us to fix.",
     },
-  ],
+  ] as { n: string; title: string; body: string; bulletsLead?: string; bullets?: string[]; after?: string }[],
   closer: {
     line: "Every hire after your first gets easier. We learn your company, your culture, your bar for 'great.' By hire five, you might not meet the candidate until their first day.",
     cta: "Start at step one",
+  },  /** The /how-it-works close: Tom's content doc, 10/5. The homepage keeps `closer`. */
+  pageCloser: {
+    headline: "Start with the role",
+    line: "Tell us what you need to fill, and we'll open the search.",
+    cta: "Book a call",
   },
+
   /** Homepage teaser copy: the compact road links through to the full page. */
   teaserCta: "See every step",
   /** Where "See every step" lands: the start of the /how-it-works timeline. */

@@ -210,6 +210,20 @@ export function HiringTimeline() {
                     <p className={`mt-4 max-w-[46ch] font-text text-base leading-relaxed md:text-lg ${isEnd ? "text-ink/85" : "text-bone/75"}`}>
                       {step.body}
                     </p>
+                    {step.bullets && (
+                      <div className={`mt-4 font-text text-base leading-relaxed md:text-lg ${isEnd ? "text-ink/85" : "text-bone/75"}`}>
+                        {step.bulletsLead && <p>{step.bulletsLead}</p>}
+                        <ul className="mt-3 space-y-2">
+                          {step.bullets.map((bullet) => (
+                            <li key={bullet} className="flex gap-3">
+                              <span className="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full bg-cyan" aria-hidden="true" />
+                              {bullet}
+                            </li>
+                          ))}
+                        </ul>
+                        {step.after && <p className="mt-4">{step.after}</p>}
+                      </div>
+                    )}
                     {i === cta.step && (
                       <div className="mt-7">
                         <Button href={site.bookingUrl}>{cta.label}</Button>
@@ -227,12 +241,13 @@ export function HiringTimeline() {
         </ol>
 
         <Reveal className="mt-16 text-center md:mt-20">
-          <p className="mx-auto max-w-[62ch] text-balance font-text text-lg font-medium leading-relaxed text-bone/85 md:text-xl">
-            {process.closer.line}
+          <h2 className="display text-[clamp(1.8rem,4vw,3rem)]">{process.pageCloser.headline}</h2>
+          <p className="mx-auto mt-4 text-balance font-text text-lg font-medium leading-relaxed text-bone/85 md:text-xl">
+            {process.pageCloser.line}
           </p>
           <div className="mt-6">
             <Button href={site.bookCall} size="lg">
-              {process.closer.cta}
+              {process.pageCloser.cta}
             </Button>
             <CtaNote className="mt-3" />
           </div>
