@@ -94,6 +94,14 @@ function arc(a: Pt, b: Pt, bend: number) {
 
 const pct = (p: Pt) => ({ left: `${(p.x / VB_W) * 100}%`, top: `${(p.y / VB_H) * 100}%` });
 
+/* The pins drop in top to bottom (they're listed in that order) and all
+   have landed 3s after the map scrolls into view. */
+const PIN_IN_MS = 500;
+const PIN_STAGGER_MS = (3000 - PIN_IN_MS) / (pins.length - 1);
+
+/** How long a card lingers once nothing is hovering or tapping it. */
+const CARD_LINGER_MS = 3000;
+
 /** Gap between a pin and its card, and between a card and the section edge. */
 const GAP = 10;
 const EDGE = 12;
@@ -165,6 +173,39 @@ export function TalentMap() {
   const pinRefs = useRef<(HTMLButtonElement | null)[]>([]);
   /* Set on pointerdown so the click that follows knows mouse from touch. */
   const pointerType = useRef<string | null>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  /* "idle" (server render, no JS, reduced motion) shows the pins as they
+     are; "armed" hides them; "in" drops them in. */
+  const [pinPhase, setPinPhase] = useState<"idle" | "armed" | "in">("idle");
+
+  // Replay the pin drop every time the map comes back into view.
+  useEffect(() => {
+    const wrap = wrapRef.current;
+    if (!wrap || window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (!e.isIntersecting) setPinPhase("armed");
+        else if (e.intersectionRatio >= 0.2) setPinPhase("in");
+      },
+      { threshold: [0, 0.2] },
+    );
+    io.observe(wrap);
+    return () => io.disconnect();
+  }, []);
+
+  const cancelClose = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = null;
+  };
+  /* Closes the open card after CARD_LINGER_MS unless something cancels it. */
+  const scheduleClose = () => {
+    cancelClose();
+    closeTimer.current = setTimeout(() => {
+      closeTimer.current = null;
+      setActive(null);
+    }, CARD_LINGER_MS);
+  };
+  useEffect(() => cancelClose, []);
 
   // Position the open card before paint, and keep it placed on resize.
   useLayoutEffect(() => {
@@ -189,10 +230,16 @@ export function TalentMap() {
   useEffect(() => {
     if (active === null) return;
     const onDown = (e: PointerEvent) => {
-      if (!(e.target as Element).closest?.("[data-talent-pin]")) setActive(null);
+      if (!(e.target as Element).closest?.("[data-talent-pin]")) {
+        cancelClose();
+        setActive(null);
+      }
     };
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setActive(null);
+      if (e.key === "Escape") {
+        cancelClose();
+        setActive(null);
+      }
     };
     document.addEventListener("pointerdown", onDown);
     document.addEventListener("keydown", onKey);
@@ -209,10 +256,13 @@ export function TalentMap() {
       pointerType.current = e.pointerType;
     },
     onPointerEnter: (e: React.PointerEvent) => {
-      if (e.pointerType === "mouse") setActive(i);
+      if (e.pointerType !== "mouse") return;
+      cancelClose();
+      setActive(i);
     },
+    // The card stays up a while after the mouse leaves, so it can be reached.
     onPointerLeave: (e: React.PointerEvent) => {
-      if (e.pointerType === "mouse") setActive((a) => (a === i ? null : a));
+      if (e.pointerType === "mouse" && active === i) scheduleClose();
     },
     onClick: () => {
       // Mouse and keyboard go straight to the department page (a mouse has
@@ -222,19 +272,26 @@ export function TalentMap() {
       pointerType.current = null;
       if (type === "touch" || type === "pen") {
         if (active === i) router.push(talent[i].href);
-        else setActive(i);
+        else {
+          setActive(i);
+          scheduleClose();
+        }
         return;
       }
       router.push(talent[i].href);
     },
     onFocus: (e: React.FocusEvent<HTMLButtonElement>) => {
-      if (e.currentTarget.matches(":focus-visible")) setActive(i);
+      if (!e.currentTarget.matches(":focus-visible")) return;
+      cancelClose();
+      setActive(i);
     },
     onBlur: () => setActive((a) => (a === i ? null : a)),
   });
 
   /* Mobile list rows open the same card on the map and bring the pin into view. */
   const openFromList = (i: number) => {
+    if (active === i) cancelClose();
+    else scheduleClose();
     toggle(i);
     const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
     pinRefs.current[i]?.scrollIntoView({ block: "center", behavior: reduced ? "auto" : "smooth" });
@@ -278,7 +335,7 @@ export function TalentMap() {
               the right-hand labels stay on screen. */}
           <div
             ref={wrapRef}
-            className="relative mx-auto w-full max-w-[340px] sm:max-w-[420px] md:max-w-[560px] lg:ml-0 lg:h-[clamp(650px,calc(100svh-72px-2.5rem),720px)] lg:w-auto lg:max-w-full xl:mx-auto xl:h-[clamp(650px,calc(100svh-72px-2.5rem),52rem)]"
+            className="relative mx-auto w-full max-w-[360px] sm:max-w-[450px] md:max-w-[600px] lg:ml-0 lg:h-[clamp(680px,calc(100svh-72px-1rem),760px)] lg:w-auto lg:max-w-full xl:mx-auto xl:h-[clamp(700px,calc(100svh-72px),56rem)] 2xl:h-[clamp(720px,calc((100svh-72px)*1.08),62rem)]"
             style={{ aspectRatio: `${VB_W} / ${VB_H}` }}
           >
             <div
@@ -303,7 +360,7 @@ export function TalentMap() {
                   d={arc(a, b, bend)}
                   fill="none"
                   stroke="#3dd6bd"
-                  strokeOpacity="0.55"
+                  strokeOpacity="0.35"
                   strokeWidth="2"
                   strokeDasharray="7 9"
                   vectorEffect="non-scaling-stroke"
@@ -341,28 +398,34 @@ export function TalentMap() {
                   className={`group absolute -translate-x-1/2 -translate-y-1/2 outline-none ${isOpen ? "z-20" : "z-10"}`}
                   style={pct(t)}
                 >
-                  <Avatar
-                    photo={t.photo}
-                    className={`h-9 w-9 transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_0_7px_rgba(61,214,189,0.35)] group-focus-visible:ring-2 group-focus-visible:ring-cyan md:h-11 md:w-11 lg:h-12 lg:w-12 ${
-                      isOpen
-                        ? "scale-110 border-cyan shadow-[0_0_0_7px_rgba(61,214,189,0.35)]"
-                        : "shadow-[0_0_0_4px_rgba(61,214,189,0.18)]"
-                    }`}
-                  />
-                  {/* The card covers this side while open, so the label steps
-                      aside. Labels stay at the tablet size below 1280px wide, and
-                      on desktop screens too short for the map to reach 574px
-                      wide, so they never collide or run off the edge. */}
                   <span
-                    className={`absolute top-1/2 hidden -translate-y-1/2 whitespace-nowrap rounded-full border-2 border-white bg-[#252525] px-3 py-1.5 text-[0.62rem] font-medium uppercase tracking-[0.04em] text-white transition-[color,border-color,opacity] duration-300 group-hover:border-cyan group-hover:text-cyan md:block xl:px-4 xl:text-[0.72rem] xl:[@media(max-height:851px)]:px-3 xl:[@media(max-height:851px)]:text-[0.62rem] ${
-                      t.side === "right" ? "left-full ml-2" : "right-full mr-2"
-                    } ${
-                      lgSide === "right"
-                        ? "lg:left-full lg:right-auto lg:ml-2 lg:mr-0"
-                        : "lg:right-full lg:left-auto lg:mr-2 lg:ml-0"
-                    } ${isOpen ? "opacity-0" : ""}`}
+                    className="talent-pin block"
+                    data-phase={pinPhase}
+                    style={{ animationDelay: `${i * PIN_STAGGER_MS}ms` }}
                   >
-                    {t.role}
+                    <Avatar
+                      photo={t.photo}
+                      className={`h-9 w-9 transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_0_7px_rgba(61,214,189,0.35)] group-focus-visible:ring-2 group-focus-visible:ring-cyan md:h-11 md:w-11 lg:h-12 lg:w-12 ${
+                        isOpen
+                          ? "scale-110 border-cyan shadow-[0_0_0_7px_rgba(61,214,189,0.35)]"
+                          : "shadow-[0_0_0_4px_rgba(61,214,189,0.18)]"
+                      }`}
+                    />
+                    {/* The card covers this side while open, so the label steps
+                        aside. Labels stay at the tablet size below 1280px wide, and
+                        on desktop screens too short for the map to reach 574px
+                        wide, so they never collide or run off the edge. */}
+                    <span
+                      className={`absolute top-1/2 hidden -translate-y-1/2 whitespace-nowrap rounded-full border-2 border-white bg-[#252525] px-3 py-1.5 text-[0.62rem] font-medium uppercase tracking-[0.04em] text-white transition-[color,border-color,opacity] duration-300 group-hover:border-cyan group-hover:text-cyan md:block xl:px-4 xl:text-[0.72rem] xl:[@media(max-height:851px)]:px-3 xl:[@media(max-height:851px)]:text-[0.62rem] ${
+                        t.side === "right" ? "left-full ml-2" : "right-full mr-2"
+                      } ${
+                        lgSide === "right"
+                          ? "lg:left-full lg:right-auto lg:ml-2 lg:mr-0"
+                          : "lg:right-full lg:left-auto lg:mr-2 lg:ml-0"
+                      } ${isOpen ? "opacity-0" : ""}`}
+                    >
+                      {t.role}
+                    </span>
                   </span>
                 </button>
               );
@@ -374,6 +437,16 @@ export function TalentMap() {
                 ref={cardRef}
                 id={cardId}
                 data-talent-pin=""
+                onPointerEnter={(e) => {
+                  if (e.pointerType === "mouse") cancelClose();
+                }}
+                onPointerLeave={(e) => {
+                  if (e.pointerType === "mouse") scheduleClose();
+                }}
+                onPointerDown={(e) => {
+                  // A tap on the card restarts its countdown.
+                  if (e.pointerType !== "mouse") scheduleClose();
+                }}
                 className="talent-card-in invisible absolute z-30 w-[15rem] rounded-2xl border border-white/15 bg-[#1c1c1c]/95 p-4 text-left shadow-[0_18px_40px_rgba(0,0,0,0.55)] backdrop-blur-sm"
               >
                 <div className="flex items-center gap-3">
