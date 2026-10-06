@@ -1207,7 +1207,7 @@ export const industriesPage = {
 export const industries = [
   {
     slug: "corporate-housing",
-    navLabel: "Corporate housing",
+    navLabel: "Corporate Housing",
     icon: "home",
     name: "Corporate Housing",
     descriptor: "Keep the desk moving through peak season, from reservations to QA.",
@@ -1237,7 +1237,7 @@ export const industries = [
   },
   {
     slug: "corporate-relocation",
-    navLabel: "Corporate relocation",
+    navLabel: "Corporate Relocation",
     tileLabel: "Relocation",
     icon: "pin",
     name: "Corporate Relocation",
