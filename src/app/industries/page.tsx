@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Reveal } from "@/components/reveal";
-import { Button, Eyebrow } from "@/components/brand";
+import { Button, Eyebrow, cardGlow, cardTones } from "@/components/brand";
 import { Icon, type IconName } from "@/components/icon";
 import { Finale } from "@/components/sections/finale";
 import { industries, industriesPage, site } from "@/lib/content";
@@ -32,38 +32,42 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-ink pb-16 text-bone md:pb-24">
+      {/* Light gray with the shared colored cards (10/5 color pass). */}
+      <section className="relative overflow-hidden bg-bone section-py text-ink">
         <div className="shell relative">
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {industries.map((industry, i) => (
-              <Reveal as="li" key={industry.slug} delay={Math.min(i, 5) * 70} className="h-full">
-                <Link
-                  href={`/industries/${industry.slug}`}
-                  className="group flex h-full flex-col rounded-[var(--radius-card)] border-2 border-white/15 p-7 transition-colors duration-300 hover:border-cyan hover:bg-white/[0.04] focus-visible:border-cyan focus-visible:outline-none md:p-8"
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <Icon name={industry.icon as IconName} strokeWidth={1.25} className="h-11 w-11 text-cyan" />
-                    <span
-                      aria-hidden="true"
-                      className="text-xl text-cyan transition-transform duration-300 group-hover:translate-x-1"
-                    >
-                      &rarr;
-                    </span>
-                  </div>
-                  <h2 className="mt-6 text-base font-semibold uppercase tracking-[0.04em] text-white md:text-lg">
-                    {industry.name}
-                  </h2>
-                  <p className="mt-2 text-[0.95rem] leading-relaxed text-bone/70">{industry.descriptor}</p>
-                </Link>
-              </Reveal>
-            ))}
+            {industries.map((industry, i) => {
+              const tone = cardTones[i % cardTones.length];
+              return (
+                <Reveal as="li" key={industry.slug} delay={Math.min(i, 5) * 70} className="h-full">
+                  <Link
+                    href={`/industries/${industry.slug}`}
+                    className={`group flex h-full flex-col rounded-[var(--radius-card)] p-7 focus-visible:outline-none md:p-8 ${cardGlow} ${tone.card}`}
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <Icon name={industry.icon as IconName} strokeWidth={1.25} className={`h-11 w-11 ${tone.accent}`} />
+                      <span
+                        aria-hidden="true"
+                        className={`text-xl transition-transform duration-300 group-hover:translate-x-1 ${tone.accent}`}
+                      >
+                        &rarr;
+                      </span>
+                    </div>
+                    <h2 className="mt-6 text-base font-semibold uppercase tracking-[0.04em] md:text-lg">
+                      {industry.name}
+                    </h2>
+                    <p className={`mt-2 text-[0.95rem] leading-relaxed ${tone.muted}`}>{industry.descriptor}</p>
+                  </Link>
+                </Reveal>
+              );
+            })}
             {/* The catch-all fills the grid's sixth slot (Tom, 10/5). */}
             <Reveal as="li" delay={350} className="h-full">
-              <div className="flex h-full flex-col rounded-[var(--radius-card)] border-2 border-cyan/40 bg-white/[0.04] p-7 md:p-8">
+              <div className="flex h-full flex-col rounded-[var(--radius-card)] border-2 border-cyan bg-gradient-to-br from-royal to-azure p-7 text-bone shadow-[0_0_28px_-10px_rgba(61,214,189,0.6)] md:p-8">
                 <h2 className="text-base font-semibold uppercase tracking-[0.04em] text-white md:text-lg">
                   {industriesPage.otherHeadline}
                 </h2>
-                <p className="mt-2 flex-1 text-[0.95rem] leading-relaxed text-bone/70">{industriesPage.otherBody}</p>
+                <p className="mt-2 flex-1 text-[0.95rem] leading-relaxed text-bone/85">{industriesPage.otherBody}</p>
                 <div className="mt-6">
                   <Button href={site.bookCall}>{industriesPage.cta}</Button>
                 </div>
