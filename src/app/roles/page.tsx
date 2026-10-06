@@ -13,7 +13,9 @@ export const metadata: Metadata = {
 /**
  * The roles hub: one card per department from Anthony's 10/5 list, each
  * linking to its department page. Copy is the Roles tab of Tom's content
- * doc. Replaces /talent, whose role groups predated Anthony's list
+ * doc. Cards carry no role count or repeated "see all" line (Tom, 10/5):
+ * a count reads as a ceiling, and "not the limit" is said once, under the
+ * grid. Replaces /talent, whose role groups predated Anthony's list
  * (/talent redirects here).
  */
 export default function RolesPage() {
@@ -41,20 +43,22 @@ export default function RolesPage() {
                   href={`/roles/${department.slug}`}
                   className="group flex h-full flex-col rounded-[var(--radius-card)] border border-white/10 bg-white/[0.04] p-6 transition-colors duration-300 hover:border-cyan focus-visible:border-cyan focus-visible:outline-none md:p-7"
                 >
-                  <h2 className="display text-xl leading-tight text-bone md:text-2xl">
-                    {department.name}
-                  </h2>
+                  <div className="flex items-start justify-between gap-4">
+                    <h2 className="display text-xl leading-tight text-bone md:text-2xl">
+                      {department.name}
+                    </h2>
+                    <span
+                      aria-hidden="true"
+                      className="mt-0.5 shrink-0 text-xl text-cyan transition-transform duration-300 group-hover:translate-x-1"
+                    >
+                      &rarr;
+                    </span>
+                  </div>
                   <ul className="mt-4 space-y-1.5 text-[0.95rem] leading-snug text-bone/70">
                     {department.roles.slice(0, 3).map((role) => (
                       <li key={role}>{role}</li>
                     ))}
                   </ul>
-                  <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-bold text-cyan">
-                    All {department.roles.length} roles
-                    <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">
-                      &rarr;
-                    </span>
-                  </span>
                 </Link>
               </Reveal>
             ))}
