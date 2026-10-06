@@ -1,6 +1,13 @@
 import Link from "next/link";
 import { LogoLock } from "./brand";
-import { site, industries } from "@/lib/content";
+import { nav, site } from "@/lib/content";
+
+/** Industries and Roles come straight from the header menu, so the footer
+ *  lists the same pages in the same order (10/5). */
+const menuColumn = (label: string) => {
+  const item = nav.find((entry) => entry.label === label);
+  return { title: label, links: item?.children ?? [] };
+};
 
 const columns = [
   {
@@ -12,16 +19,8 @@ const columns = [
       { label: "About", href: "/about" },
     ],
   },
-  {
-    title: "Talent",
-    links: [
-      { label: "Roles you can hire", href: "/roles" },
-      ...industries.map((industry) => ({
-        label: industry.navLabel,
-        href: `/industries/${industry.slug}`,
-      })),
-    ],
-  },
+  menuColumn("Industries"),
+  menuColumn("Roles"),
   {
     title: "Get started",
     links: [
@@ -36,7 +35,7 @@ export function SiteFooter() {
     <footer className="relative overflow-hidden bg-ink text-bone">
 
       <div className="shell relative py-16">
-        <div className="grid gap-12 md:grid-cols-[1.5fr_repeat(3,1fr)]">
+        <div className="grid gap-12 sm:grid-cols-2 md:grid-cols-[1.2fr_repeat(4,1fr)]">
           <div>
             <LogoLock />
           </div>
