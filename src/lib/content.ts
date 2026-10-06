@@ -650,7 +650,10 @@ export const faqs = [
   },
   {
     q: "What does it cost?",
-    a: "Recruitment & Placement starts around $1,600/month, Remote Employer of Record around $2,900/month, and Managed Staffing around $3,500/month. Every model also carries a one-time placement fee of 25% of first-year salary, typically $4,500 to $6,500. We quote the exact number on the first call once we know the role.",
+    // 10/5: Anthony confirmed $1,600 is the talent's monthly salary, not
+    // Handoff's fee. The per-model monthly figures ($2,900 EOR, $3,500
+    // Managed Staffing) came out until Handoff confirms what they include.
+    a: "Talent salaries start at $1,600 a month. Handoff's fees depend on the model you choose, Direct Hire or Managed Staffing, and both carry a one-time placement fee of 25% of first-year salary, typically $4,500 to $6,500. We quote the exact number on the first call once we know the role.",
   },
   {
     q: "We are not ready to hire someone full time.",
@@ -658,7 +661,9 @@ export const faqs = [
   },
   {
     q: "What if the person does not work out?",
-    a: "Direct-hire placements carry a 90-day guarantee. Under Managed Staffing we own performance management, so a problem is ours to fix, not another hiring cycle for you to run.",
+    // 10/5: the guarantee now matches Tom's content doc (How It Works);
+    // the earlier "90-day guarantee" line came out.
+    a: "If none of the first four candidates fits, your next search is $1,000 off. Under Managed Staffing we own performance management, so a problem is ours to fix, not another hiring cycle for you to run.",
   },
   {
     q: "Why Latin America?",
