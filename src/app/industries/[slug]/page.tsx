@@ -62,7 +62,8 @@ export default async function IndustryPage({
     <>
       {/* Hero: breadcrumb, industry name, the doc's subhead, one CTA. */}
       <section className="halftone relative overflow-hidden bg-ink section-py-tight text-bone">
-        <div className="shell relative">
+        {/* Above the halftone screen, so it textures the backdrop, not the text. */}
+        <div className="shell relative z-2">
           <nav aria-label="Breadcrumb" className="mb-6 text-sm font-medium text-bone/60">
             {/* Links get a 36px-tall tap area; the negative margin keeps the
                 trail's spacing (UX QA, 10/6). */}
