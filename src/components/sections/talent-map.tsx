@@ -2,10 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import { Button, CtaNote } from "../brand";
 import { Reveal } from "../reveal";
-import { cta, site, talentMap } from "@/lib/content";
+import { cta, departments, site, talentMap } from "@/lib/content";
 
 /*
  * Rebuilt from design-refs/HANDOFFMAP.png (the Figma export in
@@ -15,6 +16,10 @@ import { cta, site, talentMap } from "@/lib/content";
  *
  * Each pin opens a small profile card: on hover with a mouse, on tap with
  * touch (tapping elsewhere closes it), and on keyboard focus.
+ *
+ * Each pin also leads to its department page (10/5 call): a mouse click or
+ * Enter goes straight there; on touch, the first tap opens the card and the
+ * card's link (or a second tap on the pin) goes there.
  *
  * PLACEHOLDERS: names, cities, salaries and photos come from
  * `talentMap.profiles` in content.ts and are all stand-ins for now.
@@ -38,7 +43,16 @@ const pins: { x: number; y: number; side: Side; lgSide?: Side }[] = [
   { x: 630, y: 1135, side: "left" },
 ];
 
-const talent = pins.map((pin, i) => ({ ...pin, ...talentMap.profiles[i] }));
+const talent = pins.map((pin, i) => {
+  const profile = talentMap.profiles[i];
+  const department = departments.find((d) => d.slug === profile.department);
+  return {
+    ...pin,
+    ...profile,
+    href: `/roles/${profile.department}`,
+    departmentName: department?.name ?? "all",
+  };
+});
 
 const pulses = [
   { x: 490, y: 455 },
@@ -142,6 +156,7 @@ function Avatar({ photo, className }: { photo: string | null; className: string 
 }
 
 export function TalentMap() {
+  const router = useRouter();
   const [active, setActive] = useState<number | null>(null);
   const cardId = useId();
   const sectionRef = useRef<HTMLElement>(null);
@@ -200,10 +215,17 @@ export function TalentMap() {
       if (e.pointerType === "mouse") setActive((a) => (a === i ? null : a));
     },
     onClick: () => {
-      // A mouse already opened it on hover; touch and keyboard toggle.
-      if (pointerType.current === "mouse") setActive(i);
-      else toggle(i);
+      // Mouse and keyboard go straight to the department page (a mouse has
+      // already seen the card on hover; keyboard focus opened it). Touch
+      // opens the card first, and a second tap on the same pin follows it.
+      const type = pointerType.current;
       pointerType.current = null;
+      if (type === "touch" || type === "pen") {
+        if (active === i) router.push(talent[i].href);
+        else setActive(i);
+        return;
+      }
+      router.push(talent[i].href);
     },
     onFocus: (e: React.FocusEvent<HTMLButtonElement>) => {
       if (e.currentTarget.matches(":focus-visible")) setActive(i);
@@ -314,7 +336,7 @@ export function TalentMap() {
                   type="button"
                   data-talent-pin=""
                   {...pinHandlers(i)}
-                  aria-label={`${t.name}, ${t.role}, ${t.city}`}
+                  aria-label={`${t.name}, ${t.role}, ${t.city}. See ${t.departmentName} roles`}
                   aria-describedby={isOpen ? cardId : undefined}
                   className={`group absolute -translate-x-1/2 -translate-y-1/2 outline-none ${isOpen ? "z-20" : "z-10"}`}
                   style={pct(t)}
@@ -351,8 +373,8 @@ export function TalentMap() {
                 key={active}
                 ref={cardRef}
                 id={cardId}
-                role="tooltip"
-                className="talent-card-in pointer-events-none invisible absolute z-30 w-[15rem] rounded-2xl border border-white/15 bg-[#1c1c1c]/95 p-4 text-left shadow-[0_18px_40px_rgba(0,0,0,0.55)] backdrop-blur-sm"
+                data-talent-pin=""
+                className="talent-card-in invisible absolute z-30 w-[15rem] rounded-2xl border border-white/15 bg-[#1c1c1c]/95 p-4 text-left shadow-[0_18px_40px_rgba(0,0,0,0.55)] backdrop-blur-sm"
               >
                 <div className="flex items-center gap-3">
                   <Avatar photo={open.photo} className="h-14 w-14" />
@@ -372,6 +394,13 @@ export function TalentMap() {
                   </p>
                   <p className="mt-0.5 text-sm font-semibold text-white">{open.salary}</p>
                 </div>
+                <Link
+                  href={open.href}
+                  className="mt-3 inline-flex items-center gap-1.5 text-sm font-bold text-cyan hover:underline"
+                >
+                  See {open.departmentName} roles
+                  <span aria-hidden="true">&rarr;</span>
+                </Link>
               </div>
             )}
           </div>

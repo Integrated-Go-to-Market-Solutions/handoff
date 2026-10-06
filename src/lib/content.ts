@@ -171,21 +171,26 @@ export const sampleTalent = [
  * Order matters: entry N sits on pin N of the map (positions live in
  * talent-map.tsx), so swap the content in place rather than reordering.
  */
+/**
+ * 10/5: pin roles renamed to Anthony's department list, and each pin links to
+ * its department page (/roles/[department]). "Digital Marketing Manager" has
+ * no match in his list; it links to Marketing until Handoff picks a name.
+ */
 export const talentMap = {
   heading: { before: "Meet your", link: "talent" },
   intro: "The roles we place most, from Mexico to Patagonia. Hover or tap a pin to see who you could be working with.",
   cta: { label: "Explore all roles", href: "/roles" },
   salaryLabel: "Salary benchmark",
   profiles: [
-    { name: "Valeria", city: "Guadalajara", country: "Mexico", role: "Digital Marketing Manager", salary: "$2,500–$3,500/mo", photo: "/images/team/jazmin-esparza.webp" },
-    { name: "Diego", city: "San José", country: "Costa Rica", role: "Full Stack Developer", salary: "$3,500–$5,500/mo", photo: "/images/team/jake-castro.webp" },
-    { name: "Camila", city: "Medellín", country: "Colombia", role: "AP/AR Specialist", salary: "$1,500–$2,200/mo", photo: "/images/team/karla-patron.webp" },
-    { name: "Mateo", city: "Lima", country: "Peru", role: "AI Specialist", salary: "$3,000–$5,000/mo", photo: "/images/team/simon-quintero.webp" },
-    { name: "Larissa", city: "Recife", country: "Brazil", role: "Relocation Coordinator", salary: "$1,600–$2,400/mo", photo: "/images/team/catalina-saldarriaga.webp" },
-    { name: "Gabriel", city: "São Paulo", country: "Brazil", role: "Guest Services Specialist", salary: "$1,200–$1,800/mo", photo: "/images/team/leidy-quintero.webp" },
-    { name: "Sofía", city: "Córdoba", country: "Argentina", role: "Reservations Manager", salary: "$1,800–$2,600/mo", photo: "/images/team/shaori-velueta.webp" },
-    { name: "Tomás", city: "Neuquén", country: "Argentina", role: "Sales Development Representative", salary: "$1,500–$2,500/mo", photo: "/images/team/jake-castro.webp" },
-  ] as { name: string; city: string; country: string; role: string; salary: string; photo: string | null }[],
+    { name: "Valeria", city: "Guadalajara", country: "Mexico", role: "Digital Marketing Manager", department: "marketing", salary: "$2,500–$3,500/mo", photo: "/images/team/jazmin-esparza.webp" },
+    { name: "Diego", city: "San José", country: "Costa Rica", role: "Full-Stack Developer", department: "software-engineering", salary: "$3,500–$5,500/mo", photo: "/images/team/jake-castro.webp" },
+    { name: "Camila", city: "Medellín", country: "Colombia", role: "AP/AR Specialist", department: "finance-accounting", salary: "$1,500–$2,200/mo", photo: "/images/team/karla-patron.webp" },
+    { name: "Mateo", city: "Lima", country: "Peru", role: "AI Developer / AI Engineer", department: "data-ai", salary: "$3,000–$5,000/mo", photo: "/images/team/simon-quintero.webp" },
+    { name: "Larissa", city: "Recife", country: "Brazil", role: "Relocation Coordinator", department: "corporate-relocation", salary: "$1,600–$2,400/mo", photo: "/images/team/catalina-saldarriaga.webp" },
+    { name: "Gabriel", city: "São Paulo", country: "Brazil", role: "Guest Services Coordinator", department: "corporate-housing-mtr", salary: "$1,200–$1,800/mo", photo: "/images/team/leidy-quintero.webp" },
+    { name: "Sofía", city: "Córdoba", country: "Argentina", role: "Reservations Specialist", department: "corporate-housing-mtr", salary: "$1,800–$2,600/mo", photo: "/images/team/shaori-velueta.webp" },
+    { name: "Tomás", city: "Neuquén", country: "Argentina", role: "SDR/BDR", department: "sales", salary: "$1,500–$2,500/mo", photo: "/images/team/jake-castro.webp" },
+  ] as { name: string; city: string; country: string; role: string; department: string; salary: string; photo: string | null }[],
 };
 
 /** The founder's situation, in his own terms. From the workshopped ICP. */
