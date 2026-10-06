@@ -1412,13 +1412,13 @@ export const nav: NavItem[] = [
       { label: "Compare the Two", href: "/pricing" },
     ],
   },
-  { label: "Results", href: "/results" },
   {
-    // Replaces Pricing in the top menu (Tom, 10/6). Placeholder: only the
-    // case studies exist so far; Blog and Calculator show as "Soon".
+    // Replaces Pricing in the top menu, with Results moved under it (Tom,
+    // 10/6). Blog and Calculator are "Soon" placeholders.
     label: "Resources",
-    href: "/results#case-studies",
+    href: "/results",
     children: [
+      { label: "Results", href: "/results" },
       { label: "Case Studies", href: "/results#case-studies" },
       { label: "Blog", href: "#", soon: true },
       { label: "Calculator", href: "#", soon: true },
