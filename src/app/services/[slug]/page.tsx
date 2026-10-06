@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Reveal } from "@/components/reveal";
-import { Button, CtaNote, Eyebrow } from "@/components/brand";
+import { Button, CtaNote, Eyebrow, cardGlow, cardTones } from "@/components/brand";
 import { HiringHighway } from "@/components/sections/hiring-highway";
 import { Finale } from "@/components/sections/finale";
 import { services, site } from "@/lib/content";
@@ -26,10 +26,19 @@ export function generateStaticParams() {
  * on one model). Shown under the hero and again above the final CTA; the
  * current page is the filled option.
  */
-function ServiceSwitch({ current, className = "" }: { current: string; className?: string }) {
+function ServiceSwitch({
+  current,
+  className = "",
+  light = false,
+}: {
+  current: string;
+  className?: string;
+  /** For light gray sections. */
+  light?: boolean;
+}) {
   return (
     <nav aria-label="Switch service" className={className}>
-      <ul className="inline-flex rounded-full border border-white/15 bg-white/[0.04] p-1">
+      <ul className={`inline-flex rounded-full border p-1 ${light ? "border-ink/15 bg-white" : "border-white/15 bg-white/[0.04]"}`}>
         {services.map((s) => {
           const active = s.slug === current;
           return (
@@ -38,7 +47,7 @@ function ServiceSwitch({ current, className = "" }: { current: string; className
                 href={`/services/${s.slug}`}
                 aria-current={active ? "page" : undefined}
                 className={`block whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition-colors sm:px-5 ${
-                  active ? "bg-cyan text-ink" : "text-bone/75 hover:text-cyan"
+                  active ? "bg-cyan text-ink" : light ? "text-ink/70 hover:text-royal" : "text-bone/75 hover:text-cyan"
                 }`}
               >
                 {s.name}
@@ -109,20 +118,25 @@ export default async function ServicePage({
             <h2 className="display text-[clamp(1.8rem,4vw,3rem)]">How it works</h2>
             <p className="mt-6 text-pretty text-lg leading-relaxed text-bone/75 md:text-xl">{service.howItWorks}</p>
           </Reveal>
+        </div>
+      </section>
 
-          <div className="mt-14 grid gap-4 md:grid-cols-2">
+      {/* Light gray with royal and cyan cards (10/5 color pass). */}
+      <section className="relative overflow-hidden bg-bone section-py text-ink">
+        <div className="shell relative">
+          <div className="grid gap-4 md:grid-cols-2">
             <Reveal className="h-full">
-              <div className="h-full rounded-[var(--radius-card)] border border-white/10 bg-white/[0.04] p-7 md:p-8">
-                <h2 className="text-base font-semibold uppercase tracking-[0.04em] text-cyan md:text-lg">
+              <div className={`h-full rounded-[var(--radius-card)] p-7 md:p-8 ${cardGlow} ${cardTones[1].card}`}>
+                <h2 className="text-base font-semibold uppercase tracking-[0.04em] text-white md:text-lg">
                   {service.detailHeadline}
                 </h2>
                 {service.detailBody && (
-                  <p className="mt-3 text-pretty text-base leading-relaxed text-bone/80 md:text-lg">{service.detailBody}</p>
+                  <p className="mt-3 text-pretty text-base leading-relaxed text-bone/90 md:text-lg">{service.detailBody}</p>
                 )}
                 {service.detailList.length > 0 && (
                   <ul className="mt-4 grid gap-2.5 sm:grid-cols-2">
                     {service.detailList.map((item) => (
-                      <li key={item} className="flex items-center gap-3 text-base text-bone/85 md:text-lg">
+                      <li key={item} className="flex items-center gap-3 text-base text-bone md:text-lg">
                         <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-cyan" aria-hidden="true" />
                         {item}
                       </li>
@@ -133,12 +147,12 @@ export default async function ServicePage({
             </Reveal>
 
             <Reveal delay={90} className="h-full">
-              <div className="flex h-full flex-col rounded-[var(--radius-card)] border-2 border-cyan/40 bg-white/[0.04] p-7 md:p-8">
-                <h2 className="text-base font-semibold uppercase tracking-[0.04em] text-cyan md:text-lg">Best fit</h2>
-                <p className="mt-3 flex-1 text-pretty text-base leading-relaxed text-bone/80 md:text-lg">{service.bestFit}</p>
+              <div className={`flex h-full flex-col rounded-[var(--radius-card)] p-7 md:p-8 ${cardGlow} ${cardTones[0].card}`}>
+                <h2 className="text-base font-semibold uppercase tracking-[0.04em] md:text-lg">Best fit</h2>
+                <p className="mt-3 flex-1 text-pretty text-base leading-relaxed text-ink/80 md:text-lg">{service.bestFit}</p>
                 <Link
                   href={`/services/${service.other.slug}`}
-                  className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-cyan hover:underline"
+                  className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-ink underline-offset-4 hover:underline"
                 >
                   {service.other.label} <span aria-hidden="true">&rarr;</span>
                 </Link>
@@ -148,7 +162,7 @@ export default async function ServicePage({
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Button href={site.bookCall}>Book a call</Button>
-            <ServiceSwitch current={service.slug} />
+            <ServiceSwitch current={service.slug} light />
           </div>
         </div>
       </section>
