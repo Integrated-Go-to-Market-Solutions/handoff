@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Reveal } from "@/components/reveal";
-import { Button } from "@/components/brand";
+import { Button, cardGlow, cardTones } from "@/components/brand";
 import { Finale } from "@/components/sections/finale";
 import { departments, rolesPage, site } from "@/lib/content";
 
@@ -34,37 +34,41 @@ export default function RolesPage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-ink pb-16 text-bone md:pb-24">
+      {/* Light gray with the site's colored cards (10/5 color pass). */}
+      <section className="relative overflow-hidden bg-bone section-py text-ink">
         <div className="shell relative">
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {departments.map((department, i) => (
-              <Reveal key={department.slug} delay={Math.min(i, 5) * 60} as="li" className="h-full">
-                <Link
-                  href={`/roles/${department.slug}`}
-                  className="group flex h-full flex-col rounded-[var(--radius-card)] border border-white/10 bg-white/[0.04] p-6 transition-colors duration-300 hover:border-cyan focus-visible:border-cyan focus-visible:outline-none md:p-7"
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <h2 className="display text-xl leading-tight text-bone md:text-2xl">
-                      {department.name}
-                    </h2>
-                    <span
-                      aria-hidden="true"
-                      className="mt-0.5 shrink-0 text-xl text-cyan transition-transform duration-300 group-hover:translate-x-1"
-                    >
-                      &rarr;
-                    </span>
-                  </div>
-                  <ul className="mt-4 space-y-1.5 text-[0.95rem] leading-snug text-bone/70">
-                    {department.roles.slice(0, 3).map((role) => (
-                      <li key={role}>{role}</li>
-                    ))}
-                  </ul>
-                </Link>
-              </Reveal>
-            ))}
+            {departments.map((department, i) => {
+              const tone = cardTones[i % cardTones.length];
+              return (
+                <Reveal key={department.slug} delay={Math.min(i, 5) * 60} as="li" className="h-full">
+                  <Link
+                    href={`/roles/${department.slug}`}
+                    className={`group flex h-full flex-col rounded-[var(--radius-card)] p-6 focus-visible:outline-none md:p-7 ${cardGlow} ${tone.card}`}
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <h2 className="display text-xl leading-tight md:text-2xl">
+                        {department.name}
+                      </h2>
+                      <span
+                        aria-hidden="true"
+                        className={`mt-0.5 shrink-0 text-xl transition-transform duration-300 group-hover:translate-x-1 ${tone.accent}`}
+                      >
+                        &rarr;
+                      </span>
+                    </div>
+                    <ul className={`mt-4 space-y-1.5 text-[0.95rem] leading-snug ${tone.muted}`}>
+                      {department.roles.slice(0, 3).map((role) => (
+                        <li key={role}>{role}</li>
+                      ))}
+                    </ul>
+                  </Link>
+                </Reveal>
+              );
+            })}
           </ul>
 
-          <p className="mt-10 border-l-4 border-cyan pl-5 text-base leading-relaxed text-bone/80 md:text-lg">
+          <p className="mt-10 border-l-4 border-cyan pl-5 text-base leading-relaxed text-ink/80 md:text-lg">
             {rolesPage.closing}
           </p>
           <div className="mt-8">

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Reveal } from "@/components/reveal";
-import { Button, Eyebrow } from "@/components/brand";
+import { Button, Eyebrow, cardGlow, cardTones } from "@/components/brand";
 import { HiringHighway } from "@/components/sections/hiring-highway";
 import { Finale } from "@/components/sections/finale";
 import { departments, rolesPage, site } from "@/lib/content";
@@ -93,33 +93,37 @@ export default async function DepartmentPage({
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-ink pb-16 text-bone md:pb-24">
+      {/* Light gray with the site's colored cards (10/5 color pass). */}
+      <section className="relative overflow-hidden bg-bone section-py text-ink">
         <div className="shell relative">
           <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {department.roles.map((role, i) => (
-              <Reveal key={role} delay={Math.min(i, 5) * 60} as="li" className="h-full">
-                <Link
-                  href={site.bookCall}
-                  className="group flex h-full items-center justify-between gap-4 rounded-[var(--radius-card)] border border-white/10 bg-white/[0.04] px-6 py-5 transition-colors duration-300 hover:border-cyan focus-visible:border-cyan focus-visible:outline-none"
-                >
-                  <span className="text-base font-bold leading-snug text-bone">{role}</span>
-                  <span
-                    aria-hidden="true"
-                    className="shrink-0 text-cyan transition-transform duration-300 group-hover:translate-x-1"
+            {department.roles.map((role, i) => {
+              const tone = cardTones[i % cardTones.length];
+              return (
+                <Reveal key={role} delay={Math.min(i, 5) * 60} as="li" className="h-full">
+                  <Link
+                    href={site.bookCall}
+                    className={`group flex h-full items-center justify-between gap-4 rounded-[var(--radius-card)] px-6 py-5 focus-visible:outline-none ${cardGlow} ${tone.card}`}
                   >
-                    &rarr;
-                  </span>
-                </Link>
-              </Reveal>
-            ))}
+                    <span className="text-base font-bold leading-snug">{role}</span>
+                    <span
+                      aria-hidden="true"
+                      className={`shrink-0 transition-transform duration-300 group-hover:translate-x-1 ${tone.accent}`}
+                    >
+                      &rarr;
+                    </span>
+                  </Link>
+                </Reveal>
+              );
+            })}
           </ul>
 
-          <p className="mt-8 border-l-4 border-cyan pl-5 text-base leading-relaxed text-bone/80 md:text-lg">
+          <p className="mt-8 border-l-4 border-cyan pl-5 text-base leading-relaxed text-ink/80 md:text-lg">
             {rolesPage.closing}
           </p>
 
-          <nav aria-labelledby="other-departments" className="mt-14 border-t border-white/10 pt-10">
-            <h2 id="other-departments" className="eyebrow text-sm text-bone/60">
+          <nav aria-labelledby="other-departments" className="mt-14 border-t border-ink/10 pt-10">
+            <h2 id="other-departments" className="eyebrow text-sm text-ink/60">
               Other departments
             </h2>
             <ul className="mt-5 flex flex-wrap gap-2.5">
@@ -127,7 +131,7 @@ export default async function DepartmentPage({
                 <li key={d.slug}>
                   <Link
                     href={`/roles/${d.slug}`}
-                    className="inline-block rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-bone/85 transition-colors hover:border-cyan hover:text-cyan"
+                    className="inline-block rounded-full border-2 border-royal/25 bg-white px-4 py-2 text-sm font-semibold text-ink/85 transition-colors hover:border-royal hover:text-royal"
                   >
                     {d.name}
                   </Link>
