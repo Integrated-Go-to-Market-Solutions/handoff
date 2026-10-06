@@ -1,46 +1,75 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Reveal } from "@/components/reveal";
+import { Button, Eyebrow } from "@/components/brand";
 import { Icon, type IconName } from "@/components/icon";
-import { industries, industriesPage } from "@/lib/content";
+import { Finale } from "@/components/sections/finale";
+import { industries, industriesPage, site } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Industries | Handoff",
   description: industriesPage.body,
 };
 
-/** Every industry as a card linking to its own page. */
+/**
+ * The industries overview, after Near's /industries page: a short intro, a
+ * tile per industry, then the catch-all and the CTA full width under the
+ * grid. Copy and layout notes are from Tom's content doc (Industries Menu
+ * tab): tiles carry name, one-line descriptor and link only, no fees,
+ * numbers or logos, and match the homepage industry tiles so the two read
+ * as one system. Grid on desktop, single column on phones.
+ */
 export default function IndustriesPage() {
   return (
-    <section className="bg-ink section-py-hero text-bone">
-      <div className="shell">
-        <Reveal className="mx-auto max-w-3xl text-center">
-          <h1 className="display text-[clamp(2.3rem,6vw,4.2rem)]">{industriesPage.headline}</h1>
-          <p className="mx-auto mt-5 max-w-[56ch] text-balance text-lg leading-relaxed text-bone/70">
-            {industriesPage.body}
-          </p>
-        </Reveal>
+    <>
+      <section className="relative overflow-hidden bg-ink section-py-tight text-bone">
+        <div className="shell relative">
+          <Reveal>
+            <Eyebrow className="mb-4">{industriesPage.eyebrow}</Eyebrow>
+            <h1 className="display text-[clamp(2.3rem,5.5vw,4.2rem)]">{industriesPage.headline}</h1>
+            <p className="mt-5 text-lg leading-relaxed text-bone/75 md:text-xl">{industriesPage.body}</p>
+          </Reveal>
+        </div>
+      </section>
 
-        <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {industries.map((industry, i) => (
-            <Reveal as="li" key={industry.slug} delay={i * 80}>
-              <Link
-                href={`/industries/${industry.slug}`}
-                className="group flex h-full flex-col rounded-[var(--radius-card)] border-2 border-cyan/25 bg-ink-100 p-7 transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-cyan hover:shadow-[0_0_36px_-8px_rgba(61,214,189,0.6)] focus-visible:border-cyan focus-visible:outline-none"
-              >
-                <span className="grid h-14 w-14 place-items-center rounded-full border-2 border-cyan/50 text-cyan transition-colors group-hover:bg-cyan group-hover:text-ink">
-                  <Icon name={industry.icon as IconName} className="h-7 w-7" />
-                </span>
-                <h2 className="display mt-6 text-xl leading-tight">{industry.name}</h2>
-                <p className="mt-3 flex-1 text-[0.95rem] leading-relaxed text-bone/70">{industry.subhead}</p>
-                <span className="mt-6 text-sm font-semibold text-cyan">
-                  See the roles <span aria-hidden="true">&rarr;</span>
-                </span>
-              </Link>
-            </Reveal>
-          ))}
-        </ul>
-      </div>
-    </section>
+      <section className="relative overflow-hidden bg-ink pb-16 text-bone md:pb-24">
+        <div className="shell relative">
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {industries.map((industry, i) => (
+              <Reveal as="li" key={industry.slug} delay={Math.min(i, 5) * 70} className="h-full">
+                <Link
+                  href={`/industries/${industry.slug}`}
+                  className="group flex h-full flex-col rounded-[var(--radius-card)] border-2 border-white/15 p-7 transition-colors duration-300 hover:border-cyan hover:bg-white/[0.04] focus-visible:border-cyan focus-visible:outline-none md:p-8"
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <Icon name={industry.icon as IconName} strokeWidth={1.25} className="h-11 w-11 text-cyan" />
+                    <span
+                      aria-hidden="true"
+                      className="text-xl text-cyan transition-transform duration-300 group-hover:translate-x-1"
+                    >
+                      &rarr;
+                    </span>
+                  </div>
+                  <h2 className="mt-6 text-base font-semibold uppercase tracking-[0.04em] text-white md:text-lg">
+                    {industry.name}
+                  </h2>
+                  <p className="mt-2 text-[0.95rem] leading-relaxed text-bone/70">{industry.descriptor}</p>
+                </Link>
+              </Reveal>
+            ))}
+          </ul>
+
+          <div className="mt-6 rounded-[var(--radius-card)] border border-white/10 bg-white/[0.04] p-7 md:p-10">
+            <h2 className="display text-[clamp(1.5rem,3vw,2.2rem)] leading-tight">{industriesPage.otherHeadline}</h2>
+            <p className="mt-4 text-base leading-relaxed text-bone/75 md:text-lg">{industriesPage.otherBody}</p>
+            <div className="mt-7">
+              <Button href={site.bookCall}>{industriesPage.cta}</Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Finale />
+    </>
   );
 }

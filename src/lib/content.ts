@@ -990,10 +990,15 @@ export const contactPage = {
  * the old URL redirects in next.config.ts) and the order set to Tom's
  * content doc: housing, relocation, startups, agencies, e-commerce.
  */
-/** The /industries overview page. PLACEHOLDER copy. */
+/** The /industries overview page: Tom's content doc, Industries Menu tab. */
 export const industriesPage = {
-  headline: "Built for your industry",
-  body: "Every industry runs on different roles and different pressure points. Pick yours to see the hires we make most and how they work.",
+  eyebrow: "Industries we serve",
+  headline: "Hire talent that already knows your industry.",
+  body: "We place talent across a number of industries, and these are the ones where we've done the most placements and know the work. Find yours below, or get in touch if it's not here.",
+  otherHeadline: "We place across other industries too",
+  otherBody:
+    "If you don't see your industry here, we are still the right fit. We have placements in many other industries. Tell us the position, and we'll match you with the right one.",
+  cta: "Book a call",
 };
 
 export const industries = [
@@ -1002,6 +1007,7 @@ export const industries = [
     navLabel: "Corporate housing",
     icon: "home",
     name: "Corporate Housing",
+    descriptor: "Keep the desk moving through peak season, from reservations to QA.",
     subhead:
       "Staff corporate housing, mid-term, and short-term rentals, from reservations to turnovers.",
     problemHeadline: "Hire ahead of your busy season",
@@ -1032,6 +1038,7 @@ export const industries = [
     tileLabel: "Relocation",
     icon: "pin",
     name: "Corporate Relocation",
+    descriptor: "Match your contract load with coordinators in your clients' time zone.",
     subhead:
       "Scale relocation with coordinators who work in your clients' time zone.",
     problemHeadline: "New contracts arrive faster than you can staff them",
@@ -1061,6 +1068,7 @@ export const industries = [
     navLabel: "Startups",
     icon: "trend",
     name: "Startups",
+    descriptor: "Cover the role with talent that already works with AI.",
     subhead:
       "Get startup roles off your plate, owned by talent that already works with AI.",
     problemHeadline: "Still doing every job yourself?",
@@ -1090,6 +1098,7 @@ export const industries = [
     navLabel: "Agencies",
     icon: "layers",
     name: "Agencies",
+    descriptor: "Deliver end to end, scaling with the account.",
     subhead:
       "Add agency delivery that scales with the account, end to end.",
     problemHeadline: "Is client work growing faster than your team?",
@@ -1119,6 +1128,7 @@ export const industries = [
     navLabel: "E-commerce",
     icon: "bag",
     name: "E-Commerce",
+    descriptor: "Keep the store open through every spike and handle the calls.",
     subhead:
       "Staff e-commerce to stay open through every spike, calls handled.",
     problemHeadline: "The store has to stay open even when you're short-staffed",
