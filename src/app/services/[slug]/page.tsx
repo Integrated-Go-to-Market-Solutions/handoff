@@ -89,9 +89,8 @@ export default async function ServicePage({
             <span aria-hidden="true" className="mx-2">
               &rarr;
             </span>
-            <Link href="/pricing" className="transition-colors hover:text-cyan">
-              Pricing
-            </Link>
+            {/* Services is a menu group, not a page (Tom, 10/6), so plain text. */}
+            <span>Services</span>
             <span aria-hidden="true" className="mx-2">
               &rarr;
             </span>

@@ -39,31 +39,68 @@ function SoonItem({ label, className = "" }: { label: string; className?: string
  * handler and without trapping focus.
  */
 function NavGroup({ item }: { item: NavItem }) {
-  return (
-    <div className="group relative" onMouseEnter={releaseFocusOutside}>
-      <Link
-        href={item.href}
-        onClick={releaseFocus}
-        className="flex items-center gap-1 whitespace-nowrap text-[0.93rem] font-medium text-bone/70 transition-colors hover:text-bone group-focus-within:text-bone"
+  // Click-to-open for menuOnly parents: Safari doesn't focus a clicked
+  // button, so focus-within alone wouldn't open the list.
+  const [clickOpen, setClickOpen] = useState(false);
+  useEffect(() => {
+    if (!clickOpen) return;
+    const close = (e: PointerEvent) => {
+      if (!(e.target as Element).closest?.("[data-nav-group]")) setClickOpen(false);
+    };
+    document.addEventListener("pointerdown", close);
+    return () => document.removeEventListener("pointerdown", close);
+  }, [clickOpen]);
+  const parentClass =
+    "flex items-center gap-1 whitespace-nowrap text-[0.93rem] font-medium text-bone/70 transition-colors hover:text-bone group-focus-within:text-bone";
+  // menuOnly parents (Services) open the list on hover, click or focus but
+  // don't navigate. A button keeps them reachable from the keyboard.
+  const parentInner = (
+    <>
+      {item.label}
+      <svg
+        viewBox="0 0 12 8"
+        className="h-2 w-2.5 transition-transform duration-200 group-hover:rotate-180"
+        aria-hidden="true"
       >
-        {item.label}
-        <svg
-          viewBox="0 0 12 8"
-          className="h-2 w-2.5 transition-transform duration-200 group-hover:rotate-180"
-          aria-hidden="true"
+        <path
+          d="M1 1.5 6 6.5 11 1.5"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </>
+  );
+  return (
+    <div
+      className="group relative"
+      data-nav-group=""
+      onMouseEnter={releaseFocusOutside}
+      onMouseLeave={() => setClickOpen(false)}
+    >
+      {item.menuOnly ? (
+        <button
+          type="button"
+          aria-haspopup="true"
+          aria-expanded={clickOpen}
+          onClick={() => setClickOpen((v) => !v)}
+          className={`cursor-default ${parentClass}`}
         >
-          <path
-            d="M1 1.5 6 6.5 11 1.5"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </Link>
+          {parentInner}
+        </button>
+      ) : (
+        <Link href={item.href} onClick={releaseFocus} className={parentClass}>
+          {parentInner}
+        </Link>
+      )}
 
-      <div className="invisible absolute left-0 top-full z-50 pt-4 opacity-0 transition-opacity duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+      <div
+        className={`absolute left-0 top-full z-50 pt-4 transition-opacity duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100 ${
+          clickOpen ? "visible opacity-100" : "invisible opacity-0"
+        }`}
+      >
         <ul className="min-w-[15rem] rounded-[var(--radius-card)] border border-white/10 bg-ink-100 p-2 shadow-xl">
           {item.children?.map((child) => (
             <li key={child.label}>
@@ -263,9 +300,9 @@ export function SiteHeader() {
         <nav className="hidden items-center gap-6 lg:flex lg:gap-5 xl:gap-9">
           {nav.map((item) =>
             item.mega ? (
-              <RolesMega key={item.href} item={item} />
+              <RolesMega key={item.label} item={item} />
             ) : item.children ? (
-              <NavGroup key={item.href} item={item} />
+              <NavGroup key={item.label} item={item} />
             ) : (
               <Link
                 key={item.href}
@@ -308,14 +345,18 @@ export function SiteHeader() {
         <div className="fixed inset-0 top-[68px] z-40 overflow-y-auto bg-ink px-6 pb-16 pt-8 lg:hidden">
           <nav className="flex flex-col gap-1">
             {nav.map((item) => (
-              <div key={item.href}>
-                <Link
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  className="display block py-5 text-3xl text-bone"
-                >
-                  {item.label}
-                </Link>
+              <div key={item.label}>
+                {item.menuOnly ? (
+                  <p className="display py-5 text-3xl text-bone">{item.label}</p>
+                ) : (
+                  <Link
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    className="display block py-5 text-3xl text-bone"
+                  >
+                    {item.label}
+                  </Link>
+                )}
                 {item.children && (
                   <ul className="-mt-2 pb-5 pl-1">
                     {item.children.map((child) => (

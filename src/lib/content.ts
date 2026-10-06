@@ -1373,6 +1373,8 @@ export type NavItem = {
   children?: { label: string; href: string; soon?: boolean }[];
   /** Desktop renders the department mega menu instead of a plain dropdown. */
   mega?: boolean;
+  /** A label that only opens its dropdown; it isn't a page itself. */
+  menuOnly?: boolean;
 };
 
 export const nav: NavItem[] = [
@@ -1406,8 +1408,11 @@ export const nav: NavItem[] = [
   {
     // Near-style Services dropdown (10/5): the two models, and the
     // side-by-side comparison on /pricing (Tom, 10/6: pricing lives here).
+    // Like Near's, "Services" only opens the list; it isn't a page, so it
+    // no longer lands on Pricing (Tom, 10/6).
     label: "Services",
     href: "/services",
+    menuOnly: true,
     children: [
       ...services.map((service) => ({ label: service.name, href: `/services/${service.slug}` })),
       { label: "Compare the Two", href: "/pricing" },
