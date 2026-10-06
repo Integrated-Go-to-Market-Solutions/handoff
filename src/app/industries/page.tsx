@@ -13,9 +13,9 @@ export const metadata: Metadata = {
 
 /**
  * The industries overview, after Near's /industries page: a short intro, a
- * tile per industry, then the catch-all and the CTA full width under the
- * grid. Copy and layout notes are from Tom's content doc (Industries Menu
- * tab): tiles carry name, one-line descriptor and link only, no fees,
+ * tile per industry, and the catch-all with the CTA in the grid's sixth
+ * slot (Tom, 10/5; the doc's notes had it full width under the grid).
+ * Copy and layout notes are from Tom's content doc (Industries Menu tab): tiles carry name, one-line descriptor and link only, no fees,
  * numbers or logos, and match the homepage industry tiles so the two read
  * as one system. Grid on desktop, single column on phones.
  */
@@ -57,15 +57,19 @@ export default function IndustriesPage() {
                 </Link>
               </Reveal>
             ))}
+            {/* The catch-all fills the grid's sixth slot (Tom, 10/5). */}
+            <Reveal as="li" delay={350} className="h-full">
+              <div className="flex h-full flex-col rounded-[var(--radius-card)] border-2 border-cyan/40 bg-white/[0.04] p-7 md:p-8">
+                <h2 className="text-base font-semibold uppercase tracking-[0.04em] text-white md:text-lg">
+                  {industriesPage.otherHeadline}
+                </h2>
+                <p className="mt-2 flex-1 text-[0.95rem] leading-relaxed text-bone/70">{industriesPage.otherBody}</p>
+                <div className="mt-6">
+                  <Button href={site.bookCall}>{industriesPage.cta}</Button>
+                </div>
+              </div>
+            </Reveal>
           </ul>
-
-          <div className="mt-6 rounded-[var(--radius-card)] border border-white/10 bg-white/[0.04] p-7 md:p-10">
-            <h2 className="display text-[clamp(1.5rem,3vw,2.2rem)] leading-tight">{industriesPage.otherHeadline}</h2>
-            <p className="mt-4 text-base leading-relaxed text-bone/75 md:text-lg">{industriesPage.otherBody}</p>
-            <div className="mt-7">
-              <Button href={site.bookCall}>{industriesPage.cta}</Button>
-            </div>
-          </div>
         </div>
       </section>
 
