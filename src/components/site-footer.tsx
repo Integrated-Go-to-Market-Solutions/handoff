@@ -17,6 +17,7 @@ const columns = [
       { label: "Pricing", href: "/#models" },
       { label: "Results", href: "/results" },
       { label: "About", href: "/about" },
+      { label: "Careers", href: "/careers" },
     ],
   },
   menuColumn("Industries"),

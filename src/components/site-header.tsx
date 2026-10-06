@@ -141,9 +141,9 @@ const headerCtas = [
     className: "border-cyan bg-cyan text-ink hover:bg-ink hover:text-cyan",
   },
   {
-    // Points at /contact until a talent-pool page exists.
+    // The talent-facing page (10/5); its apply button handles the next step.
     label: "Join Our Talent Pool",
-    href: "/contact",
+    href: "/careers",
     className: "border-cyan bg-white text-ink hover:bg-cyan",
   },
 ];
