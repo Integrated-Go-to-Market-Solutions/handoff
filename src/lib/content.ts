@@ -1332,6 +1332,16 @@ export const nav: NavItem[] = [
       })),
     ],
   },
+  {
+    // Near-style Services dropdown (10/5): the two models, plus the
+    // pricing comparison that sets them side by side.
+    label: "Services",
+    href: "/services",
+    children: [
+      ...services.map((service) => ({ label: service.name, href: `/services/${service.slug}` })),
+      { label: "Compare the two", href: "/#models" },
+    ],
+  },
   { label: "Results", href: "/results" },
   { label: "Pricing", href: "/#models" },
   { label: "About", href: "/about" },

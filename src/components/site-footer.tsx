@@ -21,6 +21,7 @@ const columns = [
   },
   menuColumn("Industries"),
   menuColumn("Roles"),
+  menuColumn("Services"),
   {
     title: "Get started",
     links: [
@@ -35,7 +36,7 @@ export function SiteFooter() {
     <footer className="relative overflow-hidden bg-ink text-bone">
 
       <div className="shell relative py-16">
-        <div className="grid gap-12 sm:grid-cols-2 md:grid-cols-[1.2fr_repeat(4,1fr)]">
+        <div className="grid gap-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-[1.2fr_repeat(5,1fr)]">
           <div>
             <LogoLock />
           </div>
