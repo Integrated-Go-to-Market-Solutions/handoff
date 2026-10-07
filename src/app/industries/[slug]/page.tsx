@@ -62,7 +62,22 @@ export default async function IndustryPage({
     <>
       {/* Hero: breadcrumb, industry name, the doc's subhead, one CTA. */}
       <section className="halftone relative overflow-hidden bg-ink section-py-tight text-bone">
-        <div className="shell relative">
+        {/* Tom's header photo (10/7): grayscale, on the right, fading in from
+            the left so the text keeps a solid dark background. Phones get it
+            behind the text under a heavier scrim. */}
+        <div className="absolute inset-0 md:left-auto md:w-[60%]" aria-hidden="true">
+          <Image
+            src={industry.heroImage.src}
+            alt=""
+            fill
+            preload
+            sizes="(min-width: 768px) 60vw, 100vw"
+            className="object-cover grayscale [mask-image:linear-gradient(to_right,transparent,black_45%)] max-md:[mask-image:none]"
+            style={{ objectPosition: industry.heroImage.focus }}
+          />
+          <div className="absolute inset-0 bg-ink/80 md:bg-ink/35" />
+        </div>
+        <div className="shell relative z-10">
           <nav aria-label="Breadcrumb" className="mb-6 text-sm font-medium text-bone/60">
             {/* Links get a 36px-tall tap area; the negative margin keeps the
                 trail's spacing (UX QA, 10/6). */}

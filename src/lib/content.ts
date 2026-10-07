@@ -1188,7 +1188,8 @@ export const contactPage = {
  * the department page it links to; a role with no clear department in
  * Anthony's list (QA Specialist, Account Manager) is left unlinked.
  * proofLogos are only the names the doc marks as cleared; caseStudy points
- * at an existing /results write-up.
+ * at an existing /results write-up. heroImage: Tom's header photos (10/7),
+ * compressed from the originals in assets/industries (git-ignored).
  *
  * 10/5: "Hospitality" renamed "Corporate housing" (slug corporate-housing;
  * the old URL redirects in next.config.ts) and the order set to Tom's
@@ -1212,6 +1213,7 @@ export const industries = [
     icon: "home",
     name: "Corporate Housing",
     descriptor: "Keep the desk moving through peak season, from reservations to QA.",
+    heroImage: { src: "/images/industries/corporate-housing.webp", alt: "A bright furnished apartment living room with a sofa and city views", focus: "50% 50%" },
     subhead:
       "Staff corporate housing, mid-term, and short-term rentals, from reservations to turnovers.",
     problemHeadline: "Hire ahead of your busy season",
@@ -1243,6 +1245,7 @@ export const industries = [
     icon: "pin",
     name: "Corporate Relocation",
     descriptor: "Match your contract load with coordinators in your clients' time zone.",
+    heroImage: { src: "/images/industries/corporate-relocation.webp", alt: "A city waterfront plaza lined with modern offices and apartments at dusk", focus: "50% 50%" },
     subhead:
       "Scale relocation with coordinators who work in your clients' time zone.",
     problemHeadline: "New contracts arrive faster than you can staff them",
@@ -1273,6 +1276,7 @@ export const industries = [
     icon: "trend",
     name: "Startups",
     descriptor: "Cover the role with talent that already works with AI.",
+    heroImage: { src: "/images/industries/startups.webp", alt: "A small team working on laptops around a shared table in a coworking caf\u00e9", focus: "62% 60%" },
     subhead:
       "Get startup roles off your plate, owned by talent that already works with AI.",
     problemHeadline: "Still doing every job yourself?",
@@ -1303,6 +1307,7 @@ export const industries = [
     icon: "layers",
     name: "Agencies",
     descriptor: "Deliver end to end, scaling with the account.",
+    heroImage: { src: "/images/industries/agencies.webp", alt: "A creative team at their desks in an open studio", focus: "62% 50%" },
     subhead:
       "Add agency delivery that scales with the account, end to end.",
     problemHeadline: "Is client work growing faster than your team?",
@@ -1333,6 +1338,7 @@ export const industries = [
     icon: "bag",
     name: "E-Commerce",
     descriptor: "Keep the store open through every spike and handle the calls.",
+    heroImage: { src: "/images/industries/ecommerce.webp", alt: "A warehouse worker checking stock on a tablet beside stacked boxes", focus: "72% 50%" },
     subhead:
       "Staff e-commerce to stay open through every spike, calls handled.",
     problemHeadline: "The store has to stay open even when you're short-staffed",
