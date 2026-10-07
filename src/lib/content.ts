@@ -53,14 +53,19 @@ export const hero = {
     { text: "AI Powered People." },
     { text: "Here to stay.", tone: "cyan" },
   ] as { text: string; tone?: "royal" | "cyan" }[],
-  /** One entry per line in the live hero. `headline` above still feeds /v2. */
+  /**
+   * One entry per line in the live hero. Line 1 is split so "LATAM." can
+   * carry the brand blue (Tom, 10/7: option B, centered).
+   */
+  headlineLead: { before: "Hire the best of", accent: "LATAM." },
   headlineLines: [
-    { text: "The best of LATAM." },
+    { text: "Hire the best of LATAM." },
     { text: "AI Powered People." },
     { text: "Here to stay.", tone: "cyan" },
   ] as { text: string; tone?: "cyan" }[],
   imageAlt: "The Handoff team",
-  body: "We help the best US companies hire Latin America's top 1% talent.",
+  /** Tom's hero copy (10/7), with "Latin America talent" corrected to "Latin American talent". */
+  body: "Handoff places full-time, dedicated Latin American talent inside US companies, screened to the top 1%.",
   primary: { label: "Get Started Today", href: site.bookCall },
   secondary: { label: "Talk to Our Team", href: site.bookCall },
   note: "Full-time, dedicated teammates. Not a marketplace.",
