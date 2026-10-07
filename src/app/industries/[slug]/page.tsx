@@ -75,8 +75,10 @@ export default async function IndustryPage({
             className="object-cover grayscale [mask-image:linear-gradient(to_right,transparent,black_45%)] max-md:[mask-image:none]"
             style={{ objectPosition: industry.heroImage.focus }}
           />
-          <div className="absolute inset-0 bg-ink/80 md:bg-ink/35" />
+          <div className="absolute inset-0 bg-ink/80 md:bg-ink/45" />
         </div>
+        {/* Above the halftone screen (Umair, 10/6) and the photo, so the
+            screen textures the backdrop, not the text. */}
         <div className="shell relative z-10">
           <nav aria-label="Breadcrumb" className="mb-6 text-sm font-medium text-bone/60">
             {/* Links get a 36px-tall tap area; the negative margin keeps the
