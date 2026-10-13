@@ -692,46 +692,63 @@ export const dayInLife = {
 };
 
 /**
- * The hero says AI TRAINED and nothing else on the site backed it up. This
- * block does, immediately after the process, where the vetting claim lands.
+ * Homepage AI section, rebuilt 10/13 to Handoff's own mockup and copy doc
+ * ("Handoff Academy", after the Pearl AI+ curriculum layout). Copy is
+ * theirs, verbatim. Only track 1 ("Use it") has card content so far;
+ * tracks 2 and 3 show their kicker and title with a "coming soon" line
+ * until Handoff sends hours, partner and learn/build lists for them. The
+ * tabs only switch the card; they don't link anywhere (Tom, 10/13).
  */
 export const aiTrained = {
-  eyebrow: "AI Powered People",
-  headline: "What “AI Powered People” actually means",
-  body: "Every person we place already works with AI tools daily. The judgement stays human. The busywork does not.",
-  topicsLabel: "Training includes",
-  topics: ["AI fundamentals", "Mastering prompts", "Ongoing new courses"],
-  coursesLabel: "Courses like",
-  /** Muted line under the featured course (the first entry of `courses`). */
-  coursesNote: "Rotating course titles",
+  eyebrow: "Handoff Academy · Powered by Coursera",
+  headline: { before: "Every Handoff hire shows up", highlight: "AI-ready." },
+  subhead:
+    "Through our Coursera partnership, the people we place train with Google, IBM and CertNexus — from everyday prompting to building agents that run real workflows.",
+  subheadBold: "The judgment stays human. The busywork doesn't.",
+  toolsLabel: "Tools our talent works with",
   /**
-   * PLACEHOLDER course names until the real catalogue is confirmed. Only
-   * the first shows (static) since the 10/5 redesign; the rest are kept
-   * for if the title should rotate again.
-   */
-  courses: [
-    "AI Fundamentals: How AI Works",
-    "Mastering Prompts",
-    "AI for Everyday Workflows",
-    "Automating Tasks with AI Tools",
-    "Responsible AI Use",
-  ],
-  toolsLabel: "Tools our talent trains on",
-  /**
-   * Icons are LobeHub Icons (MIT) in /public/images/ai-tools: the colour
-   * versions where they exist, and white for OpenAI and Grok, which are
-   * monochrome marks.
+   * Icons are LobeHub Icons (MIT) in /public/images/ai-tools: colour
+   * versions where they exist. OpenAI and Grok are single-colour white
+   * marks, shown black (`mono`) on this light section.
    */
   tools: [
     { name: "Claude", file: "claude-color" },
-    { name: "ChatGPT", file: "openai" },
+    { name: "ChatGPT", file: "openai", mono: true },
     { name: "Gemini", file: "gemini-color" },
     { name: "Perplexity", file: "perplexity-color" },
-    { name: "Grok", file: "grok" },
+    { name: "Grok", file: "grok", mono: true },
   ],
-  badgeAlt: "Handoff AI Excellence badge, powered by Coursera",
-  /** Shown next to the badge, on two lines. */
-  certLines: ["AI Excellence certified", "powered by Coursera"],
+  tracks: [
+    {
+      id: "use-it",
+      kicker: "Use it",
+      title: "AI Fundamentals for Everyday Work",
+      details: {
+        hours: "~5 hours",
+        facts: [
+          { label: "For", value: "all roles" },
+          { label: "With", value: "Google" },
+          { label: "Earns", value: "AI Excellence certification" },
+        ],
+        learnLabel: "What they'll learn",
+        learn: [
+          { lead: "How AI actually works", rest: " — and where it falls short" },
+          { lead: "Prompting with a framework:", rest: " task, context, references, evaluate, iterate" },
+          { lead: "AI as a collaborator", rest: ", not a shortcut" },
+          { lead: "Responsible use", rest: " — checking for accuracy and bias" },
+        ],
+        buildLabel: "What they'll build",
+        build: [
+          "Multi-step prompt chains for real work",
+          "Brainstorms, plans and visuals in hands-on labs",
+          "Custom AI-generated images",
+        ],
+      },
+    },
+    { id: "direct-it", kicker: "Direct it", title: "Agentic AI for Business", details: null },
+    { id: "build-it", kicker: "Build it", title: "AI Agents & Workflow Automation", details: null },
+  ],
+  comingSoon: "Course details coming soon.",
 };
 
 export const faqs = [
