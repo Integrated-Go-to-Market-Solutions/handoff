@@ -33,18 +33,41 @@ export function LogoMarquee({
       >
         {row.map((logo, i) =>
           logo.hasImage ? (
-            <div
-              key={`${logo.slug}-${i}`}
-              className="relative h-24 w-[260px] shrink-0 transition-transform duration-500 hover:scale-105"
-            >
-              <Image
-                src={`/images/logos/${logo.slug}.webp`}
-                alt={logo.name}
-                fill
-                sizes="260px"
-                className={`object-contain object-center ${onDark ? "opacity-80 grayscale invert" : ""}`}
-              />
-            </div>
+            "tile" in logo ? (
+              // A white-only logo shown on its own brand color, as the
+              // company does, instead of recoloring it.
+              <div
+                key={`${logo.slug}-${i}`}
+                className="grid h-24 w-[220px] shrink-0 place-items-center transition-transform duration-500 hover:scale-105"
+              >
+                <div className="relative h-14 w-[200px] rounded-xl" style={{ backgroundColor: logo.tile }}>
+                  <Image
+                    src={`/images/logos/${logo.slug}.webp`}
+                    alt={logo.name}
+                    fill
+                    sizes="220px"
+                    className="object-contain object-center p-3"
+                  />
+                </div>
+              </div>
+            ) : (
+              // Wide wordmarks get a shorter box than stacked logos, so a
+              // long name doesn't dwarf an icon-over-name logo (10/13).
+              <div
+                key={`${logo.slug}-${i}`}
+                className="grid h-24 w-[220px] shrink-0 place-items-center transition-transform duration-500 hover:scale-105"
+              >
+                <div className={`relative w-full ${"stacked" in logo ? "h-[5.25rem]" : "h-12"}`}>
+                <Image
+                  src={`/images/logos/${logo.slug}.webp`}
+                  alt={logo.name}
+                  fill
+                  sizes="220px"
+                  className={`object-contain object-center ${onDark ? "opacity-80 grayscale invert" : ""}`}
+                />
+                </div>
+              </div>
+            )
           ) : (
             // Real client, no logo file yet (a pasted reference image can't
             // be extracted into individual files) — a clean text wordmark

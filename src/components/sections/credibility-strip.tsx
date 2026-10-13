@@ -26,7 +26,7 @@ export function CredibilityStrip() {
     >
       {/* White logo band on top: a clear seam between the hero and this section. */}
       <div className="relative z-10 border-b border-ink/10 bg-white py-3">
-        <LogoMarquee bare durationSeconds={53} exclude={["fragomen"]} />
+        <LogoMarquee bare durationSeconds={53} />
       </div>
 
       <div className="shell relative pt-14 md:pt-16">

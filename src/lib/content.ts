@@ -497,19 +497,30 @@ export const proof = {
  * without a logo file (`hasImage: false`) render as a text wordmark until
  * the real file lands in /public/images/logos.
  */
+/**
+ * Client logos for the band under the homepage hero, in Handoff's tier-1
+ * order (10/13): hospitality, relocation, SaaS, relocation tech, e-commerce,
+ * agency, startup. Files come from each company's own website, in the
+ * colors the company uses there (Oasis, Snap, Earthside and CharCharms only
+ * publish black logos). WorkRight only publishes a white logo for its navy
+ * navbar, so it sits on a tile in that navy (#000629) rather than being
+ * recolored. `stacked` logos (icon over name) get a taller box than
+ * wide wordmarks so they read at a similar weight. Originals are in the
+ * git-ignored assets/logos folder.
+ */
 export const logos = [
-  { slug: "united-corporate-housing", name: "United Corporate Housing", hasImage: true },
-  { slug: "oasis", name: "Oasis", hasImage: false },
-  { slug: "altovita", name: "AltoVita", hasImage: false },
-  { slug: "do-good-cfo", name: "Do Good CFO", hasImage: false },
-  { slug: "igtms", name: "IGTMS", hasImage: false },
-  { slug: "snap-supplements", name: "Snap Supplements", hasImage: false },
-  { slug: "earth-side-farms", name: "Earth Side Farms", hasImage: false },
-  { slug: "charcharms", name: "Charcharms", hasImage: false },
+  { slug: "united-corporate-housing", name: "United Corporate Housing", hasImage: true, stacked: true },
+  { slug: "oasis", name: "Oasis", hasImage: true },
+  { slug: "altovita", name: "AltoVita", hasImage: true, stacked: true },
   { slug: "dwellworks", name: "Dwellworks", hasImage: true },
-  { slug: "doorspot", name: "DoorSpot", hasImage: false },
-  { slug: "fragomen", name: "Fragomen WorkRight", hasImage: true },
-  { slug: "pivt", name: "PIVT", hasImage: false },
+  { slug: "workright", name: "WorkRight by Fragomen", hasImage: true, tile: "#000629" },
+  { slug: "pivt", name: "Pivt", hasImage: true, stacked: true },
+  { slug: "snap-supplements", name: "Snap Supplements", hasImage: true },
+  { slug: "earth-side-farms", name: "Earthside Farms", hasImage: true, stacked: true },
+  { slug: "charcharms", name: "CharCharms", hasImage: true },
+  { slug: "do-good-cfo", name: "Do Good CFO", hasImage: true, stacked: true },
+  { slug: "igtms", name: "IGTMS", hasImage: true },
+  { slug: "doorspot", name: "DoorSpot", hasImage: true },
 ] as const;
 
 /**
