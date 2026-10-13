@@ -691,10 +691,10 @@ export const dayInLife = {
 /**
  * Homepage AI section, rebuilt 10/13 to Handoff's own mockup and copy doc
  * ("Handoff Academy", after the Pearl AI+ curriculum layout). Copy is
- * theirs, verbatim. Only track 1 ("Use it") has card content so far;
- * tracks 2 and 3 show their kicker and title with a "coming soon" line
- * until Handoff sends hours, partner and learn/build lists for them. The
- * tabs only switch the card; they don't link anywhere (Tom, 10/13).
+ * theirs, verbatim; tracks 2 and 3 arrived 10/13. The bold lead on each
+ * "learn" line follows track 1's pattern (the phrase before the dash,
+ * colon or comma); the pasted copy lost its bold. The tabs only switch
+ * the card; they don't link anywhere (Tom, 10/13).
  */
 export const aiTrained = {
   eyebrow: "Handoff Academy · Powered by Coursera",
@@ -742,8 +742,59 @@ export const aiTrained = {
         ],
       },
     },
-    { id: "direct-it", kicker: "Direct it", title: "Agentic AI for Business", details: null },
-    { id: "build-it", kicker: "Build it", title: "AI Agents & Workflow Automation", details: null },
+    {
+      id: "direct-it",
+      kicker: "Direct it",
+      title: "Agentic AI for Business",
+      details: {
+        hours: "8 hours",
+        facts: [
+          { label: "For", value: "ops, marketing and leadership roles" },
+          { label: "With", value: "CertNexus" },
+          { label: "Earns", value: "AgenticAIBIZ credential" },
+        ],
+        learnLabel: "What they'll learn",
+        learn: [
+          { lead: "Spotting what's worth automating", rest: " \u2014 and what it's worth" },
+          { lead: "Agent design basics:", rest: " single vs. multi-agent, memory, safety" },
+          { lead: "Risk and governance", rest: " when AI acts on its own" },
+          { lead: "Rolling AI out", rest: " to a team and its stakeholders" },
+        ],
+        buildLabel: "What they'll build",
+        build: [
+          "A use-case assessment of agent-ready workflows",
+          "An agent design with guardrails built in",
+          "A team adoption roadmap",
+        ],
+      },
+    },
+    {
+      id: "build-it",
+      kicker: "Build it",
+      title: "AI Agents & Workflow Automation",
+      details: {
+        hours: "~60 hours",
+        facts: [
+          { label: "For", value: "technical and automation roles" },
+          { label: "With", value: "IBM, Board Infinity, Packt" },
+          { label: "Earns", value: "IBM certificate in AI agents" },
+        ],
+        learnLabel: "What they'll learn",
+        learn: [
+          { lead: "Agents that use tools, reason and correct themselves", rest: "" },
+          { lead: "RAG:", rest: " connecting AI to company knowledge with Pinecone and Chroma" },
+          { lead: "Multi-agent orchestration", rest: " with LangGraph, CrewAI and AutoGen" },
+          { lead: "Prototype to production:", rest: " testing, security, deployment" },
+        ],
+        buildLabel: "What they'll build",
+        build: [
+          "Working AI agents",
+          "RAG-powered Q&A chatbots",
+          "Multi-agent workflow systems",
+          "A GenAI app, deployed",
+        ],
+      },
+    },
   ],
   comingSoon: "Course details coming soon.",
 };
