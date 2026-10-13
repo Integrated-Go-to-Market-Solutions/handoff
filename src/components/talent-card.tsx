@@ -31,6 +31,9 @@ export function TalentCard({
             alt={`${name}, ${role} at Handoff`}
             fill
             sizes="(max-width: 640px) 268px, (max-width: 1024px) 33vw, 22vw"
+            // The first row is above the fold and often the largest image on
+            // screen, so it loads straight away.
+            loading={index < 4 ? "eager" : undefined}
             className="object-cover transition-all duration-700 group-hover:scale-[1.04] group-hover:grayscale"
           />
         </div>

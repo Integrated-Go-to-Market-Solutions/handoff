@@ -1,97 +1,66 @@
 import Image from "next/image";
-import { Button, Eyebrow } from "../brand";
-import { hero, sampleTalent } from "@/lib/content";
-
-const cardAccents = [
-  "bg-cyan text-ink",
-  "bg-royal text-bone",
-  "bg-bone text-ink",
-  "bg-ink-300 text-bone border border-cyan/30",
-] as const;
+import { Button, CtaNote, Eyebrow } from "../brand";
+import { hero } from "@/lib/content";
 
 /**
- * `subhead` is the one line an industry page swaps. The label, the headline
- * and the CTAs all stay identical, so the industry pages read as the same
- * site rather than as landing pages.
- *
- * Per the 9/4 and follow-up calls: the hero no longer leads with Handoff's
- * own team photos ("instead of the team on the top... a sampling that
- * focuses on talent... not from our team"); the decorative blurred colour
- * wash was dropped as an "unjustified gradient shape"; the stat numbers move
- * to their own section below instead of crowding the hero ("give these
- * numbers their own section... there's a lot to look at [here]"); and the
- * subhead no longer carries a left border/padding that offset it from the
- * headline's edge — flagged as the sections not sharing the same margin.
- *
- * Background is a real black-brick photo (per direct reference), with the
- * brand guide's actual "Screen effect" halftone dot screen laid over it —
- * a drawn CSS brick pattern read as fake; this is the real thing.
+ * Type-led hero: the two-line headline carries it, centred over a team photo.
+ * The LATAM map moved out to its own interactive section (TalentMap) further
+ * down the page.
  */
 export function HeroBright({ subhead }: { subhead?: string } = {}) {
   return (
     <section className="halftone relative overflow-hidden bg-ink pb-16 pt-14 md:pb-20 md:pt-20">
+      {/* Team photo, grayscale and heavily darkened so it only adds texture
+          behind the headline. Preloaded: it's the first thing on the page. */}
+      <Image
+        src="/images/hero/team.webp"
+        alt={hero.imageAlt}
+        fill
+        preload
+        sizes="100vw"
+        className="object-cover object-[50%_35%] grayscale"
+      />
       <div className="absolute inset-0" aria-hidden="true">
-        <Image
-          src="/textures/brick.jpg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
+        <div className="absolute inset-0 bg-ink/70" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgb(31_31_31/0.55),transparent_75%)]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/60" />
       </div>
-      <div className="shell relative z-10">
+      <div className="shell relative z-10 text-center">
         <Eyebrow className="mb-5 md:mb-6">{hero.eyebrow}</Eyebrow>
-        <h1 className="display max-w-[15ch] text-[clamp(3rem,9vw,7.5rem)] text-bone">
-          {hero.headline.map((part) => (
-            <span
-              key={part.text}
-              className={
-                part.tone === "royal"
-                  ? "text-azure"
-                  : part.tone === "cyan"
-                    ? "text-cyan"
-                    : undefined
-              }
-            >
-              {part.text}{" "}
-            </span>
-          ))}
+        {/* Line 1 big, the two short claims together on line 2. Both sized off
+            the viewport so neither line wraps or overflows. Line 2 divides by
+            19, not 15, since "AI Powered People." is longer than "AI trained." */}
+        <h1 className="display text-bone [line-height:1.08]">
+          {/* "Hire" lengthened line 1 (10/7), so it divides by 13.5, not 10.4,
+              to stay on one line from phones up. */}
+          <span className="hero-rise block whitespace-nowrap text-[clamp(1.5rem,calc((100vw-56px)/13.5),6rem)]">
+            {hero.headlineLead.before} <span className="text-azure">{hero.headlineLead.accent}</span>
+          </span>
+          <span className="mt-2 block whitespace-nowrap text-[clamp(1rem,calc((100vw-56px)/19),3.6rem)] md:mt-3">
+            {hero.headlineLines.slice(1).map((line, i) => (
+              <span
+                key={line.text}
+                className={`hero-rise inline-block ${i > 0 ? "ml-[0.35em]" : ""} ${
+                  line.tone === "cyan" ? "hero-shine" : ""
+                }`}
+                style={{
+                  animationDelay:
+                    line.tone === "cyan" ? `${0.25 + i * 0.2}s, ${1.4 + i * 0.2}s` : `${0.25 + i * 0.2}s`,
+                }}
+              >
+                {line.text}
+              </span>
+            ))}
+          </span>
         </h1>
 
-        <p className="mt-8 max-w-full text-lg font-semibold leading-relaxed text-bone md:whitespace-nowrap md:text-xl">
+        <p className="mx-auto mt-8 max-w-full text-lg font-semibold leading-relaxed text-bone text-balance md:text-xl">
           {subhead ?? hero.body}
         </p>
 
-        <div className="mt-8 flex flex-wrap items-center gap-3">
+        <div className="mt-8">
           <Button href={hero.primary.href}>{hero.primary.label}</Button>
-          <Button href={hero.secondary.href} variant="ghostDark">
-            {hero.secondary.label}
-          </Button>
-        </div>
-
-        {/* A sample of the talent you could hire, not the Handoff team. No
-            real candidate photos exist yet, so these are plainly labeled
-            placeholders rather than stock photos standing in for people. */}
-        <div className="mt-12 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap md:gap-4">
-          {sampleTalent.map((person, i) => (
-            <div
-              key={person.name}
-              className={`flex min-w-[9.5rem] flex-1 items-center gap-3 rounded-[var(--radius-card)] p-4 ${cardAccents[i % cardAccents.length]}`}
-            >
-              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-black/10 text-sm font-bold">
-                {person.name[0]}
-              </span>
-              <span className="min-w-0">
-                <span className="block text-sm font-bold leading-tight">
-                  {person.name}
-                </span>
-                <span className="block text-xs font-medium leading-snug opacity-70">
-                  {person.role}
-                </span>
-              </span>
-            </div>
-          ))}
+          <CtaNote className="mt-4" />
         </div>
       </div>
     </section>

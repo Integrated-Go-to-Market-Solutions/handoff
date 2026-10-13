@@ -12,7 +12,14 @@ export const site = {
   tagline: "The team behind your team.",
   // Domain is not pointed yet. Keep links relative so the Vercel URL works.
   bookCall: "/contact",
-  seeTalent: "/talent",
+  /**
+   * The one booking link for "Book a call" (the finale). PLACEHOLDER: meant
+   * to be David's Calendly, but no URL has been supplied ([CALENDLY_URL]), so
+   * it points at /contact for now. Swap it here; an https link opens in a
+   * new tab automatically.
+   */
+  bookingUrl: "/contact",
+  seeTalent: "/roles",
 };
 
 export const socialLinks = [
@@ -43,10 +50,22 @@ export const hero = {
   headline: [
     { text: "The best of" },
     { text: "LATAM.", tone: "royal" },
-    { text: "AI trained." },
+    { text: "AI Powered People." },
     { text: "Here to stay.", tone: "cyan" },
   ] as { text: string; tone?: "royal" | "cyan" }[],
-  body: "We help the best US companies hire Latin America's top 1% talent.",
+  /**
+   * One entry per line in the live hero. Line 1 is split so "LATAM." can
+   * carry the brand blue (Tom, 10/7: option B, centered).
+   */
+  headlineLead: { before: "Hire the best of", accent: "LATAM." },
+  headlineLines: [
+    { text: "Hire the best of LATAM." },
+    { text: "AI Powered People." },
+    { text: "Here to stay.", tone: "cyan" },
+  ] as { text: string; tone?: "cyan" }[],
+  imageAlt: "The Handoff team",
+  /** Tom's hero copy (10/7), with "Latin America talent" corrected to "Latin American talent". */
+  body: "Handoff places full-time, dedicated Latin American talent inside US companies, screened to the top 1%.",
   primary: { label: "Get Started Today", href: site.bookCall },
   secondary: { label: "Talk to Our Team", href: site.bookCall },
   note: "Full-time, dedicated teammates. Not a marketplace.",
@@ -65,12 +84,15 @@ export const hero = {
  * watermark instead of a literal map graphic.
  */
 export const whyLatam = {
-  headline: "Why LATAM",
+  /** Renamed 10/5 per Tom's suggestion on the call, which Anthony agreed to. */
+  headline: "Why US teams work nearshore with LATAM talent",
+  /** Drawn only from the card bullets below (business hours, US expectations). */
+  subhead: "They work your business hours and already know how US teams run.",
   categories: [
     {
       title: "Talent quality",
       tagline: "What makes LATAM great for hiring",
-      icon: "star",
+      icon: "award",
       bullets: [
         "Deep pool of educated, professional talent",
         "Strong English proficiency across key markets",
@@ -92,7 +114,7 @@ export const whyLatam = {
     {
       title: "Cultural fit",
       tagline: "A world of talent close to your culture",
-      icon: "handshake",
+      icon: "users",
       bullets: [
         "Strong alignment with U.S. business culture",
         "Clear communication, proactive problem-solving",
@@ -117,6 +139,29 @@ export const proofStats = [
 ] as const;
 
 /**
+ * Homepage section 2 copy (Tom's T3 from the 10/5 call, workshopped 10/5).
+ * Headline and line A: Anthony's point that the talent has worked in the
+ * client's industry ("two to five years", his words on the call; confirm
+ * before launch). Line B: Tom's point that Handoff doesn't put forward
+ * anyone outside the field.
+ */
+export const industriesStrip = {
+  headline: "Hire people who have already done this work in your industry.",
+  body: "The people we place have spent two to five years in industries like yours, so they arrive knowing how the work runs. We don't put forward candidates from outside your field.",
+};
+
+/**
+ * The thin KPI ribbon under the homepage industries. The three Tom named on
+ * the 10/5 call: the two existing figures plus "top 1% of talent", which
+ * Anthony confirmed in the Pulse answers.
+ */
+export const credibilityStats = [
+  { value: "$50K+", label: "Saved per hire" },
+  { value: "96%+", label: "Client retention" },
+  { value: "Top 1%", label: "Of talent" },
+] as const;
+
+/**
  * Sample talent for the hero, not the Handoff team. Anthony, verbatim:
  * "instead of the team on the top, how you have it now, we would want...
  * a sampling that would focus on talent, like Miguel, AI developer... not
@@ -131,6 +176,39 @@ export const sampleTalent = [
   { name: "Sofia", role: "Operations Manager" },
   { name: "Andres", role: "Marketing Specialist" },
 ] as const;
+
+/**
+ * "Meet your talent" map on the homepage. PLACEHOLDER: the final role list,
+ * photos and salary numbers are still pending. The names are made-up first
+ * names, the cities are realistic but not real people's, and the salary
+ * ranges are rough monthly USD guesses. The photos are PLACEHOLDERS too:
+ * Handoff team members from /images/team (Jake Castro's is used twice, as
+ * there are seven photos for eight pins), not the talent described.
+ *
+ * Order matters: entry N sits on pin N of the map (positions live in
+ * talent-map.tsx), so swap the content in place rather than reordering.
+ */
+/**
+ * 10/5: pin roles renamed to Anthony's department list, and each pin links to
+ * its department page (/roles/[department]). "Digital Marketing Manager" has
+ * no match in his list; it links to Marketing until Handoff picks a name.
+ */
+export const talentMap = {
+  heading: { before: "Meet your", link: "talent" },
+  intro: "The roles we place most, from Mexico to Patagonia. Hover or tap a pin to see who you could be working with.",
+  cta: { label: "Explore all roles", href: "/roles" },
+  salaryLabel: "Salary benchmark",
+  profiles: [
+    { name: "Valeria", city: "Guadalajara", country: "Mexico", role: "Digital Marketing Manager", department: "marketing", salary: "$2,500–$3,500/mo", photo: "/images/team/jazmin-esparza.webp" },
+    { name: "Diego", city: "San José", country: "Costa Rica", role: "Full-Stack Developer", department: "software-engineering", salary: "$3,500–$5,500/mo", photo: "/images/team/jake-castro.webp" },
+    { name: "Camila", city: "Medellín", country: "Colombia", role: "AP/AR Specialist", department: "finance-accounting", salary: "$1,500–$2,200/mo", photo: "/images/team/karla-patron.webp" },
+    { name: "Mateo", city: "Lima", country: "Peru", role: "AI Developer / AI Engineer", department: "data-ai", salary: "$3,000–$5,000/mo", photo: "/images/team/simon-quintero.webp" },
+    { name: "Larissa", city: "Recife", country: "Brazil", role: "Relocation Coordinator", department: "corporate-relocation", salary: "$1,600–$2,400/mo", photo: "/images/team/catalina-saldarriaga.webp" },
+    { name: "Gabriel", city: "São Paulo", country: "Brazil", role: "Guest Services Coordinator", department: "corporate-housing-mtr", salary: "$1,200–$1,800/mo", photo: "/images/team/leidy-quintero.webp" },
+    { name: "Sofía", city: "Córdoba", country: "Argentina", role: "Reservations Specialist", department: "corporate-housing-mtr", salary: "$1,800–$2,600/mo", photo: "/images/team/shaori-velueta.webp" },
+    { name: "Tomás", city: "Neuquén", country: "Argentina", role: "SDR/BDR", department: "sales", salary: "$1,500–$2,500/mo", photo: "/images/team/jake-castro.webp" },
+  ] as { name: string; city: string; country: string; role: string; department: string; salary: string; photo: string | null }[],
+};
 
 /** The founder's situation, in his own terms. From the workshopped ICP. */
 export const problem = {
@@ -181,33 +259,29 @@ export const models = [
   {
     tag: "Most popular",
     name: "Managed Staffing",
-    forWho: "Companies building a team, office-based",
+    forWho: "Companies building a team",
     price: "~$3,500/month",
-    terms: "Office-based, supervised team members",
-    copy: "We recruit, employ, train, and performance manage, office-based with extra structure and accountability. You get the outcome and one point of accountability. Ideal for higher-risk functions.",
+    terms: "Supervised, managed team members",
+    copy: "We recruit, employ, train, and performance manage, with extra structure and accountability. You get the outcome and one point of accountability. Ideal for higher-risk functions.",
     points: [
       "Handoff owns recruiting, employment and management",
-      "Office-based, supervised team members",
+      "Supervised, managed team members",
       "Extra structure and accountability",
+    ],
+    /** PLACEHOLDER copy pending client approval. */
+    extrasLabel: "Also included with Managed Staffing",
+    extras: [
+      "Employment and payroll handled by Handoff",
+      "Compliance",
+      "Equipment and tools",
+      "Day-to-day supervision",
+      "Performance management",
+      "Replacement support",
     ],
     featured: true,
   },
   {
-    tag: "Direct the work yourself",
-    name: "Remote Employee of Record (EOR)",
-    forWho: "Companies that want to manage day to day",
-    price: "~$2,900/month",
-    terms: "Compliant employment, benefits included",
-    copy: "We legally employ your team and carry payroll, benefits and in-country compliance. You direct the work exactly as you would with any employee.",
-    points: [
-      "Handoff is the legal employer, on our own entity",
-      "Payroll, benefits and compliance handled in country",
-      "You run the day to day",
-    ],
-    featured: false,
-  },
-  {
-    tag: "Fastest yes",
+    tag: "Ready to Go",
     name: "Recruitment & Placement",
     forWho: "Smaller teams and one-off hires",
     price: "~$1,600/month",
@@ -215,19 +289,137 @@ export const models = [
     copy: "We find and vet the person, you employ them directly. Includes a 90-day guarantee. Three of our last four new clients started here.",
     points: [
       "Direct hire model",
-      "Lowest ongoing cost of the three models",
+      "Lowest ongoing cost of the two models",
       "Full ownership of the relationship",
+    ],
+    /** The existing card copy, split into points (no new claims). */
+    extrasLabel: "How Recruitment & Placement works",
+    extras: [
+      "We find and vet the person",
+      "You employ them directly",
+      "Includes a 90-day guarantee",
+      "Three of our last four new clients started here",
     ],
     featured: false,
   },
 ];
 
 /**
- * Shown once beneath the three cards, not repeated per-card: every model
- * carries the same one-time placement fee on top of its own figure above.
+ * Service pages (/services/[slug]): Tom's content doc (Direct Hire and
+ * Managed Staffing tabs), 10/5. One edit to the doc: Direct Hire said
+ * "contract them directly as an international contractor"; it reads
+ * "contract them directly" here, per the 10/5 call's rule against calling
+ * the talent contractors. The pricing table makes the same choice.
+ */
+export const services = [
+  {
+    slug: "direct-hire",
+    name: "Direct Hire",
+    subhead: "Contract the talent directly and manage the day to day yourself.",
+    howItWorks:
+      "We run the search through the Hands-Off Hiring System and hand you a shortlist for the role. Because the skills, English, and AI fluency are vetted before you meet anyone, you interview for fit. You pick the professional who matches how your team operates, so you bring on someone who fits your culture, beyond the role on paper. From there, you contract them directly and pay them each month. They work on your team, under your direction, and because this is a direct contract rather than employment, there's no payroll, benefits, or tax withholding to administer on your side.",
+    detailHeadline: "What you handle",
+    detailBody:
+      "You own the working relationship: you set the work, manage the day to day, and pay the talent monthly. We stay available to help you fill another seat or start a replacement search.",
+    detailList: [] as string[],
+    bestFit:
+      "Choose Direct Hire when you want the talent on your own team and the capacity to manage them directly. If you would rather we carry the employment and support, Managed Staffing does that.",
+    other: { label: "See Managed Staffing", slug: "managed-staffing" },
+  },
+  {
+    slug: "managed-staffing",
+    name: "Managed Staffing",
+    subhead: "We employ and support the talent as the employer of record. You direct the work.",
+    howItWorks:
+      "The role goes through the Hands-Off Hiring System first, and you receive a shortlist of professionals screened against it. With skills, English, and AI fluency already settled, you are choosing for fit: the professional who works the way your team works and suits the culture you're building. From there, we employ them as the legal employer of record and take on the employment side, from payroll to benefits, while you direct the work day to day. The talent works remotely, embedded in your team.",
+    detailHeadline: "What's included",
+    detailBody: "",
+    detailList: [
+      "Payroll",
+      "HR and compliance",
+      "Performance management",
+      "Retention support",
+      "Benefits",
+      "Equipment and IT",
+    ],
+    bestFit:
+      "Managed Staffing is the fit when you want us to hold the employment, compliance, and support, and keep the talent with you for the long term. Prefer to contract the talent yourself? Direct Hire covers that.",
+    other: { label: "See Direct Hire", slug: "direct-hire" },
+  },
+];
+
+/**
+ * Pricing section header: Tom's content doc (Pricing tab), 10/5. Anthony
+ * confirmed $1,600 is the talent's monthly salary, not Handoff's fee, so
+ * the line says so.
+ */
+export const modelsIntro = {
+  headline: "Two ways to work together",
+  subhead: "Pick the model that fits how you want to bring on talent. Both run on the same Hands-Off Hiring System.",
+  startingAt: { label: "Talent salaries start at", price: "$1,600/month" },
+  addOns: "Add‑ons are available on either model.",
+  cta: "Book a call",
+};
+
+/**
+ * The pricing comparison (`Models detailed`), Umair's 10/5 compact table
+ * with the content doc's copy (10/5): the doc's "Both models include"
+ * points as shared rows, Managed Staffing's "What's included" as the
+ * differences, and each model's "Fits when" line as Best for. `true` =
+ * check, `false` = dash, a string = that text (`accent` marks the value
+ * shown in the brand green). /v2 keeps `models` above.
+ */
+export const modelsCompare = {
+  columns: ["Direct Hire", "Managed Staffing"],
+  /** Index of the highlighted column. */
+  featured: 1,
+  rows: [
+    {
+      label: "The Hands-Off Hiring System",
+      note: "Sourcing, the Vet, and a shortlist of two for each role",
+      values: [true, true],
+    },
+    { label: "Talent screened for skills, English, and AI fluency", values: [true, true] },
+    { label: "Work in your time zone, with client-ready English", values: [true, true] },
+    {
+      label: "The guarantee",
+      note: "$1,000 off your next search if none of the first four fits",
+      values: [true, true],
+    },
+    { label: "Who employs them", values: ["You contract them directly", { text: "Handoff, as employer of record", accent: true }] },
+    { label: "Payroll", values: [false, true] },
+    { label: "HR and compliance", values: [false, true] },
+    { label: "Benefits", values: [false, true] },
+    { label: "Equipment and IT", values: [false, true] },
+    { label: "Performance management", values: [false, true] },
+    { label: "Retention support", values: [false, true] },
+    {
+      label: "Best for",
+      values: ["When you want them on your own team", "When you want us to carry the employment, compliance, and support"],
+    },
+  ] as { label: string; note?: string; values: (boolean | string | { text: string; accent: boolean })[] }[],
+  footnote: "One-time placement fee of 25% of first-year salary applies to both.",
+};
+
+/** PLACEHOLDER copy pending client approval: what both models share. */
+export const modelsShared = {
+  label: "Both models include",
+  items: [
+    "Candidate sourcing",
+    "Multi-round vetting",
+    "Skills and culture assessments",
+    "AI Powered People",
+    "A curated shortlist",
+    "The hiring guarantee",
+  ],
+};
+
+/**
+ * Shown once beneath the two cards, not repeated per-card: both models
+ * carry the same one-time placement fee on top of their own figure above.
  */
 export const modelsFootnote =
-  "All models include a one-time placement fee of 25% of the candidate's first-year salary. The final amount varies by role, seniority and scope, typically $4,500 to $6,500.";
+  "Both models include a one-time placement fee of 25% of the candidate's first-year salary. The final amount varies by role, seniority and scope, typically $4,500 to $6,500.";
 
 /**
  * Real Handoff team members, not stock and not placed talent. This is the
@@ -244,6 +436,54 @@ export const team = [
   { slug: "shaori-velueta", name: "Shaori Velueta", role: "Digital Marketer" },
 ];
 
+/**
+ * About page copy (10/5). Built from Tom's content doc (headline, lead,
+ * founder, close) and Anthony's words on the 10/5 call (opportunity gap,
+ * win-win, Humanize/Connect/Hustle). The value one-liners are from the live
+ * talenthandoff.com/about, with "We make $hit happen" softened: no
+ * profanity on the site (Tom). "Paid above market" is Anthony's phrase from
+ * the call and still needs his OK to publish.
+ */
+export const aboutPage = {
+  headline: "Who we are",
+  lead: "Handoff places Latin America's top talent inside US companies, and stays with you after they're placed. The work is to match the right professional to your team and your culture, and to support them so they last.",
+  gap: {
+    headline: "Talent is everywhere. Opportunity isn't.",
+    body: "Skilled professionals live everywhere. The chance to work with great companies doesn't reach all of them. Handoff closes that gap.",
+  },
+  winWin: {
+    headline: "A win on both sides",
+    sides: [
+      {
+        title: "For the companies we work with",
+        body: "Many of our clients don't have the budget for every seat they need, so they get stuck and can't scale. With Handoff, they bring on the talent to grow, and to compete with bigger companies in their industry that have bigger budgets.",
+      },
+      {
+        title: "For the professionals we place",
+        body: "Our talent is paid above market, works with some of the best companies in the world, and keeps growing with upskilling from us.",
+      },
+    ],
+    closer:
+      "Hearing clients talk about how far they've scaled, and hearing the talent talk about what the role opened up for them, is why we do this.",
+  },
+  founder: {
+    headline: "The founder",
+    body: "Our founder spent over a decade hiring in this industry before starting Handoff. That's why the recruiting runs deepest in corporate housing and relocation, and why the Hands-Off Hiring System is built the way it is, from years of doing the hiring firsthand.",
+  },
+  values: {
+    headline: "What we live by",
+    items: [
+      // Order per Tom (10/6): Humanize, Connect, Hustle.
+      { name: "Humanize", line: "People come first in everything we do." },
+      { name: "Connect", line: "Relationships are the heart of our business." },
+      { name: "Hustle", line: "We make it happen." },
+    ],
+  },
+  teamHeadline: "Our team",
+  close: "We are the team behind your team. We do the sourcing, screening, and support, so you can bring on talent with confidence and keep your focus on the work.",
+  cta: "Book a call",
+};
+
 export const proof = {
   eyebrow: "The proof",
   headline: "Everyone talks about hiring top talent.",
@@ -252,47 +492,130 @@ export const proof = {
 };
 
 /**
- * Confirmed against the real 36-company client roster (2026-09-07). The
- * four names that were not on the roster (Best Western, Jacob Street,
- * Elevate, and "Fragomen" alone) have been dropped rather than guessed at;
- * "Fragomen" is real as the joint "Fragomen WorkRight" account (same client
- * as the Robert Horsley / WorkRight testimonial in clientQuotes below).
- * Extended 2026-09-08 against the real logo wall from the sales deck,
- * pasted directly — but a pasted image can't be extracted into individual
- * files, so entries without a real `slug` image render as a clean text
- * wordmark instead (`hasImage: false`) until the actual logo files land.
+ * Only the companies the client has approved for the site, in the client's
+ * order. GFDA / Good Feature Design Alliance must not be shown. Entries
+ * without a logo file (`hasImage: false`) render as a text wordmark until
+ * the real file lands in /public/images/logos.
+ */
+/**
+ * Client logos for the band under the homepage hero, in Handoff's tier-1
+ * order (10/13): hospitality, relocation, SaaS, relocation tech, e-commerce,
+ * agency, startup. Files come from each company's own website, in the
+ * colors the company uses there (Oasis, Snap, Earthside and CharCharms only
+ * publish black logos). WorkRight only publishes a white logo for its navy
+ * navbar, so it sits on a tile in that navy (#000629) rather than being
+ * recolored. `stacked` logos (icon over name) get a taller box than
+ * wide wordmarks so they read at a similar weight. Originals are in the
+ * git-ignored assets/logos folder.
  */
 export const logos = [
+  { slug: "united-corporate-housing", name: "United Corporate Housing", hasImage: true, stacked: true },
+  { slug: "oasis", name: "Oasis", hasImage: true },
+  { slug: "altovita", name: "AltoVita", hasImage: true, stacked: true },
   { slug: "dwellworks", name: "Dwellworks", hasImage: true },
-  { slug: "fragomen", name: "Fragomen WorkRight", hasImage: true },
-  { slug: "quest-relocation", name: "Quest Relocation Group", hasImage: true },
-  { slug: "united-corporate-housing", name: "United Corporate Housing", hasImage: true },
-  { slug: "nyc-navigator", name: "NYC Navigator", hasImage: true },
-  { slug: "good-carma", name: "Good Carma Consulting", hasImage: true },
-  { slug: "utility-basics", name: "Utility Basics", hasImage: true },
-  { slug: "3sixty", name: "3Sixty", hasImage: false },
-  { slug: "guru", name: "We Are GURU", hasImage: false },
-  { slug: "altovita", name: "AltoVita", hasImage: false },
-  { slug: "pivt", name: "PIVT", hasImage: false },
-  { slug: "gfda", name: "GFDA", hasImage: false },
-  { slug: "all-that-housing", name: "All That Housing", hasImage: false },
-  { slug: "maha", name: "MAHA", hasImage: false },
+  { slug: "workright", name: "WorkRight by Fragomen", hasImage: true, tile: "#000629" },
+  { slug: "pivt", name: "Pivt", hasImage: true, stacked: true },
+  { slug: "snap-supplements", name: "Snap Supplements", hasImage: true },
+  { slug: "earth-side-farms", name: "Earthside Farms", hasImage: true, stacked: true },
+  { slug: "charcharms", name: "CharCharms", hasImage: true },
+  { slug: "do-good-cfo", name: "Do Good CFO", hasImage: true, stacked: true },
+  { slug: "igtms", name: "IGTMS", hasImage: true },
+  { slug: "doorspot", name: "DoorSpot", hasImage: true },
 ] as const;
 
 /**
- * "Hiring Highway": the proprietary six-step system, per the client's own
- * direction. The four real, already-vetted steps from the original process
- * got split into six at finer grain rather than padded out with invented
- * ones — step 3 splits into skills/English and AI fluency, step 4 splits
- * into meeting the shortlist and the actual employment/onboarding.
+ * The Handoff Hiring System: four steps, CEO-approved copy, verbatim.
+ * Read by the homepage (compact) and /how-it-works (full).
  */
 export const process = {
-  eyebrow: "The Hiring Highway",
-  headline: "Six steps. One person who sticks.",
+  /** The live section title (homepage and /how-it-works). No tagline under it. */
+  titleParts: { before: "The", swipe: "Hands-off", after: "Hiring System" },
+  /** eyebrow, headline, body: still used by /v2 (process.tsx) only. */
+  eyebrow: "Handoff Hiring System",
+  headline: "Four steps. One person who sticks.",
   /** Same headline, split so the last word can carry the cyan swipe. */
-  headlineParts: { before: "Six steps. One person who", swipe: "sticks", after: "." },
-  body: "Every hire goes through the same six steps, no shortcuts. That is how the right person lands in the right seat and stays there.",
+  headlineParts: { before: "Four steps. One person who", swipe: "sticks", after: "." },
+  /** Intro under the title (homepage and /how-it-works): Tom's content doc, 10/5. */
+  body: "A four-step process that keeps the sourcing and screening with us. You make one decision at the end: which finalist to place.",
   lede: "Nobody skips a step, not even when you needed someone yesterday. About 21 days start to finish, and you'll know exactly where things stand the whole way.",
+  /**
+   * Step copy: Tom's content doc (How It Works tab), 10/5. The Vet's
+   * checklist and closing line show on /how-it-works; the compact homepage
+   * card shows only `body`.
+   */
+  steps: [
+    {
+      n: "01",
+      title: "Discovery",
+      body: "We learn the role, the team it joins, and what a strong fit looks like to you. That profile sets the bar for the search.",
+    },
+    {
+      n: "02",
+      title: "The Vet",
+      body: "We start with roughly 200 candidates and screen down.",
+      bulletsLead: "Each one runs through:",
+      bullets: [
+        "Video submissions",
+        "English proficiency",
+        "A skills assessment for the role",
+        "AI literacy",
+        "Intelligence and motivation",
+        "Recruiter interviews",
+      ],
+      after: "Only the candidates who clear the full screen move forward.",
+    },
+    {
+      n: "03",
+      title: "The Shortlist",
+      body: "You see two. We bring you two candidates matched to the role, with their video, assessment results, and our notes. You interview both and choose.",
+    },
+    {
+      n: "04",
+      title: "The Guarantee",
+      body: "If none of the first four candidates fits, your next search is $1,000 off. We run the screening, so a miss is on us to fix.",
+    },
+  ] as { n: string; title: string; body: string; bulletsLead?: string; bullets?: string[]; after?: string }[],
+  closer: {
+    line: "Every hire after your first gets easier. We learn your company, your culture, your bar for 'great.' By hire five, you might not meet the candidate until their first day.",
+    cta: "Start at step one",
+  },  /** The /how-it-works close: Tom's content doc, 10/5. The homepage keeps `closer`. */
+  pageCloser: {
+    headline: "Start with the role",
+    line: "Tell us what you need to fill, and we'll open the search.",
+    cta: "Book a call",
+  },
+
+  /** Homepage teaser copy: the compact road links through to the full page. */
+  teaserCta: "See every step",
+  /** Where "See every step" lands: the start of the /how-it-works timeline. */
+  teaserHref: "/how-it-works#timeline",
+  /**
+   * The vertical timeline on /how-it-works. One entry per step, in order.
+   * PLACEHOLDER videos: none of these show the actual step; they're existing
+   * brand clips (the promo and the three Instagram reels) until real step
+   * videos exist. Swap `src` and `poster` here. `vertical` clips show as a
+   * centred head-and-shoulders portrait over a blurred copy of the frame;
+   * `focus` is the object-position that keeps the person in view.
+   */
+  timeline: {
+    labels: ["Step one", "Step two", "Step three", "Step four"],
+    cta: { label: "Hire Today", step: 0 },
+    videos: [
+      { src: "/videos/handoff-promo.mp4", poster: "/videos/handoff-promo.jpg", focus: "50% 50%", vertical: false },
+      { src: "/videos/remote-culture.mp4", poster: "/videos/remote-culture.jpg", focus: "50% 30%", vertical: true },
+      { src: "/videos/day-with-handoff.mp4", poster: "/videos/day-with-handoff.jpg", focus: "50% 40%", vertical: true },
+      { src: "/videos/handoff-values.mp4", poster: "/videos/handoff-values.jpg", focus: "50% 30%", vertical: true },
+    ],
+  },
+};
+
+/**
+ * The previous six-step version, kept only for the /v2 alternate homepage,
+ * whose road graphic is drawn around exactly six markers.
+ */
+export const legacyProcess = {
+  headline: "Six steps. One person who sticks.",
+  body: "Every hire goes through the same six steps, no shortcuts. That is how the right person lands in the right seat and stays there.",
   steps: [
     {
       n: "01",
@@ -337,12 +660,6 @@ export const process = {
       bullets: ["Payroll and benefits", "Equipment", "Compliance", "Weekly check ins", "Ongoing coaching", "90 day guarantee"],
     },
   ],
-  closer: {
-    line: "You don't pay a thing until you hire.",
-    cta: "Start at step one",
-  },
-  /** Homepage teaser copy: the compact road links through to the full page. */
-  teaserCta: "See every step",
 };
 
 /**
@@ -352,7 +669,7 @@ export const process = {
  * rather than invented claims.
  */
 export const hiringHighwayVideo = {
-  label: "Watch the Hiring Highway",
+  label: "Watch the Handoff Hiring System",
   caption: "The real journey, filmed start to finish. Coming soon.",
 };
 
@@ -375,12 +692,63 @@ export const dayInLife = {
 };
 
 /**
- * The hero says AI TRAINED and nothing else on the site backed it up. This
- * block does, immediately after the process, where the vetting claim lands.
+ * Homepage AI section, rebuilt 10/13 to Handoff's own mockup and copy doc
+ * ("Handoff Academy", after the Pearl AI+ curriculum layout). Copy is
+ * theirs, verbatim. Only track 1 ("Use it") has card content so far;
+ * tracks 2 and 3 show their kicker and title with a "coming soon" line
+ * until Handoff sends hours, partner and learn/build lists for them. The
+ * tabs only switch the card; they don't link anywhere (Tom, 10/13).
  */
 export const aiTrained = {
-  headline: "What “AI trained” actually means",
-  body: "Every person we place already works with AI tools daily and knows where to use them and where not to. That is a hiring standard for us, not a feature we added. It is also why they move faster on the same work. The judgement stays human. The busywork does not.",
+  eyebrow: "Handoff Academy · Powered by Coursera",
+  headline: { before: "Every Handoff hire shows up", highlight: "AI-ready." },
+  subhead:
+    "Through our Coursera partnership, the people we place train with Google, IBM and CertNexus — from everyday prompting to building agents that run real workflows.",
+  subheadBold: "The judgment stays human. The busywork doesn't.",
+  toolsLabel: "Tools our talent works with",
+  /**
+   * Icons are LobeHub Icons (MIT) in /public/images/ai-tools: colour
+   * versions where they exist. OpenAI and Grok are single-colour white
+   * marks, shown black (`mono`) on this light section.
+   */
+  tools: [
+    { name: "Claude", file: "claude-color" },
+    { name: "ChatGPT", file: "openai", mono: true },
+    { name: "Gemini", file: "gemini-color" },
+    { name: "Perplexity", file: "perplexity-color" },
+    { name: "Grok", file: "grok", mono: true },
+  ],
+  tracks: [
+    {
+      id: "use-it",
+      kicker: "Use it",
+      title: "AI Fundamentals for Everyday Work",
+      details: {
+        hours: "~5 hours",
+        facts: [
+          { label: "For", value: "all roles" },
+          { label: "With", value: "Google" },
+          { label: "Earns", value: "AI Excellence certification" },
+        ],
+        learnLabel: "What they'll learn",
+        learn: [
+          { lead: "How AI actually works", rest: " — and where it falls short" },
+          { lead: "Prompting with a framework:", rest: " task, context, references, evaluate, iterate" },
+          { lead: "AI as a collaborator", rest: ", not a shortcut" },
+          { lead: "Responsible use", rest: " — checking for accuracy and bias" },
+        ],
+        buildLabel: "What they'll build",
+        build: [
+          "Multi-step prompt chains for real work",
+          "Brainstorms, plans and visuals in hands-on labs",
+          "Custom AI-generated images",
+        ],
+      },
+    },
+    { id: "direct-it", kicker: "Direct it", title: "Agentic AI for Business", details: null },
+    { id: "build-it", kicker: "Build it", title: "AI Agents & Workflow Automation", details: null },
+  ],
+  comingSoon: "Course details coming soon.",
 };
 
 export const faqs = [
@@ -390,15 +758,20 @@ export const faqs = [
   },
   {
     q: "What does it cost?",
-    a: "Recruitment & Placement starts around $1,600/month, Remote Employer of Record around $2,900/month, and Managed Staffing around $3,500/month. Every model also carries a one-time placement fee of 25% of first-year salary, typically $4,500 to $6,500. We quote the exact number on the first call once we know the role.",
+    // 10/5: Anthony confirmed $1,600 is the talent's monthly salary, not
+    // Handoff's fee. The per-model monthly figures ($2,900 EOR, $3,500
+    // Managed Staffing) came out until Handoff confirms what they include.
+    a: "Talent salaries start at $1,600 a month. Handoff's fees depend on the model you choose, Direct Hire or Managed Staffing, and both carry a one-time placement fee of 25% of first-year salary, typically $4,500 to $6,500. We quote the exact number on the first call once we know the role.",
   },
   {
     q: "We are not ready to hire someone full time.",
-    a: "Then we are honestly not your fit yet, and we will say so rather than sell you something that will not work. Handoff exists for companies committing to a real hire who can own an area of the business.",
+    a: "Then we are not your fit yet, and we will say so rather than sell you something that will not work. Handoff exists for companies committing to a real hire who can own an area of the business.",
   },
   {
     q: "What if the person does not work out?",
-    a: "Direct-hire placements carry a 90-day guarantee. Under Managed Staffing we own performance management, so a problem is ours to fix, not another hiring cycle for you to run.",
+    // 10/5: the guarantee now matches Tom's content doc (How It Works);
+    // the earlier "90-day guarantee" line came out.
+    a: "If none of the first four candidates fits, your next search is $1,000 off. Under Managed Staffing we own performance management, so a problem is ours to fix, not another hiring cycle for you to run.",
   },
   {
     q: "Why Latin America?",
@@ -429,7 +802,7 @@ export const roleTicker = [
 /**
  * Day-in-the-life video band. Mark, 8/13: "we don't talk about overseas
  * talent. We are the overseas talent. And that's the difference." Clips are
- * Handoff's own footage, transcoded by scripts/prep-video.mjs.
+ * Handoff's own Instagram reels, served from /public/videos.
  */
 export const vibes = {
   headline: "We are the",
@@ -438,19 +811,19 @@ export const vibes = {
   body: "Competitors film their founders describing how good the talent is. You never actually see the talent. This is ours, in their own words, shot where they work.",
   clips: [
     {
-      slug: "vibes",
-      name: "A day at Handoff",
-      caption: "Medellín. Part working session, part the reason people stay.",
+      slug: "day-with-handoff",
+      name: "A day with Handoff",
+      caption: "Our Colombia office, from the first laptop open to city lights.",
     },
     {
-      slug: "jazmin",
-      name: "Jazmin Esparza",
-      caption: "Chief of Staff. Started as employee number two.",
+      slug: "remote-culture",
+      name: "Our remote culture",
+      caption: "Confidence and accountability, no matter the distance.",
     },
     {
-      slug: "shaori",
-      name: "Shaori Velueta",
-      caption: "Digital Marketer, on what changed for her.",
+      slug: "handoff-values",
+      name: "Handoff values",
+      caption: "Our values are simple. This is how we lead.",
     },
   ],
 };
@@ -482,6 +855,18 @@ export const soul = {
     /** Runs smaller, in Gotham, under the display line. One sentence per line. */
     sub: ["A person who is treated like a teammate stays.", "A person who is treated like a line item leaves."],
   },
+  /**
+   * The live Alma treatment (homepage and /about): a dictionary entry over
+   * the team footage. Copy verbatim from the brief. `closerParts` above is
+   * still used by /v2.
+   */
+  dictionary: {
+    intro: "We named our platform Alma.",
+    headword: "alma",
+    pronunciation: "[al·ma]",
+    partOfSpeech: "noun",
+    definition: "a person we treat like a teammate. Stays.",
+  },
   culture: {
     stat: "Several times a year",
     label:
@@ -492,6 +877,12 @@ export const soul = {
 export const cta = {
   headline: "Stop being the bottleneck.",
   headlineParts: { before: "Stop being the", accent: "bottleneck." },
+  /** Closing line of the animated finale. PLACEHOLDER copy. */
+  closing: "Let Handoff take it from here.",
+  /** Work items that fall down the sides of the finale. PLACEHOLDER copy. */
+  jam: ["Invoices", "Scheduling", "Follow-ups", "Reporting", "Hiring", "Onboarding", "Payroll", "Inbox"],
+  /** The finale's one button. Links to `site.bookingUrl`. */
+  book: "Book a call",
   body: "Bring the role you cannot get off your plate. One call is usually enough to scope it, pick the model and give you a real timeline.",
   primary: { label: "Get Started Today", href: site.bookCall },
   secondary: { label: "Talk to Our Team", href: site.bookCall },
@@ -549,6 +940,161 @@ export const roleGroups = [
   },
 ];
 
+/**
+ * Department pages (/roles/[slug]). Anthony's list from the 10/5 Pulse
+ * answers, verbatim: "Department Nav (industry-agnostic, primary
+ * structure)", modeled on hirewithnear.com/hire/marketing. The last two
+ * sat below a divider in his list and stay last here.
+ *
+ * Per the 10/5 call: each page leads with that department's role video,
+ * then the full role list; a single role links to booking a call, not to
+ * its own page. `video` stays empty until Handoff's role footage is in the
+ * repo, and the page renders no video slot without one (empty "coming
+ * soon" placeholders were cut from the site on 9/8).
+ */
+export type Department = {
+  slug: string;
+  name: string;
+  roles: readonly string[];
+  video?: { src: string; poster: string };
+};
+
+export const departments: readonly Department[] = [
+  {
+    slug: "data-ai",
+    name: "Data & AI",
+    roles: [
+      "AI Developer / AI Engineer",
+      "Machine Learning Engineer",
+      "Data Scientist",
+      "Data Engineer",
+      "Data Analyst",
+      "Database Developer/Administrator",
+      "BI Analyst",
+      "Automation/Prompt Engineer",
+    ],
+  },
+  {
+    slug: "software-engineering",
+    name: "Software Engineering",
+    roles: [
+      "Full-Stack Developer",
+      "Front-End Developer",
+      "Back-End Developer",
+      "Mobile Developer (iOS/Android)",
+      "DevOps Engineer",
+      "QA Engineer",
+      "Web Developer (Shopify/Webflow/WordPress)",
+      "Software Architect (senior/lead)",
+    ],
+  },
+  {
+    slug: "customer-support",
+    name: "Customer Support",
+    roles: [
+      "Customer Support Representative",
+      "Customer Success Manager",
+      "Technical Support Specialist",
+      "Help Desk/IT Support Specialist",
+      "Chat/Email Support Specialist",
+      "Order & Returns Support Specialist",
+    ],
+  },
+  {
+    slug: "design",
+    name: "Design",
+    roles: [
+      "UI/UX Designer",
+      "Product Designer",
+      "Graphic Designer",
+      "Web Designer",
+      "Brand Designer",
+      "Motion Designer/Video Editor",
+    ],
+  },
+  {
+    slug: "finance-accounting",
+    name: "Finance & Accounting",
+    roles: [
+      "Bookkeeper",
+      "Staff Accountant",
+      "AP/AR Specialist",
+      "Payroll Specialist",
+      "Financial Analyst",
+      "Controller (senior)",
+    ],
+  },
+  {
+    slug: "marketing",
+    name: "Marketing",
+    roles: [
+      "Marketing Coordinator",
+      "Content Writer/Strategist",
+      "SEO Specialist",
+      "Social Media Manager",
+      "Paid Media/PPC Specialist",
+      "Email/Lifecycle Marketing Specialist",
+      "Marketing Ops/Automation Specialist",
+    ],
+  },
+  {
+    slug: "sales",
+    name: "Sales",
+    roles: [
+      "SDR/BDR",
+      "Account Executive",
+      "Sales Operations Specialist",
+      "CRM Administrator",
+      "Lead Generation Specialist",
+    ],
+  },
+  {
+    slug: "admin-operations",
+    name: "VAs, Admin & Operations",
+    roles: [
+      "Executive Assistant",
+      "Administrative Assistant",
+      "Operations Coordinator",
+      "Operations Manager",
+      "Project Manager",
+      "General Virtual Assistant",
+    ],
+  },
+  {
+    slug: "corporate-housing-mtr",
+    name: "Corporate Housing & MTR",
+    roles: [
+      "Reservations Specialist",
+      "Guest Services Coordinator",
+      "Leasing Coordinator",
+      "Property/Portfolio Coordinator",
+      "Turnover Coordinator",
+      "Revenue/Pricing Analyst",
+    ],
+  },
+  {
+    slug: "corporate-relocation",
+    name: "Corporate Relocation",
+    roles: [
+      "Relocation Coordinator",
+      "Destination Services Coordinator",
+      "Relocation Counselor",
+      "Global Mobility Coordinator",
+      "Expense & Reimbursement Coordinator",
+    ],
+  },
+];
+
+/** Copy for the roles hub and department pages: Tom's content doc, Roles tab. */
+export const rolesPage = {
+  headline: "Roles we place",
+  subhead:
+    "We fill roles across departments and seniority, from specialists to department heads. These are the ones we place most.",
+  closing:
+    "This is a sample of the roles we fill most, not the limit. If the one you need is not here, tell us.",
+  cta: "Book a call",
+};
+
 export const talentPage = {
   eyebrow: "Who you could be hiring",
   headline: "Here's what the top 1%",
@@ -557,6 +1103,61 @@ export const talentPage = {
   rolesHeadline: "Roles we fill",
   rolesBody:
     "If the role you need is not on this list, it is still worth a call. The list reflects where our recruiting is deepest, not the limit of what we do.",
+};
+
+/**
+ * /careers: Tom's content doc (Careers tab), 10/5. Talent-facing. Pay
+ * language stays general until Anthony confirms what can be stated (doc
+ * note). The reels are the talent-culture clips the doc names ("a day with
+ * Handoff" and remote culture), already in /public/videos.
+ * The apply button goes to Handoff's existing application page on the
+ * live site (Tom, 10/5).
+ */
+export const careersPage = {
+  eyebrow: "Careers",
+  headline: "Build your career with a team that has your back.",
+  subhead: "Handoff places Latin American professionals inside top US companies, and stays with you after you are hired.",
+  body: "You are not a profile in a database here. We learn what you do well, match you to a company where it fits, and stay in your corner once you are placed. If one role ends, we work to find you the next one.",
+  cta: { label: "Apply to join our talent pool", href: "https://talenthandoff.com/join-us" },
+  whyHeadline: "Why Handoff",
+  why: [
+    {
+      lead: "Work with the best US companies that take you seriously.",
+      rest: "We are selective about where we place you, and about who we bring on alongside you.",
+    },
+    {
+      lead: "Get paid for the work you do,",
+      rest: "in roles that treat you as part of the team instead of a task to offload.",
+    },
+    {
+      lead: "Grow.",
+      rest: "We screen for how well you work with AI tools and we help you get sharper at it, because it is how our talent moves faster on the same work.",
+    },
+    {
+      lead: "Stay.",
+      rest: "Most of our placements are built to last. If a role ends, finding your next one is our job, not yours.",
+    },
+  ],
+  lookForHeadline: "Who we look for",
+  lookFor:
+    "Strong professional English and the skill to handle a real conversation, not a script. Professionals who own their work and embed with the client, work across US hours, and already use AI tools in their day. If you have carried real responsibility and want a company that will too, apply.",
+  stepsHeadline: "How it works",
+  steps: [
+    { title: "Apply.", body: "Tell us what you do and what you want to work on." },
+    {
+      title: "Meet us.",
+      body: "A video assessment and interviews with our team. We screen for skills, English, judgment, and how you work with AI tools.",
+    },
+    { title: "Match.", body: "When a role fits, we introduce you to the company and set up the interview." },
+    {
+      title: "Get placed, and stay supported.",
+      body: "You join the company's team, and Handoff stays in your corner.",
+    },
+  ],
+  reels: [
+    { src: "/videos/day-with-handoff.mp4", poster: "/videos/day-with-handoff.jpg", name: "A day with Handoff", caption: "Life on the team" },
+    { src: "/videos/remote-culture.mp4", poster: "/videos/remote-culture.jpg", name: "Remote culture", caption: "How we work together" },
+  ],
 };
 
 export const contactPage = {
@@ -570,6 +1171,31 @@ export const contactPage = {
     "A realistic timeline based on how defined the role already is",
     "An honest no if we are not your fit",
   ],
+  /**
+   * The two-step form. Step 1's role list comes from `roleGroups` (the Roles
+   * page), plus "Other". PLACEHOLDER: the labels, options and messages are new
+   * copy from the brief, pending approval.
+   */
+  form: {
+    steps: ["The role", "Your details"],
+    role: { label: "What role are you hiring for?", placeholder: "Choose a role", other: "Other", otherLabel: "Which role?" },
+    headcount: { label: "How many people?", options: ["1", "2–3", "4+"] },
+    timeline: { label: "When do you need them?", options: ["ASAP", "1–3 months", "Just exploring"] },
+    name: "Your name",
+    email: "Work email",
+    company: "Company",
+    message: "Anything else we should know?",
+    next: "Next",
+    back: "Back",
+    submit: "Submit",
+    sending: "Sending…",
+    success: {
+      title: "Thanks, we've got it.",
+      body: "We'll be in touch within one business day to set up the call.",
+    },
+    error: "Sorry, that didn't go through. Please try again, or email hello@handoff.com and we'll pick it up there.",
+  },
+  /** Used by the single-step form before Change 12. Kept for reference. */
   roleOptions: [
     "Operations",
     "Leadership & Admin",
@@ -590,142 +1216,184 @@ export const contactPage = {
  * Anthony's own list on the call: "hospitality, startups, agencies,
  * e-commerce... and there might just be like corporate relocation."
  * These five are also the homepage ICP grid, not just a dropdown.
+ *
+ * Copy is Tom's content doc (Industry Pages tabs), 10/5. Each role names
+ * the department page it links to; a role with no clear department in
+ * Anthony's list (QA Specialist, Account Manager) is left unlinked.
+ * proofLogos are only the names the doc marks as cleared; caseStudy points
+ * at an existing /results write-up. heroImage: Tom's header photos (10/7),
+ * compressed from the originals in assets/industries (git-ignored).
+ *
+ * 10/5: "Hospitality" renamed "Corporate housing" (slug corporate-housing;
+ * the old URL redirects in next.config.ts) and the order set to Tom's
+ * content doc: housing, relocation, startups, agencies, e-commerce.
  */
+/** The /industries overview page: Tom's content doc, Industries Menu tab. */
+export const industriesPage = {
+  eyebrow: "Industries we serve",
+  headline: "Hire talent that already knows your industry.",
+  body: "We place talent across a number of industries, and these are the ones where we've done the most placements and know the work. Find yours below, or get in touch if it's not here.",
+  otherHeadline: "We place across other industries too",
+  otherBody:
+    "If you don't see your industry here, we are still the right fit. We have placements in many other industries. Tell us the position, and we'll match you with the right one.",
+  cta: "Book a call",
+};
+
 export const industries = [
   {
-    slug: "hospitality",
-    navLabel: "Hospitality",
-    icon: "building",
-    name: "Hospitality and short-term rentals",
+    slug: "corporate-housing",
+    navLabel: "Corporate Housing",
+    icon: "home",
+    name: "Corporate Housing",
+    descriptor: "Keep the desk moving through peak season, from reservations to QA.",
+    heroImage: { src: "/images/industries/corporate-housing.webp", alt: "A bright furnished apartment living room with a sofa and city views", focus: "50% 50%" },
     subhead:
-      "We help hospitality and short-term rental operators hire Latin America's top 1% talent.",
-    problemHeadline: "Occupancy does not wait for a hire",
+      "Staff corporate housing, mid-term, and short-term rentals, from reservations to turnovers.",
+    problemHeadline: "Hire ahead of your busy season",
     problemBody:
-      "Guest volume climbs, the reservations inbox fills, and the person holding it together is doing three jobs. The last remote assistant you tried needed a script for every guest message.",
+      "Occupancy climbs, the reservations inbox fills, and someone on your team is covering three jobs at once. Hiring for it in the US does not pencil out at these margins, and the last remote assistant you tried needed a script for routine bookings and messages.",
     triggers: [
       "Peak season arrives and your reservations team is underwater.",
       "Your operations manager gives notice and takes the vendor relationships with them.",
-      "You are turning down bookings because nobody can handle the coordination.",
-      "You tried a VA for guest messaging and got someone who could not make a judgment call.",
+      "You are turning down units because your team cannot keep up with the coordination.",
+      "You tried a VA for guest and resident messages and got someone who could not make a judgment call.",
     ],
-    rolesHeadline: "The roles we fill most in hospitality",
+    rolesHeadline: "Here are the roles we fill most across corporate housing, mid‑term, and short‑term rentals",
     roles: [
-      "Reservations Manager",
-      "Operations Manager",
-      "Guest Services Coordinator",
-      "Quality Assurance Specialist",
-      "Bookkeeper",
+      { name: "Reservations Manager", department: "corporate-housing-mtr" },
+      { name: "Operations Manager", department: "admin-operations" },
+      { name: "Quality Assurance Specialist" },
+      { name: "Guest and Resident Coordinator", department: "corporate-housing-mtr" },
+      { name: "Bookkeeper", department: "finance-accounting" },
     ],
     rolesCloser:
-      "These are the roles our own founder hired for himself over ten years in this industry, which is why our recruiting is deepest here.",
-  },
-  {
-    slug: "startups",
-    navLabel: "Startups",
-    icon: "rocket",
-    name: "Startups",
-    subhead:
-      "We help startups hire Latin America's top 1% talent without the overhead of a full US team.",
-    problemHeadline: "You need a right hand, not a headcount line",
-    problemBody:
-      "Every hour spent on operations is an hour not spent on the product. A US generalist is expensive and slow to hire, and a cheap freelancer needs more management than the work it saves.",
-    triggers: [
-      "You are the bottleneck for everything that is not building the product.",
-      "Your first ops hire needs to wear five hats, not one.",
-      "You raised a round and need to move fast without bloating headcount.",
-      "You tried a freelancer platform and got someone who disappeared mid-project.",
-    ],
-    rolesHeadline: "The roles we fill most for startups",
-    roles: [
-      "Executive Assistant",
-      "Operations Generalist",
-      "Customer Success Manager",
-      "Marketing Specialist",
-      "Bookkeeper",
-    ],
-    rolesCloser:
-      "Founders do not have time to manage a hire. We vet for people who can run with ambiguity from day one.",
-  },
-  {
-    slug: "agencies",
-    navLabel: "Agencies",
-    icon: "megaphone",
-    name: "Marketing and creative agencies",
-    subhead:
-      "We help marketing, creative and digital agencies hire Latin America's top 1% talent.",
-    problemHeadline: "Billable hours should not depend on who quits next",
-    problemBody:
-      "Client work does not pause for a hiring search. Every open seat is a project at risk, and the wrong hire shows up in the client relationship, not just the payroll.",
-    triggers: [
-      "A client account grows faster than your bench can cover.",
-      "Your best account manager leaves mid-retainer.",
-      "You are turning down new business because you cannot staff it.",
-      "You tried offshore production help and the client could tell.",
-    ],
-    rolesHeadline: "The roles we fill most for agencies",
-    roles: [
-      "Account Manager",
-      "Media Buyer",
-      "Social Media Manager",
-      "UI/UX Designer",
-      "Project Manager",
-    ],
-    rolesCloser:
-      "Client-ready English, and people who understand that a missed deadline is somebody else's client call.",
-  },
-  {
-    slug: "ecommerce",
-    navLabel: "E-commerce",
-    icon: "cart",
-    name: "E-commerce and B2B SaaS",
-    subhead:
-      "We help e-commerce and B2B SaaS companies hire Latin America's top 1% talent.",
-    problemHeadline: "Growth exposes every gap in the back office",
-    problemBody:
-      "Orders, support tickets and ad spend all scale faster than a small team can keep up with by hand. Hiring locally for these roles rarely makes sense at these margins.",
-    triggers: [
-      "Support tickets pile up faster than your team can answer them.",
-      "You are running paid media without anyone dedicated to optimizing it.",
-      "Your marketplace listings need constant upkeep nobody has time for.",
-      "You tried a cheap VA for customer support and your reviews showed it.",
-    ],
-    rolesHeadline: "The roles we fill most in e-commerce",
-    roles: [
-      "Marketplace Manager",
-      "Customer Success Manager",
-      "Media Buyer",
-      "Social Media Manager",
-      "Bookkeeper",
-    ],
-    rolesCloser:
-      "People who treat a support ticket like a customer, not a queue to clear.",
+      "Our founder spent over a decade hiring in this industry. It is where our recruiting is deepest and where we are surest of the fit.",
+    proofLogos: ["oasis", "united-corporate-housing", "dwellworks"],
+    caseStudy: null,
   },
   {
     slug: "corporate-relocation",
-    navLabel: "Corporate relocation",
-    icon: "globe",
-    name: "Corporate relocation",
+    navLabel: "Corporate Relocation",
+    icon: "pin",
+    name: "Corporate Relocation",
+    descriptor: "Match your contract load with coordinators in your clients' time zone.",
+    heroImage: { src: "/images/industries/corporate-relocation.webp", alt: "A city waterfront plaza lined with modern offices and apartments at dusk", focus: "50% 50%" },
     subhead:
-      "We help relocation management companies, movers, and immigration and tax providers hire Latin America's top 1% talent.",
-    problemHeadline: "Assignment volume moves faster than hiring does",
+      "Scale relocation with coordinators who work in your clients' time zone.",
+    problemHeadline: "New contracts arrive faster than you can staff them",
     problemBody:
-      "A client wins a contract and suddenly you are coordinating twice the assignments with the same team. The work lands on people who are already at capacity, and clients notice before you do.",
+      "A client wins a contract and suddenly you are coordinating twice the assignments with the same team. Adding a US coordinator takes three months and costs more than the account can carry. The work lands on people who are already at capacity, and clients notice before you do.",
     triggers: [
       "Assignment volume spikes and coordination falls behind.",
       "Your client services lead leaves in the middle of assignment season.",
       "You are quoting work you are not sure you can staff.",
-      "You tried offshore support and your clients could tell.",
+      "You tried cheaper offshore support and the quality did not hold up.",
     ],
-    rolesHeadline: "The roles we fill most in relocation",
+    rolesHeadline: "Here are the roles we fill most in relocation",
     roles: [
-      "Operations Coordinator",
-      "Account Manager",
-      "Client Services Lead",
-      "Quality Assurance Specialist",
-      "Bookkeeper",
+      { name: "Operations Coordinator", department: "admin-operations" },
+      { name: "Account Manager" },
+      { name: "Client Services Lead", department: "customer-support" },
+      { name: "Quality Assurance Specialist" },
+      { name: "Bookkeeper", department: "finance-accounting" },
     ],
     rolesCloser:
-      "Same time zone as your clients, client-ready English, and people who understand that a delayed assignment is somebody's family waiting in a hotel.",
+      "Talent you choose yourself, in your clients' time zone, with client-ready English and the AI skills to move faster on the same work. They know a delayed move is a family waiting in a hotel.",
+    proofLogos: [],
+    caseStudy: "global-relocation",
+  },
+  {
+    slug: "startups",
+    navLabel: "Startups",
+    icon: "trend",
+    name: "Startups",
+    descriptor: "Cover the role with talent that already works with AI.",
+    heroImage: { src: "/images/industries/startups.webp", alt: "A small team working on laptops around a shared table in a coworking caf\u00e9", focus: "62% 60%" },
+    subhead:
+      "Get startup roles off your plate, owned by talent that already works with AI.",
+    problemHeadline: "Still doing every job yourself?",
+    problemBody:
+      "The company is growing, and now there is more work than there are people to do it. You are still running support, ops, and the books yourself at night.",
+    triggers: [
+      "You are growing faster than you can hire, and you are covering the gap yourself.",
+      "A US hire for this role costs more runway than you can give it.",
+      "This is your first 3rd party hire, and you are not sure how to get it right.",
+      "You tried a freelancer and spent more time managing them than the work gave back.",
+    ],
+    rolesHeadline: "Here are the roles we fill most for startups",
+    roles: [
+      { name: "Executive Assistant / Chief of Staff", department: "admin-operations" },
+      { name: "Operations Manager", department: "admin-operations" },
+      { name: "Full Stack Developer", department: "software-engineering" },
+      { name: "AI & Automations Developer", department: "data-ai" },
+      { name: "Customer Support Lead", department: "customer-support" },
+    ],
+    rolesCloser:
+      "Talent you pick yourself, in your working hours, with client-ready English and real AI skills, there to own the role and not just clear tasks.",
+    proofLogos: [],
+    caseStudy: null,
+  },
+  {
+    slug: "agencies",
+    navLabel: "Agencies",
+    icon: "layers",
+    name: "Agencies",
+    descriptor: "Deliver end to end, scaling with the account.",
+    heroImage: { src: "/images/industries/agencies.webp", alt: "A creative team at their desks in an open studio", focus: "62% 50%" },
+    subhead:
+      "Add agency delivery that scales with the account, end to end.",
+    problemHeadline: "Is client work growing faster than your team?",
+    problemBody:
+      "You win an account and need the delivery capacity this month, not next quarter. Every US hire you add to service the work takes a bite out of the margin. The freelancers you lean on disappear mid-project, and your senior people are doing production they should be reviewing.",
+    triggers: [
+      "You won a new account and need delivery capacity now.",
+      "Adding a US hire to service the work eats the margin on it.",
+      "You are staffing client work with freelancers who go quiet mid-project.",
+      "Your senior people are producing work instead of reviewing it.",
+    ],
+    rolesHeadline: "Here are the roles we fill most for agencies",
+    roles: [
+      { name: "Digital Marketing Manager", department: "marketing" },
+      { name: "Media Buyer", department: "marketing" },
+      { name: "Graphic / Motion Designer", department: "design" },
+      { name: "Project Manager", department: "admin-operations" },
+      { name: "SEO Specialist", department: "marketing" },
+    ],
+    rolesCloser:
+      "Talent you choose yourself, in your time zone, with the AI skills to carry client work end to end, so your senior team reviews instead of produces.",
+    proofLogos: [],
+    caseStudy: null,
+  },
+  {
+    slug: "ecommerce",
+    navLabel: "E-Commerce",
+    icon: "bag",
+    name: "E-Commerce",
+    descriptor: "Keep the store open through every spike and handle the calls.",
+    heroImage: { src: "/images/industries/ecommerce.webp", alt: "A warehouse worker checking stock on a tablet beside stacked boxes", focus: "72% 50%" },
+    subhead:
+      "Staff e-commerce to stay open through every spike, calls handled.",
+    problemHeadline: "The store has to stay open even when you're short-staffed",
+    problemBody:
+      "Support tickets, returns, and order problems arrive whether or not you have the people to handle them. A launch or a sales spike leaves you underwater on service and fulfillment. You are clearing the inbox yourself at midnight, and the VA you hired sends every decision back to you.",
+    triggers: [
+      "Tickets and returns pile up faster than your team clears them.",
+      "A launch or a sales spike leaves service and fulfillment behind.",
+      "You are answering customer email after hours.",
+      "You hired a VA who escalated every refund and every upset customer back to you.",
+    ],
+    rolesHeadline: "Here are the roles we fill most in e-commerce",
+    roles: [
+      { name: "Customer Support Specialist", department: "customer-support" },
+      { name: "Operations / Fulfillment Coordinator", department: "admin-operations" },
+      { name: "Email / Retention Marketing Manager", department: "marketing" },
+      { name: "Paid Media Buyer", department: "marketing" },
+      { name: "Bookkeeper", department: "finance-accounting" },
+    ],
+    rolesCloser:
+      "Talent you choose yourself, with the assurance to handle a refund or an upset customer without sending it back to you, on your hours.",
+    proofLogos: [],
+    caseStudy: null,
   },
 ] as const;
 
@@ -736,62 +1404,137 @@ export const industries = [
 export type NavItem = {
   label: string;
   href: string;
-  /** Renders as a dropdown on desktop and an indented group on mobile. */
-  children?: { label: string; href: string }[];
+  /**
+   * Renders as a dropdown on desktop and an indented group on mobile. A
+   * child with `soon` shows as a non-clickable "Soon" placeholder.
+   */
+  children?: { label: string; href: string; soon?: boolean }[];
+  /** Desktop renders the department mega menu instead of a plain dropdown. */
+  mega?: boolean;
+  /** A label that only opens its dropdown; it isn't a page itself. */
+  menuOnly?: boolean;
 };
 
 export const nav: NavItem[] = [
-  { label: "How it works", href: "/how-it-works" },
+  { label: "How It Works", href: "/how-it-works" },
   {
     label: "Industries",
-    href: `/industries/${industries[0].slug}`,
-    children: industries.map((industry) => ({
-      label: industry.navLabel,
-      href: `/industries/${industry.slug}`,
-    })),
+    href: "/industries",
+    // "All Industries" leads the list, as on Near's menu (10/5).
+    children: [
+      { label: "All Industries", href: "/industries" },
+      ...industries.map((industry) => ({
+        label: industry.navLabel,
+        href: `/industries/${industry.slug}`,
+      })),
+    ],
   },
-  { label: "Roles", href: "/talent" },
-  { label: "Results", href: "/results" },
-  { label: "Pricing", href: "/#models" },
+  {
+    // Near-style mega menu on desktop: departments left, the hovered
+    // department's roles right (10/5). Phones get the departments as a list.
+    label: "Roles",
+    href: "/roles",
+    mega: true,
+    children: [
+      { label: "All Roles", href: "/roles" },
+      ...departments.map((department) => ({
+        label: department.name,
+        href: `/roles/${department.slug}`,
+      })),
+    ],
+  },
+  {
+    // Near-style Services dropdown (10/5): the two models, and the
+    // side-by-side comparison on /pricing (Tom, 10/6: pricing lives here).
+    // Like Near's, "Services" only opens the list; it isn't a page, so it
+    // no longer lands on Pricing (Tom, 10/6).
+    label: "Services",
+    href: "/services",
+    menuOnly: true,
+    children: [
+      ...services.map((service) => ({ label: service.name, href: `/services/${service.slug}` })),
+      { label: "Compare the Two", href: "/pricing" },
+    ],
+  },
+  {
+    // Replaces Pricing in the top menu, with Results moved under it (Tom,
+    // 10/6). Blog and Calculator are "Soon" placeholders.
+    label: "Resources",
+    href: "/results",
+    children: [
+      { label: "Results", href: "/results" },
+      { label: "Case Studies", href: "/results#case-studies" },
+      { label: "Blog", href: "#", soon: true },
+      { label: "Calculator", href: "#", soon: true },
+    ],
+  },
   { label: "About", href: "/about" },
 ];
 
+
 /**
- * Client proof. The quotes are cleared for the site but not yet cleared with
- * the individual clients, so the module ships with the slots visible and the
- * copy obviously fake. Each live quote needs a real name, title, company and
- * a link to that person's actual LinkedIn profile.
+ * Client proof. Five client-approved quotes, verbatim (the em dashes in
+ * Robert Horsley's quote are the approved wording, an exception to the
+ * no-em-dash rule). No photos or LinkedIn links yet, so cards show an
+ * initials avatar and `linkedin` stays empty until real profiles land.
  */
 export const clientQuotes = {
   eyebrow: "In their words",
   headline: "What clients say when we are not on the call",
+  /**
+   * Client testimonial videos, shown on their own above the quote cards.
+   * `preview` is the 18s silent hover clip and `full` is the full-length
+   * 720p cut with sound for the pop-up, both in /public/video/testimonials-web.
+   * `focus` is the object-position of the 3:4 head-and-shoulders crop shown
+   * in the middle of each 4:3 card (the sources are vertical); it also keeps
+   * the burned-in captions at the top out of view.
+   *
+   * The brief asks for Quest Relocation, Nika Housing and Rincon Rehab. There
+   * is no Nika Housing video yet, so Pivt's is used instead. The company names
+   * show as text wordmarks until the real logo files arrive.
+   */
+  videos: [
+    { slug: "pivt", company: "Pivt", focus: "50% 55%" },
+    { slug: "quest", company: "Quest Relocation", focus: "50% 58%" },
+    { slug: "rincon-rehab", company: "Rincon Rehab", focus: "50% 56%" },
+  ],
+  /** `linkedin` is a placeholder (the LinkedIn homepage) until the real profile URLs arrive. */
   slots: [
     {
       id: "quote-1",
       quote:
-        "Handoff has brought us A-players across sales, ops, and marketing. Talent with real smarts and grit. They own outcomes, not just check boxes.",
-      name: "Robert Horsley",
-      title: "CPO",
-      company: "WorkRight",
-      linkedin: "",
+        "Ten hires in six months, every one of them scoring 90%+ in our reviews. Handoff doesn't make us choose between speed and quality.",
+      name: "Steve Frey",
+      title: "CEO",
+      company: "Oasis",
+      linkedin: "https://www.linkedin.com/",
     },
     {
       id: "quote-2",
       quote:
-        "I've done four interviews with the people you've recruited, and I liked every one of them. I rarely like the people I interview in the States.",
-      name: "Bridget Kiernan",
-      title: "",
-      company: "Oasis",
-      linkedin: "",
+        "Product, GTM, content, events — Handoff has staffed nearly every function we've needed as WorkRight scales, and each hire has been strong enough that we didn't have to think twice.",
+      name: "Robert Horsley",
+      title: "Co-Founder & COO",
+      company: "Fragomen WorkRight",
+      linkedin: "https://www.linkedin.com/",
     },
     {
-      id: "quote-3",
+      id: "quote-4",
       quote:
-        "I took a month to work side by side with him and I must say I was extremely impressed. He is one of the best designers I have ever worked with.",
-      name: "Maxime Fernandez",
-      title: "",
-      company: "Pivt",
-      linkedin: "",
+        "We don't take chances on where we source talent. Handoff has earned that trust across three different parts of our business.",
+      name: "Bob Rosing",
+      title: "CEO",
+      company: "Dwellworks",
+      linkedin: "https://www.linkedin.com/",
+    },
+    {
+      id: "quote-5",
+      quote:
+        "Turnover is a challenge in this industry. Handoff has placed people who are committed, fast learners, and genuinely care about the work... and that's exactly what's moved the needle for us.",
+      name: "Ryan Hoover",
+      title: "Founder & CEO",
+      company: "United Corporate Housing",
+      linkedin: "https://www.linkedin.com/",
     },
   ],
 };
@@ -877,10 +1620,16 @@ export const resultsPage = {
   headline: "What happens after the hire",
   headlineAccent: "is the whole point.",
   body: "Placing someone is the easy half. These are the numbers and the stories from companies that made the hire and kept the person.",
+  /**
+   * Anthony's confirmed figures from the 10/5 Pulse, retention first (Tom).
+   * Time to hire is phrased as he asked: the top two within 2 weeks, not a
+   * placement date. The case-study figures that sat here stay in the case
+   * study cards and write-ups below.
+   */
   numbers: [
-    { value: "96%", label: "Retention rate, relocation case study" },
-    { value: "$2.3M", label: "Additional revenue, CMO case study" },
-    { value: "50%", label: "Faster time-to-hire, relocation case study" },
+    { value: "92%", label: "Of placements still with their company after a year" },
+    { value: "2 weeks", label: "To your top two candidates" },
+    { value: "Top 1%", label: "Of talent" },
   ],
   videos: {
     headline: "Video testimonials",

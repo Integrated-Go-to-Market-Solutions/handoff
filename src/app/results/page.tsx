@@ -4,7 +4,7 @@ import { Reveal } from "@/components/reveal";
 import { Eyebrow, Pill } from "@/components/brand";
 import { Icon, type IconName } from "@/components/icon";
 import { ClientQuotes } from "@/components/sections/client-quotes";
-import { Cta } from "@/components/sections/cta";
+import { Finale } from "@/components/sections/finale";
 import { resultsPage, caseStudies } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -18,7 +18,7 @@ type Study = (typeof caseStudies)[number];
 /* The site's one card system: each its own gradient, outlined in cyan. */
 const cardAccents = [
   { card: "bg-gradient-to-br from-cyan to-cyan-dim text-ink", pill: "!border-ink/30 !text-ink", stat: "text-ink", meta: "text-ink/70", ring: "border-ink/40 text-ink" },
-  { card: "bg-gradient-to-br from-royal to-azure text-bone", pill: "!border-bone/40 !text-bone", stat: "text-bone", meta: "text-bone/70", ring: "border-bone/50 text-bone" },
+  { card: "bg-gradient-to-br from-royal to-azure-deep text-bone", pill: "!border-bone/40 !text-bone", stat: "text-bone", meta: "text-bone/70", ring: "border-bone/50 text-bone" },
   { card: "bg-gradient-to-br from-ink-300 to-ink text-bone", pill: "!border-bone/30 !text-bone", stat: "text-cyan", meta: "text-bone/65", ring: "border-cyan text-cyan" },
 ] as const;
 
@@ -200,11 +200,11 @@ export default function ResultsPage() {
       </section>
 
       {/* The stories, as posters that link down to the full write-ups. */}
-      <section className="hw-dots relative overflow-hidden bg-ink section-py text-bone" aria-label="Case studies">
+      <section id="case-studies" className="hw-dots relative scroll-mt-[72px] overflow-hidden bg-ink section-py text-bone" aria-label="Case studies">
         <div className="shell relative">
-          <Reveal className="max-w-3xl">
+          <Reveal>
             <h2 className="display text-[clamp(2.1rem,4.8vw,3.7rem)]">The stories</h2>
-            <p className="mt-6 max-w-[58ch] text-lg leading-relaxed text-bone/70">
+            <p className="mt-6 text-lg leading-relaxed text-bone/70">
               Two real engagements, written up with the client&rsquo;s numbers and the client&rsquo;s words.
             </p>
           </Reveal>
@@ -224,7 +224,7 @@ export default function ResultsPage() {
 
       <ClientQuotes />
 
-      <Cta />
+      <Finale />
     </>
   );
 }

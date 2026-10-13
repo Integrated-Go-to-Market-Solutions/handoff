@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import { Reveal } from "../reveal";
 import { Icon, type IconName } from "../icon";
@@ -18,14 +17,14 @@ const accents = [
     body: "text-ink/80",
   },
   {
-    front: "bg-gradient-to-br from-royal to-azure text-bone",
+    front: "bg-gradient-to-br from-royal to-azure-deep text-bone",
     back: "bg-gradient-to-br from-white to-bone text-ink",
     ring: "border-bone/60 text-bone",
     body: "text-bone/85",
   },
   {
     front: "bg-gradient-to-br from-white to-bone text-ink",
-    back: "bg-gradient-to-br from-royal to-azure text-bone",
+    back: "bg-gradient-to-br from-royal to-azure-deep text-bone",
     ring: "border-cyan text-cyan-dim",
     body: "text-ink/75",
   },
@@ -62,7 +61,7 @@ function ProblemCard({
       aria-pressed={flipped}
       aria-label={`${title}. ${flipped ? "Show the problem" : "Show the fix"}`}
       onClick={() => setFlipped((value) => !value)}
-      className="group block h-[22rem] w-full text-left [perspective:1200px]"
+      className="group block h-[24rem] w-full cursor-pointer text-left [perspective:1200px] sm:h-[22rem] lg:h-[24rem] xl:h-[22rem]"
     >
       <span
         className={`relative block h-full w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:-translate-y-1.5 ${
@@ -73,7 +72,7 @@ function ProblemCard({
             up to the section intro. Four cards each carrying both read as
             four identical labels rather than as four problems. */}
         <span
-          className={`absolute inset-0 flex h-full flex-col rounded-[var(--radius-card)] p-7 transition-shadow duration-500 [backface-visibility:hidden] ${glow} ${accent.front}`}
+          className={`absolute inset-0 flex h-full flex-col items-center rounded-[var(--radius-card)] p-7 text-center transition-shadow duration-500 [backface-visibility:hidden] ${glow} ${accent.front}`}
         >
           <span
             className={`inline-flex h-12 w-12 items-center justify-center rounded-full border-2 ${accent.ring}`}
@@ -91,12 +90,12 @@ function ProblemCard({
         </span>
 
         <span
-          className={`absolute inset-0 flex h-full flex-col justify-between rounded-[var(--radius-card)] p-7 [backface-visibility:hidden] [transform:rotateY(180deg)] ${glow} ${accent.back}`}
+          className={`absolute inset-0 flex h-full flex-col items-center justify-between rounded-[var(--radius-card)] p-7 text-center [backface-visibility:hidden] [transform:rotateY(180deg)] ${glow} ${accent.back}`}
         >
           <span className="display text-6xl leading-none">Stop.</span>
           <span>
             <span className="display block text-xl">Hand it off.</span>
-            <span className="mt-2 block max-w-[30ch] text-[0.95rem] font-medium leading-relaxed opacity-85">
+            <span className="mx-auto mt-2 block max-w-[30ch] text-[0.95rem] font-medium leading-relaxed opacity-85">
               A capable teammate can own this work without becoming another task
               for you to manage.
             </span>
@@ -109,35 +108,17 @@ function ProblemCard({
 
 export function Problem() {
   return (
-    <section className="relative overflow-hidden bg-ink section-py text-bone">
-      {/* Editorial photo, per direct reference: a real photo in grayscale,
-          bleeding off the right edge of the viewport and dissolving into
-          the carbon on its left and bottom edges instead of sitting in a
-          frame. Only spans the intro block so it never runs behind the
-          cards. On phones it sits above the copy and fades out downward. */}
-      <div className="shell relative">
-        <div className="relative lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center lg:gap-10">
-          <div
-            className="problem-photo relative -mx-6 mb-8 h-72 sm:h-80 lg:absolute lg:-inset-y-10 lg:right-0 lg:mx-0 lg:mb-0 lg:h-auto lg:w-[58%] lg:-mr-[max(0px,calc((100vw-var(--shell))/2))]"
-            aria-hidden="true"
-          >
-            <Image
-              src="/images/bottleneck.jpg"
-              alt=""
-              fill
-              sizes="(min-width: 1024px) 60vw, 100vw"
-              className="object-cover object-top grayscale opacity-90"
-            />
-          </div>
-
-          <Reveal className="relative max-w-3xl lg:py-10">
+    <section className="relative overflow-hidden bg-ink pb-10 pt-14 text-bone md:pb-14 md:pt-20">
+      <div className="shell relative text-center">
+        <div className="relative">
+          <Reveal className="relative mx-auto max-w-3xl">
             <h2 className="display mt-2 text-[clamp(2rem,5vw,3.9rem)]">
               {problem.headline}
             </h2>
-            <p className="mt-5 max-w-[58ch] text-base leading-relaxed text-bone/70 md:text-lg">
+            <p className="mx-auto mt-5 max-w-[58ch] text-balance text-base leading-relaxed text-bone/70 md:text-lg">
               {problem.body}
             </p>
-            <p className="mt-4 max-w-[58ch] text-base leading-relaxed text-bone/70 md:text-lg">
+            <p className="mx-auto mt-4 max-w-[58ch] text-balance text-base leading-relaxed text-bone/70 md:text-lg">
               {problem.bodyDepartment}
             </p>
           </Reveal>
