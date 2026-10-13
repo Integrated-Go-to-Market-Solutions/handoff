@@ -145,13 +145,16 @@ function placeCard(card: HTMLElement, pin: HTMLElement, wrap: HTMLElement, secti
 }
 
 /** Same circular treatment everywhere: pins, the mobile list and the cards. */
+/* Pin and card photos are 50% larger than the original (Tom, 10/13):
+   44/48px pins became 66/72px and the card photo 56px became 84px. Phones
+   get 50px (from 36px, +39%): at 54px two pins touched on a 375px screen. */
 function Avatar({ photo, className }: { photo: string | null; className: string }) {
   return (
     <span
       className={`relative block shrink-0 overflow-hidden rounded-full border-2 border-white bg-gradient-to-b from-cyan to-[#2fae98] ${className}`}
     >
       {photo ? (
-        <Image src={photo} alt="" fill sizes="64px" className="object-cover object-[50%_22%]" />
+        <Image src={photo} alt="" fill sizes="96px" className="object-cover object-[50%_22%]" />
       ) : (
         /* Neutral stand-in until real talent photos are supplied. */
         <svg viewBox="0 0 64 64" className="h-full w-full" aria-hidden="true">
@@ -405,7 +408,7 @@ export function TalentMap() {
                   >
                     <Avatar
                       photo={t.photo}
-                      className={`h-9 w-9 transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_0_7px_rgba(61,214,189,0.35)] group-focus-visible:ring-2 group-focus-visible:ring-cyan md:h-11 md:w-11 lg:h-12 lg:w-12 ${
+                      className={`h-[3.125rem] w-[3.125rem] transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_0_7px_rgba(61,214,189,0.35)] group-focus-visible:ring-2 group-focus-visible:ring-cyan md:h-[4.125rem] md:w-[4.125rem] lg:h-[4.5rem] lg:w-[4.5rem] ${
                         isOpen
                           ? "scale-110 border-cyan shadow-[0_0_0_7px_rgba(61,214,189,0.35)]"
                           : "shadow-[0_0_0_4px_rgba(61,214,189,0.18)]"
@@ -450,7 +453,7 @@ export function TalentMap() {
                 className="talent-card-in invisible absolute z-30 w-[15rem] rounded-2xl border border-white/15 bg-[#1c1c1c]/95 p-4 text-left shadow-[0_18px_40px_rgba(0,0,0,0.55)] backdrop-blur-sm"
               >
                 <div className="flex items-center gap-3">
-                  <Avatar photo={open.photo} className="h-14 w-14" />
+                  <Avatar photo={open.photo} className="h-[5.25rem] w-[5.25rem]" />
                   <div className="min-w-0">
                     <p className="text-base font-semibold leading-tight text-white">{open.name}</p>
                     <p className="mt-0.5 text-xs text-bone/60">
