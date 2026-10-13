@@ -34,7 +34,7 @@ export function HeroBright({ subhead }: { subhead?: string } = {}) {
           {/* "Hire" lengthened line 1 (10/7), so it divides by 13.5, not 10.4,
               to stay on one line from phones up. */}
           <span className="hero-rise block whitespace-nowrap text-[clamp(1.5rem,calc((100vw-56px)/13.5),6rem)]">
-            {hero.headlineLead.before} <span className="text-azure">{hero.headlineLead.accent}</span>
+            {hero.headlineLead.before} <span className="text-cyan">{hero.headlineLead.accent}</span>
           </span>
           <span className="mt-2 block whitespace-nowrap text-[clamp(1rem,calc((100vw-56px)/19),3.6rem)] md:mt-3">
             {hero.headlineLines.slice(1).map((line, i) => (
