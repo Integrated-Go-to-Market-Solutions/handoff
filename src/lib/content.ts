@@ -1246,7 +1246,6 @@ export const industries = [
   {
     slug: "corporate-relocation",
     navLabel: "Corporate Relocation",
-    tileLabel: "Relocation",
     icon: "pin",
     name: "Corporate Relocation",
     descriptor: "Match your contract load with coordinators in your clients' time zone.",

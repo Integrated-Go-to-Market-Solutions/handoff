@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Icon, type IconName } from "../icon";
-import { KpiRibbon } from "../kpi-ribbon";
 import { LogoMarquee } from "./logo-marquee";
 import { industries, industriesStrip } from "@/lib/content";
 
@@ -58,16 +57,20 @@ export function CredibilityStrip() {
                       className="h-10 w-10 text-cyan md:h-12 md:w-12"
                     />
                     <span className="text-sm font-semibold uppercase leading-tight tracking-[0.04em] text-white md:text-base">
-                      {"tileLabel" in industry && industry.tileLabel ? industry.tileLabel : industry.navLabel}
+                      {industry.navLabel}
+                    </span>
+                    {/* A visible "this goes somewhere" cue (10/13). */}
+                    <span
+                      aria-hidden="true"
+                      className="-mt-1 text-lg text-cyan transition-transform duration-300 group-hover:translate-x-1 motion-reduce:transition-none"
+                    >
+                      &rarr;
                     </span>
                   </Link>
                 </li>
               ))}
             </ul>
           </nav>
-
-          {/* Thin, static KPI ribbon. */}
-          <KpiRibbon className="mt-8 border-t border-white/20 pt-6 md:mt-10 md:pt-8" />
         </div>
       </div>
     </section>

@@ -1,5 +1,6 @@
 import { HeroBright } from "@/components/sections/hero-bright";
 import { CredibilityStrip } from "@/components/sections/credibility-strip";
+import { KpiBand } from "@/components/sections/kpi-band";
 import { TalentMap } from "@/components/sections/talent-map";
 import { WhyLatam } from "@/components/sections/why-latam";
 import { HiringHighway } from "@/components/sections/hiring-highway";
@@ -31,6 +32,7 @@ export default function Home() {
     <>
       <HeroBright />
       <CredibilityStrip />
+      <KpiBand />
       <TalentMap />
       <AiTrained />
       <HiringHighway compact />
