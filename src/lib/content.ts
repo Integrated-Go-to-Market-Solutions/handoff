@@ -502,9 +502,7 @@ export const proof = {
  * order (10/13): hospitality, relocation, SaaS, relocation tech, e-commerce,
  * agency, startup. Files come from each company's own website, in the
  * colors the company uses there (Oasis, Snap, Earthside and CharCharms only
- * publish black logos). WorkRight only publishes a white logo for its navy
- * navbar, so it sits on a tile in that navy (#000629) rather than being
- * recolored. `stacked` logos (icon over name) get a taller box than
+ * publish black logos). `stacked` logos (icon over name) get a taller box than
  * wide wordmarks so they read at a similar weight. Originals are in the
  * git-ignored assets/logos folder.
  */
@@ -513,7 +511,6 @@ export const logos = [
   { slug: "oasis", name: "Oasis", hasImage: true },
   { slug: "altovita", name: "AltoVita", hasImage: true, stacked: true },
   { slug: "dwellworks", name: "Dwellworks", hasImage: true },
-  { slug: "workright", name: "WorkRight by Fragomen", hasImage: true, tile: "#000629" },
   { slug: "pivt", name: "Pivt", hasImage: true, stacked: true },
   { slug: "snap-supplements", name: "Snap Supplements", hasImage: true },
   { slug: "earth-side-farms", name: "Earthside Farms", hasImage: true, stacked: true },
