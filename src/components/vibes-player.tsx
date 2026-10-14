@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
 
-type Clip = { slug: string; name: string; caption: string };
+type Clip = { slug: string; name: string; caption: string; video?: string; poster?: string };
 
 /**
  * Three reels where only one ever plays. Desktop: the middle slot is the
@@ -133,14 +133,14 @@ export function VibesPlayer({ clips }: { clips: Clip[] }) {
                   className={`aspect-9/16 w-full object-cover transition-[filter] duration-700 ease-out motion-reduce:transition-none ${
                     isLive ? "brightness-100 saturate-100" : "brightness-[0.55] saturate-[0.55]"
                   }`}
-                  poster={`/videos/${clip.slug}.jpg`}
+                  poster={clip.poster || `/videos/${clip.slug}.jpg`}
                   muted
                   loop
                   playsInline
                   preload="metadata"
                   aria-label={`${clip.name}: ${clip.caption}`}
                 >
-                  <source src={`/videos/${clip.slug}.mp4`} type="video/mp4" />
+                  <source src={clip.video || `/videos/${clip.slug}.mp4`} type="video/mp4" />
                 </video>
 
                 <span

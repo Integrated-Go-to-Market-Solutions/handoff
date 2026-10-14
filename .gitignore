@@ -32,6 +32,11 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
+
+# Tina generates these on dev and build
+tina/__generated__
+public/admin
 
 # vercel
 .vercel
@@ -54,6 +59,7 @@ _brand/
 
 .vercel
 .env*
+!.env.example
 scratch/
 
 # Local session notes

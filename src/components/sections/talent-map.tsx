@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import { Button, CtaNote } from "../brand";
 import { Reveal } from "../reveal";
-import { cta, departments, site, talentMap } from "@/lib/content";
+import { useContent } from "@/components/tina/content";
 
 /*
  * Rebuilt from design-refs/HANDOFFMAP.png (the Figma export in
@@ -42,17 +42,6 @@ const pins: { x: number; y: number; side: Side; lgSide?: Side }[] = [
   { x: 615, y: 905, side: "left" },
   { x: 630, y: 1135, side: "left" },
 ];
-
-const talent = pins.map((pin, i) => {
-  const profile = talentMap.profiles[i];
-  const department = departments.find((d) => d.slug === profile.department);
-  return {
-    ...pin,
-    ...profile,
-    href: `/roles/${profile.department}`,
-    departmentName: department?.name ?? "all",
-  };
-});
 
 const pulses = [
   { x: 490, y: 455 },
@@ -170,6 +159,17 @@ function Avatar({ photo, className }: { photo: string | null; className: string 
 }
 
 export function TalentMap() {
+  const { cta, departments, site, talentMap } = useContent();
+  const talent = pins.map((pin, i) => {
+    const profile = talentMap.profiles[i];
+    const department = departments.find((d) => d.slug === profile?.department);
+    return {
+      ...pin,
+      ...profile,
+      href: `/roles/${profile?.department}`,
+      departmentName: department?.name ?? "all",
+    };
+  });
   const router = useRouter();
   const [active, setActive] = useState<number | null>(null);
   const cardId = useId();

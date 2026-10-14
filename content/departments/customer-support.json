@@ -1,0 +1,16 @@
+{
+  "order": 2,
+  "name": "Customer Support",
+  "roles": [
+    "Customer Support Representative",
+    "Customer Success Manager",
+    "Technical Support Specialist",
+    "Help Desk/IT Support Specialist",
+    "Chat/Email Support Specialist",
+    "Order & Returns Support Specialist"
+  ],
+  "video": {
+    "src": "",
+    "poster": ""
+  }
+}

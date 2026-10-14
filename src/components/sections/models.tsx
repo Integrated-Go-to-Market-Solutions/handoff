@@ -1,8 +1,10 @@
+"use client";
+
 import { Button, Pill } from "../brand";
 import { Reveal } from "../reveal";
 import { TypedPoints } from "../typed-points";
 import Link from "next/link";
-import { models, modelsCompare, modelsFootnote, modelsIntro, services, site } from "@/lib/content";
+import { useContent } from "@/components/tina/content";
 
 /* Two equally strong gradients with the same cyan outline, so neither
    option reads as the lesser choice. Each card also carries its own list in
@@ -24,6 +26,7 @@ const cardAccents = [
 
 /** The earlier single-list cards, kept as the default so /v2 is unchanged. */
 function ClassicModels() {
+  const { models, modelsFootnote, site } = useContent();
   return (
     <section id="models" className="relative overflow-hidden bg-ink section-py-hero text-bone">
       <div className="shell relative">
@@ -113,9 +116,10 @@ function DrawnCheck({ delay }: { delay: number }) {
   );
 }
 
-function CompareValue({ value, delay }: { value: (typeof modelsCompare.rows)[number]["values"][number]; delay: number }) {
-  if (value === true) return <DrawnCheck delay={delay} />;
-  if (value === false) {
+function CompareValue({ value, delay }: { value: any; delay: number }) {
+  const kind = value && typeof value === "object" ? value.kind : undefined;
+  if (value === true || kind === "check") return <DrawnCheck delay={delay} />;
+  if (value === false || kind === "dash") {
     return (
       <span className="mx-auto block h-0.5 w-3.5 rounded-full bg-bone/25" role="img" aria-label="Not included" />
     );
@@ -125,6 +129,7 @@ function CompareValue({ value, delay }: { value: (typeof modelsCompare.rows)[num
 }
 
 function CompareModels({ asPage = false }: { asPage?: boolean }) {
+  const { modelsCompare, modelsIntro, services, site } = useContent();
   const Heading = asPage ? "h1" : "h2";
   const { columns, rows, featured } = modelsCompare;
   const cell = "flex items-center justify-center px-1.5 py-3.5 text-center sm:px-4 md:py-4";
@@ -170,7 +175,7 @@ function CompareModels({ asPage = false }: { asPage?: boolean }) {
                   <span role="columnheader" className="sr-only">
                     Feature
                   </span>
-                  {columns.map((name, c) => {
+                  {columns.map((name: any, c: number) => {
                     const service = services.find((entry) => entry.name === name);
                     return (
                       <span
@@ -194,7 +199,7 @@ function CompareModels({ asPage = false }: { asPage?: boolean }) {
                   })}
                 </div>
 
-                {rows.map((row, r) => {
+                {rows.map((row: any, r: number) => {
                   const delay = (r + 1) * ROW_STAGGER_MS;
                   return (
                     <div
@@ -209,7 +214,7 @@ function CompareModels({ asPage = false }: { asPage?: boolean }) {
                           <span className="mt-1 text-[0.68rem] leading-snug text-smoke sm:text-[0.8rem]">{row.note}</span>
                         )}
                       </div>
-                      {row.values.map((value, c) => (
+                      {row.values.map((value: any, c: number) => (
                         <div key={c} role="cell" className={`${cell} leading-snug`}>
                           <CompareValue value={value} delay={delay + 250} />
                         </div>

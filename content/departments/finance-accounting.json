@@ -1,0 +1,16 @@
+{
+  "order": 4,
+  "name": "Finance & Accounting",
+  "roles": [
+    "Bookkeeper",
+    "Staff Accountant",
+    "AP/AR Specialist",
+    "Payroll Specialist",
+    "Financial Analyst",
+    "Controller (senior)"
+  ],
+  "video": {
+    "src": "",
+    "poster": ""
+  }
+}

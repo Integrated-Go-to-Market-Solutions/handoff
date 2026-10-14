@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { Button, CtaNote } from "../brand";
 import { Reveal } from "../reveal";
 import { HandoffCheckIcon } from "../highway-icons";
-import { process, site } from "@/lib/content";
+import { tinaField, useContent } from "@/components/tina/content";
 
 /**
  * The Hands-off Hiring System on /how-it-works, as a vertical, video-led
@@ -94,6 +94,7 @@ function StepVideo({
 }
 
 export function HiringTimeline() {
+  const { process, site } = useContent();
   const steps = process.steps;
   const { labels, videos, cta } = process.timeline;
   const last = steps.length - 1;
@@ -144,7 +145,7 @@ export function HiringTimeline() {
     <section id="timeline" className="hw-dots relative scroll-mt-18 bg-ink text-bone">
       <div className="shell pb-16 pt-14 md:pb-24 md:pt-20">
         <Reveal className="mx-auto max-w-4xl text-center">
-          <h1 className="display text-[clamp(2.1rem,4.8vw,3.8rem)]">
+          <h1 data-tina-field={tinaField(process, "titleParts")} className="display text-[clamp(2.1rem,4.8vw,3.8rem)]">
             {process.titleParts.before} <span className="hw-swipe">{process.titleParts.swipe}</span>{" "}
             {process.titleParts.after}
           </h1>
@@ -163,7 +164,7 @@ export function HiringTimeline() {
             />
           </div>
 
-          {steps.map((step, i) => {
+          {steps.map((step: any, i: number) => {
             const isEnd = i === last;
             const lit = reduced || i <= current;
             const video = videos[i % videos.length];
@@ -214,7 +215,7 @@ export function HiringTimeline() {
                       <div className={`mt-4 font-text text-base leading-relaxed md:text-lg ${isEnd ? "text-ink/85" : "text-bone/75"}`}>
                         {step.bulletsLead && <p>{step.bulletsLead}</p>}
                         <ul className="mt-3 space-y-2">
-                          {step.bullets.map((bullet) => (
+                          {step.bullets.map((bullet: any) => (
                             <li key={bullet} className="flex gap-3">
                               <span className="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full bg-cyan" aria-hidden="true" />
                               {bullet}

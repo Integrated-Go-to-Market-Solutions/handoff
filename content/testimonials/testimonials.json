@@ -1,0 +1,61 @@
+{
+  "eyebrow": "In their words",
+  "headline": "What clients say when we are not on the call",
+  "videos": [
+    {
+      "company": "Pivt",
+      "focus": "50% 55%",
+      "poster": "/video/testimonials-web/pivt.jpg",
+      "preview": "/video/testimonials-web/pivt.mp4",
+      "full": "/video/testimonials-web/pivt-full.mp4"
+    },
+    {
+      "company": "Quest Relocation",
+      "focus": "50% 58%",
+      "poster": "/video/testimonials-web/quest.jpg",
+      "preview": "/video/testimonials-web/quest.mp4",
+      "full": "/video/testimonials-web/quest-full.mp4"
+    },
+    {
+      "company": "Rincon Rehab",
+      "focus": "50% 56%",
+      "poster": "/video/testimonials-web/rincon-rehab.jpg",
+      "preview": "/video/testimonials-web/rincon-rehab.mp4",
+      "full": "/video/testimonials-web/rincon-rehab-full.mp4"
+    }
+  ],
+  "slots": [
+    {
+      "id": "quote-1",
+      "quote": "Ten hires in six months, every one of them scoring 90%+ in our reviews. Handoff doesn't make us choose between speed and quality.",
+      "name": "Steve Frey",
+      "title": "CEO",
+      "company": "Oasis",
+      "linkedin": "https://www.linkedin.com/"
+    },
+    {
+      "id": "quote-2",
+      "quote": "Product, GTM, content, events — Handoff has staffed nearly every function we've needed as WorkRight scales, and each hire has been strong enough that we didn't have to think twice.",
+      "name": "Robert Horsley",
+      "title": "Co-Founder & COO",
+      "company": "Fragomen WorkRight",
+      "linkedin": "https://www.linkedin.com/"
+    },
+    {
+      "id": "quote-4",
+      "quote": "We don't take chances on where we source talent. Handoff has earned that trust across three different parts of our business.",
+      "name": "Bob Rosing",
+      "title": "CEO",
+      "company": "Dwellworks",
+      "linkedin": "https://www.linkedin.com/"
+    },
+    {
+      "id": "quote-5",
+      "quote": "Turnover is a challenge in this industry. Handoff has placed people who are committed, fast learners, and genuinely care about the work... and that's exactly what's moved the needle for us.",
+      "name": "Ryan Hoover",
+      "title": "Founder & CEO",
+      "company": "United Corporate Housing",
+      "linkedin": "https://www.linkedin.com/"
+    }
+  ]
+}

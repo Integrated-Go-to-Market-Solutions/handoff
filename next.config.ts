@@ -19,6 +19,9 @@ const nextConfig: NextConfig = {
       { source: "/services", destination: "/services/direct-hire", permanent: false },
     ];
   },
+  async rewrites() {
+    return [{ source: "/admin", destination: "/admin/index.html" }];
+  },
 };
 
 export default nextConfig;

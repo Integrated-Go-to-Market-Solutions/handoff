@@ -10,11 +10,13 @@ export function TalentCard({
   slug,
   name,
   role,
+  photo,
   index = 0,
 }: {
   slug: string;
   name: string;
   role: string;
+  photo?: string;
   index?: number;
 }) {
   return (
@@ -27,7 +29,7 @@ export function TalentCard({
 
         <div className="relative aspect-3/4 overflow-hidden">
           <Image
-            src={`/images/team/${slug}.webp`}
+            src={photo || `/images/team/${slug}.webp`}
             alt={`${name}, ${role} at Handoff`}
             fill
             sizes="(max-width: 640px) 268px, (max-width: 1024px) 33vw, 22vw"

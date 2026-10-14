@@ -1,0 +1,120 @@
+{
+  "name": "Handoff",
+  "tagline": "The team behind your team.",
+  "bookCall": "/contact",
+  "bookingUrl": "/contact",
+  "seeTalent": "/roles",
+  "seo": {
+    "title": "Handoff | The Best of LATAM. AI Powered People. Here to Stay.",
+    "description": "We help the best US companies hire Latin America's top 1% talent — vetted, AI powered, and ready to make an impact from day one."
+  },
+  "header": {
+    "hireLabel": "Hire Today",
+    "hireHref": "/contact",
+    "joinLabel": "Join Our Talent Pool",
+    "joinHref": "/careers"
+  },
+  "mobileCta": {
+    "label": "Talk to our team"
+  },
+  "footer": {
+    "email": "hello@handoff.com",
+    "emailLabel": "hello@handoff.com",
+    "talkLabel": "Talk to Our Team",
+    "legal": "All rights reserved.",
+    "company": [
+      {
+        "label": "How It Works",
+        "href": "/how-it-works"
+      },
+      {
+        "label": "About",
+        "href": "/about"
+      },
+      {
+        "label": "Careers",
+        "href": "/careers"
+      }
+    ]
+  },
+  "marqueeCaption": "Trusted by teams that keep moving",
+  "navLabels": {
+    "howItWorks": "How It Works",
+    "industries": "Industries",
+    "allIndustries": "All Industries",
+    "roles": "Roles",
+    "allRoles": "All Roles",
+    "services": "Services",
+    "compare": "Compare the Two",
+    "resources": "Resources",
+    "about": "About",
+    "soon": "Soon"
+  },
+  "resources": [
+    {
+      "label": "Results",
+      "href": "/results",
+      "soon": false
+    },
+    {
+      "label": "Case Studies",
+      "href": "/results#case-studies",
+      "soon": false
+    },
+    {
+      "label": "Blog",
+      "href": "#",
+      "soon": true
+    },
+    {
+      "label": "Calculator",
+      "href": "#",
+      "soon": true
+    }
+  ],
+  "socialLinks": [
+    {
+      "label": "YouTube",
+      "platform": "youtube",
+      "href": "https://www.youtube.com/@yourhandoff"
+    },
+    {
+      "label": "LinkedIn",
+      "platform": "linkedin",
+      "href": "https://www.linkedin.com/company/yourhandoff/"
+    },
+    {
+      "label": "Instagram",
+      "platform": "instagram",
+      "href": "https://www.instagram.com/talenthandoff/"
+    }
+  ],
+  "cta": {
+    "headline": "Stop being the bottleneck.",
+    "headlineParts": {
+      "before": "Stop being the",
+      "accent": "bottleneck."
+    },
+    "closing": "Let Handoff take it from here.",
+    "jam": [
+      "Invoices",
+      "Scheduling",
+      "Follow-ups",
+      "Reporting",
+      "Hiring",
+      "Onboarding",
+      "Payroll",
+      "Inbox"
+    ],
+    "book": "Book a call",
+    "body": "Bring the role you cannot get off your plate. One call is usually enough to scope it, pick the model and give you a real timeline.",
+    "primary": {
+      "label": "Get Started Today",
+      "href": "/contact"
+    },
+    "secondary": {
+      "label": "Talk to Our Team",
+      "href": "/contact"
+    }
+  }
+}

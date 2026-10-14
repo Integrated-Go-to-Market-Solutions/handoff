@@ -1,0 +1,47 @@
+{
+  "order": 1,
+  "navLabel": "Corporate Relocation",
+  "icon": "pin",
+  "name": "Corporate Relocation",
+  "descriptor": "Match your contract load with coordinators in your clients' time zone.",
+  "heroImage": {
+    "src": "/images/industries/corporate-relocation.webp",
+    "alt": "A city waterfront plaza lined with modern offices and apartments at dusk",
+    "focus": "50% 50%"
+  },
+  "subhead": "Scale relocation with coordinators who work in your clients' time zone.",
+  "problemHeadline": "New contracts arrive faster than you can staff them",
+  "problemBody": "A client wins a contract and suddenly you are coordinating twice the assignments with the same team. Adding a US coordinator takes three months and costs more than the account can carry. The work lands on people who are already at capacity, and clients notice before you do.",
+  "triggers": [
+    "Assignment volume spikes and coordination falls behind.",
+    "Your client services lead leaves in the middle of assignment season.",
+    "You are quoting work you are not sure you can staff.",
+    "You tried cheaper offshore support and the quality did not hold up."
+  ],
+  "rolesHeadline": "Here are the roles we fill most in relocation",
+  "roles": [
+    {
+      "name": "Operations Coordinator",
+      "department": "admin-operations"
+    },
+    {
+      "name": "Account Manager",
+      "department": ""
+    },
+    {
+      "name": "Client Services Lead",
+      "department": "customer-support"
+    },
+    {
+      "name": "Quality Assurance Specialist",
+      "department": ""
+    },
+    {
+      "name": "Bookkeeper",
+      "department": "finance-accounting"
+    }
+  ],
+  "rolesCloser": "Talent you choose yourself, in your clients' time zone, with client-ready English and the AI skills to move faster on the same work. They know a delayed move is a family waiting in a hotel.",
+  "proofLogos": [],
+  "caseStudy": "global-relocation"
+}

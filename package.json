@@ -3,15 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3000",
-    "build": "next build",
+    "dev": "tinacms dev -c \"next dev -p 3000\"",
+    "build": "node scripts/tina-build.mjs",
     "start": "next start -p 3000",
     "lint": "eslint"
   },
   "dependencies": {
+    "@tinacms/cli": "^3.0.0",
     "next": "16.3.1",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "tinacms": "^3.14.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

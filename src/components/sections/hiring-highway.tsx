@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { Button, CtaNote } from "../brand";
 import { Reveal } from "../reveal";
 import { HandoffCheckIcon, HuntIcon, ScopeIcon, ShortlistIcon } from "../highway-icons";
-import { process, site } from "@/lib/content";
+import { tinaField, useContent } from "@/components/tina/content";
 
 /** Discovery = magnifying glass, The Vet = scope, The Shortlist = two people, The Guarantee = the Handoff check. */
 const stepIcons = [HuntIcon, ScopeIcon, ShortlistIcon, HandoffCheckIcon];
@@ -28,6 +28,7 @@ const FILL_SHARE = 0.8;
  * cards.
  */
 export function HiringHighway({ compact = false }: { compact?: boolean }) {
+  const { process, site } = useContent();
   const trackRef = useRef<HTMLDivElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
@@ -110,6 +111,7 @@ export function HiringHighway({ compact = false }: { compact?: boolean }) {
           >
             <Reveal className="mx-auto max-w-6xl text-center">
               <h2
+                data-tina-field={tinaField(process, "titleParts")}
                 className={`display short:text-[2.6rem] ${
                   compact ? "text-[clamp(2rem,4.4vw,3.4rem)]" : "text-[clamp(2.1rem,4.8vw,3.8rem)]"
                 }`}
@@ -134,7 +136,7 @@ export function HiringHighway({ compact = false }: { compact?: boolean }) {
               </div>
 
               <ol className="grid gap-4 lg:grid-cols-4 lg:gap-6">
-                {steps.map((step, i) => {
+                {steps.map((step: any, i: number) => {
                   const Icon = stepIcons[i % stepIcons.length];
                   const isEnd = i === last;
                   return (

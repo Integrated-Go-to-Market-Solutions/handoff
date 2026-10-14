@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Button } from "../brand";
-import { cta, hero, site } from "@/lib/content";
+import { tinaField, useContent } from "@/components/tina/content";
 
 /*
  * The closing scene. Short work items fall down the left and right edges
@@ -32,6 +32,7 @@ const SLOTS = [
 const STAGGER_MS = 260;
 
 export function Finale() {
+  const { cta, hero, site } = useContent();
   const sectionRef = useRef<HTMLElement>(null);
   const [phase, setPhase] = useState<"settled" | "armed" | "falling">("settled");
 
@@ -76,7 +77,7 @@ export function Finale() {
 
       {/* The falling work items: decoration only. */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        {words.map((word, i) => {
+        {words.map((word: any, i: number) => {
           const slot = SLOTS[i];
           return (
             <span
@@ -104,7 +105,7 @@ export function Finale() {
           and settle below it. */}
       <div className="shell relative z-10 text-center">
         <div className="mx-auto md:max-w-[min(48rem,calc(100vw-2*(8vw+7.5rem)))] lg:max-w-[min(48rem,calc(100vw-2*(8vw+9rem)))]">
-          <h2 className="display text-[clamp(2rem,8.5vw,5.6rem)] leading-[0.98] text-bone md:text-[clamp(1.7rem,6.5vw,5.6rem)]">
+          <h2 data-tina-field={tinaField(cta, "headlineParts")} className="display text-[clamp(2rem,8.5vw,5.6rem)] leading-[0.98] text-bone md:text-[clamp(1.7rem,6.5vw,5.6rem)]">
             {cta.headlineParts.before} <span className="text-cyan">{cta.headlineParts.accent}</span>
           </h2>
           <p className="mt-6 text-[clamp(1.05rem,2vw,1.5rem)] font-semibold text-bone/85">{cta.closing}</p>

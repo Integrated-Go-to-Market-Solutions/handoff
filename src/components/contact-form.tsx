@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { CtaNote } from "./brand";
-import { contactPage, roleGroups } from "@/lib/content";
+import { useContent } from "@/components/tina/content";
 
 /**
  * Two short steps: the role first (what, how many, when), then contact
@@ -27,19 +27,17 @@ type Values = {
 type Errors = Partial<Record<keyof Values, string>>;
 type Status = "idle" | "sending" | "ok" | "error";
 
-const copy = contactPage.form;
-const OTHER = copy.role.other;
 const isEmail = (value: string) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
 
 const field =
   "w-full rounded-2xl border bg-white px-4 py-3 text-[0.97rem] text-ink outline-none transition-colors placeholder:text-ink/35 focus:border-royal focus:ring-4 focus:ring-royal/10";
 const label = "mb-2 block text-sm font-semibold text-ink";
 
-function validate(step: 1 | 2, v: Values): Errors {
+function validate(step: 1 | 2, v: Values, other: string): Errors {
   const e: Errors = {};
   if (step === 1) {
     if (!v.role) e.role = "Choose the role you're hiring for.";
-    else if (v.role === OTHER && !v.roleOther.trim()) e.roleOther = "Tell us which role.";
+    else if (v.role === other && !v.roleOther.trim()) e.roleOther = "Tell us which role.";
     if (!v.headcount) e.headcount = "Choose how many people.";
     if (!v.timeline) e.timeline = "Choose when you need them.";
   } else {
@@ -113,6 +111,13 @@ function Choice({
 }
 
 export function ContactForm() {
+  const { contactPage, departments } = useContent();
+  const copy = contactPage.form;
+  const other = copy.role.other;
+  const roleGroups = departments.map((department) => ({
+    name: department.name || "",
+    roles: department.roles || [],
+  }));
   const [step, setStep] = useState<1 | 2>(1);
   const [values, setValues] = useState<Values>({
     role: "",
@@ -159,7 +164,7 @@ export function ContactForm() {
   };
 
   const next = () => {
-    const found = validate(1, values);
+    const found = validate(1, values, other);
     if (Object.keys(found).length) return report(found);
     setErrors({});
     setAnnounce("");
@@ -177,7 +182,7 @@ export function ContactForm() {
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (step === 1) return next();
-    const found = validate(2, values);
+    const found = validate(2, values, other);
     if (Object.keys(found).length) return report(found);
 
     setErrors({});
@@ -267,19 +272,19 @@ export function ContactForm() {
               </option>
               {roleGroups.map((group) => (
                 <optgroup key={group.name} label={group.name}>
-                  {group.roles.map((role) => (
+                  {group.roles.map((role: string) => (
                     <option key={role} value={role}>
                       {role}
                     </option>
                   ))}
                 </optgroup>
               ))}
-              <option value={OTHER}>{OTHER}</option>
+              <option value={other}>{other}</option>
             </select>
             <FieldError id="role-error" message={errors.role} />
           </div>
 
-          {values.role === OTHER && (
+          {values.role === other && (
             <div>
               <label htmlFor="roleOther" className={label}>
                 {copy.role.otherLabel}

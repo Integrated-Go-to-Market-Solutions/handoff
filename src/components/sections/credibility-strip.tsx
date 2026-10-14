@@ -1,7 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { Icon, type IconName } from "../icon";
 import { LogoMarquee } from "./logo-marquee";
-import { industries, industriesStrip } from "@/lib/content";
+import { tinaField, useContent } from "@/components/tina/content";
 
 /**
  * Homepage section 2, reworked per the 10/5 call (and given color the
@@ -19,6 +21,7 @@ import { industries, industriesStrip } from "@/lib/content";
  * artwork; the loop runs ~15% slower than 46s.
  */
 export function CredibilityStrip() {
+  const { industries, industriesStrip } = useContent();
   return (
     <section
       className="relative overflow-hidden bg-ink pb-16 text-bone md:pb-20"
@@ -33,6 +36,7 @@ export function CredibilityStrip() {
         <div className="rounded-(--radius-card) border-2 border-cyan bg-linear-to-br from-royal to-azure-deep px-4 py-8 shadow-[0_0_44px_-14px_rgba(61,214,189,0.55)] sm:px-8 md:px-12 md:py-12">
           <h2
             id="credibility-heading"
+            data-tina-field={tinaField(industriesStrip, "headline")}
             className="display mx-auto max-w-[30ch] text-balance text-center text-[clamp(1.6rem,4.4vw,3rem)] leading-tight text-white"
           >
             {industriesStrip.headline}

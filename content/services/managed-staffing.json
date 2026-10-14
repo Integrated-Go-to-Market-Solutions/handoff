@@ -1,0 +1,21 @@
+{
+  "order": 1,
+  "name": "Managed Staffing",
+  "subhead": "We employ and support the talent as the employer of record. You direct the work.",
+  "howItWorks": "The role goes through the Hands-Off Hiring System first, and you receive a shortlist of professionals screened against it. With skills, English, and AI fluency already settled, you are choosing for fit: the professional who works the way your team works and suits the culture you're building. From there, we employ them as the legal employer of record and take on the employment side, from payroll to benefits, while you direct the work day to day. The talent works remotely, embedded in your team.",
+  "detailHeadline": "What's included",
+  "detailBody": "",
+  "detailList": [
+    "Payroll",
+    "HR and compliance",
+    "Performance management",
+    "Retention support",
+    "Benefits",
+    "Equipment and IT"
+  ],
+  "bestFit": "Managed Staffing is the fit when you want us to hold the employment, compliance, and support, and keep the talent with you for the long term. Prefer to contract the talent yourself? Direct Hire covers that.",
+  "other": {
+    "label": "See Direct Hire",
+    "slug": "direct-hire"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "order": 9,
+  "name": "Corporate Relocation",
+  "roles": [
+    "Relocation Coordinator",
+    "Destination Services Coordinator",
+    "Relocation Counselor",
+    "Global Mobility Coordinator",
+    "Expense & Reimbursement Coordinator"
+  ],
+  "video": {
+    "src": "",
+    "poster": ""
+  }
+}

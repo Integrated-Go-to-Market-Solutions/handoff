@@ -1,9 +1,11 @@
+"use client";
+
 import { Reveal } from "@/components/reveal";
 import { Pill } from "@/components/brand";
 import { Icon, type IconName } from "@/components/icon";
-import { caseStudies, resultsPage } from "@/lib/content";
+import { useContent } from "@/components/tina/content";
 
-type Study = (typeof caseStudies)[number];
+type Study = ReturnType<typeof useContent>["caseStudies"][number];
 
 /* The site's one card system: each its own gradient, outlined in cyan. */
 const cardAccents = [
@@ -16,6 +18,7 @@ const glow =
   "border-2 border-cyan shadow-[0_0_28px_-10px_rgba(61,214,189,0.6)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_0_36px_-6px_rgba(61,214,189,0.75)]";
 
 function StoryCard({ study, index }: { study: Study; index: number }) {
+  const { resultsPage } = useContent();
   const accent = cardAccents[index % cardAccents.length];
   return (
     <a
@@ -35,7 +38,7 @@ function StoryCard({ study, index }: { study: Study; index: number }) {
       <p className={`mt-3 text-[0.97rem] leading-relaxed ${accent.meta}`}>{study.subhead}</p>
 
       <div className="mt-8 grid grid-cols-3 gap-4">
-        {study.heroStats.map((stat) => (
+        {study.heroStats.map((stat: any) => (
           <div key={stat.label}>
             <p className={`display text-2xl md:text-3xl ${accent.stat}`}>{stat.value}</p>
             <p className={`mt-1 text-xs font-semibold leading-snug ${accent.meta}`}>{stat.label}</p>
@@ -52,6 +55,7 @@ function StoryCard({ study, index }: { study: Study; index: number }) {
 }
 
 function CaseStudyDetail({ study, index }: { study: Study; index: number }) {
+  const { resultsPage } = useContent();
   const dark = index % 2 === 1;
   const text = dark ? "text-bone" : "text-ink";
   const muted = dark ? "text-bone/70" : "text-ink/70";
@@ -77,7 +81,7 @@ function CaseStudyDetail({ study, index }: { study: Study; index: number }) {
           <Reveal>
             <h3 className={`display text-xl ${text}`}>{resultsPage.challengeHeading}</h3>
             <ul className="mt-5 space-y-3.5">
-              {study.challenge.map((point) => (
+              {study.challenge.map((point: any) => (
                 <li key={point} className={`flex gap-3 text-[0.97rem] leading-relaxed ${muted}`}>
                   <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan" />
                   {point}
@@ -89,7 +93,7 @@ function CaseStudyDetail({ study, index }: { study: Study; index: number }) {
           <Reveal delay={90}>
             <h3 className={`display text-xl ${text}`}>{resultsPage.solutionHeading}</h3>
             <ul className="mt-5 space-y-4">
-              {study.solution.map((item) => (
+              {study.solution.map((item: any) => (
                 <li key={item.title} className={`rounded-(--radius-card) p-6 ${card}`}>
                   <p className="text-[0.97rem] font-semibold leading-snug">{item.title}</p>
                   <p className={`mt-2 text-sm font-semibold ${dark ? "text-cyan" : "text-cyan-dim"}`}>{item.result}</p>
@@ -105,7 +109,7 @@ function CaseStudyDetail({ study, index }: { study: Study; index: number }) {
               study.results.length >= 6 ? "lg:grid-cols-6" : "lg:grid-cols-4"
             }`}
           >
-            {study.results.map((r, i) => {
+            {study.results.map((r: any, i: number) => {
               const accent = cardAccents[i % cardAccents.length];
               return (
                 <div
@@ -133,6 +137,7 @@ function CaseStudyDetail({ study, index }: { study: Study; index: number }) {
 
 /** Story posters, then the full write-up for each case study. */
 export function CaseStudies() {
+  const { caseStudies, resultsPage } = useContent();
   return (
     <>
       <section

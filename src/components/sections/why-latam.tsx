@@ -1,6 +1,8 @@
+"use client";
+
 import { Reveal } from "../reveal";
 import { IconBadge, type IconName } from "../icon";
-import { whyLatam } from "@/lib/content";
+import { tinaField, useContent } from "@/components/tina/content";
 
 /**
  * Straight from the sales deck's "Why LATAM" slide — same three reasons,
@@ -15,11 +17,12 @@ import { whyLatam } from "@/lib/content";
  * light people image goes behind it once Handoff sends a new team shot.
  */
 export function WhyLatam() {
+  const { whyLatam } = useContent();
   return (
     <section className="relative overflow-hidden bg-bone pb-10 pt-24 text-ink md:pb-12 md:pt-34">
       <div className="shell relative">
         <Reveal className="max-w-5xl">
-          <h2 className="display text-[clamp(2.1rem,4.8vw,3.7rem)] text-ink">
+          <h2 data-tina-field={tinaField(whyLatam, "headline")} className="display text-[clamp(2.1rem,4.8vw,3.7rem)] text-ink">
             {whyLatam.headline}
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-ink/70 md:text-xl">
@@ -28,7 +31,7 @@ export function WhyLatam() {
         </Reveal>
 
         <div className="mt-14 grid gap-5 md:grid-cols-3">
-          {whyLatam.categories.map((category, i) => (
+          {whyLatam.categories.map((category: any, i: number) => (
             <Reveal
               key={category.title}
               delay={i * 100}
@@ -42,7 +45,7 @@ export function WhyLatam() {
                 {category.tagline}
               </p>
               <ul className="mt-4 space-y-2.5">
-                {category.bullets.map((bullet) => (
+                {category.bullets.map((bullet: any) => (
                   <li key={bullet} className="flex gap-2.5 text-[0.95rem] leading-snug text-ink/75">
                     <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-cyan-dim" />
                     {bullet}

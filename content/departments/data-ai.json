@@ -1,0 +1,18 @@
+{
+  "order": 0,
+  "name": "Data & AI",
+  "roles": [
+    "AI Developer / AI Engineer",
+    "Machine Learning Engineer",
+    "Data Scientist",
+    "Data Engineer",
+    "Data Analyst",
+    "Database Developer/Administrator",
+    "BI Analyst",
+    "Automation/Prompt Engineer"
+  ],
+  "video": {
+    "src": "",
+    "poster": ""
+  }
+}

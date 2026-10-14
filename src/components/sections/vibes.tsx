@@ -1,7 +1,9 @@
+"use client";
+
 import { Reveal } from "../reveal";
 import { VideoLoop } from "../video-loop";
 import { VibesPlayer } from "../vibes-player";
-import { vibes } from "@/lib/content";
+import { tinaField, useContent } from "@/components/tina/content";
 
 /**
  * The headline used to X out "We don't talk about overseas talent", erase
@@ -25,6 +27,7 @@ export function Vibes({
   /** Less space above, when it follows another dark section (homepage). /v2 keeps the default. */
   tightTop?: boolean;
 } = {}) {
+  const { vibes } = useContent();
   const clips = order ? order.map((i) => vibes.clips[i]) : vibes.clips;
   return (
     <section
@@ -34,7 +37,7 @@ export function Vibes({
     >
       <div className="shell relative z-10">
         <Reveal>
-          <h2 className="display text-[clamp(2.1rem,4.8vw,3.7rem)]">
+          <h2 data-tina-field={tinaField(vibes, "headline")} className="display text-[clamp(2.1rem,4.8vw,3.7rem)]">
             {vibes.headline}{" "}
             <span className="swipe">{vibes.headlineAccent}</span>
             {vibes.headlineAfter}
@@ -50,11 +53,11 @@ export function Vibes({
           </Reveal>
         ) : (
           <div className="mt-14 grid gap-5 sm:grid-cols-2 md:grid-cols-3">
-            {clips.map((clip, i) => (
+            {clips.map((clip: any, i: number) => (
               <Reveal key={clip.slug} delay={i * 110}>
                 <VideoLoop
-                  src={`/videos/${clip.slug}.mp4`}
-                  poster={`/videos/${clip.slug}.jpg`}
+                  src={clip.video}
+                  poster={clip.poster}
                   name={clip.name}
                   caption={clip.caption}
                 />

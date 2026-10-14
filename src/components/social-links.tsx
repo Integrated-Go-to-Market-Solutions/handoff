@@ -1,4 +1,6 @@
-import { socialLinks } from "@/lib/content";
+"use client";
+
+import { tinaField, useContent } from "@/components/tina/content";
 
 function SocialMark({ platform }: { platform: "youtube" | "linkedin" | "instagram" }) {
   if (platform === "linkedin") {
@@ -44,6 +46,7 @@ function SocialMark({ platform }: { platform: "youtube" | "linkedin" | "instagra
 }
 
 export function SocialLinks() {
+  const { socialLinks } = useContent();
   return (
     <nav aria-label="Handoff social media" className="mt-8 flex flex-wrap gap-4">
       {socialLinks.map((social) => (
@@ -53,7 +56,7 @@ export function SocialLinks() {
           target="_blank"
           rel="noreferrer"
           aria-label={social.label}
-          title={social.label}
+          data-tina-field={tinaField(social, "href")}
           className="group grid h-18 w-18 place-items-center rounded-full transition-transform duration-300 hover:-translate-y-1 hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-royal md:h-20 md:w-20"
         >
           <span className="grid h-full w-full place-items-center">
