@@ -27,5 +27,6 @@ const args = real
   ? ["tinacms", "build", "-c", "next build"]
   : ["tinacms", "build", "--content=local", "--skip-cloud-checks", "-c", "next build"];
 
-const child = spawn("npx", args, { stdio: "inherit", env: process.env, shell: true });
+// Keep argv intact. shell:true concatenates arguments, so "next build" becomes two tokens and Tina rejects the command.
+const child = spawn("npx", args, { stdio: "inherit", env: process.env });
 child.on("exit", (code) => process.exit(code ?? 1));
