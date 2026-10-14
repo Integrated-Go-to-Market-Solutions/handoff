@@ -1,18 +1,8 @@
 import type { Metadata } from "next";
-import { Rubik } from "next/font/google";
 import "./globals.css";
-import { serifFace, textFace } from "./fonts";
+import { rubik, serifFace, textFace } from "./fonts";
 import { SiteShell } from "@/components/tina/content";
 import { loadSite, loadChrome } from "@/lib/tina/load";
-
-// Rubik is the brand typeface. Weights match the guidelines: Light, Medium,
-// SemiBold, Bold.
-const rubik = Rubik({
-  subsets: ["latin"],
-  weight: ["300", "500", "600", "700"],
-  variable: "--font-rubik",
-  display: "swap",
-});
 
 export async function generateMetadata(): Promise<Metadata> {
   const result = await loadSite();
