@@ -10,10 +10,10 @@ import { proofStats } from "@/lib/content";
    animate count-up on entrance. Photos removed per direct instruction —
    the numbers are the primary visual focus now. */
 const cardAccents = [
-  { card: "bg-gradient-to-br from-royal to-azure-deep text-bone", label: "text-bone/75" },
-  { card: "bg-gradient-to-br from-cyan to-cyan-dim text-ink", label: "text-ink/70" },
-  { card: "bg-gradient-to-br from-white to-bone text-ink", label: "text-ink/65" },
-  { card: "bg-gradient-to-br from-ink-300 to-ink text-bone", label: "text-bone/70" },
+  { card: "bg-linear-to-br from-royal to-azure-deep text-bone", label: "text-bone/75" },
+  { card: "bg-linear-to-br from-cyan to-cyan-dim text-ink", label: "text-ink/70" },
+  { card: "bg-linear-to-br from-white to-bone text-ink", label: "text-ink/65" },
+  { card: "bg-linear-to-br from-ink-300 to-ink text-bone", label: "text-bone/70" },
 ] as const;
 
 function getDisplayValue(originalValue: string, current: number): string {
@@ -166,13 +166,13 @@ export function Stats({
     return (
       <div
         ref={rootRef}
-        className="mx-auto grid max-w-3xl grid-cols-2 divide-x divide-white/15 overflow-hidden rounded-[var(--radius-card)] border border-white/15 bg-ink/60 backdrop-blur-md"
+        className="mx-auto grid max-w-3xl grid-cols-2 divide-x divide-white/15 overflow-hidden rounded-(--radius-card) border border-white/15 bg-ink/60 backdrop-blur-md"
       >
         {items.map(({ stat }) => (
           <Link
             key={stat.label}
             href="/results"
-            className="group flex flex-col items-center justify-center px-3 py-6 text-center transition-colors duration-300 hover:bg-white/[0.04] md:py-8"
+            className="group flex flex-col items-center justify-center px-3 py-6 text-center transition-colors duration-300 hover:bg-white/4 md:py-8"
           >
             <span className="sr-only">
               {stat.value} {stat.label}
@@ -215,7 +215,7 @@ export function Stats({
               <Reveal key={stat.label} delay={i * 100} className={square ? "w-[min(42vw,13rem)]" : ""}>
                 <Link
                   href={hrefs?.[stat.label] ?? "/results"}
-                  className={`group block h-full rounded-[var(--radius-card)] border-2 border-cyan p-5 shadow-[0_0_28px_-10px_rgba(61,214,189,0.6)] outline-none transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_0_36px_-6px_rgba(61,214,189,0.75)] focus-visible:-translate-y-1.5 focus-visible:ring-4 focus-visible:ring-royal/50 focus-visible:ring-offset-2 focus-visible:ring-offset-bone md:p-6 ${
+                  className={`group block h-full rounded-(--radius-card) border-2 border-cyan p-5 shadow-[0_0_28px_-10px_rgba(61,214,189,0.6)] outline-none transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_0_36px_-6px_rgba(61,214,189,0.75)] focus-visible:-translate-y-1.5 focus-visible:ring-4 focus-visible:ring-royal/50 focus-visible:ring-offset-2 focus-visible:ring-offset-bone md:p-6 ${
                     square ? "flex aspect-square min-w-0 flex-col items-center justify-center p-3 text-center sm:p-5" : ""
                   } ${accent.card}`}
                 >

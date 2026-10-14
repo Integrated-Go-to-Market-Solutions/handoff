@@ -6,7 +6,7 @@ import { Finale } from "@/components/sections/finale";
 import { departments, rolesPage, site } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Roles we place | Handoff",
+  title: rolesPage.title,
   description: rolesPage.subhead,
 };
 
@@ -44,7 +44,7 @@ export default function RolesPage() {
                 <Reveal key={department.slug} delay={Math.min(i, 5) * 60} as="li" className="h-full">
                   <Link
                     href={`/roles/${department.slug}`}
-                    className={`group flex h-full flex-col rounded-[var(--radius-card)] p-6 focus-visible:outline-none md:p-7 ${cardGlow} ${tone.card}`}
+                    className={`group flex h-full flex-col rounded-(--radius-card) p-6 focus-visible:outline-none md:p-7 ${cardGlow} ${tone.card}`}
                   >
                     <div className="flex items-start justify-between gap-4">
                       <h2 className="display text-xl leading-tight md:text-2xl">

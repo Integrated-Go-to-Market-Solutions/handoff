@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { HiringTimeline } from "@/components/sections/hiring-timeline";
 import { PromoVideo } from "@/components/sections/promo-video";
 import { Finale } from "@/components/sections/finale";
+import { howItWorksPage } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "How it works | Handoff",
-  description:
-    "The Hands-off Hiring System: the four steps every Handoff hire goes through, from discovery to the guarantee.",
+  title: howItWorksPage.title,
+  description: howItWorksPage.description,
 };
 
 export default function HowItWorksPage() {

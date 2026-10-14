@@ -7,7 +7,7 @@ import { Finale } from "@/components/sections/finale";
 import { industries, industriesPage, site } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Industries | Handoff",
+  title: industriesPage.title,
   description: industriesPage.body,
 };
 
@@ -42,7 +42,7 @@ export default function IndustriesPage() {
                 <Reveal as="li" key={industry.slug} delay={Math.min(i, 5) * 70} className="h-full">
                   <Link
                     href={`/industries/${industry.slug}`}
-                    className={`group flex h-full flex-col rounded-[var(--radius-card)] p-7 focus-visible:outline-none md:p-8 ${cardGlow} ${tone.card}`}
+                    className={`group flex h-full flex-col rounded-(--radius-card) p-7 focus-visible:outline-none md:p-8 ${cardGlow} ${tone.card}`}
                   >
                     <div className="flex items-start justify-between gap-4">
                       <Icon name={industry.icon as IconName} strokeWidth={1.25} className={`h-11 w-11 ${tone.accent}`} />
@@ -63,7 +63,7 @@ export default function IndustriesPage() {
             })}
             {/* The catch-all fills the grid's sixth slot (Tom, 10/5). */}
             <Reveal as="li" delay={350} className="h-full">
-              <div className="flex h-full flex-col rounded-[var(--radius-card)] border-2 border-cyan bg-gradient-to-br from-royal to-azure-deep p-7 text-bone shadow-[0_0_28px_-10px_rgba(61,214,189,0.6)] md:p-8">
+              <div className="flex h-full flex-col rounded-(--radius-card) border-2 border-cyan bg-linear-to-br from-royal to-azure-deep p-7 text-bone shadow-[0_0_28px_-10px_rgba(61,214,189,0.6)] md:p-8">
                 <h2 className="text-base font-semibold uppercase tracking-[0.04em] text-white md:text-lg">
                   {industriesPage.otherHeadline}
                 </h2>

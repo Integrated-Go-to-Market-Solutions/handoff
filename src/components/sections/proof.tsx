@@ -31,9 +31,9 @@ export function Proof() {
 
           <Reveal
             delay={team.length * 70}
-            className="w-[268px] shrink-0 snap-start sm:w-auto"
+            className="w-67 shrink-0 snap-start sm:w-auto"
           >
-            <div className="flex h-full flex-col justify-between rounded-[var(--radius-brand)] bg-ink-300 p-7 border border-cyan/30">
+            <div className="flex h-full flex-col justify-between rounded-(--radius-brand) bg-ink-300 p-7 border border-cyan/30">
               <p className="display text-2xl leading-tight text-bone">
                 Your next hire
                 <br />

@@ -5,7 +5,7 @@ import { VideoLoop } from "@/components/video-loop";
 import { careersPage } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Careers | Handoff",
+  title: careersPage.title,
   description: careersPage.subhead,
 };
 
@@ -50,7 +50,7 @@ export default function CareersPage() {
               const tone = cardTones[i % cardTones.length];
               return (
                 <Reveal as="li" key={item.lead} delay={i * 80} className="h-full">
-                  <div className={`h-full rounded-[var(--radius-card)] p-7 md:p-8 ${cardGlow} ${tone.card}`}>
+                  <div className={`h-full rounded-(--radius-card) p-7 md:p-8 ${cardGlow} ${tone.card}`}>
                     <p className={`text-pretty text-base leading-relaxed md:text-lg ${tone.muted}`}>
                       <span className={`font-semibold ${tone.accent}`}>{item.lead}</span> {item.rest}
                     </p>
@@ -84,7 +84,7 @@ export default function CareersPage() {
               const tone = cardTones[i % cardTones.length];
               return (
                 <Reveal as="li" key={step.title} delay={i * 90} className="h-full">
-                  <div className={`flex h-full flex-col rounded-[var(--radius-card)] p-6 ${cardGlow} ${tone.card}`}>
+                  <div className={`flex h-full flex-col rounded-(--radius-card) p-6 ${cardGlow} ${tone.card}`}>
                     <span className={`display text-2xl ${tone.accent}`} aria-hidden="true">
                       {String(i + 1).padStart(2, "0")}
                     </span>
@@ -96,7 +96,7 @@ export default function CareersPage() {
             })}
           </ol>
 
-          <div className="mt-12 rounded-[var(--radius-card)] border-2 border-cyan bg-gradient-to-br from-royal to-azure-deep p-7 text-center shadow-[0_0_44px_-14px_rgba(61,214,189,0.55)] md:p-10">
+          <div className="mt-12 rounded-(--radius-card) border-2 border-cyan bg-linear-to-br from-royal to-azure-deep p-7 text-center shadow-[0_0_44px_-14px_rgba(61,214,189,0.55)] md:p-10">
             <Button href={careersPage.cta.href} size="lg">
               {careersPage.cta.label}
             </Button>

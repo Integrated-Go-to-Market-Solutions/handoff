@@ -30,8 +30,8 @@ export function PhotoBackdrop({
       <div
         className={`absolute inset-0 ${
           tone === "dark"
-            ? "bg-gradient-to-b from-ink via-ink/85 to-ink"
-            : "bg-gradient-to-b from-bone via-bone/85 to-bone"
+            ? "bg-linear-to-b from-ink via-ink/85 to-ink"
+            : "bg-linear-to-b from-bone via-bone/85 to-bone"
         }`}
       />
     </div>

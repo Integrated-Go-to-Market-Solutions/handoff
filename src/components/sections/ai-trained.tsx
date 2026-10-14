@@ -107,10 +107,10 @@ export function AiTrained() {
                 aria-selected={selected}
                 aria-controls={`${baseId}-panel`}
                 onClick={() => setActive(i)}
-                className={`min-w-[15rem] shrink-0 snap-start rounded-full border-2 px-6 py-3.5 text-left transition-colors sm:min-w-0 ${
+                className={`min-w-60 shrink-0 snap-start rounded-full border-2 px-6 py-3.5 text-left transition-colors sm:min-w-0 ${
                   selected
                     ? "border-cyan bg-ink text-white"
-                    : "border-transparent bg-ink/[0.07] text-ink hover:bg-ink/[0.11]"
+                    : "border-transparent bg-ink/7 text-ink hover:bg-ink/11"
                 }`}
               >
                 <span className={`block text-[0.68rem] font-bold uppercase tracking-[0.16em] ${selected ? "text-cyan" : "text-royal"}`}>
@@ -127,7 +127,7 @@ export function AiTrained() {
           role="tabpanel"
           id={`${baseId}-panel`}
           aria-labelledby={`${baseId}-tab-${track.id}`}
-          className="mt-5 rounded-[var(--radius-card)] border-2 border-cyan bg-ink p-6 text-bone shadow-[0_0_36px_-14px_rgba(61,214,189,0.6)] sm:p-8 md:p-10"
+          className="mt-5 rounded-(--radius-card) border-2 border-cyan bg-ink p-6 text-bone shadow-[0_0_36px_-14px_rgba(61,214,189,0.6)] sm:p-8 md:p-10"
         >
           {track.details ? (
             <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-10">
@@ -165,7 +165,7 @@ export function AiTrained() {
                 <SectionLabel>{track.details.buildLabel}</SectionLabel>
                 <ul className="mt-4 space-y-2.5">
                   {track.details.build.map((item) => (
-                    <li key={item} className="flex gap-3 rounded-2xl bg-white/[0.06] px-4 py-3 text-[0.95rem] leading-snug text-bone/90">
+                    <li key={item} className="flex gap-3 rounded-2xl bg-white/6 px-4 py-3 text-[0.95rem] leading-snug text-bone/90">
                       <Cube />
                       {item}
                     </li>

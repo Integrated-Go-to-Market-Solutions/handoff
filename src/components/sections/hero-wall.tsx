@@ -28,7 +28,7 @@ const WALL = [
 
 export function HeroWall() {
   return (
-    <section className="relative isolate min-h-[680px] overflow-hidden bg-ink lg:h-[94vh]">
+    <section className="relative isolate min-h-170 overflow-hidden bg-ink lg:h-[94vh]">
       {/* The wall itself, edge to edge. */}
       <div className="absolute inset-0 grid grid-cols-2 grid-rows-4 sm:grid-cols-4 sm:grid-rows-2">
         {WALL.map((cell, i) => (
@@ -53,12 +53,12 @@ export function HeroWall() {
                 fill
                 priority={i < 4}
                 sizes="(max-width: 640px) 50vw, 25vw"
-                className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.05]"
+                className="object-cover transition-transform duration-1200 ease-out group-hover:scale-[1.05]"
               />
             )}
 
             {/* Name appears on hover, so the wall reads as people not pattern. */}
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-2 bg-gradient-to-t from-ink/90 to-transparent p-4 pt-12 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-2 bg-linear-to-t from-ink/90 to-transparent p-4 pt-12 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
               <p className="display text-sm text-bone">{cell.name}</p>
               <p className="text-[0.72rem] text-cyan">{cell.role}</p>
             </div>
@@ -77,7 +77,7 @@ export function HeroWall() {
         aria-hidden="true"
       />
 
-      <div className="shell relative flex h-full min-h-[680px] flex-col justify-end pb-16 pt-28 lg:min-h-0">
+      <div className="shell relative flex h-full min-h-170 flex-col justify-end pb-16 pt-28 lg:min-h-0">
         <h1 className="display max-w-[16ch] text-[clamp(3rem,8.5vw,7rem)] text-bone">
           {hero.headline.map((part) => (
             <span

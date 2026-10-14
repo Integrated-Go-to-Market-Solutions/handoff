@@ -98,7 +98,7 @@ function Choice({
               className="peer sr-only"
             />
             <span
-              className={`inline-flex min-w-[4.5rem] items-center justify-center rounded-full border-2 px-4 py-2.5 text-[0.95rem] font-semibold transition-colors peer-checked:border-royal peer-checked:bg-royal peer-checked:text-white peer-focus-visible:ring-4 peer-focus-visible:ring-royal/25 ${
+              className={`inline-flex min-w-18 items-center justify-center rounded-full border-2 px-4 py-2.5 text-[0.95rem] font-semibold transition-colors peer-checked:border-royal peer-checked:bg-royal peer-checked:text-white peer-focus-visible:ring-4 peer-focus-visible:ring-royal/25 ${
                 error ? "border-red-400 text-ink" : "border-ink/15 text-ink hover:border-royal/50"
               }`}
             >
@@ -205,7 +205,7 @@ export function ContactForm() {
         ref={successRef}
         tabIndex={-1}
         role="status"
-        className="rounded-[var(--radius-brand)] border border-ink/12 bg-white p-7 text-center text-ink shadow-sm outline-none md:p-9"
+        className="rounded-(--radius-brand) border border-ink/12 bg-white p-7 text-center text-ink shadow-sm outline-none md:p-9"
       >
         <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-cyan">
           <svg viewBox="0 0 20 20" className="h-7 w-7" aria-hidden="true">
@@ -224,7 +224,7 @@ export function ContactForm() {
       onSubmit={onSubmit}
       noValidate
       aria-label="Book a call"
-      className="rounded-[var(--radius-brand)] border border-ink/12 bg-white p-7 text-ink shadow-sm md:p-9"
+      className="rounded-(--radius-brand) border border-ink/12 bg-white p-7 text-ink shadow-sm md:p-9"
     >
 
       {/* Progress */}

@@ -145,10 +145,10 @@ export function CtaNote({ tone = "onDark", className = "" }: { tone?: "onDark" |
  * a soft glow. Cycle through them with `cardTones[i % cardTones.length]`.
  */
 export const cardTones = [
-  { card: "bg-gradient-to-br from-cyan to-cyan-dim text-ink", muted: "text-ink/75", accent: "text-ink" },
-  { card: "bg-gradient-to-br from-royal to-azure-deep text-bone", muted: "text-bone/90", accent: "text-bone" },
-  { card: "bg-gradient-to-br from-ink-300 to-ink text-bone", muted: "text-bone/75", accent: "text-cyan" },
-  { card: "bg-gradient-to-br from-white to-bone text-ink", muted: "text-ink/70", accent: "text-royal" },
+  { card: "bg-linear-to-br from-cyan to-cyan-dim text-ink", muted: "text-ink/75", accent: "text-ink" },
+  { card: "bg-linear-to-br from-royal to-azure-deep text-bone", muted: "text-bone/90", accent: "text-bone" },
+  { card: "bg-linear-to-br from-ink-300 to-ink text-bone", muted: "text-bone/75", accent: "text-cyan" },
+  { card: "bg-linear-to-br from-white to-bone text-ink", muted: "text-ink/70", accent: "text-royal" },
 ] as const;
 
 export const cardGlow =

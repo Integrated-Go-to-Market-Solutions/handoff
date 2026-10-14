@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { Models } from "@/components/sections/models";
 import { Faq } from "@/components/sections/faq";
 import { Finale } from "@/components/sections/finale";
-import { modelsIntro } from "@/lib/content";
+import { modelsIntro, pricingPage } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Pricing | Handoff",
+  title: pricingPage.title,
   description: modelsIntro.subhead,
 };
 

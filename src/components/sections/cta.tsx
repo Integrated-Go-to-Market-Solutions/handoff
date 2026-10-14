@@ -45,9 +45,9 @@ export function Cta() {
           to position: relative, which would collapse the bottle wrapper. */}
       <div className="tex-waves absolute inset-0" aria-hidden="true" />
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <Bottle id="right" className="drift absolute -right-6 top-1/2 h-[150%] w-auto -translate-y-1/2 rotate-[14deg] text-cyan opacity-40 md:right-[6%] lg:right-[10%]" />
+        <Bottle id="right" className="drift absolute -right-6 top-1/2 h-[150%] w-auto -translate-y-1/2 rotate-14 text-cyan opacity-40 md:right-[6%] lg:right-[10%]" />
         <Bottle id="left" className="drift-slow absolute -left-16 top-1/2 hidden h-[120%] w-auto -translate-y-1/2 -rotate-[18deg] text-cyan opacity-20 lg:block" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/60 via-transparent to-ink/30" />
+        <div className="absolute inset-0 bg-linear-to-r from-ink/60 via-transparent to-ink/30" />
       </div>
 
       <div className="shell relative z-10 py-20 text-center md:py-28">

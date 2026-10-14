@@ -11,26 +11,26 @@ import { problem } from "@/lib/content";
    end of its gradient (ink on cyan and light, bone on royal and carbon). */
 const accents = [
   {
-    front: "bg-gradient-to-br from-cyan to-cyan-dim text-ink",
-    back: "bg-gradient-to-br from-ink-300 to-ink text-bone",
+    front: "bg-linear-to-br from-cyan to-cyan-dim text-ink",
+    back: "bg-linear-to-br from-ink-300 to-ink text-bone",
     ring: "border-ink/40 text-ink",
     body: "text-ink/80",
   },
   {
-    front: "bg-gradient-to-br from-royal to-azure-deep text-bone",
-    back: "bg-gradient-to-br from-white to-bone text-ink",
+    front: "bg-linear-to-br from-royal to-azure-deep text-bone",
+    back: "bg-linear-to-br from-white to-bone text-ink",
     ring: "border-bone/60 text-bone",
     body: "text-bone/85",
   },
   {
-    front: "bg-gradient-to-br from-white to-bone text-ink",
-    back: "bg-gradient-to-br from-royal to-azure-deep text-bone",
+    front: "bg-linear-to-br from-white to-bone text-ink",
+    back: "bg-linear-to-br from-royal to-azure-deep text-bone",
     ring: "border-cyan text-cyan-dim",
     body: "text-ink/75",
   },
   {
-    front: "bg-gradient-to-br from-ink-300 to-ink text-bone",
-    back: "bg-gradient-to-br from-cyan to-cyan-dim text-ink",
+    front: "bg-linear-to-br from-ink-300 to-ink text-bone",
+    back: "bg-linear-to-br from-cyan to-cyan-dim text-ink",
     ring: "border-cyan text-cyan",
     body: "text-bone/80",
   },
@@ -61,7 +61,7 @@ function ProblemCard({
       aria-pressed={flipped}
       aria-label={`${title}. ${flipped ? "Show the problem" : "Show the fix"}`}
       onClick={() => setFlipped((value) => !value)}
-      className="group block h-[24rem] w-full cursor-pointer text-left [perspective:1200px] sm:h-[22rem] lg:h-[24rem] xl:h-[22rem]"
+      className="group block h-96 w-full cursor-pointer text-left [perspective:1200px] sm:h-88 lg:h-96 xl:h-88"
     >
       <span
         className={`relative block h-full w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:-translate-y-1.5 ${
@@ -72,7 +72,7 @@ function ProblemCard({
             up to the section intro. Four cards each carrying both read as
             four identical labels rather than as four problems. */}
         <span
-          className={`absolute inset-0 flex h-full flex-col items-center rounded-[var(--radius-card)] p-7 text-center transition-shadow duration-500 [backface-visibility:hidden] ${glow} ${accent.front}`}
+          className={`absolute inset-0 flex h-full flex-col items-center rounded-(--radius-card) p-7 text-center transition-shadow duration-500 [backface-visibility:hidden] ${glow} ${accent.front}`}
         >
           <span
             className={`inline-flex h-12 w-12 items-center justify-center rounded-full border-2 ${accent.ring}`}
@@ -90,7 +90,7 @@ function ProblemCard({
         </span>
 
         <span
-          className={`absolute inset-0 flex h-full flex-col items-center justify-between rounded-[var(--radius-card)] p-7 text-center [backface-visibility:hidden] [transform:rotateY(180deg)] ${glow} ${accent.back}`}
+          className={`absolute inset-0 flex h-full flex-col items-center justify-between rounded-(--radius-card) p-7 text-center [backface-visibility:hidden] [transform:rotateY(180deg)] ${glow} ${accent.back}`}
         >
           <span className="display text-6xl leading-none">Stop.</span>
           <span>

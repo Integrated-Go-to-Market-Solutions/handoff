@@ -5,9 +5,8 @@ import { ContactForm } from "@/components/contact-form";
 import { contactPage, models } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Book a call | Handoff",
-  description:
-    "Tell us the role you cannot get off your plate. One call to scope it, pick the right engagement model and get a realistic timeline.",
+  title: contactPage.title,
+  description: contactPage.description,
 };
 
 export default function ContactPage() {
@@ -31,7 +30,7 @@ export default function ContactPage() {
             </Reveal>
 
             <Reveal delay={240}>
-              <div className="mt-10 rounded-[var(--radius-card)] border border-white/10 bg-white/[0.04] p-7">
+              <div className="mt-10 rounded-(--radius-card) border border-white/10 bg-white/4 p-7">
                 <ul className="mt-5 space-y-3.5">
                   {contactPage.expect.map((item) => (
                     <li key={item} className="flex gap-3 text-[0.97rem] text-bone/80">

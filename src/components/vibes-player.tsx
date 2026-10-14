@@ -110,7 +110,7 @@ export function VibesPlayer({ clips }: { clips: Clip[] }) {
               style={{ "--slot": slotOf(i), "--card-h": slotOf(i) === 1 ? "var(--h-main)" : "var(--h-side)" } as CSSProperties}
               onMouseEnter={() => !isMain && window.matchMedia("(min-width: 768px)").matches && setPreview(i)}
               onMouseLeave={() => preview === i && setPreview(null)}
-              className={`group relative w-[78vw] shrink-0 snap-center overflow-hidden rounded-[var(--radius-brand)] border-2 bg-ink transition-[border-color,box-shadow,transform,width] duration-700 ease-out motion-reduce:transition-none md:w-[calc(var(--card-h)*9/16)] md:[order:var(--slot)] ${
+              className={`group relative w-[78vw] shrink-0 snap-center overflow-hidden rounded-(--radius-brand) border-2 bg-ink transition-[border-color,box-shadow,transform,width] duration-700 ease-out motion-reduce:transition-none md:w-[calc(var(--card-h)*9/16)] md:order-(--slot) ${
                 isLive
                   ? "border-cyan shadow-[0_0_0_4px_rgba(61,214,189,0.12),0_0_48px_-6px_rgba(61,214,189,0.75)]"
                   : "border-white/10 shadow-[0_20px_40px_-24px_rgba(0,0,0,0.8)] md:scale-[0.96]"
@@ -130,7 +130,7 @@ export function VibesPlayer({ clips }: { clips: Clip[] }) {
                   ref={(el) => {
                     videos.current[i] = el;
                   }}
-                  className={`aspect-[9/16] w-full object-cover transition-[filter] duration-700 ease-out motion-reduce:transition-none ${
+                  className={`aspect-9/16 w-full object-cover transition-[filter] duration-700 ease-out motion-reduce:transition-none ${
                     isLive ? "brightness-100 saturate-100" : "brightness-[0.55] saturate-[0.55]"
                   }`}
                   poster={`/videos/${clip.slug}.jpg`}
@@ -176,7 +176,7 @@ export function VibesPlayer({ clips }: { clips: Clip[] }) {
                 </span>
 
                 <figcaption
-                  className={`pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/95 via-ink/60 to-transparent p-5 pt-16 transition-opacity duration-700 motion-reduce:transition-none ${
+                  className={`pointer-events-none absolute inset-x-0 bottom-0 bg-linear-to-t from-ink/95 via-ink/60 to-transparent p-5 pt-16 transition-opacity duration-700 motion-reduce:transition-none ${
                     isLive ? "opacity-100" : "opacity-80"
                   }`}
                 >

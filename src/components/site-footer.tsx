@@ -52,7 +52,7 @@ export function SiteFooter() {
                       // Not built yet: a label with a "Soon" tag, as in the menu.
                       <span className="inline-flex items-center gap-2 py-1.5 text-base font-medium text-bone/40">
                         {link.label}
-                        <span className="rounded-full border border-white/15 px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-[0.1em] text-bone/50">
+                        <span className="rounded-full border border-white/15 px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-widest text-bone/50">
                           Soon
                         </span>
                       </span>

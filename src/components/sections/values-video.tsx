@@ -21,7 +21,7 @@ export function ValuesVideo() {
             ))}
           </dl>
         </Reveal>
-        <Reveal delay={110} className="mx-auto w-full max-w-[340px]">
+        <Reveal delay={110} className="mx-auto w-full max-w-85">
           <VideoLoop
             src="/videos/handoff-values.mp4"
             poster="/videos/handoff-values.jpg"

@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Reveal } from "@/components/reveal";
+import { Breadcrumb } from "@/components/breadcrumb";
 import { Button, CtaNote, Eyebrow, cardGlow, cardTones } from "@/components/brand";
 import { HiringHighway } from "@/components/sections/hiring-highway";
 import { Finale } from "@/components/sections/finale";
-import { services, site } from "@/lib/content";
+import { modelsIntro, services, servicesPage, site } from "@/lib/content";
 
 /**
  * The two service pages, Direct Hire and Managed Staffing, from Tom's
@@ -38,7 +39,7 @@ function ServiceSwitch({
 }) {
   return (
     <nav aria-label="Switch service" className={className}>
-      <ul className={`inline-flex rounded-full border p-1 ${light ? "border-ink/15 bg-white" : "border-white/15 bg-white/[0.04]"}`}>
+      <ul className={`inline-flex rounded-full border p-1 ${light ? "border-ink/15 bg-white" : "border-white/15 bg-white/4"}`}>
         {services.map((s) => {
           const active = s.slug === current;
           return (
@@ -83,31 +84,19 @@ export default async function ServicePage({
       <section className="halftone relative overflow-hidden bg-ink section-py-tight text-bone">
         {/* Above the halftone screen, so it textures the backdrop, not the text. */}
         <div className="shell relative z-2">
-          <nav aria-label="Breadcrumb" className="mb-6 text-sm font-medium text-bone/60">
-            {/* Links get a 36px-tall tap area; the negative margin keeps the
-                trail's spacing (UX QA, 10/6). */}
-            <Link href="/" className="-my-2.5 inline-block py-2.5 transition-colors hover:text-cyan">
-              Home
-            </Link>
-            <span aria-hidden="true" className="mx-2">
-              &rarr;
-            </span>
-            {/* Services is a menu group, not a page (Tom, 10/6), so plain text. */}
-            <span>Services</span>
-            <span aria-hidden="true" className="mx-2">
-              &rarr;
-            </span>
-            <span className="text-bone/85">{service.name}</span>
-          </nav>
+          {/* Services is a menu group, not a page, so the middle crumb has no link. */}
+          <Breadcrumb
+            items={[{ label: "Home", href: "/" }, { label: servicesPage.crumb }, { label: service.name }]}
+          />
           <ServiceSwitch current={service.slug} className="mb-8" />
           <Reveal>
-            <Eyebrow className="mb-4">Two ways to work together</Eyebrow>
+            <Eyebrow className="mb-4">{modelsIntro.headline}</Eyebrow>
             <h1 className="display text-[clamp(2.5rem,6vw,4.6rem)] text-bone">{service.name}</h1>
             <p className="mt-5 text-pretty text-lg font-medium leading-relaxed text-bone/80 md:text-xl">
               {service.subhead}
             </p>
             <div className="mt-8">
-              <Button href={site.bookCall}>Book a call</Button>
+              <Button href={site.bookCall}>{modelsIntro.cta}</Button>
               <CtaNote className="mt-3" />
             </div>
           </Reveal>
@@ -117,7 +106,7 @@ export default async function ServicePage({
       <section className="relative overflow-hidden bg-ink pb-16 text-bone md:pb-24">
         <div className="shell relative">
           <Reveal>
-            <h2 className="display text-[clamp(1.8rem,4vw,3rem)]">How it works</h2>
+            <h2 className="display text-[clamp(1.8rem,4vw,3rem)]">{servicesPage.howHeadline}</h2>
             <p className="mt-6 text-pretty text-lg leading-relaxed text-bone/75 md:text-xl">{service.howItWorks}</p>
           </Reveal>
         </div>
@@ -128,7 +117,7 @@ export default async function ServicePage({
         <div className="shell relative">
           <div className="grid gap-4 md:grid-cols-2">
             <Reveal className="h-full">
-              <div className={`h-full rounded-[var(--radius-card)] p-7 md:p-8 ${cardGlow} ${cardTones[1].card}`}>
+              <div className={`h-full rounded-(--radius-card) p-7 md:p-8 ${cardGlow} ${cardTones[1].card}`}>
                 <h2 className="text-base font-semibold uppercase tracking-[0.04em] text-white md:text-lg">
                   {service.detailHeadline}
                 </h2>
@@ -149,8 +138,8 @@ export default async function ServicePage({
             </Reveal>
 
             <Reveal delay={90} className="h-full">
-              <div className={`flex h-full flex-col rounded-[var(--radius-card)] p-7 md:p-8 ${cardGlow} ${cardTones[0].card}`}>
-                <h2 className="text-base font-semibold uppercase tracking-[0.04em] md:text-lg">Best fit</h2>
+              <div className={`flex h-full flex-col rounded-(--radius-card) p-7 md:p-8 ${cardGlow} ${cardTones[0].card}`}>
+                <h2 className="text-base font-semibold uppercase tracking-[0.04em] md:text-lg">{servicesPage.bestFitHeadline}</h2>
                 <p className="mt-3 flex-1 text-pretty text-base leading-relaxed text-ink/80 md:text-lg">{service.bestFit}</p>
                 <Link
                   href={`/services/${service.other.slug}`}
@@ -163,7 +152,7 @@ export default async function ServicePage({
           </div>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <Button href={site.bookCall}>Book a call</Button>
+            <Button href={site.bookCall}>{modelsIntro.cta}</Button>
             <ServiceSwitch current={service.slug} light />
           </div>
         </div>

@@ -23,7 +23,7 @@ export function DayInLife() {
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {dayInLife.slots.map((slot, i) => (
             <Reveal key={slot.id} delay={i * 90}>
-              <div className="flex aspect-[9/16] flex-col items-center justify-center rounded-[var(--radius-brand)] border-2 border-dashed border-white/20 bg-white/[0.03] p-6 text-center transition-colors duration-300 hover:border-cyan/40">
+              <div className="flex aspect-9/16 flex-col items-center justify-center rounded-(--radius-brand) border-2 border-dashed border-white/20 bg-white/3 p-6 text-center transition-colors duration-300 hover:border-cyan/40">
                 <span className="text-xs font-bold uppercase tracking-[0.14em] text-bone/40">
                   Coming soon
                 </span>

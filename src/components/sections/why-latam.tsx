@@ -16,7 +16,7 @@ import { whyLatam } from "@/lib/content";
  */
 export function WhyLatam() {
   return (
-    <section className="relative overflow-hidden bg-bone pb-10 pt-24 text-ink md:pb-12 md:pt-[8.5rem]">
+    <section className="relative overflow-hidden bg-bone pb-10 pt-24 text-ink md:pb-12 md:pt-34">
       <div className="shell relative">
         <Reveal className="max-w-5xl">
           <h2 className="display text-[clamp(2.1rem,4.8vw,3.7rem)] text-ink">
@@ -32,7 +32,7 @@ export function WhyLatam() {
             <Reveal
               key={category.title}
               delay={i * 100}
-              className="group h-full rounded-[var(--radius-card)] border-2 border-ink/10 bg-white/85 p-6 shadow-sm transition-[border-color,box-shadow] duration-300 hover:border-royal/40 hover:shadow-md md:p-7"
+              className="group h-full rounded-(--radius-card) border-2 border-ink/10 bg-white/85 p-6 shadow-sm transition-[border-color,box-shadow] duration-300 hover:border-royal/40 hover:shadow-md md:p-7"
             >
               <IconBadge name={category.icon as IconName} />
               <h3 className="display mt-5 text-xl leading-tight text-ink">

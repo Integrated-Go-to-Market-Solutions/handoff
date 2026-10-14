@@ -37,9 +37,9 @@ export function LogoMarquee({
             // long name doesn't dwarf an icon-over-name logo (10/13).
             <div
               key={`${logo.slug}-${i}`}
-              className="grid h-24 w-[220px] shrink-0 place-items-center transition-transform duration-500 hover:scale-105"
+              className="grid h-24 w-55 shrink-0 place-items-center transition-transform duration-500 hover:scale-105"
             >
-              <div className={`relative w-full ${"stacked" in logo ? "h-[5.25rem]" : "h-12"}`}>
+              <div className={`relative w-full ${"stacked" in logo ? "h-21" : "h-12"}`}>
               <Image
                 src={`/images/logos/${logo.slug}.webp`}
                 alt={logo.name}
@@ -55,7 +55,7 @@ export function LogoMarquee({
             // instead of a broken image or a fabricated mark.
             <div
               key={`${logo.slug}-${i}`}
-              className="grid h-24 w-[260px] shrink-0 place-items-center transition-transform duration-500 hover:scale-105"
+              className="grid h-24 w-65 shrink-0 place-items-center transition-transform duration-500 hover:scale-105"
             >
               <span className={`display text-xl ${onDark ? "text-bone/80" : "text-ink/70"}`}>{logo.name}</span>
             </div>

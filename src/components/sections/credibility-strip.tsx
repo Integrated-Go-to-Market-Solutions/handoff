@@ -30,7 +30,7 @@ export function CredibilityStrip() {
       </div>
 
       <div className="shell relative pt-14 md:pt-16">
-        <div className="rounded-[var(--radius-card)] border-2 border-cyan bg-gradient-to-br from-royal to-azure-deep px-4 py-8 shadow-[0_0_44px_-14px_rgba(61,214,189,0.55)] sm:px-8 md:px-12 md:py-12">
+        <div className="rounded-(--radius-card) border-2 border-cyan bg-linear-to-br from-royal to-azure-deep px-4 py-8 shadow-[0_0_44px_-14px_rgba(61,214,189,0.55)] sm:px-8 md:px-12 md:py-12">
           <h2
             id="credibility-heading"
             className="display mx-auto max-w-[30ch] text-balance text-center text-[clamp(1.6rem,4.4vw,3rem)] leading-tight text-white"
@@ -46,10 +46,10 @@ export function CredibilityStrip() {
           <nav aria-labelledby="credibility-heading" className="mt-8 md:mt-10">
             <ul className="-mx-4 flex snap-x scroll-px-4 gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-5 sm:gap-4 sm:overflow-visible sm:px-0 sm:pb-0 md:gap-5 [&::-webkit-scrollbar]:hidden">
               {industries.map((industry) => (
-                <li key={industry.slug} className="w-[9rem] shrink-0 snap-start sm:w-auto">
+                <li key={industry.slug} className="w-36 shrink-0 snap-start sm:w-auto">
                   <Link
                     href={`/industries/${industry.slug}`}
-                    className="group flex h-full flex-col items-center justify-center gap-4 rounded-[var(--radius-card)] border-2 border-white/30 bg-white/[0.06] px-3 py-7 text-center transition-colors duration-300 hover:border-cyan hover:bg-white/[0.12] focus-visible:border-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan/40 motion-reduce:transition-none md:py-10"
+                    className="group flex h-full flex-col items-center justify-center gap-4 rounded-(--radius-card) border-2 border-white/30 bg-white/6 px-3 py-7 text-center transition-colors duration-300 hover:border-cyan hover:bg-white/12 focus-visible:border-cyan focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan/40 motion-reduce:transition-none md:py-10"
                   >
                     <Icon
                       name={industry.icon as IconName}

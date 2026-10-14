@@ -23,14 +23,14 @@ export function HeroBright({ subhead }: { subhead?: string } = {}) {
       <div className="absolute inset-0" aria-hidden="true">
         <div className="absolute inset-0 bg-ink/70" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgb(31_31_31/0.55),transparent_75%)]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/60" />
+        <div className="absolute inset-0 bg-linear-to-t from-ink via-transparent to-ink/60" />
       </div>
       <div className="shell relative z-10 text-center">
         <Eyebrow className="mb-5 md:mb-6">{hero.eyebrow}</Eyebrow>
         {/* Line 1 big, the two short claims together on line 2. Both sized off
             the viewport so neither line wraps or overflows. Line 2 divides by
             19, not 15, since "AI Powered People." is longer than "AI trained." */}
-        <h1 className="display text-bone [line-height:1.08]">
+        <h1 className="display text-bone leading-[1.08]">
           {/* "Hire" lengthened line 1 (10/7), so it divides by 13.5, not 10.4,
               to stay on one line from phones up. */}
           <span className="hero-rise block whitespace-nowrap text-[clamp(1.5rem,calc((100vw-56px)/13.5),6rem)]">

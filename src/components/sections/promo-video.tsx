@@ -7,7 +7,7 @@ export function PromoVideo() {
   return (
     <section className="hw-dots relative bg-ink pb-14 text-bone md:pb-20">
       <div className="shell relative">
-        <div className="mx-auto max-w-5xl overflow-hidden rounded-[var(--radius-brand)] border-2 border-cyan/50 bg-ink shadow-[0_0_28px_-10px_rgba(61,214,189,0.6)]">
+        <div className="mx-auto max-w-5xl overflow-hidden rounded-(--radius-brand) border-2 border-cyan/50 bg-ink shadow-[0_0_28px_-10px_rgba(61,214,189,0.6)]">
           <video
             className="block aspect-video w-full bg-ink grayscale"
             src="/videos/handoff-promo.mp4"

@@ -29,7 +29,7 @@ export function Vibes({
   return (
     <section
       className={`relative overflow-hidden bg-ink text-bone ${
-        tightTop ? "pb-24 pt-10 md:pb-[8.5rem] md:pt-14" : "section-py"
+        tightTop ? "pb-24 pt-10 md:pb-34 md:pt-14" : "section-py"
       }`}
     >
       <div className="shell relative z-10">

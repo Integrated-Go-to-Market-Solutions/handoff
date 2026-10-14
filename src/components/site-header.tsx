@@ -26,7 +26,7 @@ function SoonItem({ label, className = "" }: { label: string; className?: string
   return (
     <span className={`flex items-center justify-between gap-3 font-medium text-bone/40 ${className}`}>
       {label}
-      <span className="rounded-full border border-white/15 px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.1em] text-bone/50">
+      <span className="rounded-full border border-white/15 px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-widest text-bone/50">
         Soon
       </span>
     </span>
@@ -101,7 +101,7 @@ function NavGroup({ item }: { item: NavItem }) {
           clickOpen ? "visible opacity-100" : "invisible opacity-0"
         }`}
       >
-        <ul className="min-w-[15rem] rounded-[var(--radius-card)] border border-white/10 bg-ink-100 p-2 shadow-xl">
+        <ul className="min-w-60 rounded-(--radius-card) border border-white/10 bg-ink-100 p-2 shadow-xl">
           {item.children?.map((child) => (
             <li key={child.label}>
               {child.soon ? (
@@ -158,7 +158,7 @@ function RolesMega({ item }: { item: NavItem }) {
       </Link>
 
       <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-4 opacity-0 transition-opacity duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-        <div className="grid w-[40rem] grid-cols-[15rem_1fr] rounded-[var(--radius-card)] border border-white/10 bg-ink-100 p-2 shadow-xl">
+        <div className="grid w-160 grid-cols-[15rem_1fr] rounded-(--radius-card) border border-white/10 bg-ink-100 p-2 shadow-xl">
           <ul className="border-r border-white/10 pr-2">
             {departments.map((d, i) => (
               <li key={d.slug}>
@@ -321,11 +321,11 @@ export function SiteHeader() {
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label="Toggle menu"
-          className="relative z-50 flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-[5px] lg:hidden"
+          className="relative z-50 flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-1.25 lg:hidden"
         >
           <span
             className={`h-0.5 w-6 bg-bone transition-transform duration-300 ${
-              open ? "translate-y-[7px] rotate-45" : ""
+              open ? "translate-y-1.75 rotate-45" : ""
             }`}
           />
           <span
@@ -335,14 +335,14 @@ export function SiteHeader() {
           />
           <span
             className={`h-0.5 w-6 bg-bone transition-transform duration-300 ${
-              open ? "-translate-y-[7px] -rotate-45" : ""
+              open ? "-translate-y-1.75 -rotate-45" : ""
             }`}
           />
         </button>
       </div>
 
       {open && (
-        <div className="fixed inset-0 top-[68px] z-40 overflow-y-auto bg-ink px-6 pb-16 pt-8 lg:hidden">
+        <div className="fixed inset-0 top-17 z-40 overflow-y-auto bg-ink px-6 pb-16 pt-8 lg:hidden">
           <nav className="flex flex-col gap-1">
             {nav.map((item) => (
               <div key={item.label}>

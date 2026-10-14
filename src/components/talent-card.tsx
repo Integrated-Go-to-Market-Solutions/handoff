@@ -18,14 +18,14 @@ export function TalentCard({
   index?: number;
 }) {
   return (
-    <Reveal delay={index * 70} className="w-[268px] shrink-0 snap-start sm:w-auto">
-      <article className="group h-full overflow-hidden rounded-[var(--radius-brand)] bg-cyan transition-transform duration-500 hover:-translate-y-2">
+    <Reveal delay={index * 70} className="w-67 shrink-0 snap-start sm:w-auto">
+      <article className="group h-full overflow-hidden rounded-(--radius-brand) bg-cyan transition-transform duration-500 hover:-translate-y-2">
         <div className="px-5 pb-4 pt-5 text-center">
           <p className="text-[0.82rem] font-medium text-ink/70">{name}</p>
           <p className="text-[1.02rem] font-bold leading-tight text-ink">{role}</p>
         </div>
 
-        <div className="relative aspect-[3/4] overflow-hidden">
+        <div className="relative aspect-3/4 overflow-hidden">
           <Image
             src={`/images/team/${slug}.webp`}
             alt={`${name}, ${role} at Handoff`}

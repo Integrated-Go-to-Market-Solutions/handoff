@@ -3,13 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Reveal } from "@/components/reveal";
+import { Breadcrumb } from "@/components/breadcrumb";
 import { Button, CtaNote, Eyebrow, cardGlow, cardTones } from "@/components/brand";
 import { KpiRibbon } from "@/components/kpi-ribbon";
 import { WhyLatam } from "@/components/sections/why-latam";
 import { HiringHighway } from "@/components/sections/hiring-highway";
 import { ClientQuotes } from "@/components/sections/client-quotes";
 import { Finale } from "@/components/sections/finale";
-import { caseStudies, industries, logos, site } from "@/lib/content";
+import { caseStudies, industries, industriesPage, logos, resultsPage, site } from "@/lib/content";
 
 /**
  * One template, one data file, in the order of Near's industry pages
@@ -72,7 +73,7 @@ export default async function IndustryPage({
             fill
             preload
             sizes="(min-width: 768px) 60vw, 100vw"
-            className="object-cover grayscale [mask-image:linear-gradient(to_right,transparent,black_45%)] max-md:[mask-image:none]"
+            className="object-cover grayscale mask-[linear-gradient(to_right,transparent,black_45%)] max-md:mask-none"
             style={{ objectPosition: industry.heroImage.focus }}
           />
           <div className="absolute inset-0 bg-ink/80 md:bg-ink/45" />
@@ -80,31 +81,21 @@ export default async function IndustryPage({
         {/* Above the halftone screen (Umair, 10/6) and the photo, so the
             screen textures the backdrop, not the text. */}
         <div className="shell relative z-10">
-          <nav aria-label="Breadcrumb" className="mb-6 text-sm font-medium text-bone/60">
-            {/* Links get a 36px-tall tap area; the negative margin keeps the
-                trail's spacing (UX QA, 10/6). */}
-            <Link href="/" className="-my-2.5 inline-block py-2.5 transition-colors hover:text-cyan">
-              Home
-            </Link>
-            <span aria-hidden="true" className="mx-2">
-              &rarr;
-            </span>
-            <Link href="/industries" className="-my-2.5 inline-block py-2.5 transition-colors hover:text-cyan">
-              Industries
-            </Link>
-            <span aria-hidden="true" className="mx-2">
-              &rarr;
-            </span>
-            <span className="text-bone/85">{industry.name}</span>
-          </nav>
+          <Breadcrumb
+            items={[
+              { label: "Home", href: "/" },
+              { label: industriesPage.crumb, href: "/industries" },
+              { label: industry.name },
+            ]}
+          />
           <Reveal>
-            <Eyebrow className="mb-4">Industries we serve</Eyebrow>
+            <Eyebrow className="mb-4">{industriesPage.eyebrow}</Eyebrow>
             <h1 className="display text-[clamp(2.5rem,6vw,4.6rem)] text-bone">{industry.name}</h1>
             <p className="mt-5 text-lg font-medium leading-relaxed text-bone/80 md:text-xl">
               {industry.subhead}
             </p>
             <div className="mt-8">
-              <Button href={site.bookCall}>Book a call</Button>
+              <Button href={site.bookCall}>{industriesPage.cta}</Button>
               <CtaNote className="mt-3" />
             </div>
           </Reveal>
@@ -118,7 +109,7 @@ export default async function IndustryPage({
             {proofLogos.map((logo) => (
               <li key={logo.slug}>
                 {logo.hasImage ? (
-                  <span className="relative block h-24 w-[240px]">
+                  <span className="relative block h-24 w-60">
                     <Image
                       src={`/images/logos/${logo.slug}.webp`}
                       alt={logo.name}
@@ -152,7 +143,7 @@ export default async function IndustryPage({
               const tone = cardTones[i % cardTones.length];
               return (
                 <Reveal key={trigger} delay={i * 90} as="li" className="h-full">
-                  <div className={`flex h-full flex-col justify-between rounded-[var(--radius-card)] p-6 ${cardGlow} ${tone.card}`}>
+                  <div className={`flex h-full flex-col justify-between rounded-(--radius-card) p-6 ${cardGlow} ${tone.card}`}>
                     <span className={`display text-2xl ${tone.accent}`} aria-hidden="true">
                       {String(i + 1).padStart(2, "0")}
                     </span>
@@ -193,7 +184,7 @@ export default async function IndustryPage({
                   </>
                 );
                 const box =
-                  "flex h-full items-center justify-between gap-4 rounded-[var(--radius-card)] border-2 border-cyan/30 bg-ink-100 px-6 py-5";
+                  "flex h-full items-center justify-between gap-4 rounded-(--radius-card) border-2 border-cyan/30 bg-ink-100 px-6 py-5";
                 return (
                   <li key={role.name}>
                     {department ? (
@@ -216,7 +207,7 @@ export default async function IndustryPage({
             {industry.rolesCloser}
           </p>
           <div className="mt-8">
-            <Button href={site.bookCall}>Book a call</Button>
+            <Button href={site.bookCall}>{industriesPage.cta}</Button>
           </div>
         </div>
       </section>
@@ -230,9 +221,11 @@ export default async function IndustryPage({
             <Reveal>
               <Link
                 href={`/results#${study.slug}`}
-                className="group block rounded-[var(--radius-card)] bg-gradient-to-br from-royal to-azure-deep p-7 text-bone transition-transform duration-300 hover:-translate-y-1 md:p-10"
+                className="group block rounded-(--radius-card) bg-linear-to-br from-royal to-azure-deep p-7 text-bone transition-transform duration-300 hover:-translate-y-1 md:p-10"
               >
-                <p className="eyebrow text-sm text-bone/75">Case study &middot; {study.tag}</p>
+                <p className="eyebrow text-sm text-bone/75">
+                  {resultsPage.caseStudyKicker} &middot; {study.tag}
+                </p>
                 <h2 className="display mt-4 text-[clamp(1.6rem,3.4vw,2.6rem)] leading-tight">{study.title}</h2>
                 <p className="mt-4 text-base leading-relaxed text-bone/85 md:text-lg">{study.subhead}</p>
                 <dl className="mt-8 grid grid-cols-3 gap-4">
@@ -244,7 +237,7 @@ export default async function IndustryPage({
                   ))}
                 </dl>
                 <span className="mt-8 inline-flex items-center gap-1.5 text-sm font-bold">
-                  Read the story
+                  {resultsPage.readStory}
                   <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">
                     &rarr;
                   </span>

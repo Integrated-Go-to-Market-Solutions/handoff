@@ -77,7 +77,7 @@ export function Process() {
             hills, with a sports car following the actual curve and six
             hoverable/clickable mile markers sitting exactly on it. */}
         <Reveal delay={80} className="relative mt-16">
-          <div className="relative overflow-hidden rounded-[var(--radius-brand)] bg-ink" style={{ aspectRatio: "1290 / 220" }}>
+          <div className="relative overflow-hidden rounded-(--radius-brand) bg-ink" style={{ aspectRatio: "1290 / 220" }}>
             <svg
               viewBox={ROAD_VIEWBOX}
               className="absolute inset-0 h-full w-full"
@@ -144,13 +144,13 @@ export function Process() {
                   </button>
 
                   <div
-                    className={`pointer-events-none absolute bottom-full left-1/2 z-20 mb-4 w-56 -translate-x-1/2 rounded-[var(--radius-card)] border-2 border-cyan bg-ink p-4 text-left shadow-2xl transition-all duration-300 ${
+                    className={`pointer-events-none absolute bottom-full left-1/2 z-20 mb-4 w-56 -translate-x-1/2 rounded-(--radius-card) border-2 border-cyan bg-ink p-4 text-left shadow-2xl transition-all duration-300 ${
                       active === i
                         ? "translate-y-0 opacity-100"
                         : "translate-y-2 opacity-0"
                     }`}
                   >
-                    <p className="text-xs font-bold uppercase tracking-[0.1em] text-cyan">
+                    <p className="text-xs font-bold uppercase tracking-widest text-cyan">
                       Step {step.n}
                     </p>
                     <p className="display mt-1 text-base leading-tight text-bone">
@@ -170,7 +170,7 @@ export function Process() {
           {process.steps.map((step, i) => (
             <Reveal key={step.n} delay={i * 80} as="li">
               <div
-                className={`group h-full rounded-[var(--radius-card)] bg-gradient-to-br p-[2px] shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-lg ${stepBorders[i % stepBorders.length]}`}
+                className={`group h-full rounded-(--radius-card) bg-linear-to-br p-0.5 shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-lg ${stepBorders[i % stepBorders.length]}`}
               >
                 <div className="flex h-full flex-col rounded-[calc(var(--radius-card)-2px)] bg-white p-7 text-ink">
                   <div className="flex items-center justify-between">
@@ -203,7 +203,7 @@ export function Process() {
         </ol>
 
         <Reveal delay={process.steps.length * 80} className="mt-6">
-          <div className="flex aspect-[21/9] items-center justify-center rounded-[var(--radius-brand)] border-2 border-dashed border-ink/20 bg-ink/[0.03]">
+          <div className="flex aspect-21/9 items-center justify-center rounded-(--radius-brand) border-2 border-dashed border-ink/20 bg-ink/3">
             <div className="text-center">
               <span className="display text-lg text-ink/50 md:text-xl">
                 {hiringHighwayVideo.label}

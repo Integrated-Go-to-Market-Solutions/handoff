@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Reveal } from "@/components/reveal";
+import { Breadcrumb } from "@/components/breadcrumb";
 import { Button, Eyebrow, cardGlow, cardTones } from "@/components/brand";
 import { HiringHighway } from "@/components/sections/hiring-highway";
 import { Finale } from "@/components/sections/finale";
@@ -53,17 +54,7 @@ export default async function DepartmentPage({
     <>
       <section className="relative overflow-hidden bg-ink section-py-tight text-bone">
         <div className="shell relative">
-          <nav aria-label="Breadcrumb" className="mb-6 text-sm font-medium text-bone/60">
-            {/* Links get a 36px-tall tap area; the negative margin keeps the
-                trail's spacing (UX QA, 10/6). */}
-            <Link href="/roles" className="-my-2.5 inline-block py-2.5 transition-colors hover:text-cyan">
-              Roles
-            </Link>
-            <span aria-hidden="true" className="mx-2">
-              &rarr;
-            </span>
-            <span className="text-bone/85">{department.name}</span>
-          </nav>
+          <Breadcrumb items={[{ label: rolesPage.crumb, href: "/roles" }, { label: department.name }]} />
           <Reveal>
             <Eyebrow className="mb-4">{rolesPage.headline}</Eyebrow>
             <h1 className="display text-[clamp(2.5rem,6vw,4.6rem)] text-bone">
@@ -86,7 +77,7 @@ export default async function DepartmentPage({
                 playsInline
                 preload="none"
                 poster={department.video.poster}
-                className="aspect-video w-full rounded-[var(--radius-card)] bg-ink-100 object-cover"
+                className="aspect-video w-full rounded-(--radius-card) bg-ink-100 object-cover"
               >
                 <source src={department.video.src} type="video/mp4" />
               </video>
@@ -105,7 +96,7 @@ export default async function DepartmentPage({
                 <Reveal key={role} delay={Math.min(i, 5) * 60} as="li" className="h-full">
                   <Link
                     href={site.bookCall}
-                    className={`group flex h-full items-center justify-between gap-4 rounded-[var(--radius-card)] px-6 py-5 focus-visible:outline-none ${cardGlow} ${tone.card}`}
+                    className={`group flex h-full items-center justify-between gap-4 rounded-(--radius-card) px-6 py-5 focus-visible:outline-none ${cardGlow} ${tone.card}`}
                   >
                     <span className="text-base font-bold leading-snug">{role}</span>
                     <span
@@ -126,7 +117,7 @@ export default async function DepartmentPage({
 
           <nav aria-labelledby="other-departments" className="mt-14 border-t border-ink/10 pt-10">
             <h2 id="other-departments" className="eyebrow text-sm text-ink/60">
-              Other departments
+              {rolesPage.otherDepartments}
             </h2>
             <ul className="mt-5 flex flex-wrap gap-2.5">
               {others.map((d) => (

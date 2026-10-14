@@ -66,7 +66,7 @@ export function Finale() {
       ref={sectionRef}
       aria-label="Closing"
       data-phase={phase}
-      className="finale relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-ink pb-48 pt-24 text-bone md:pb-60"
+      className="finale relative flex min-h-svh items-center justify-center overflow-hidden bg-ink pb-48 pt-24 text-bone md:pb-60"
     >
       <div className="tex-waves pointer-events-none absolute inset-0 opacity-60" aria-hidden="true" />
       <div

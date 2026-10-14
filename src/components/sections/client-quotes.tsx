@@ -65,7 +65,7 @@ function VideoCard({
         onPointerEnter={(e) => e.pointerType === "mouse" && preview(true)}
         onPointerLeave={(e) => e.pointerType === "mouse" && preview(false)}
         aria-label={`Play the ${company} client video, with sound`}
-        className="relative block aspect-[4/3] w-full overflow-hidden rounded-[var(--radius-card)] border-2 border-cyan/40 bg-ink text-left shadow-[0_18px_40px_-24px_rgba(0,0,0,0.6)] outline-none transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-cyan hover:shadow-[0_0_36px_-8px_rgba(61,214,189,0.7)] focus-visible:border-cyan focus-visible:ring-4 focus-visible:ring-cyan/40 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+        className="relative block aspect-4/3 w-full overflow-hidden rounded-(--radius-card) border-2 border-cyan/40 bg-ink text-left shadow-[0_18px_40px_-24px_rgba(0,0,0,0.6)] outline-none transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-cyan hover:shadow-[0_0_36px_-8px_rgba(61,214,189,0.7)] focus-visible:border-cyan focus-visible:ring-4 focus-visible:ring-cyan/40 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
       >
         {/* A blurred copy of the still fills the wide frame; the clip sits on
             top as a head-and-shoulders portrait, so the face isn't blown up
@@ -77,7 +77,7 @@ function VideoCard({
         />
         <video
           ref={ref}
-          className="absolute inset-y-0 left-1/2 aspect-[3/4] h-full -translate-x-1/2 object-cover shadow-[0_0_40px_rgba(0,0,0,0.35)]"
+          className="absolute inset-y-0 left-1/2 aspect-3/4 h-full -translate-x-1/2 object-cover shadow-[0_0_40px_rgba(0,0,0,0.35)]"
           style={{ objectPosition: focus }}
           poster={`${CLIP_BASE}/${slug}.jpg`}
           muted
@@ -88,7 +88,7 @@ function VideoCard({
         >
           <source src={`${CLIP_BASE}/${slug}.mp4`} type="video/mp4" />
         </video>
-        <span className="absolute inset-0 bg-gradient-to-t from-ink/55 via-transparent to-transparent" aria-hidden="true" />
+        <span className="absolute inset-0 bg-linear-to-t from-ink/55 via-transparent to-transparent" aria-hidden="true" />
         {/* Play badge: says "this opens a video" at rest and while previewing. */}
         <span
           className="absolute bottom-3 left-3 inline-flex items-center gap-2 rounded-full bg-ink/70 py-1.5 pl-1.5 pr-3.5 text-xs font-bold uppercase tracking-[0.12em] text-bone backdrop-blur-sm"
@@ -279,7 +279,7 @@ function QuoteCarousel({ reduced }: { reduced: boolean }) {
                 inert={copy === 1}
                 className="w-full shrink-0 sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-2.5rem)/3)]"
               >
-                <figure className="flex h-full flex-col rounded-[var(--radius-card)] border-2 border-ink/10 bg-white p-6 shadow-sm md:p-7">
+                <figure className="flex h-full flex-col rounded-(--radius-card) border-2 border-ink/10 bg-white p-6 shadow-sm md:p-7">
                   <span className="display text-4xl leading-none text-cyan-dim" aria-hidden="true">
                     &ldquo;
                   </span>
@@ -369,7 +369,7 @@ export function ClientQuotes() {
   return (
     <section
       id="testimonials"
-      className="relative scroll-mt-[72px] overflow-hidden bg-bone pb-24 pt-14 text-ink md:pb-[8.5rem] md:pt-20"
+      className="relative scroll-mt-18 overflow-hidden bg-bone pb-24 pt-14 text-ink md:pb-34 md:pt-20"
       aria-label="Client quotes"
     >
       <div className="shell relative">
