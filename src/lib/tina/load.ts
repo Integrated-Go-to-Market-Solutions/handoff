@@ -1,4 +1,5 @@
 import { listDocs, readDoc, tinaDoc, tinaList } from "./files";
+import { repoMedia } from "./media";
 
 const fetchOptions = { next: { revalidate: 60 } };
 
@@ -20,7 +21,7 @@ async function query<T>(run: (client: Awaited<ReturnType<typeof tinaClient>>) =>
   if (!process.env.TINA_LOCAL_URL && !real) return fallback();
   try {
     const client = await tinaClient();
-    return await run(client);
+    return repoMedia(await run(client));
   } catch (error) {
     console.warn("Tina content API unavailable, reading content files.", error instanceof Error ? error.message : error);
     return fallback();
