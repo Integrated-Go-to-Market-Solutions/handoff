@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { Button, CtaNote } from "../brand";
 import { Reveal } from "../reveal";
 import { HandoffCheckIcon, HuntIcon, ScopeIcon, ShortlistIcon } from "../highway-icons";
-import { process, site } from "@/lib/content";
+import { tinaField, useContent } from "@/components/tina/content";
 
 /** Discovery = magnifying glass, The Vet = scope, The Shortlist = two people, The Guarantee = the Handoff check. */
 const stepIcons = [HuntIcon, ScopeIcon, ShortlistIcon, HandoffCheckIcon];
@@ -28,6 +28,7 @@ const FILL_SHARE = 0.8;
  * cards.
  */
 export function HiringHighway({ compact = false }: { compact?: boolean }) {
+  const { process, site } = useContent();
   const trackRef = useRef<HTMLDivElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
@@ -101,7 +102,7 @@ export function HiringHighway({ compact = false }: { compact?: boolean }) {
       >
         <div
           ref={stickyRef}
-          className="lg:sticky lg:top-[72px] lg:flex lg:h-[calc(100vh-72px)] lg:flex-col lg:justify-center motion-reduce:lg:static motion-reduce:lg:h-auto"
+          className="lg:sticky lg:top-18 lg:flex lg:h-[calc(100vh-72px)] lg:flex-col lg:justify-center motion-reduce:lg:static motion-reduce:lg:h-auto"
         >
           <div
             className={`shell w-full lg:py-8 short:py-4 ${
@@ -110,6 +111,7 @@ export function HiringHighway({ compact = false }: { compact?: boolean }) {
           >
             <Reveal className="mx-auto max-w-6xl text-center">
               <h2
+                data-tina-field={tinaField(process, "titleParts")}
                 className={`display short:text-[2.6rem] ${
                   compact ? "text-[clamp(2rem,4.4vw,3.4rem)]" : "text-[clamp(2.1rem,4.8vw,3.8rem)]"
                 }`}
@@ -127,14 +129,14 @@ export function HiringHighway({ compact = false }: { compact?: boolean }) {
             <div className="relative mt-10 lg:mt-12 short:mt-7">
               {/* Desktop only: the line runs through the centres of the icon slots. */}
               <div
-                className="absolute left-[12.5%] right-[12.5%] top-[40px] hidden h-1 rounded-full bg-white/10 lg:block"
+                className="absolute left-[12.5%] right-[12.5%] top-10 hidden h-1 rounded-full bg-white/10 lg:block"
                 aria-hidden="true"
               >
                 <div ref={lineRef} className="hs-fill h-full rounded-full bg-cyan shadow-[0_0_14px_rgba(61,214,189,0.7)]" />
               </div>
 
               <ol className="grid gap-4 lg:grid-cols-4 lg:gap-6">
-                {steps.map((step, i) => {
+                {steps.map((step: any, i: number) => {
                   const Icon = stepIcons[i % stepIcons.length];
                   const isEnd = i === last;
                   return (
@@ -148,12 +150,12 @@ export function HiringHighway({ compact = false }: { compact?: boolean }) {
                       {/* Same slot for every icon (64px wide on phones, 84px
                           tall on desktop), so the Guarantee's larger icon no
                           longer pushes its card out of line. */}
-                      <span className="grid w-16 shrink-0 place-items-center lg:h-[84px] lg:w-full">
+                      <span className="grid w-16 shrink-0 place-items-center lg:h-21 lg:w-full">
                         <span
                           className={`hs-icon relative z-10 grid place-items-center rounded-full border-2 ${
                             isEnd
-                              ? "h-16 w-16 border-cyan bg-cyan shadow-[0_0_32px_-4px_rgba(61,214,189,0.85)] lg:h-[84px] lg:w-[84px]"
-                              : "h-14 w-14 border-cyan/40 bg-ink lg:h-[68px] lg:w-[68px]"
+                              ? "h-16 w-16 border-cyan bg-cyan shadow-[0_0_32px_-4px_rgba(61,214,189,0.85)] lg:h-21 lg:w-21"
+                              : "h-14 w-14 border-cyan/40 bg-ink lg:h-17 lg:w-17"
                           }`}
                         >
                           <Icon cut="#1f1f1f" className="h-9 w-9 lg:h-11 lg:w-11" />
@@ -161,7 +163,7 @@ export function HiringHighway({ compact = false }: { compact?: boolean }) {
                       </span>
 
                       <div
-                        className={`hs-card min-w-0 flex-1 rounded-[var(--radius-card)] border-2 p-5 lg:mt-5 lg:text-center short:mt-4 short:p-4 ${
+                        className={`hs-card min-w-0 flex-1 rounded-(--radius-card) border-2 p-5 lg:mt-5 lg:text-center short:mt-4 short:p-4 ${
                           isEnd
                             ? "border-cyan bg-cyan text-ink shadow-[0_0_36px_-8px_rgba(61,214,189,0.8)]"
                             : "border-cyan/25 bg-ink-100 text-bone"

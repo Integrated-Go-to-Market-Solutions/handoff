@@ -81,7 +81,7 @@ export function TypedPoints({ points }: { points: string[] }) {
             <span aria-hidden="true" className="opacity-90">
               {point.slice(0, shown)}
               {typing && (
-                <span className="-mr-[3px] ml-px inline-block h-[1em] w-[2px] translate-y-[0.15em] bg-current" />
+                <span className="-mr-[3px] ml-px inline-block h-[1em] w-0.5 translate-y-[0.15em] bg-current" />
               )}
               <span className="invisible">{point.slice(shown)}</span>
             </span>

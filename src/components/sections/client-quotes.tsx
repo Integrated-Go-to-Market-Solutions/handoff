@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { Reveal } from "../reveal";
 import { VideoModal } from "../video-modal";
-import { clientQuotes } from "@/lib/content";
+import { tinaField, useContent } from "@/components/tina/content";
 
 /**
  * Two parts: a row of three client videos on top, then the five written
@@ -16,8 +16,6 @@ import { clientQuotes } from "@/lib/content";
  * Enter) opens the full-length cut with sound in the video pop-up. With
  * reduced motion there's no hover preview, only the still and the pop-up.
  */
-const CLIP_BASE = "/video/testimonials-web";
-
 const avatarTones = ["bg-cyan text-ink", "bg-royal text-white", "bg-ink text-bone"] as const;
 
 const REDUCED = "(prefers-reduced-motion: reduce)";
@@ -33,21 +31,23 @@ function initials(name: string) {
 }
 
 function VideoCard({
-  slug,
   company,
   focus,
+  poster,
+  preview,
   reduced,
   onOpen,
 }: {
-  slug: string;
   company: string;
   focus: string;
+  poster: string;
+  preview: string;
   reduced: boolean;
   onOpen: () => void;
 }) {
   const ref = useRef<HTMLVideoElement>(null);
 
-  const preview = (on: boolean) => {
+  const playPreview = (on: boolean) => {
     const v = ref.current;
     if (!v) return;
     if (on && !reduced) {
@@ -62,33 +62,33 @@ function VideoCard({
       <button
         type="button"
         onClick={onOpen}
-        onPointerEnter={(e) => e.pointerType === "mouse" && preview(true)}
-        onPointerLeave={(e) => e.pointerType === "mouse" && preview(false)}
+        onPointerEnter={(e) => e.pointerType === "mouse" && playPreview(true)}
+        onPointerLeave={(e) => e.pointerType === "mouse" && playPreview(false)}
         aria-label={`Play the ${company} client video, with sound`}
-        className="relative block aspect-[4/3] w-full overflow-hidden rounded-[var(--radius-card)] border-2 border-cyan/40 bg-ink text-left shadow-[0_18px_40px_-24px_rgba(0,0,0,0.6)] outline-none transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-cyan hover:shadow-[0_0_36px_-8px_rgba(61,214,189,0.7)] focus-visible:border-cyan focus-visible:ring-4 focus-visible:ring-cyan/40 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+        className="relative block aspect-4/3 w-full overflow-hidden rounded-(--radius-card) border-2 border-cyan/40 bg-ink text-left shadow-[0_18px_40px_-24px_rgba(0,0,0,0.6)] outline-none transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-cyan hover:shadow-[0_0_36px_-8px_rgba(61,214,189,0.7)] focus-visible:border-cyan focus-visible:ring-4 focus-visible:ring-cyan/40 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
       >
         {/* A blurred copy of the still fills the wide frame; the clip sits on
             top as a head-and-shoulders portrait, so the face isn't blown up
             to fill the whole card. */}
         <span
           className="absolute inset-0 scale-110 bg-cover bg-center opacity-70 blur-xl"
-          style={{ backgroundImage: `url(${CLIP_BASE}/${slug}.jpg)` }}
+          style={{ backgroundImage: `url(${poster})` }}
           aria-hidden="true"
         />
         <video
           ref={ref}
-          className="absolute inset-y-0 left-1/2 aspect-[3/4] h-full -translate-x-1/2 object-cover shadow-[0_0_40px_rgba(0,0,0,0.35)]"
+          className="absolute inset-y-0 left-1/2 aspect-3/4 h-full -translate-x-1/2 object-cover shadow-[0_0_40px_rgba(0,0,0,0.35)]"
           style={{ objectPosition: focus }}
-          poster={`${CLIP_BASE}/${slug}.jpg`}
+          poster={poster}
           muted
           loop
           playsInline
           preload="none"
           aria-hidden="true"
         >
-          <source src={`${CLIP_BASE}/${slug}.mp4`} type="video/mp4" />
+          <source src={preview} type="video/mp4" />
         </video>
-        <span className="absolute inset-0 bg-gradient-to-t from-ink/55 via-transparent to-transparent" aria-hidden="true" />
+        <span className="absolute inset-0 bg-linear-to-t from-ink/55 via-transparent to-transparent" aria-hidden="true" />
         {/* Play badge: says "this opens a video" at rest and while previewing. */}
         <span
           className="absolute bottom-3 left-3 inline-flex items-center gap-2 rounded-full bg-ink/70 py-1.5 pl-1.5 pr-3.5 text-xs font-bold uppercase tracking-[0.12em] text-bone backdrop-blur-sm"
@@ -157,6 +157,7 @@ const RESUME_MS = 2500;
  */
 function QuoteCarousel({ reduced }: { reduced: boolean }) {
   const track = useRef<HTMLDivElement>(null);
+  const { clientQuotes } = useContent();
   const slides = clientQuotes.slots;
   const n = slides.length;
   const [active, setActive] = useState(0);
@@ -267,7 +268,7 @@ function QuoteCarousel({ reduced }: { reduced: boolean }) {
         className="flex gap-5 overflow-x-auto py-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {copies.flatMap((copy) =>
-          slides.map((slot, i) => {
+          slides.map((slot: any, i: number) => {
             const byline = [slot.title, slot.company].filter(Boolean).join(", ");
             return (
               <div
@@ -279,7 +280,7 @@ function QuoteCarousel({ reduced }: { reduced: boolean }) {
                 inert={copy === 1}
                 className="w-full shrink-0 sm:w-[calc((100%-1.25rem)/2)] lg:w-[calc((100%-2.5rem)/3)]"
               >
-                <figure className="flex h-full flex-col rounded-[var(--radius-card)] border-2 border-ink/10 bg-white p-6 shadow-sm md:p-7">
+                <figure className="flex h-full flex-col rounded-(--radius-card) border-2 border-ink/10 bg-white p-6 shadow-sm md:p-7">
                   <span className="display text-4xl leading-none text-cyan-dim" aria-hidden="true">
                     &ldquo;
                   </span>
@@ -321,7 +322,7 @@ function QuoteCarousel({ reduced }: { reduced: boolean }) {
       <div className="mt-6 flex items-center justify-center gap-3">
         <Arrow dir="prev" onClick={() => go({ delta: -1 })} />
         <div className="flex items-center">
-          {slides.map((slot, i) => (
+          {slides.map((slot: any, i: number) => (
             <button
               key={slot.id}
               type="button"
@@ -362,19 +363,20 @@ function QuoteCarousel({ reduced }: { reduced: boolean }) {
 }
 
 export function ClientQuotes() {
-  const [playing, setPlaying] = useState<{ slug: string; company: string } | null>(null);
+  const { clientQuotes } = useContent();
+  const [playing, setPlaying] = useState<{ full: string; company: string } | null>(null);
   const close = useCallback(() => setPlaying(null), []);
   const reduced = useSyncExternalStore(subscribeReduced, () => window.matchMedia(REDUCED).matches, () => false);
 
   return (
     <section
       id="testimonials"
-      className="relative scroll-mt-[72px] overflow-hidden bg-bone pb-24 pt-14 text-ink md:pb-[8.5rem] md:pt-20"
+      className="relative scroll-mt-18 overflow-hidden bg-bone pb-24 pt-14 text-ink md:pb-34 md:pt-20"
       aria-label="Client quotes"
     >
       <div className="shell relative">
         <Reveal className="mx-auto max-w-3xl text-center">
-          <h2 className="display text-[clamp(2rem,4.6vw,3.4rem)] text-ink">{clientQuotes.headline}</h2>
+          <h2 data-tina-field={tinaField(clientQuotes, "headline")} className="display text-[clamp(2rem,4.6vw,3.4rem)] text-ink">{clientQuotes.headline}</h2>
         </Reveal>
 
         {/* Videos: a swipeable row on phones, three across from 768px. One
@@ -382,8 +384,8 @@ export function ClientQuotes() {
             waiting on their own entrance. */}
         <Reveal>
           <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 [scrollbar-width:none] md:mx-auto md:mt-12 md:grid md:max-w-5xl md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0 md:pb-0 [&::-webkit-scrollbar]:hidden">
-            {clientQuotes.videos.map((video) => (
-              <div key={video.slug} className="w-[78%] shrink-0 snap-center sm:w-[60%] md:w-auto">
+            {clientQuotes.videos.map((video: any) => (
+              <div key={video.company} className="w-[78%] shrink-0 snap-center sm:w-[60%] md:w-auto">
                 <VideoCard {...video} reduced={reduced} onOpen={() => setPlaying(video)} />
               </div>
             ))}
@@ -398,7 +400,7 @@ export function ClientQuotes() {
 
       {playing && (
         <VideoModal
-          src={`${CLIP_BASE}/${playing.slug}-full.mp4`}
+          src={playing.full}
           label={`${playing.company} client video`}
           onClose={close}
           vertical

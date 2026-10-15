@@ -1,6 +1,8 @@
+"use client";
+
 import { Button, CtaNote } from "../brand";
 import { Reveal } from "../reveal";
-import { cta, site } from "@/lib/content";
+import { tinaField, useContent } from "@/components/tina/content";
 
 /**
  * A compact repeat of the main CTA between sections: one "Book a call"
@@ -10,10 +12,13 @@ import { cta, site } from "@/lib/content";
  * above it.
  */
 export function CtaBand({ tone = "onDark", className = "" }: { tone?: "onDark" | "onLight"; className?: string }) {
+  const { cta, site } = useContent();
   return (
     <div className={className}>
       <Reveal className="shell text-center">
-        <Button href={site.bookingUrl}>{cta.book}</Button>
+        <span data-tina-field={tinaField(cta, "book")}>
+          <Button href={site.bookingUrl}>{cta.book}</Button>
+        </span>
         <CtaNote tone={tone} className="mt-3" />
       </Reveal>
     </div>

@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import { Button, CtaNote } from "../brand";
 import { Reveal } from "../reveal";
-import { cta, departments, site, talentMap } from "@/lib/content";
+import { useContent } from "@/components/tina/content";
 
 /*
  * Rebuilt from design-refs/HANDOFFMAP.png (the Figma export in
@@ -43,17 +43,6 @@ const pins: { x: number; y: number; side: Side; lgSide?: Side }[] = [
   { x: 630, y: 1135, side: "left" },
 ];
 
-const talent = pins.map((pin, i) => {
-  const profile = talentMap.profiles[i];
-  const department = departments.find((d) => d.slug === profile.department);
-  return {
-    ...pin,
-    ...profile,
-    href: `/roles/${profile.department}`,
-    departmentName: department?.name ?? "all",
-  };
-});
-
 const pulses = [
   { x: 490, y: 455 },
   { x: 495, y: 665 },
@@ -89,7 +78,10 @@ function arc(a: Pt, b: Pt, bend: number) {
   const len = Math.hypot(dx, dy) || 1;
   const cx = mx + (-dy / len) * bend;
   const cy = my + (dx / len) * bend;
-  return `M${a.x},${a.y} Q${cx},${cy} ${b.x},${b.y}`;
+  // Two decimals. Math.hypot's last digit differs between the server and the
+  // browser, which made the path string fail hydration.
+  const n = (v: number) => (Math.round(v * 100) / 100).toString();
+  return `M${a.x},${a.y} Q${n(cx)},${n(cy)} ${b.x},${b.y}`;
 }
 
 const pct = (p: Pt) => ({ left: `${(p.x / VB_W) * 100}%`, top: `${(p.y / VB_H) * 100}%` });
@@ -151,7 +143,7 @@ function placeCard(card: HTMLElement, pin: HTMLElement, wrap: HTMLElement, secti
 function Avatar({ photo, className }: { photo: string | null; className: string }) {
   return (
     <span
-      className={`relative block shrink-0 overflow-hidden rounded-full border-2 border-white bg-gradient-to-b from-cyan to-[#2fae98] ${className}`}
+      className={`relative block shrink-0 overflow-hidden rounded-full border-2 border-white bg-linear-to-b from-cyan to-[#2fae98] ${className}`}
     >
       {photo ? (
         <Image src={photo} alt="" fill sizes="96px" className="object-cover object-[50%_22%]" />
@@ -167,6 +159,17 @@ function Avatar({ photo, className }: { photo: string | null; className: string 
 }
 
 export function TalentMap() {
+  const { cta, departments, site, talentMap } = useContent();
+  const talent = pins.map((pin, i) => {
+    const profile = talentMap.profiles[i];
+    const department = departments.find((d) => d.slug === profile?.department);
+    return {
+      ...pin,
+      ...profile,
+      href: `/roles/${profile?.department}`,
+      departmentName: department?.name ?? "all",
+    };
+  });
   const router = useRouter();
   const [active, setActive] = useState<number | null>(null);
   const cardId = useId();
@@ -306,7 +309,7 @@ export function TalentMap() {
     <section
       ref={sectionRef}
       id="meet-your-talent"
-      className="relative scroll-mt-24 overflow-hidden bg-[#141414] py-24 text-bone md:py-[8.5rem] lg:py-5"
+      className="relative scroll-mt-24 overflow-hidden bg-[#141414] py-24 text-bone md:py-34 lg:py-5"
     >
       <div className="shell relative grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-8">
         <Reveal className="mx-auto max-w-3xl text-center lg:mx-0 lg:text-left">
@@ -342,7 +345,7 @@ export function TalentMap() {
             style={{ aspectRatio: `${VB_W} / ${VB_H}` }}
           >
             <div
-              className="absolute inset-0 bg-gradient-to-b from-[#3d3d3d] to-[#2a2a2a]"
+              className="absolute inset-0 bg-linear-to-b from-[#3d3d3d] to-[#2a2a2a]"
               style={{
                 WebkitMaskImage: "url(/brand/latam-land.svg)",
                 maskImage: "url(/brand/latam-land.svg)",

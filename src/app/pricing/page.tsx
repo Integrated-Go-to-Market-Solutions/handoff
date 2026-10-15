@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { Models } from "@/components/sections/models";
 import { Faq } from "@/components/sections/faq";
 import { Finale } from "@/components/sections/finale";
-import { modelsIntro } from "@/lib/content";
+import { loadPricing } from "@/lib/tina/load";
 
-export const metadata: Metadata = {
-  title: "Pricing | Handoff",
-  description: modelsIntro.subhead,
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const result = await loadPricing();
+  const page = result.data.pricing as { title: string; intro: { subhead: string } };
+  return { title: page.title, description: page.intro.subhead };
+}
 
 /**
  * /pricing, the address the content doc gives the Pricing page (10/5). The

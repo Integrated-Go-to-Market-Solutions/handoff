@@ -1,0 +1,16 @@
+{
+  "order": 3,
+  "name": "Design",
+  "roles": [
+    "UI/UX Designer",
+    "Product Designer",
+    "Graphic Designer",
+    "Web Designer",
+    "Brand Designer",
+    "Motion Designer/Video Editor"
+  ],
+  "video": {
+    "src": "",
+    "poster": ""
+  }
+}

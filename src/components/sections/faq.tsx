@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Reveal } from "../reveal";
-import { faqs } from "@/lib/content";
+import { tinaField, useContent } from "@/components/tina/content";
 
 /**
  * Native `<details>` opened with no transition at all — Nico's feedback on
@@ -47,6 +47,7 @@ function FaqItem({ q, a, delay }: { q: string; a: string; delay: number }) {
 }
 
 export function Faq() {
+  const { faqs } = useContent();
   return (
     <section className="relative overflow-hidden bg-bone section-py-hero text-ink">
       <div className="shell relative grid gap-14 lg:grid-cols-[0.85fr_1.15fr]">
@@ -64,7 +65,9 @@ export function Faq() {
 
         <div>
           {faqs.map((faq, i) => (
-            <FaqItem key={faq.q} q={faq.q} a={faq.a} delay={i * 60} />
+            <div key={faq.q} data-tina-field={tinaField(faq, "q")}>
+              <FaqItem q={faq.q} a={faq.a} delay={i * 60} />
+            </div>
           ))}
         </div>
       </div>

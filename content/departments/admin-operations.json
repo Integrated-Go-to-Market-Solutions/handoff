@@ -1,0 +1,16 @@
+{
+  "order": 7,
+  "name": "VAs, Admin & Operations",
+  "roles": [
+    "Executive Assistant",
+    "Administrative Assistant",
+    "Operations Coordinator",
+    "Operations Manager",
+    "Project Manager",
+    "General Virtual Assistant"
+  ],
+  "video": {
+    "src": "",
+    "poster": ""
+  }
+}

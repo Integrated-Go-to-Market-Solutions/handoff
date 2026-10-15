@@ -43,7 +43,7 @@ export function Hero() {
         />
         {/* Long vertical fade so the photo dissolves through the logo bar. */}
         <div
-          className="absolute inset-x-0 bottom-0 h-[26rem]"
+          className="absolute inset-x-0 bottom-0 h-104"
           style={{
             background:
               "linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.72) 45%, #fff 82%)",
@@ -52,7 +52,7 @@ export function Hero() {
       </div>
 
       <div className="shell relative flex min-h-[clamp(560px,78vh,820px)] items-center pt-20">
-        <div className="max-w-[38rem]">
+        <div className="max-w-152">
           <Reveal>
             <h1 className="display text-[clamp(2.9rem,7vw,5.4rem)] text-ink">
               {hero.headline.map((part) => (

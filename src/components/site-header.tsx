@@ -3,8 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { departments, nav } from "@/lib/content";
-import type { NavItem } from "@/lib/content";
+import { tinaField, useContent, type NavItem } from "@/components/tina/content";
 
 /**
  * Dropdowns open on hover and stay open while focus is inside them (for the
@@ -26,7 +25,7 @@ function SoonItem({ label, className = "" }: { label: string; className?: string
   return (
     <span className={`flex items-center justify-between gap-3 font-medium text-bone/40 ${className}`}>
       {label}
-      <span className="rounded-full border border-white/15 px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.1em] text-bone/50">
+      <span className="rounded-full border border-white/15 px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-widest text-bone/50">
         Soon
       </span>
     </span>
@@ -101,7 +100,7 @@ function NavGroup({ item }: { item: NavItem }) {
           clickOpen ? "visible opacity-100" : "invisible opacity-0"
         }`}
       >
-        <ul className="min-w-[15rem] rounded-[var(--radius-card)] border border-white/10 bg-ink-100 p-2 shadow-xl">
+        <ul className="min-w-60 rounded-(--radius-card) border border-white/10 bg-ink-100 p-2 shadow-xl">
           {item.children?.map((child) => (
             <li key={child.label}>
               {child.soon ? (
@@ -130,6 +129,7 @@ function NavGroup({ item }: { item: NavItem }) {
  * the mouse, focus-within for the keyboard.
  */
 function RolesMega({ item }: { item: NavItem }) {
+  const { departments, site } = useContent();
   const [active, setActive] = useState(0);
   const department = departments[active];
 
@@ -158,7 +158,7 @@ function RolesMega({ item }: { item: NavItem }) {
       </Link>
 
       <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-4 opacity-0 transition-opacity duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-        <div className="grid w-[40rem] grid-cols-[15rem_1fr] rounded-[var(--radius-card)] border border-white/10 bg-ink-100 p-2 shadow-xl">
+        <div className="grid w-160 grid-cols-[15rem_1fr] rounded-(--radius-card) border border-white/10 bg-ink-100 p-2 shadow-xl">
           <ul className="border-r border-white/10 pr-2">
             {departments.map((d, i) => (
               <li key={d.slug}>
@@ -184,14 +184,14 @@ function RolesMega({ item }: { item: NavItem }) {
                 onClick={releaseFocus}
                 className="block rounded-xl px-4 py-2.5 text-[0.9rem] font-semibold text-bone transition-colors hover:text-cyan"
               >
-                All Roles
+                {site.navLabels.allRoles}
               </Link>
             </li>
           </ul>
           <div className="px-6 py-3">
             <p className="eyebrow text-xs text-bone/50">{department.name}</p>
             <ul className="mt-3 space-y-2 text-[0.9rem] leading-snug text-bone/80">
-              {department.roles.map((role) => (
+              {department.roles.map((role: any) => (
                 <li key={role}>{role}</li>
               ))}
             </ul>
@@ -209,21 +209,22 @@ function RolesMega({ item }: { item: NavItem }) {
   );
 }
 
-const headerCtas = [
-  {
-    label: "Hire Today",
-    href: "/contact",
-    className: "border-cyan bg-cyan text-ink hover:bg-ink hover:text-cyan",
-  },
-  {
-    // The talent-facing page (10/5); its apply button handles the next step.
-    label: "Join Our Talent Pool",
-    href: "/careers",
-    className: "border-cyan bg-white text-ink hover:bg-cyan",
-  },
-];
-
 function HeaderCtas({ block = false, onNavigate }: { block?: boolean; onNavigate?: () => void }) {
+  const { site } = useContent();
+  const headerCtas = [
+    {
+      label: site.header.hireLabel,
+      href: site.header.hireHref,
+      field: "hireLabel" as const,
+      className: "border-cyan bg-cyan text-ink hover:bg-ink hover:text-cyan",
+    },
+    {
+      label: site.header.joinLabel,
+      href: site.header.joinHref,
+      field: "joinLabel" as const,
+      className: "border-cyan bg-white text-ink hover:bg-cyan",
+    },
+  ];
   return (
     <div className={block ? "mt-8 flex flex-col gap-3" : "flex items-center gap-2"}>
       {headerCtas.map((cta) => (
@@ -231,6 +232,7 @@ function HeaderCtas({ block = false, onNavigate }: { block?: boolean; onNavigate
           key={cta.label}
           href={cta.href}
           onClick={onNavigate}
+          data-tina-field={tinaField(site.header, cta.field)}
           className={`inline-flex items-center justify-center whitespace-nowrap rounded-full border-2 font-semibold transition-colors duration-300 ${cta.className} ${
             block ? "w-full px-6 py-3.5 text-base" : "px-3.5 py-1.5 text-[0.8rem]"
           }`}
@@ -247,6 +249,7 @@ function HeaderCtas({ block = false, onNavigate }: { block?: boolean; onNavigate
  * left, nav and CTAs right, the whole bar sticky.
  */
 export function SiteHeader() {
+  const { nav } = useContent();
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
@@ -321,11 +324,11 @@ export function SiteHeader() {
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-label="Toggle menu"
-          className="relative z-50 flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-[5px] lg:hidden"
+          className="relative z-50 flex h-11 w-11 cursor-pointer flex-col items-center justify-center gap-1.25 lg:hidden"
         >
           <span
             className={`h-0.5 w-6 bg-bone transition-transform duration-300 ${
-              open ? "translate-y-[7px] rotate-45" : ""
+              open ? "translate-y-1.75 rotate-45" : ""
             }`}
           />
           <span
@@ -335,14 +338,14 @@ export function SiteHeader() {
           />
           <span
             className={`h-0.5 w-6 bg-bone transition-transform duration-300 ${
-              open ? "-translate-y-[7px] -rotate-45" : ""
+              open ? "-translate-y-1.75 -rotate-45" : ""
             }`}
           />
         </button>
       </div>
 
       {open && (
-        <div className="fixed inset-0 top-[68px] z-40 overflow-y-auto bg-ink px-6 pb-16 pt-8 lg:hidden">
+        <div className="fixed inset-0 top-17 z-40 overflow-y-auto bg-ink px-6 pb-16 pt-8 lg:hidden">
           <nav className="flex flex-col gap-1">
             {nav.map((item) => (
               <div key={item.label}>

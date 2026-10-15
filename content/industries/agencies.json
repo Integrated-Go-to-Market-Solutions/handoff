@@ -1,0 +1,47 @@
+{
+  "order": 3,
+  "navLabel": "Agencies",
+  "icon": "layers",
+  "name": "Agencies",
+  "descriptor": "Deliver end to end, scaling with the account.",
+  "heroImage": {
+    "src": "/images/industries/agencies.webp",
+    "alt": "A creative team at their desks in an open studio",
+    "focus": "62% 50%"
+  },
+  "subhead": "Add agency delivery that scales with the account, end to end.",
+  "problemHeadline": "Is client work growing faster than your team?",
+  "problemBody": "You win an account and need the delivery capacity this month, not next quarter. Every US hire you add to service the work takes a bite out of the margin. The freelancers you lean on disappear mid-project, and your senior people are doing production they should be reviewing.",
+  "triggers": [
+    "You won a new account and need delivery capacity now.",
+    "Adding a US hire to service the work eats the margin on it.",
+    "You are staffing client work with freelancers who go quiet mid-project.",
+    "Your senior people are producing work instead of reviewing it."
+  ],
+  "rolesHeadline": "Here are the roles we fill most for agencies",
+  "roles": [
+    {
+      "name": "Digital Marketing Manager",
+      "department": "marketing"
+    },
+    {
+      "name": "Media Buyer",
+      "department": "marketing"
+    },
+    {
+      "name": "Graphic / Motion Designer",
+      "department": "design"
+    },
+    {
+      "name": "Project Manager",
+      "department": "admin-operations"
+    },
+    {
+      "name": "SEO Specialist",
+      "department": "marketing"
+    }
+  ],
+  "rolesCloser": "Talent you choose yourself, in your time zone, with the AI skills to carry client work end to end, so your senior team reviews instead of produces.",
+  "proofLogos": [],
+  "caseStudy": ""
+}

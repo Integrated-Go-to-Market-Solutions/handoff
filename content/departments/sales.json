@@ -1,0 +1,15 @@
+{
+  "order": 6,
+  "name": "Sales",
+  "roles": [
+    "SDR/BDR",
+    "Account Executive",
+    "Sales Operations Specialist",
+    "CRM Administrator",
+    "Lead Generation Specialist"
+  ],
+  "video": {
+    "src": "",
+    "poster": ""
+  }
+}

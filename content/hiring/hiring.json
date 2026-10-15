@@ -1,0 +1,105 @@
+{
+  "pageTitle": "How it works | Handoff",
+  "pageDescription": "The Hands-off Hiring System: the four steps every Handoff hire goes through, from discovery to the guarantee.",
+  "titleParts": {
+    "before": "The",
+    "swipe": "Hands-off",
+    "after": "Hiring System"
+  },
+  "body": "A four-step process that keeps the sourcing and screening with us. You make one decision at the end: which finalist to place.",
+  "steps": [
+    {
+      "n": "01",
+      "title": "Discovery",
+      "body": "We learn the role, the team it joins, and what a strong fit looks like to you. That profile sets the bar for the search.",
+      "bulletsLead": "",
+      "bullets": [],
+      "after": ""
+    },
+    {
+      "n": "02",
+      "title": "The Vet",
+      "body": "We start with roughly 200 candidates and screen down.",
+      "bulletsLead": "Each one runs through:",
+      "bullets": [
+        "Video submissions",
+        "English proficiency",
+        "A skills assessment for the role",
+        "AI literacy",
+        "Intelligence and motivation",
+        "Recruiter interviews"
+      ],
+      "after": "Only the candidates who clear the full screen move forward."
+    },
+    {
+      "n": "03",
+      "title": "The Shortlist",
+      "body": "You see two. We bring you two candidates matched to the role, with their video, assessment results, and our notes. You interview both and choose.",
+      "bulletsLead": "",
+      "bullets": [],
+      "after": ""
+    },
+    {
+      "n": "04",
+      "title": "The Guarantee",
+      "body": "If none of the first four candidates fits, your next search is $1,000 off. We run the screening, so a miss is on us to fix.",
+      "bulletsLead": "",
+      "bullets": [],
+      "after": ""
+    }
+  ],
+  "closer": {
+    "line": "Every hire after your first gets easier. We learn your company, your culture, your bar for 'great.' By hire five, you might not meet the candidate until their first day.",
+    "cta": "Start at step one"
+  },
+  "pageCloser": {
+    "headline": "Start with the role",
+    "line": "Tell us what you need to fill, and we'll open the search.",
+    "cta": "Book a call"
+  },
+  "teaserCta": "See every step",
+  "teaserHref": "/how-it-works#timeline",
+  "timeline": {
+    "labels": [
+      "Step one",
+      "Step two",
+      "Step three",
+      "Step four"
+    ],
+    "cta": {
+      "label": "Hire Today",
+      "step": 0
+    },
+    "videos": [
+      {
+        "src": "/videos/handoff-promo.mp4",
+        "poster": "/videos/handoff-promo.jpg",
+        "focus": "50% 50%",
+        "vertical": false
+      },
+      {
+        "src": "/videos/remote-culture.mp4",
+        "poster": "/videos/remote-culture.jpg",
+        "focus": "50% 30%",
+        "vertical": true
+      },
+      {
+        "src": "/videos/day-with-handoff.mp4",
+        "poster": "/videos/day-with-handoff.jpg",
+        "focus": "50% 40%",
+        "vertical": true
+      },
+      {
+        "src": "/videos/handoff-values.mp4",
+        "poster": "/videos/handoff-values.jpg",
+        "focus": "50% 30%",
+        "vertical": true
+      }
+    ]
+  },
+  "promo": {
+    "src": "/videos/handoff-promo.mp4",
+    "poster": "/videos/handoff-promo.jpg",
+    "label": "Handoff: the team behind the hiring"
+  }
+}

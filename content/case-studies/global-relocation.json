@@ -1,0 +1,57 @@
+{
+  "order": 1,
+  "tag": "Relocation",
+  "icon": "globe",
+  "title": "Scaling global relocation operations with nearshore talent",
+  "subhead": "One of the world's leading relocation and mobility services companies needed top-tier operational and finance talent, fast, without US and European hiring costs.",
+  "heroStats": [
+    {
+      "value": "$327,600",
+      "label": "In annual savings"
+    },
+    {
+      "value": "96%",
+      "label": "Retention across all roles"
+    },
+    {
+      "value": "50%",
+      "label": "Decrease in time-to-hire"
+    }
+  ],
+  "challenge": [
+    "Struggled to fill Accounts Payable, Accounts Receivable, Staff Accountant and Global Accounting Manager roles despite competitive salaries.",
+    "Could not maintain adequate coverage in guest services and intercultural support.",
+    "Needed to scale internal teams without exceeding operational budgets.",
+    "Traditional hiring was too costly and too slow for roles requiring strong English fluency, cross-cultural understanding and financial precision."
+  ],
+  "solution": [
+    {
+      "title": "A blended nearshore team: accounting and finance specialists, an intercultural training coordinator, guest services and admin support",
+      "result": "Onboarded in under three weeks"
+    },
+    {
+      "title": "Every hire vetted for technical skill, cultural alignment and communication ability",
+      "result": "Full adoption of the client's own tools and workflows"
+    }
+  ],
+  "results": [
+    {
+      "value": "+$327,600",
+      "label": "In annual savings"
+    },
+    {
+      "value": "96%",
+      "label": "Retention rate across all roles"
+    },
+    {
+      "value": "50%",
+      "label": "Decrease in time-to-hire"
+    },
+    {
+      "value": "3 weeks",
+      "label": "Typical time to fill a role"
+    }
+  ],
+  "quote": "Partnering with Handoff has completely transformed how we scale our operational teams. When local hiring dried up, their team delivered high caliber talent fast, and at a fraction of the cost.",
+  "attributionRole": "VP of Global Operations"
+}

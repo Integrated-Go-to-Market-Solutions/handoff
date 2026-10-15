@@ -1,37 +1,29 @@
+"use client";
+
 import Link from "next/link";
 import { LogoLock } from "./brand";
-import { nav, site } from "@/lib/content";
-
-/** Industries and Roles come straight from the header menu, so the footer
- *  lists the same pages in the same order (10/5). */
-const menuColumn = (label: string) => {
-  const item = nav.find((entry) => entry.label === label);
-  return { title: label, links: item?.children ?? [] };
-};
-
-const columns = [
-  {
-    title: "Company",
-    links: [
-      { label: "How It Works", href: "/how-it-works" },
-      { label: "About", href: "/about" },
-      { label: "Careers", href: "/careers" },
-    ],
-  },
-  menuColumn("Industries"),
-  menuColumn("Roles"),
-  menuColumn("Services"),
-  menuColumn("Resources"),
-  {
-    title: "Get Started",
-    links: [
-      { label: "Talk to Our Team", href: site.bookCall },
-      { label: "hello@handoff.com", href: "mailto:hello@handoff.com" },
-    ],
-  },
-];
+import { tinaField, useContent } from "@/components/tina/content";
 
 export function SiteFooter() {
+  const { nav, site } = useContent();
+  const menuColumn = (label: string) => {
+    const item = nav.find((entry) => entry.label === label);
+    return { title: label, links: item?.children ?? [] };
+  };
+  const columns = [
+    { title: "Company", links: site.footer.company },
+    menuColumn(site.navLabels.industries),
+    menuColumn(site.navLabels.roles),
+    menuColumn(site.navLabels.services),
+    menuColumn(site.navLabels.resources),
+    {
+      title: "Get Started",
+      links: [
+        { label: site.footer.talkLabel, href: site.bookCall },
+        { label: site.footer.emailLabel, href: `mailto:${site.footer.email}` },
+      ],
+    },
+  ];
   return (
     <footer className="relative overflow-hidden bg-ink text-bone">
 
@@ -52,7 +44,7 @@ export function SiteFooter() {
                       // Not built yet: a label with a "Soon" tag, as in the menu.
                       <span className="inline-flex items-center gap-2 py-1.5 text-base font-medium text-bone/40">
                         {link.label}
-                        <span className="rounded-full border border-white/15 px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-[0.1em] text-bone/50">
+                        <span className="rounded-full border border-white/15 px-2 py-0.5 text-[0.6rem] font-semibold uppercase tracking-widest text-bone/50">
                           Soon
                         </span>
                       </span>
@@ -73,9 +65,12 @@ export function SiteFooter() {
 
         <div className="mt-14 flex flex-wrap items-center justify-between gap-4">
           <span className="text-sm font-medium text-bone/70">
-            &copy; {new Date().getFullYear()} {site.name}. All rights reserved.
+            &copy; {new Date().getFullYear()} <span data-tina-field={tinaField(site, "name")}>{site.name}</span>.{" "}
+            <span data-tina-field={tinaField(site.footer, "legal")}>{site.footer.legal}</span>
           </span>
-          <span className="display text-sm text-cyan">{site.tagline}</span>
+          <span data-tina-field={tinaField(site, "tagline")} className="display text-sm text-cyan">
+            {site.tagline}
+          </span>
         </div>
       </div>
     </footer>

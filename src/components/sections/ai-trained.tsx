@@ -2,7 +2,7 @@
 
 import { useId, useState } from "react";
 import { Reveal } from "../reveal";
-import { aiTrained } from "@/lib/content";
+import { tinaField, useContent } from "@/components/tina/content";
 
 /**
  * Handoff Academy (10/13), built to Handoff's mockup: a light section with
@@ -44,6 +44,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 }
 
 export function AiTrained() {
+  const { aiTrained } = useContent();
   const [active, setActive] = useState(0);
   const baseId = useId();
   const track = aiTrained.tracks[active];
@@ -58,7 +59,7 @@ export function AiTrained() {
               <span className="h-2 w-2 rounded-full bg-cyan-dim" aria-hidden="true" />
               {aiTrained.eyebrow}
             </p>
-            <h2 id={`${baseId}-heading`} className="display mt-5 text-[clamp(2.1rem,4.4vw,3.6rem)] normal-case! leading-[1.05] tracking-tight text-ink">
+            <h2 id={`${baseId}-heading`} data-tina-field={tinaField(aiTrained, "headline")} className="display mt-5 text-[clamp(2.1rem,4.4vw,3.6rem)] normal-case! leading-[1.05] tracking-tight text-ink">
               {aiTrained.headline.before}{" "}
               <span className="inline-block rounded-2xl bg-cyan px-3 pb-1">{aiTrained.headline.highlight}</span>
             </h2>
@@ -72,16 +73,16 @@ export function AiTrained() {
         <div className="mt-10 flex flex-col gap-4 border-y border-ink/10 py-5 md:flex-row md:items-center md:gap-8">
           <p className="eyebrow shrink-0 text-xs tracking-[0.16em] text-ink/70">{aiTrained.toolsLabel}</p>
           <ul className="flex flex-1 flex-wrap items-center justify-between gap-x-6 gap-y-3">
-            {aiTrained.tools.map((tool) => (
+            {aiTrained.tools.map((tool: any) => (
               <li key={tool.name} className="flex items-center gap-2.5 text-base font-semibold text-ink">
                 <span className="grid h-9 w-9 place-items-center rounded-lg border border-ink/10 bg-white">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={`/images/ai-tools/${tool.file}.svg`}
+                    src={tool.icon}
                     alt=""
                     width={20}
                     height={20}
-                    className={`h-5 w-5 ${"mono" in tool && tool.mono ? "invert" : ""}`}
+                    className={`h-5 w-5 ${tool.mono ? "invert" : ""}`}
                   />
                 </span>
                 {tool.name}
@@ -96,7 +97,7 @@ export function AiTrained() {
           aria-label="Handoff Academy tracks"
           className="-mx-5 mt-10 flex snap-x gap-3 overflow-x-auto px-5 pb-1 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-3 sm:overflow-visible sm:px-0 [&::-webkit-scrollbar]:hidden"
         >
-          {aiTrained.tracks.map((t, i) => {
+          {aiTrained.tracks.map((t: any, i: number) => {
             const selected = i === active;
             return (
               <button
@@ -107,10 +108,10 @@ export function AiTrained() {
                 aria-selected={selected}
                 aria-controls={`${baseId}-panel`}
                 onClick={() => setActive(i)}
-                className={`min-w-[15rem] shrink-0 snap-start rounded-full border-2 px-6 py-3.5 text-left transition-colors sm:min-w-0 ${
+                className={`min-w-60 shrink-0 snap-start rounded-full border-2 px-6 py-3.5 text-left transition-colors sm:min-w-0 ${
                   selected
                     ? "border-cyan bg-ink text-white"
-                    : "border-transparent bg-ink/[0.07] text-ink hover:bg-ink/[0.11]"
+                    : "border-transparent bg-ink/7 text-ink hover:bg-ink/11"
                 }`}
               >
                 <span className={`block text-[0.68rem] font-bold uppercase tracking-[0.16em] ${selected ? "text-cyan" : "text-royal"}`}>
@@ -127,7 +128,7 @@ export function AiTrained() {
           role="tabpanel"
           id={`${baseId}-panel`}
           aria-labelledby={`${baseId}-tab-${track.id}`}
-          className="mt-5 rounded-[var(--radius-card)] border-2 border-cyan bg-ink p-6 text-bone shadow-[0_0_36px_-14px_rgba(61,214,189,0.6)] sm:p-8 md:p-10"
+          className="mt-5 rounded-(--radius-card) border-2 border-cyan bg-ink p-6 text-bone shadow-[0_0_36px_-14px_rgba(61,214,189,0.6)] sm:p-8 md:p-10"
         >
           {track.details ? (
             <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-10">
@@ -138,7 +139,7 @@ export function AiTrained() {
                   {track.details.hours}
                 </p>
                 <dl className="mt-5 space-y-1 text-sm text-bone/75">
-                  {track.details.facts.map((f) => (
+                  {track.details.facts.map((f: any) => (
                     <div key={f.label}>
                       <dt className="inline font-semibold text-white">{f.label}:</dt> <dd className="inline">{f.value}</dd>
                     </div>
@@ -149,7 +150,7 @@ export function AiTrained() {
               <div>
                 <SectionLabel>{track.details.learnLabel}</SectionLabel>
                 <ul className="mt-4 space-y-3.5">
-                  {track.details.learn.map((item) => (
+                  {track.details.learn.map((item: any) => (
                     <li key={item.lead} className="flex gap-3 text-[0.95rem] leading-snug text-bone/80">
                       <Check />
                       <span>
@@ -164,8 +165,8 @@ export function AiTrained() {
               <div>
                 <SectionLabel>{track.details.buildLabel}</SectionLabel>
                 <ul className="mt-4 space-y-2.5">
-                  {track.details.build.map((item) => (
-                    <li key={item} className="flex gap-3 rounded-2xl bg-white/[0.06] px-4 py-3 text-[0.95rem] leading-snug text-bone/90">
+                  {track.details.build.map((item: any) => (
+                    <li key={item} className="flex gap-3 rounded-2xl bg-white/6 px-4 py-3 text-[0.95rem] leading-snug text-bone/90">
                       <Cube />
                       {item}
                     </li>

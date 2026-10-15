@@ -1,0 +1,47 @@
+{
+  "order": 2,
+  "navLabel": "Startups",
+  "icon": "trend",
+  "name": "Startups",
+  "descriptor": "Cover the role with talent that already works with AI.",
+  "heroImage": {
+    "src": "/images/industries/startups.webp",
+    "alt": "A small team working on laptops around a shared table in a coworking café",
+    "focus": "62% 60%"
+  },
+  "subhead": "Get startup roles off your plate, owned by talent that already works with AI.",
+  "problemHeadline": "Still doing every job yourself?",
+  "problemBody": "The company is growing, and now there is more work than there are people to do it. You are still running support, ops, and the books yourself at night.",
+  "triggers": [
+    "You are growing faster than you can hire, and you are covering the gap yourself.",
+    "A US hire for this role costs more runway than you can give it.",
+    "This is your first 3rd party hire, and you are not sure how to get it right.",
+    "You tried a freelancer and spent more time managing them than the work gave back."
+  ],
+  "rolesHeadline": "Here are the roles we fill most for startups",
+  "roles": [
+    {
+      "name": "Executive Assistant / Chief of Staff",
+      "department": "admin-operations"
+    },
+    {
+      "name": "Operations Manager",
+      "department": "admin-operations"
+    },
+    {
+      "name": "Full Stack Developer",
+      "department": "software-engineering"
+    },
+    {
+      "name": "AI & Automations Developer",
+      "department": "data-ai"
+    },
+    {
+      "name": "Customer Support Lead",
+      "department": "customer-support"
+    }
+  ],
+  "rolesCloser": "Talent you pick yourself, in your working hours, with client-ready English and real AI skills, there to own the role and not just clear tasks.",
+  "proofLogos": [],
+  "caseStudy": ""
+}

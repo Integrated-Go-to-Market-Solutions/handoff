@@ -1,0 +1,489 @@
+{
+  "hero": {
+    "eyebrow": "Staffing and Recruiting",
+    "headlineLead": {
+      "before": "Hire the best of",
+      "accent": "LATAM."
+    },
+    "headlineLines": [
+      {
+        "text": "Hire the best of LATAM.",
+        "tone": ""
+      },
+      {
+        "text": "AI Powered People.",
+        "tone": ""
+      },
+      {
+        "text": "Here to stay.",
+        "tone": "cyan"
+      }
+    ],
+    "image": "/images/hero/team.webp",
+    "imageAlt": "The Handoff team",
+    "body": "Handoff places full-time, dedicated Latin American talent inside US companies, screened to the top 1%.",
+    "primary": {
+      "label": "Get Started Today",
+      "href": "/contact"
+    },
+    "secondary": {
+      "label": "Talk to Our Team",
+      "href": "/contact"
+    },
+    "note": "Full-time, dedicated teammates. Not a marketplace."
+  },
+  "whyLatam": {
+    "headline": "Why US teams work nearshore with LATAM talent",
+    "subhead": "They work your business hours and already know how US teams run.",
+    "categories": [
+      {
+        "title": "Talent quality",
+        "tagline": "What makes LATAM great for hiring",
+        "icon": "award",
+        "bullets": [
+          "Deep pool of educated, professional talent",
+          "Strong English proficiency across key markets",
+          "Experience working with U.S. companies, tools, and processes",
+          "High accountability and work ethic"
+        ]
+      },
+      {
+        "title": "Time zone alignment",
+        "tagline": "Talent easy to reach",
+        "icon": "clock",
+        "bullets": [
+          "Minimal time difference with the U.S.",
+          "Talent works standard U.S. business hours",
+          "Real-time collaboration, not overnight handoffs",
+          "Faster feedback loops and fewer delays"
+        ]
+      },
+      {
+        "title": "Cultural fit",
+        "tagline": "A world of talent close to your culture",
+        "icon": "users",
+        "bullets": [
+          "Strong alignment with U.S. business culture",
+          "Clear communication, proactive problem-solving",
+          "Familiarity with U.S. expectations around ownership, deadlines, and quality"
+        ]
+      }
+    ]
+  },
+  "industriesStrip": {
+    "headline": "Hire people who have already done this work in your industry.",
+    "body": "The people we place have spent two to five years in industries like yours, so they arrive knowing how the work runs. We don't put forward candidates from outside your field."
+  },
+  "credibilityStats": [
+    {
+      "value": "$50K+",
+      "label": "Saved per hire"
+    },
+    {
+      "value": "96%+",
+      "label": "Client retention"
+    },
+    {
+      "value": "Top 1%",
+      "label": "Of talent"
+    }
+  ],
+  "talentMap": {
+    "heading": {
+      "before": "Meet your",
+      "link": "talent"
+    },
+    "intro": "The roles we place most, from Mexico to Patagonia. Hover or tap a pin to see who you could be working with.",
+    "cta": {
+      "label": "Explore all roles",
+      "href": "/roles"
+    },
+    "salaryLabel": "Salary benchmark",
+    "profiles": [
+      {
+        "name": "Valeria",
+        "city": "Guadalajara",
+        "country": "Mexico",
+        "role": "Digital Marketing Manager",
+        "department": "marketing",
+        "salary": "$2,500–$3,500/mo",
+        "photo": "/images/team/jazmin-esparza.webp"
+      },
+      {
+        "name": "Diego",
+        "city": "San José",
+        "country": "Costa Rica",
+        "role": "Full-Stack Developer",
+        "department": "software-engineering",
+        "salary": "$3,500–$5,500/mo",
+        "photo": "/images/team/jake-castro.webp"
+      },
+      {
+        "name": "Camila",
+        "city": "Medellín",
+        "country": "Colombia",
+        "role": "AP/AR Specialist",
+        "department": "finance-accounting",
+        "salary": "$1,500–$2,200/mo",
+        "photo": "/images/team/karla-patron.webp"
+      },
+      {
+        "name": "Mateo",
+        "city": "Lima",
+        "country": "Peru",
+        "role": "AI Developer / AI Engineer",
+        "department": "data-ai",
+        "salary": "$3,000–$5,000/mo",
+        "photo": "/images/team/simon-quintero.webp"
+      },
+      {
+        "name": "Larissa",
+        "city": "Recife",
+        "country": "Brazil",
+        "role": "Relocation Coordinator",
+        "department": "corporate-relocation",
+        "salary": "$1,600–$2,400/mo",
+        "photo": "/images/team/catalina-saldarriaga.webp"
+      },
+      {
+        "name": "Gabriel",
+        "city": "São Paulo",
+        "country": "Brazil",
+        "role": "Guest Services Coordinator",
+        "department": "corporate-housing-mtr",
+        "salary": "$1,200–$1,800/mo",
+        "photo": "/images/team/leidy-quintero.webp"
+      },
+      {
+        "name": "Sofía",
+        "city": "Córdoba",
+        "country": "Argentina",
+        "role": "Reservations Specialist",
+        "department": "corporate-housing-mtr",
+        "salary": "$1,800–$2,600/mo",
+        "photo": "/images/team/shaori-velueta.webp"
+      },
+      {
+        "name": "Tomás",
+        "city": "Neuquén",
+        "country": "Argentina",
+        "role": "SDR/BDR",
+        "department": "sales",
+        "salary": "$1,500–$2,500/mo",
+        "photo": "/images/team/jake-castro.webp"
+      }
+    ]
+  },
+  "logos": [
+    {
+      "slug": "united-corporate-housing",
+      "name": "United Corporate Housing",
+      "image": "/images/logos/united-corporate-housing.webp",
+      "hasImage": true,
+      "stacked": true
+    },
+    {
+      "slug": "oasis",
+      "name": "Oasis",
+      "image": "/images/logos/oasis.webp",
+      "hasImage": true,
+      "stacked": false
+    },
+    {
+      "slug": "altovita",
+      "name": "AltoVita",
+      "image": "/images/logos/altovita.webp",
+      "hasImage": true,
+      "stacked": true
+    },
+    {
+      "slug": "dwellworks",
+      "name": "Dwellworks",
+      "image": "/images/logos/dwellworks.webp",
+      "hasImage": true,
+      "stacked": false
+    },
+    {
+      "slug": "pivt",
+      "name": "Pivt",
+      "image": "/images/logos/pivt.webp",
+      "hasImage": true,
+      "stacked": true
+    },
+    {
+      "slug": "snap-supplements",
+      "name": "Snap Supplements",
+      "image": "/images/logos/snap-supplements.webp",
+      "hasImage": true,
+      "stacked": false
+    },
+    {
+      "slug": "earth-side-farms",
+      "name": "Earthside Farms",
+      "image": "/images/logos/earth-side-farms.webp",
+      "hasImage": true,
+      "stacked": true
+    },
+    {
+      "slug": "charcharms",
+      "name": "CharCharms",
+      "image": "/images/logos/charcharms.webp",
+      "hasImage": true,
+      "stacked": false
+    },
+    {
+      "slug": "do-good-cfo",
+      "name": "Do Good CFO",
+      "image": "/images/logos/do-good-cfo.webp",
+      "hasImage": true,
+      "stacked": true
+    },
+    {
+      "slug": "igtms",
+      "name": "IGTMS",
+      "image": "/images/logos/igtms.webp",
+      "hasImage": true,
+      "stacked": false
+    },
+    {
+      "slug": "doorspot",
+      "name": "DoorSpot",
+      "image": "/images/logos/doorspot.webp",
+      "hasImage": true,
+      "stacked": false
+    }
+  ],
+  "aiTrained": {
+    "eyebrow": "Handoff Academy · Powered by Coursera",
+    "headline": {
+      "before": "Every Handoff hire shows up",
+      "highlight": "AI-ready."
+    },
+    "subhead": "Through our Coursera partnership, the people we place train with Google, IBM and CertNexus — from everyday prompting to building agents that run real workflows.",
+    "subheadBold": "The judgment stays human. The busywork doesn't.",
+    "toolsLabel": "Tools our talent works with",
+    "tools": [
+      {
+        "name": "Claude",
+        "icon": "/images/ai-tools/claude-color.svg",
+        "mono": false
+      },
+      {
+        "name": "ChatGPT",
+        "icon": "/images/ai-tools/openai.svg",
+        "mono": true
+      },
+      {
+        "name": "Gemini",
+        "icon": "/images/ai-tools/gemini-color.svg",
+        "mono": false
+      },
+      {
+        "name": "Perplexity",
+        "icon": "/images/ai-tools/perplexity-color.svg",
+        "mono": false
+      },
+      {
+        "name": "Grok",
+        "icon": "/images/ai-tools/grok.svg",
+        "mono": true
+      }
+    ],
+    "tracks": [
+      {
+        "id": "use-it",
+        "kicker": "Use it",
+        "title": "AI Fundamentals for Everyday Work",
+        "details": {
+          "hours": "~5 hours",
+          "facts": [
+            {
+              "label": "For",
+              "value": "all roles"
+            },
+            {
+              "label": "With",
+              "value": "Google"
+            },
+            {
+              "label": "Earns",
+              "value": "AI Excellence certification"
+            }
+          ],
+          "learnLabel": "What they'll learn",
+          "learn": [
+            {
+              "lead": "How AI actually works",
+              "rest": " — and where it falls short"
+            },
+            {
+              "lead": "Prompting with a framework:",
+              "rest": " task, context, references, evaluate, iterate"
+            },
+            {
+              "lead": "AI as a collaborator",
+              "rest": ", not a shortcut"
+            },
+            {
+              "lead": "Responsible use",
+              "rest": " — checking for accuracy and bias"
+            }
+          ],
+          "buildLabel": "What they'll build",
+          "build": [
+            "Multi-step prompt chains for real work",
+            "Brainstorms, plans and visuals in hands-on labs",
+            "Custom AI-generated images"
+          ]
+        }
+      },
+      {
+        "id": "direct-it",
+        "kicker": "Direct it",
+        "title": "Agentic AI for Business",
+        "details": {
+          "hours": "8 hours",
+          "facts": [
+            {
+              "label": "For",
+              "value": "ops, marketing and leadership roles"
+            },
+            {
+              "label": "With",
+              "value": "CertNexus"
+            },
+            {
+              "label": "Earns",
+              "value": "AgenticAIBIZ credential"
+            }
+          ],
+          "learnLabel": "What they'll learn",
+          "learn": [
+            {
+              "lead": "Spotting what's worth automating",
+              "rest": " — and what it's worth"
+            },
+            {
+              "lead": "Agent design basics:",
+              "rest": " single vs. multi-agent, memory, safety"
+            },
+            {
+              "lead": "Risk and governance",
+              "rest": " when AI acts on its own"
+            },
+            {
+              "lead": "Rolling AI out",
+              "rest": " to a team and its stakeholders"
+            }
+          ],
+          "buildLabel": "What they'll build",
+          "build": [
+            "A use-case assessment of agent-ready workflows",
+            "An agent design with guardrails built in",
+            "A team adoption roadmap"
+          ]
+        }
+      },
+      {
+        "id": "build-it",
+        "kicker": "Build it",
+        "title": "AI Agents & Workflow Automation",
+        "details": {
+          "hours": "~60 hours",
+          "facts": [
+            {
+              "label": "For",
+              "value": "technical and automation roles"
+            },
+            {
+              "label": "With",
+              "value": "IBM, Board Infinity, Packt"
+            },
+            {
+              "label": "Earns",
+              "value": "IBM certificate in AI agents"
+            }
+          ],
+          "learnLabel": "What they'll learn",
+          "learn": [
+            {
+              "lead": "Agents that use tools, reason and correct themselves",
+              "rest": ""
+            },
+            {
+              "lead": "RAG:",
+              "rest": " connecting AI to company knowledge with Pinecone and Chroma"
+            },
+            {
+              "lead": "Multi-agent orchestration",
+              "rest": " with LangGraph, CrewAI and AutoGen"
+            },
+            {
+              "lead": "Prototype to production:",
+              "rest": " testing, security, deployment"
+            }
+          ],
+          "buildLabel": "What they'll build",
+          "build": [
+            "Working AI agents",
+            "RAG-powered Q&A chatbots",
+            "Multi-agent workflow systems",
+            "A GenAI app, deployed"
+          ]
+        }
+      }
+    ],
+    "comingSoon": "Course details coming soon."
+  },
+  "vibes": {
+    "headline": "We are the",
+    "headlineAccent": "overseas talent",
+    "headlineAfter": ".",
+    "body": "Competitors film their founders describing how good the talent is. You never actually see the talent. This is ours, in their own words, shot where they work.",
+    "clips": [
+      {
+        "slug": "day-with-handoff",
+        "name": "A day with Handoff",
+        "caption": "Our Colombia office, from the first laptop open to city lights.",
+        "video": "/videos/day-with-handoff.mp4",
+        "poster": "/videos/day-with-handoff.jpg"
+      },
+      {
+        "slug": "remote-culture",
+        "name": "Our remote culture",
+        "caption": "Confidence and accountability, no matter the distance.",
+        "video": "/videos/remote-culture.mp4",
+        "poster": "/videos/remote-culture.jpg"
+      },
+      {
+        "slug": "handoff-values",
+        "name": "Handoff values",
+        "caption": "Our values are simple. This is how we lead.",
+        "video": "/videos/handoff-values.mp4",
+        "poster": "/videos/handoff-values.jpg"
+      }
+    ]
+  },
+  "soul": {
+    "dictionary": {
+      "intro": "We named our platform Alma.",
+      "headword": "alma",
+      "pronunciation": "[al·ma]",
+      "partOfSpeech": "noun",
+      "definition": "a person we treat like a teammate. Stays."
+    },
+    "cultureVideo": {
+      "src": "/video/culture.mp4",
+      "poster": "/video/culture.jpg"
+    },
+    "closerParts": {
+      "before": "We named our platform",
+      "accent": "Alma.",
+      "after": " It means soul.",
+      "sub": [
+        "A person who is treated like a teammate stays.",
+        "A person who is treated like a line item leaves."
+      ]
+    }
+  }
+}

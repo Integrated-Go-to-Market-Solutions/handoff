@@ -1,0 +1,30 @@
+{
+  "title": "Results | Handoff",
+  "description": "Case studies, retention numbers and client testimonials from companies that hired through Handoff.",
+  "eyebrow": "Results",
+  "headline": "What happens after the hire",
+  "headlineAccent": "is the whole point.",
+  "body": "Placing someone is the easy half. These are the numbers and the stories from companies that made the hire and kept the person.",
+  "storiesHeadline": "The stories",
+  "storiesBody": "Two real engagements, written up with the client’s numbers and the client’s words.",
+  "readStory": "Read the story",
+  "caseStudyLabel": "case study",
+  "caseStudyKicker": "Case study",
+  "challengeHeading": "The challenge",
+  "solutionHeading": "What we did",
+  "numbers": [
+    {
+      "value": "92%",
+      "label": "Of placements still with their company after a year"
+    },
+    {
+      "value": "2 weeks",
+      "label": "To your top two candidates"
+    },
+    {
+      "value": "Top 1%",
+      "label": "Of talent"
+    }
+  ],
+  "heroImage": "/textures/brick.jpg"
+}

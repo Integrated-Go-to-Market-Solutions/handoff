@@ -4,6 +4,15 @@ const nextConfig: NextConfig = {
   // Hides the floating Next.js dev badge in the corner during local dev.
   // Production never renders it; this just keeps preview screenshots clean.
   devIndicators: false,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "assets.tina.io",
+        pathname: "/**",
+      },
+    ],
+  },
   // "Hospitality" became "Corporate housing" on 10/5; keep old links working.
   async redirects() {
     return [
@@ -18,6 +27,9 @@ const nextConfig: NextConfig = {
       // first service (Tom, 10/6).
       { source: "/services", destination: "/services/direct-hire", permanent: false },
     ];
+  },
+  async rewrites() {
+    return [{ source: "/admin", destination: "/admin/index.html" }];
   },
 };
 

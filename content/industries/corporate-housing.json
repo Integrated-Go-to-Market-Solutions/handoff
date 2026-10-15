@@ -1,0 +1,51 @@
+{
+  "order": 0,
+  "navLabel": "Corporate Housing",
+  "icon": "home",
+  "name": "Corporate Housing",
+  "descriptor": "Keep the desk moving through peak season, from reservations to QA.",
+  "heroImage": {
+    "src": "/images/industries/corporate-housing.webp",
+    "alt": "A bright furnished apartment living room with a sofa and city views",
+    "focus": "50% 50%"
+  },
+  "subhead": "Staff corporate housing, mid-term, and short-term rentals, from reservations to turnovers.",
+  "problemHeadline": "Hire ahead of your busy season",
+  "problemBody": "Occupancy climbs, the reservations inbox fills, and someone on your team is covering three jobs at once. Hiring for it in the US does not pencil out at these margins, and the last remote assistant you tried needed a script for routine bookings and messages.",
+  "triggers": [
+    "Peak season arrives and your reservations team is underwater.",
+    "Your operations manager gives notice and takes the vendor relationships with them.",
+    "You are turning down units because your team cannot keep up with the coordination.",
+    "You tried a VA for guest and resident messages and got someone who could not make a judgment call."
+  ],
+  "rolesHeadline": "Here are the roles we fill most across corporate housing, mid‑term, and short‑term rentals",
+  "roles": [
+    {
+      "name": "Reservations Manager",
+      "department": "corporate-housing-mtr"
+    },
+    {
+      "name": "Operations Manager",
+      "department": "admin-operations"
+    },
+    {
+      "name": "Quality Assurance Specialist",
+      "department": ""
+    },
+    {
+      "name": "Guest and Resident Coordinator",
+      "department": "corporate-housing-mtr"
+    },
+    {
+      "name": "Bookkeeper",
+      "department": "finance-accounting"
+    }
+  ],
+  "rolesCloser": "Our founder spent over a decade hiring in this industry. It is where our recruiting is deepest and where we are surest of the fit.",
+  "proofLogos": [
+    "oasis",
+    "united-corporate-housing",
+    "dwellworks"
+  ],
+  "caseStudy": ""
+}

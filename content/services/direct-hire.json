@@ -1,0 +1,14 @@
+{
+  "order": 0,
+  "name": "Direct Hire",
+  "subhead": "Contract the talent directly and manage the day to day yourself.",
+  "howItWorks": "We run the search through the Hands-Off Hiring System and hand you a shortlist for the role. Because the skills, English, and AI fluency are vetted before you meet anyone, you interview for fit. You pick the professional who matches how your team operates, so you bring on someone who fits your culture, beyond the role on paper. From there, you contract them directly and pay them each month. They work on your team, under your direction, and because this is a direct contract rather than employment, there's no payroll, benefits, or tax withholding to administer on your side.",
+  "detailHeadline": "What you handle",
+  "detailBody": "You own the working relationship: you set the work, manage the day to day, and pay the talent monthly. We stay available to help you fill another seat or start a replacement search.",
+  "detailList": [],
+  "bestFit": "Choose Direct Hire when you want the talent on your own team and the capacity to manage them directly. If you would rather we carry the employment and support, Managed Staffing does that.",
+  "other": {
+    "label": "See Managed Staffing",
+    "slug": "managed-staffing"
+  }
+}

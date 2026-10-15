@@ -1,0 +1,17 @@
+{
+  "order": 5,
+  "name": "Marketing",
+  "roles": [
+    "Marketing Coordinator",
+    "Content Writer/Strategist",
+    "SEO Specialist",
+    "Social Media Manager",
+    "Paid Media/PPC Specialist",
+    "Email/Lifecycle Marketing Specialist",
+    "Marketing Ops/Automation Specialist"
+  ],
+  "video": {
+    "src": "",
+    "poster": ""
+  }
+}

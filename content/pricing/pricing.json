@@ -1,0 +1,262 @@
+{
+  "title": "Pricing | Handoff",
+  "intro": {
+    "headline": "Two ways to work together",
+    "subhead": "Pick the model that fits how you want to bring on talent. Both run on the same Hands-Off Hiring System.",
+    "startingAt": {
+      "label": "Talent salaries start at",
+      "price": "$1,600/month"
+    },
+    "addOns": "Add‑ons are available on either model.",
+    "cta": "Book a call"
+  },
+  "footnote": "Both models include a one-time placement fee of 25% of the candidate's first-year salary. The final amount varies by role, seniority and scope, typically $4,500 to $6,500.",
+  "models": [
+    {
+      "tag": "Most popular",
+      "name": "Managed Staffing",
+      "forWho": "Companies building a team",
+      "price": "~$3,500/month",
+      "terms": "Supervised, managed team members",
+      "copy": "We recruit, employ, train, and performance manage, with extra structure and accountability. You get the outcome and one point of accountability. Ideal for higher-risk functions.",
+      "points": [
+        "Handoff owns recruiting, employment and management",
+        "Supervised, managed team members",
+        "Extra structure and accountability"
+      ],
+      "extrasLabel": "Also included with Managed Staffing",
+      "extras": [
+        "Employment and payroll handled by Handoff",
+        "Compliance",
+        "Equipment and tools",
+        "Day-to-day supervision",
+        "Performance management",
+        "Replacement support"
+      ],
+      "featured": true
+    },
+    {
+      "tag": "Ready to Go",
+      "name": "Recruitment & Placement",
+      "forWho": "Smaller teams and one-off hires",
+      "price": "~$1,600/month",
+      "terms": "Direct hire model",
+      "copy": "We find and vet the person, you employ them directly. Includes a 90-day guarantee. Three of our last four new clients started here.",
+      "points": [
+        "Direct hire model",
+        "Lowest ongoing cost of the two models",
+        "Full ownership of the relationship"
+      ],
+      "extrasLabel": "How Recruitment & Placement works",
+      "extras": [
+        "We find and vet the person",
+        "You employ them directly",
+        "Includes a 90-day guarantee",
+        "Three of our last four new clients started here"
+      ],
+      "featured": false
+    }
+  ],
+  "compare": {
+    "columns": [
+      "Direct Hire",
+      "Managed Staffing"
+    ],
+    "featured": 1,
+    "footnote": "One-time placement fee of 25% of first-year salary applies to both.",
+    "rows": [
+      {
+        "label": "The Hands-Off Hiring System",
+        "note": "Sourcing, the Vet, and a shortlist of two for each role",
+        "values": [
+          {
+            "kind": "check",
+            "text": "",
+            "accent": false
+          },
+          {
+            "kind": "check",
+            "text": "",
+            "accent": false
+          }
+        ]
+      },
+      {
+        "label": "Talent screened for skills, English, and AI fluency",
+        "note": "",
+        "values": [
+          {
+            "kind": "check",
+            "text": "",
+            "accent": false
+          },
+          {
+            "kind": "check",
+            "text": "",
+            "accent": false
+          }
+        ]
+      },
+      {
+        "label": "Work in your time zone, with client-ready English",
+        "note": "",
+        "values": [
+          {
+            "kind": "check",
+            "text": "",
+            "accent": false
+          },
+          {
+            "kind": "check",
+            "text": "",
+            "accent": false
+          }
+        ]
+      },
+      {
+        "label": "The guarantee",
+        "note": "$1,000 off your next search if none of the first four fits",
+        "values": [
+          {
+            "kind": "check",
+            "text": "",
+            "accent": false
+          },
+          {
+            "kind": "check",
+            "text": "",
+            "accent": false
+          }
+        ]
+      },
+      {
+        "label": "Who employs them",
+        "note": "",
+        "values": [
+          {
+            "kind": "text",
+            "text": "You contract them directly",
+            "accent": false
+          },
+          {
+            "kind": "text",
+            "text": "Handoff, as employer of record",
+            "accent": true
+          }
+        ]
+      },
+      {
+        "label": "Payroll",
+        "note": "",
+        "values": [
+          {
+            "kind": "dash",
+            "text": "",
+            "accent": false
+          },
+          {
+            "kind": "check",
+            "text": "",
+            "accent": false
+          }
+        ]
+      },
+      {
+        "label": "HR and compliance",
+        "note": "",
+        "values": [
+          {
+            "kind": "dash",
+            "text": "",
+            "accent": false
+          },
+          {
+            "kind": "check",
+            "text": "",
+            "accent": false
+          }
+        ]
+      },
+      {
+        "label": "Benefits",
+        "note": "",
+        "values": [
+          {
+            "kind": "dash",
+            "text": "",
+            "accent": false
+          },
+          {
+            "kind": "check",
+            "text": "",
+            "accent": false
+          }
+        ]
+      },
+      {
+        "label": "Equipment and IT",
+        "note": "",
+        "values": [
+          {
+            "kind": "dash",
+            "text": "",
+            "accent": false
+          },
+          {
+            "kind": "check",
+            "text": "",
+            "accent": false
+          }
+        ]
+      },
+      {
+        "label": "Performance management",
+        "note": "",
+        "values": [
+          {
+            "kind": "dash",
+            "text": "",
+            "accent": false
+          },
+          {
+            "kind": "check",
+            "text": "",
+            "accent": false
+          }
+        ]
+      },
+      {
+        "label": "Retention support",
+        "note": "",
+        "values": [
+          {
+            "kind": "dash",
+            "text": "",
+            "accent": false
+          },
+          {
+            "kind": "check",
+            "text": "",
+            "accent": false
+          }
+        ]
+      },
+      {
+        "label": "Best for",
+        "note": "",
+        "values": [
+          {
+            "kind": "text",
+            "text": "When you want them on your own team",
+            "accent": false
+          },
+          {
+            "kind": "text",
+            "text": "When you want us to carry the employment, compliance, and support",
+            "accent": false
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "order": 4,
+  "navLabel": "E-Commerce",
+  "icon": "bag",
+  "name": "E-Commerce",
+  "descriptor": "Keep the store open through every spike and handle the calls.",
+  "heroImage": {
+    "src": "/images/industries/ecommerce.webp",
+    "alt": "A warehouse worker checking stock on a tablet beside stacked boxes",
+    "focus": "72% 50%"
+  },
+  "subhead": "Staff e-commerce to stay open through every spike, calls handled.",
+  "problemHeadline": "The store has to stay open even when you're short-staffed",
+  "problemBody": "Support tickets, returns, and order problems arrive whether or not you have the people to handle them. A launch or a sales spike leaves you underwater on service and fulfillment. You are clearing the inbox yourself at midnight, and the VA you hired sends every decision back to you.",
+  "triggers": [
+    "Tickets and returns pile up faster than your team clears them.",
+    "A launch or a sales spike leaves service and fulfillment behind.",
+    "You are answering customer email after hours.",
+    "You hired a VA who escalated every refund and every upset customer back to you."
+  ],
+  "rolesHeadline": "Here are the roles we fill most in e-commerce",
+  "roles": [
+    {
+      "name": "Customer Support Specialist",
+      "department": "customer-support"
+    },
+    {
+      "name": "Operations / Fulfillment Coordinator",
+      "department": "admin-operations"
+    },
+    {
+      "name": "Email / Retention Marketing Manager",
+      "department": "marketing"
+    },
+    {
+      "name": "Paid Media Buyer",
+      "department": "marketing"
+    },
+    {
+      "name": "Bookkeeper",
+      "department": "finance-accounting"
+    }
+  ],
+  "rolesCloser": "Talent you choose yourself, with the assurance to handle a refund or an upset customer without sending it back to you, on your hours.",
+  "proofLogos": [],
+  "caseStudy": ""
+}

@@ -34,7 +34,7 @@ export function VideoModal({
       aria-modal="true"
       aria-label={label}
       onClick={(e) => e.target === e.currentTarget && onClose()}
-      className="fixed inset-0 z-[100] grid place-items-center bg-ink/90 p-4 backdrop-blur-sm"
+      className="fixed inset-0 z-100 grid place-items-center bg-ink/90 p-4 backdrop-blur-sm"
     >
       <div className={`relative w-full ${vertical ? "max-w-[min(90vw,480px)]" : "max-w-4xl"}`}>
         <video
@@ -42,7 +42,7 @@ export function VideoModal({
           controls
           autoPlay
           playsInline
-          className="block max-h-[85vh] w-full rounded-[var(--radius-card)] border-2 border-cyan bg-ink"
+          className="block max-h-[85vh] w-full rounded-(--radius-card) border-2 border-cyan bg-ink"
         />
         <button
           ref={closeRef}

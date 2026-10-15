@@ -88,7 +88,7 @@ export function TypingCycle({ phrases, className = "" }: { phrases: string[]; cl
       </span>
       <span aria-hidden="true" className="col-start-1 row-start-1">
         {phrase.slice(0, shown)}
-        <span className="ml-0.5 inline-block h-[1.05em] w-[2px] translate-y-[0.18em] animate-pulse bg-cyan" />
+        <span className="ml-0.5 inline-block h-[1.05em] w-0.5 translate-y-[0.18em] animate-pulse bg-cyan" />
       </span>
     </span>
   );

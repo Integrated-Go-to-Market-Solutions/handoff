@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { Button, CtaNote } from "../brand";
 import { Reveal } from "../reveal";
 import { HandoffCheckIcon } from "../highway-icons";
-import { process, site } from "@/lib/content";
+import { tinaField, useContent } from "@/components/tina/content";
 
 /**
  * The Hands-off Hiring System on /how-it-works, as a vertical, video-led
@@ -61,7 +61,7 @@ function StepVideo({
   }, [reduced]);
 
   return (
-    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[var(--radius-card)] border-2 border-white/10 bg-ink-100 shadow-[0_24px_60px_-28px_rgba(0,0,0,0.9)]">
+    <div className="relative aspect-4/3 w-full overflow-hidden rounded-(--radius-card) border-2 border-white/10 bg-ink-100 shadow-[0_24px_60px_-28px_rgba(0,0,0,0.9)]">
       {/* Vertical clips: a blurred copy of the still fills the frame, and the
           clip sits in the middle as a head-and-shoulders portrait, so the
           person isn't blown up to fill the whole width. */}
@@ -76,7 +76,7 @@ function StepVideo({
         ref={ref}
         className={
           vertical
-            ? "absolute inset-y-0 left-1/2 aspect-[3/4] h-full -translate-x-1/2 object-cover shadow-[0_0_50px_rgba(0,0,0,0.4)]"
+            ? "absolute inset-y-0 left-1/2 aspect-3/4 h-full -translate-x-1/2 object-cover shadow-[0_0_50px_rgba(0,0,0,0.4)]"
             : "absolute inset-0 h-full w-full object-cover"
         }
         style={{ objectPosition: focus }}
@@ -94,6 +94,7 @@ function StepVideo({
 }
 
 export function HiringTimeline() {
+  const { process, site } = useContent();
   const steps = process.steps;
   const { labels, videos, cta } = process.timeline;
   const last = steps.length - 1;
@@ -141,10 +142,10 @@ export function HiringTimeline() {
   }, [reduced]);
 
   return (
-    <section id="timeline" className="hw-dots relative scroll-mt-[72px] bg-ink text-bone">
+    <section id="timeline" className="hw-dots relative scroll-mt-18 bg-ink text-bone">
       <div className="shell pb-16 pt-14 md:pb-24 md:pt-20">
         <Reveal className="mx-auto max-w-4xl text-center">
-          <h1 className="display text-[clamp(2.1rem,4.8vw,3.8rem)]">
+          <h1 data-tina-field={tinaField(process, "titleParts")} className="display text-[clamp(2.1rem,4.8vw,3.8rem)]">
             {process.titleParts.before} <span className="hw-swipe">{process.titleParts.swipe}</span>{" "}
             {process.titleParts.after}
           </h1>
@@ -155,7 +156,7 @@ export function HiringTimeline() {
 
         <ol ref={listRef} className="relative mx-auto mt-14 max-w-6xl md:mt-20">
           {/* The rail: a faint track with a cyan fill growing down it. */}
-          <div className="absolute bottom-0 left-[15px] top-0 w-1 rounded-full bg-white/10 md:left-[19px]" aria-hidden="true">
+          <div className="absolute bottom-0 left-3.75 top-0 w-1 rounded-full bg-white/10 md:left-4.75" aria-hidden="true">
             <div
               ref={fillRef}
               className="h-full w-full origin-top rounded-full bg-cyan shadow-[0_0_14px_rgba(61,214,189,0.7)]"
@@ -163,7 +164,7 @@ export function HiringTimeline() {
             />
           </div>
 
-          {steps.map((step, i) => {
+          {steps.map((step: any, i: number) => {
             const isEnd = i === last;
             const lit = reduced || i <= current;
             const video = videos[i % videos.length];
@@ -191,7 +192,7 @@ export function HiringTimeline() {
                 <div
                   className={`grid items-start gap-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-14 ${
                     isEnd
-                      ? "rounded-[var(--radius-card)] border-2 border-cyan bg-cyan p-6 text-ink shadow-[0_0_36px_-8px_rgba(61,214,189,0.8)] md:p-8"
+                      ? "rounded-(--radius-card) border-2 border-cyan bg-cyan p-6 text-ink shadow-[0_0_36px_-8px_rgba(61,214,189,0.8)] md:p-8"
                       : ""
                   }`}
                 >
@@ -214,7 +215,7 @@ export function HiringTimeline() {
                       <div className={`mt-4 font-text text-base leading-relaxed md:text-lg ${isEnd ? "text-ink/85" : "text-bone/75"}`}>
                         {step.bulletsLead && <p>{step.bulletsLead}</p>}
                         <ul className="mt-3 space-y-2">
-                          {step.bullets.map((bullet) => (
+                          {step.bullets.map((bullet: any) => (
                             <li key={bullet} className="flex gap-3">
                               <span className="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full bg-cyan" aria-hidden="true" />
                               {bullet}

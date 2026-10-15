@@ -98,7 +98,7 @@ export function VideoLoop({
       className={
         bare
           ? "absolute inset-0 bg-ink"
-          : "group relative overflow-hidden rounded-[var(--radius-brand)] border-2 border-cyan/50 bg-ink"
+          : "group relative overflow-hidden rounded-(--radius-brand) border-2 border-cyan/50 bg-ink"
       }
     >
       <video
@@ -106,7 +106,7 @@ export function VideoLoop({
         className={
           bare
             ? "h-full w-full object-cover"
-            : "aspect-[9/16] w-full object-cover"
+            : "aspect-9/16 w-full object-cover"
         }
         poster={poster}
         muted
@@ -156,7 +156,7 @@ export function VideoLoop({
       )}
 
       {!bare && (
-        <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/90 to-transparent p-5 pt-14">
+        <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 bg-linear-to-t from-ink/90 to-transparent p-5 pt-14">
           <p className="display text-lg text-bone">{name}</p>
           <p className="mt-1 text-[0.85rem] leading-snug text-bone/70">
             {caption}

@@ -1,12 +1,15 @@
+"use client";
+
 import { Reveal } from "../reveal";
 import { VideoLoop } from "../video-loop";
-import { soul } from "@/lib/content";
+import { tinaField, useContent } from "@/components/tina/content";
 
 /** The team's culture footage, grayscale and darkened, behind both versions. */
 function Backdrop() {
+  const { soul } = useContent();
   return (
     <div className="absolute inset-0 grayscale" aria-hidden="true">
-      <VideoLoop src="/video/culture.mp4" poster="/video/culture.jpg" name="" caption="" bare />
+      <VideoLoop src={soul.cultureVideo.src} poster={soul.cultureVideo.poster} name="" caption="" bare />
       <div className="absolute inset-0 bg-ink/70" />
     </div>
   );
@@ -24,6 +27,7 @@ function Backdrop() {
  * direct feedback until only the Alma line was left, huge, in display type.
  */
 export function Soul({ variant = "statement" }: { variant?: "statement" | "dictionary" } = {}) {
+  const { soul } = useContent();
   if (variant === "dictionary") {
     const { intro, headword, pronunciation, partOfSpeech, definition } = soul.dictionary;
     return (
@@ -37,7 +41,7 @@ export function Soul({ variant = "statement" }: { variant?: "statement" | "dicti
           {/* Shrink-wrapped to the headword, so the rule underneath matches its width. */}
           <div className="mt-4 inline-flex flex-col items-center md:mt-6">
             <Reveal>
-              <h2 className="font-serif text-[clamp(5.5rem,21vw,15rem)] lowercase leading-[0.85] tracking-[-0.01em] text-bone">
+              <h2 data-tina-field={tinaField(soul, "dictionary")} className="font-serif text-[clamp(5.5rem,21vw,15rem)] lowercase leading-[0.85] tracking-[-0.01em] text-bone">
                 {headword}
               </h2>
             </Reveal>
@@ -70,7 +74,7 @@ export function Soul({ variant = "statement" }: { variant?: "statement" | "dicti
             {soul.closerParts.after}
           </h2>
           <p className="mx-auto mt-8 font-gotham text-[clamp(1.15rem,2vw,1.6rem)] font-medium leading-snug text-bone/90">
-            {soul.closerParts.sub.map((line) => (
+            {soul.closerParts.sub.map((line: any) => (
               <span key={line} className="block">
                 {line}
               </span>
