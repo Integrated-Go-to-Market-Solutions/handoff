@@ -75,16 +75,15 @@ export function AiTrained() {
           <ul className="flex flex-1 flex-wrap items-center justify-between gap-x-6 gap-y-3">
             {aiTrained.tools.map((tool: any) => (
               <li key={tool.name} className="flex items-center gap-2.5 text-base font-semibold text-ink">
-                <span className="grid h-9 w-9 place-items-center rounded-lg border border-ink/10 bg-white">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={tool.icon}
-                    alt=""
-                    width={20}
-                    height={20}
-                    className={`h-5 w-5 ${tool.mono ? "invert" : ""}`}
-                  />
-                </span>
+                {/* No box behind the icon, original colors (10/14 feedback). */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={tool.icon}
+                  alt=""
+                  width={24}
+                  height={24}
+                  className={`h-6 w-6 ${tool.mono ? "invert" : ""}`}
+                />
                 {tool.name}
               </li>
             ))}
