@@ -175,7 +175,6 @@ type ContentSite = {
     headline: string;
     headlineParts: { before: string; accent: string };
     closing: string;
-    jam: string[];
     book: string;
     body: string;
     primary: { label: string; href: string };

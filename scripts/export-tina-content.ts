@@ -106,7 +106,6 @@ write("site/site.json", {
     headline: cta.headline,
     headlineParts: cta.headlineParts,
     closing: cta.closing,
-    jam: [...cta.jam],
     book: cta.book,
     body: cta.body,
     primary: cta.primary,

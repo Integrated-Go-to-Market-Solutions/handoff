@@ -181,8 +181,7 @@ const site = singleton("site", "Site", "site", "/", [
     fields: [
       str("headline", "Headline"),
       pair("Words before the colored word", "Colored word"),
-      str("closing", "Line under the headline"),
-      strings("jam", "Falling words", "The words that fall beside the closing animation. Keep about eight."),
+      str("closing", "Line under the headline", "Optional. Leave blank to show only the headline."),
       str("book", "Button"),
       str("body", "Paragraph"),
       button("primary", "Primary button"),

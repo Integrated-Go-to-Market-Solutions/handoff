@@ -91,22 +91,12 @@
     }
   ],
   "cta": {
-    "headline": "Stop being the bottleneck.",
+    "headline": "Focus on what you do best. Hand off the rest.",
     "headlineParts": {
-      "before": "Stop being the",
-      "accent": "bottleneck."
+      "before": "Focus on what you do best.",
+      "accent": "Hand off the rest."
     },
-    "closing": "Let Handoff take it from here.",
-    "jam": [
-      "Invoices",
-      "Scheduling",
-      "Follow-ups",
-      "Reporting",
-      "Hiring",
-      "Onboarding",
-      "Payroll",
-      "Inbox"
-    ],
+    "closing": "",
     "book": "Book a call",
     "body": "Bring the role you cannot get off your plate. One call is usually enough to scope it, pick the model and give you a real timeline.",
     "primary": {
