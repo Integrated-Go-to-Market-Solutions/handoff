@@ -38,6 +38,8 @@ export function LogoMarquee({
           logo.hasImage ? (
             // Wide wordmarks get a shorter box than stacked logos, so a
             // long name doesn't dwarf an icon-over-name logo (10/13).
+            // Logos are monochrome on every background (10/14 feedback,
+            // replacing the 10/13 call for color).
             // Everything here is 70% of its 10/13 size: "reduce homepage
             // logo sizes by at least 30%" (10/14 feedback).
             <div
@@ -50,7 +52,7 @@ export function LogoMarquee({
                 alt={logo.name}
                 fill
                 sizes="160px"
-                className={`object-contain object-center ${onDark ? "opacity-80 grayscale invert" : ""}`}
+                className={`object-contain object-center grayscale ${onDark ? "opacity-80 invert" : ""}`}
               />
               </div>
             </div>
