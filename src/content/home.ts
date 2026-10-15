@@ -295,7 +295,7 @@ export const process = {
     {
       n: "04",
       title: "The Guarantee",
-      body: "If none of the first four candidates fits, your next search is $1,000 off. We run the screening, so a miss is on us to fix.",
+      body: "If your hire doesn't work out within 90 days, we replace them at no cost. We run the screening, so a miss is on us to fix.",
     },
   ] as { n: string; title: string; body: string; bulletsLead?: string; bullets?: string[]; after?: string }[],
   closer: {
@@ -545,7 +545,7 @@ export const faqs = [
     q: "What if the person does not work out?",
     // 10/5: the guarantee now matches Tom's content doc (How It Works);
     // the earlier "90-day guarantee" line came out.
-    a: "If none of the first four candidates fits, your next search is $1,000 off. Under Managed Staffing we own performance management, so a problem is ours to fix, not another hiring cycle for you to run.",
+    a: "If your hire doesn't work out within 90 days, we replace them at no cost. Under Managed Staffing we own performance management, so a problem is ours to fix, not another hiring cycle for you to run.",
   },
   {
     q: "Why Latin America?",

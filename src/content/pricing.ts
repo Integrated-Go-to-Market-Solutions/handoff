@@ -93,7 +93,7 @@ export const modelsCompare = {
     { label: "Work in your time zone, with client-ready English", values: [true, true] },
     {
       label: "The guarantee",
-      note: "$1,000 off your next search if none of the first four fits",
+      note: "A replacement at no cost if your hire doesn't work out within 90 days",
       values: [true, true],
     },
     { label: "Who employs them", values: ["You contract them directly", { text: "Handoff, as employer of record", accent: true }] },
