@@ -107,7 +107,7 @@
         "role": "Digital Marketing Manager",
         "department": "marketing",
         "salary": "$2,500–$3,500/mo",
-        "photo": "/images/team/jazmin-esparza.webp"
+        "photo": "/images/talent/valeria.webp"
       },
       {
         "name": "Diego",
@@ -116,7 +116,7 @@
         "role": "Full-Stack Developer",
         "department": "software-engineering",
         "salary": "$3,500–$5,500/mo",
-        "photo": "/images/team/jake-castro.webp"
+        "photo": "/images/talent/diego.webp"
       },
       {
         "name": "Camila",
@@ -125,7 +125,7 @@
         "role": "AP/AR Specialist",
         "department": "finance-accounting",
         "salary": "$1,500–$2,200/mo",
-        "photo": "/images/team/karla-patron.webp"
+        "photo": "/images/talent/camila.webp"
       },
       {
         "name": "Mateo",
@@ -134,7 +134,7 @@
         "role": "AI Developer / AI Engineer",
         "department": "data-ai",
         "salary": "$3,000–$5,000/mo",
-        "photo": "/images/team/simon-quintero.webp"
+        "photo": "/images/talent/mateo.webp"
       },
       {
         "name": "Larissa",
@@ -143,7 +143,7 @@
         "role": "Relocation Coordinator",
         "department": "corporate-relocation",
         "salary": "$1,600–$2,400/mo",
-        "photo": "/images/team/catalina-saldarriaga.webp"
+        "photo": "/images/talent/larissa.webp"
       },
       {
         "name": "Gabriel",
@@ -152,7 +152,7 @@
         "role": "Guest Services Coordinator",
         "department": "corporate-housing-mtr",
         "salary": "$1,200–$1,800/mo",
-        "photo": "/images/team/leidy-quintero.webp"
+        "photo": "/images/talent/gabriel.webp"
       },
       {
         "name": "Sofía",
@@ -161,7 +161,7 @@
         "role": "Reservations Specialist",
         "department": "corporate-housing-mtr",
         "salary": "$1,800–$2,600/mo",
-        "photo": "/images/team/shaori-velueta.webp"
+        "photo": "/images/talent/sofia.webp"
       },
       {
         "name": "Tomás",
@@ -170,7 +170,7 @@
         "role": "SDR/BDR",
         "department": "sales",
         "salary": "$1,500–$2,500/mo",
-        "photo": "/images/team/jake-castro.webp"
+        "photo": "/images/talent/tomas.webp"
       }
     ]
   },
