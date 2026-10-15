@@ -27,7 +27,7 @@ export function AboutView() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-ink pb-16 text-bone md:pb-24">
+      <section className="relative overflow-hidden bg-ink pb-20 text-bone md:pb-32">
         <div className="shell relative">
           <Reveal>
             <h2 className="display text-[clamp(2rem,4.8vw,3.6rem)]">{aboutPage.gap.headline}</h2>
@@ -37,7 +37,7 @@ export function AboutView() {
           <Reveal delay={90} className="mt-16">
             <h2 className="display text-[clamp(1.8rem,4vw,3rem)]">{aboutPage.winWin.headline}</h2>
           </Reveal>
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
+          <div className="section-gap grid gap-4 md:grid-cols-2">
             {aboutPage.winWin.sides.map((side: { title: string; body: string }, i: number) => {
               const tone = cardTones[i === 0 ? 1 : 0];
               return (
@@ -63,13 +63,13 @@ export function AboutView() {
 
       <ValuesVideo />
 
-      <section className="bg-ink section-py text-bone">
+      <section className="bg-ink section-space text-bone">
         <div className="shell">
           <Reveal>
             <h2 className="display text-[clamp(1.8rem,4vw,3rem)]">{aboutPage.teamHeadline}</h2>
           </Reveal>
         </div>
-        <div className="shell mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 sm:grid sm:grid-cols-3 sm:overflow-visible lg:grid-cols-4">
+        <div className="shell section-gap flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 sm:grid sm:grid-cols-3 sm:overflow-visible lg:grid-cols-4">
           {team.map((person, i) => (
             <TalentCard key={person.slug} slug={person.slug} name={person.name} role={person.role} photo={person.photo} index={i} />
           ))}
@@ -78,7 +78,7 @@ export function AboutView() {
 
       <Soul variant="dictionary" />
 
-      <section className="bg-ink section-py-tight text-bone">
+      <section className="bg-ink section-space text-bone">
         <div className="shell">
           <Reveal>
             <p className="display text-[clamp(1.5rem,3.2vw,2.4rem)] leading-tight">{aboutPage.close}</p>

@@ -66,7 +66,7 @@ function CaseStudyDetail({ study, index }: { study: Study; index: number }) {
   return (
     <section
       id={study.slug}
-      className={`relative overflow-hidden section-py ${dark ? "hw-dots bg-ink" : "bg-bone"} ${text}`}
+      className={`relative overflow-hidden section-space ${dark ? "hw-dots bg-ink" : "bg-bone"} ${text}`}
     >
       <div className="shell relative">
         <Reveal className="max-w-3xl">
@@ -77,7 +77,7 @@ function CaseStudyDetail({ study, index }: { study: Study; index: number }) {
           <p className={`mt-5 max-w-[62ch] text-base leading-relaxed md:text-lg ${muted}`}>{study.subhead}</p>
         </Reveal>
 
-        <div className="mt-14 grid gap-10 lg:grid-cols-2">
+        <div className="section-gap grid gap-10 lg:grid-cols-2">
           <Reveal>
             <h3 className={`display text-xl ${text}`}>{resultsPage.challengeHeading}</h3>
             <ul className="mt-5 space-y-3.5">
@@ -142,7 +142,7 @@ export function CaseStudies() {
     <>
       <section
         id="case-studies"
-        className="hw-dots relative scroll-mt-18 overflow-hidden bg-ink section-py text-bone"
+        className="hw-dots relative scroll-mt-18 overflow-hidden bg-ink section-space text-bone"
         aria-label="Case studies"
       >
         <div className="shell relative">
@@ -150,7 +150,7 @@ export function CaseStudies() {
             <h2 className="display text-[clamp(2.1rem,4.8vw,3.7rem)]">{resultsPage.storiesHeadline}</h2>
             <p className="mt-6 text-lg leading-relaxed text-bone/70">{resultsPage.storiesBody}</p>
           </Reveal>
-          <div className="mt-12 grid gap-6 lg:grid-cols-2">
+          <div className="section-gap grid gap-6 lg:grid-cols-2">
             {caseStudies.map((study, i) => (
               <Reveal key={study.slug} delay={i * 110}>
                 <StoryCard study={study} index={i} />

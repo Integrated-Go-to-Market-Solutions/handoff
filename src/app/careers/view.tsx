@@ -30,12 +30,12 @@ export function CareersView() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-bone section-py text-ink">
+      <section className="relative overflow-hidden bg-bone section-space text-ink">
         <div className="shell relative">
           <Reveal>
             <h2 className="display text-[clamp(2rem,4.8vw,3.6rem)]">{careersPage.whyHeadline}</h2>
           </Reveal>
-          <ul className="mt-10 grid gap-4 sm:grid-cols-2">
+          <ul className="section-gap grid gap-4 sm:grid-cols-2">
             {careersPage.why.map((item: { lead: string; rest: string }, i: number) => {
               const tone = cardTones[i % cardTones.length];
               return (
@@ -52,7 +52,7 @@ export function CareersView() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-ink section-py text-bone">
+      <section className="relative overflow-hidden bg-ink section-space text-bone">
         <div className="shell relative grid items-center gap-10 md:grid-cols-[minmax(0,320px)_1fr] md:gap-16">
           <Reveal className="order-2 mx-auto w-full max-w-[320px] md:order-1">
             <VideoLoop {...cultureReel} />
@@ -64,12 +64,12 @@ export function CareersView() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-ink pb-16 text-bone md:pb-24">
+      <section className="relative overflow-hidden bg-ink pb-20 text-bone md:pb-32">
         <div className="shell relative">
           <Reveal>
             <h2 className="display text-[clamp(2rem,4.8vw,3.6rem)]">{careersPage.stepsHeadline}</h2>
           </Reveal>
-          <ol className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <ol className="section-gap grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {careersPage.steps.map((step: { title: string; body: string }, i: number) => {
               const tone = cardTones[i % cardTones.length];
               return (

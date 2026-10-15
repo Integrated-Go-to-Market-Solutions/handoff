@@ -45,7 +45,7 @@ export function DepartmentView({ payload }: { payload: { data: any; query: strin
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-bone section-py text-ink">
+      <section className="relative overflow-hidden bg-bone section-space text-ink">
         <div className="shell relative">
           <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {(department.roles as string[]).map((role, i) => {
