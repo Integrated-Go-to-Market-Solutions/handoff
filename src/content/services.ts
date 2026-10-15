@@ -39,7 +39,6 @@ export const services = [
       "Payroll",
       "HR and compliance",
       "Performance management",
-      "Retention support",
       "Benefits",
       "Equipment and IT",
     ],

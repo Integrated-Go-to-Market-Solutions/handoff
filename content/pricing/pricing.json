@@ -67,7 +67,7 @@
     "rows": [
       {
         "label": "The Hands-Off Hiring System",
-        "note": "Sourcing, the Vet, and a shortlist of two for each role",
+        "note": "Sourcing, the Vet (skills, English, AI fluency) and a shortlist of two",
         "values": [
           {
             "kind": "check",
@@ -82,23 +82,7 @@
         ]
       },
       {
-        "label": "Talent screened for skills, English, and AI fluency",
-        "note": "",
-        "values": [
-          {
-            "kind": "check",
-            "text": "",
-            "accent": false
-          },
-          {
-            "kind": "check",
-            "text": "",
-            "accent": false
-          }
-        ]
-      },
-      {
-        "label": "Work in your time zone, with client-ready English",
+        "label": "Talent in your time zone",
         "note": "",
         "values": [
           {
@@ -211,22 +195,6 @@
       },
       {
         "label": "Performance management",
-        "note": "",
-        "values": [
-          {
-            "kind": "dash",
-            "text": "",
-            "accent": false
-          },
-          {
-            "kind": "check",
-            "text": "",
-            "accent": false
-          }
-        ]
-      },
-      {
-        "label": "Retention support",
         "note": "",
         "values": [
           {

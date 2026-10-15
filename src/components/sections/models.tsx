@@ -132,25 +132,31 @@ function CompareModels({ asPage = false }: { asPage?: boolean }) {
   const { modelsCompare, modelsIntro, services, site } = useContent();
   const Heading = asPage ? "h1" : "h2";
   const { columns, rows, featured } = modelsCompare;
-  const cell = "flex items-center justify-center px-1.5 py-3.5 text-center sm:px-4 md:py-4";
+  const cell = "flex items-center justify-center px-1.5 py-3.5 text-center sm:px-4 md:py-4 lg:py-3";
   return (
     <section id="models" className="relative overflow-hidden bg-ink section-space text-bone">
       <div className="shell relative">
-        <div className="mx-auto max-w-5xl rounded-(--radius-card) border border-white/10 bg-ink-100 px-3 py-9 sm:px-8 md:px-10 md:py-12">
-          <Reveal className="text-center">
-            <Heading className="text-balance text-[clamp(1.7rem,4vw,2.9rem)] font-bold leading-tight text-white">
-              {modelsIntro.headline}
-            </Heading>
-            <p className="mx-auto mt-3 text-pretty text-base leading-relaxed text-bone/75 md:text-lg">
-              {modelsIntro.subhead}
-            </p>
-            <p className="mt-4 text-base font-medium text-bone/80 md:text-xl">
+        {/* Full width, with tighter rows on desktop, so the whole comparison fits
+            on one laptop screen (10/14 feedback: "make this wider so it fits
+            within the fold"). */}
+        <div className="mx-auto rounded-(--radius-card) border border-white/10 bg-ink-100 px-3 py-9 sm:px-8 md:px-10 md:py-12 lg:py-8">
+          {/* Desktop: headline and subhead left, starting price right. */}
+          <Reveal className="text-center lg:flex lg:items-end lg:justify-between lg:gap-10 lg:px-4 lg:text-left">
+            <div className="lg:flex-1">
+              <Heading className="text-balance text-[clamp(1.7rem,4vw,2.9rem)] font-bold leading-tight text-white">
+                {modelsIntro.headline}
+              </Heading>
+              <p className="mx-auto mt-3 text-pretty text-base leading-relaxed text-bone/75 md:text-lg lg:mx-0 lg:mt-2">
+                {modelsIntro.subhead}
+              </p>
+            </div>
+            <p className="mt-4 shrink-0 text-base font-medium text-bone/80 md:text-xl lg:mt-0">
               {modelsIntro.startingAt.label}{" "}
               <span className="font-semibold text-cyan">{modelsIntro.startingAt.price}</span>
             </p>
           </Reveal>
 
-          <Reveal className="group mt-8 md:mt-10">
+          <Reveal className="group mt-8 lg:mt-6">
             {/* Scrolls inside itself only if the three columns can't fit. */}
             <div className="overflow-x-auto [scrollbar-width:thin]">
               <div
@@ -159,7 +165,7 @@ function CompareModels({ asPage = false }: { asPage?: boolean }) {
                 // Templates inline: arbitrary grid-template classes did not
                 // generate reliably here, and rows must not auto-place.
                 style={{
-                  gridTemplateColumns: "minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr)",
+                  gridTemplateColumns: "minmax(0,1.7fr) minmax(0,1fr) minmax(0,1fr)",
                   gridTemplateRows: `repeat(${rows.length + 1}, auto)`,
                 }}
                 className="grid min-w-60 text-[0.8rem] sm:text-[0.95rem] md:text-base"
@@ -182,7 +188,7 @@ function CompareModels({ asPage = false }: { asPage?: boolean }) {
                         key={name}
                         role="columnheader"
                         style={{ gridColumn: c + 2 }}
-                        className={`${cell} flex-col gap-1 py-4 font-semibold leading-snug text-white md:py-5`}
+                        className={`${cell} flex-col gap-1 py-4 font-semibold leading-snug text-white md:py-5 lg:py-3`}
                       >
                         {name}
                         {/* The doc's "See Direct Hire" / "See Managed Staffing" links. */}
@@ -208,7 +214,7 @@ function CompareModels({ asPage = false }: { asPage?: boolean }) {
                       style={{ gridRow: r + 2, gridColumn: "1 / -1", transitionDelay: `${delay}ms` }}
                       className={`grid grid-cols-subgrid border-t border-white/10 ${rowMotion}`}
                     >
-                      <div role="rowheader" className="flex flex-col justify-center py-3.5 pl-1 pr-2 text-left sm:pl-4 md:py-4">
+                      <div role="rowheader" className="flex flex-col justify-center py-3.5 pl-1 pr-2 text-left sm:pl-4 md:py-4 lg:py-3">
                         <span className="font-semibold leading-snug text-white">{row.label}</span>
                         {row.note && (
                           <span className="mt-1 text-[0.68rem] leading-snug text-smoke sm:text-[0.8rem]">{row.note}</span>
@@ -226,11 +232,14 @@ function CompareModels({ asPage = false }: { asPage?: boolean }) {
             </div>
           </Reveal>
 
-          <p className="mx-auto mt-8 text-balance text-center text-xs leading-relaxed text-smoke md:text-sm">
-            {modelsCompare.footnote} {modelsIntro.addOns}
-          </p>
-          <div className="mt-6 text-center">
-            <Button href={site.bookCall}>{modelsIntro.cta}</Button>
+          {/* Desktop: footnote left, button right, on one line. */}
+          <div className="lg:mt-6 lg:flex lg:items-center lg:justify-between lg:gap-10 lg:px-4">
+            <p className="mx-auto mt-8 text-balance text-center text-xs leading-relaxed text-smoke md:text-sm lg:mx-0 lg:mt-0 lg:text-left">
+              {modelsCompare.footnote} {modelsIntro.addOns}
+            </p>
+            <div className="mt-6 shrink-0 text-center lg:mt-0">
+              <Button href={site.bookCall}>{modelsIntro.cta}</Button>
+            </div>
           </div>
         </div>
       </div>
