@@ -923,6 +923,22 @@ const department: Collection = {
     num("order", "Order", "Lower numbers appear first in the menu."),
     str("name", "Name"),
     strings("roles", "Roles", "These are also the choices in the contact form."),
+    // Role page redesign (10/15). The intro and role descriptions started as
+    // AI-drafted placeholders, which Handoff approved until they replace them.
+    str("intro", "Intro", "One line under the department name."),
+    img("image", "Photo", "Shown in grayscale beside the intro."),
+    {
+      type: "object",
+      name: "roleDetails",
+      label: "Role descriptions",
+      list: true,
+      ui: named("role"),
+      fields: [
+        str("role", "Role", "Must match a role in the list above, word for word."),
+        iconField(),
+        str("text", "What they do"),
+      ],
+    },
     video("video", "Role video"),
   ],
 };

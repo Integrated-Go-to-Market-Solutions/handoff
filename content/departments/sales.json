@@ -8,6 +8,35 @@
     "CRM Administrator",
     "Lead Generation Specialist"
   ],
+  "intro": "Sellers and sales ops specialists who fill your pipeline, close deals and keep your CRM clean.",
+  "image": "/images/hero/team.webp",
+  "roleDetails": [
+    {
+      "role": "SDR/BDR",
+      "icon": "bell",
+      "text": "Prospects new leads by phone, email and LinkedIn, and books qualified meetings for your closers."
+    },
+    {
+      "role": "Account Executive",
+      "icon": "handshake",
+      "text": "Runs discovery calls and demos, handles objections and closes deals."
+    },
+    {
+      "role": "Sales Operations Specialist",
+      "icon": "trendingUp",
+      "text": "Manages territories, quotas, reporting and the processes that keep the sales team running smoothly."
+    },
+    {
+      "role": "CRM Administrator",
+      "icon": "clipboard",
+      "text": "Sets up and maintains your CRM, builds the fields and workflows, and keeps the data accurate."
+    },
+    {
+      "role": "Lead Generation Specialist",
+      "icon": "search",
+      "text": "Researches target accounts, builds prospect lists and enriches contact data for outreach."
+    }
+  ],
   "video": {
     "src": "",
     "poster": ""

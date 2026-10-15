@@ -11,6 +11,50 @@
     "Web Developer (Shopify/Webflow/WordPress)",
     "Software Architect (senior/lead)"
   ],
+  "intro": "Developers and engineers who build, test and ship your product, from the front end to the infrastructure.",
+  "image": "/images/industries/startups.webp",
+  "roleDetails": [
+    {
+      "role": "Full-Stack Developer",
+      "icon": "layers",
+      "text": "Builds features across the front end and back end, from the database to the screens your users see."
+    },
+    {
+      "role": "Front-End Developer",
+      "icon": "compass",
+      "text": "Builds the interfaces your users click through, in frameworks like React or Vue, fast and accessible."
+    },
+    {
+      "role": "Back-End Developer",
+      "icon": "building",
+      "text": "Builds the APIs, services and databases that power your product, and keeps them secure and reliable."
+    },
+    {
+      "role": "Mobile Developer (iOS/Android)",
+      "icon": "rocket",
+      "text": "Builds and ships your iOS and Android apps, from new features to app store releases."
+    },
+    {
+      "role": "DevOps Engineer",
+      "icon": "clock",
+      "text": "Sets up the cloud infrastructure, deployment pipelines and monitoring that keep your product online."
+    },
+    {
+      "role": "QA Engineer",
+      "icon": "search",
+      "text": "Tests new features, writes automated tests and catches bugs before your customers do."
+    },
+    {
+      "role": "Web Developer (Shopify/Webflow/WordPress)",
+      "icon": "globe",
+      "text": "Builds and maintains your website and store on platforms like Shopify, Webflow or WordPress."
+    },
+    {
+      "role": "Software Architect (senior/lead)",
+      "icon": "award",
+      "text": "Sets the technical direction, designs how the systems fit together and guides the engineering team."
+    }
+  ],
   "video": {
     "src": "",
     "poster": ""

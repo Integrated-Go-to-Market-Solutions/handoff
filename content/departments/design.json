@@ -9,6 +9,40 @@
     "Brand Designer",
     "Motion Designer/Video Editor"
   ],
+  "intro": "Designers who make your product, site and brand look right and work right, from UX to motion.",
+  "image": "/images/industries/agencies.webp",
+  "roleDetails": [
+    {
+      "role": "UI/UX Designer",
+      "icon": "compass",
+      "text": "Researches how people use your product and designs the screens and flows that make it easy to use."
+    },
+    {
+      "role": "Product Designer",
+      "icon": "layers",
+      "text": "Owns design for product features from first sketch to final handoff, working closely with your engineers."
+    },
+    {
+      "role": "Graphic Designer",
+      "icon": "star",
+      "text": "Creates marketing assets, social graphics, presentations and print pieces that stay on brand."
+    },
+    {
+      "role": "Web Designer",
+      "icon": "globe",
+      "text": "Designs and updates website and landing pages, often building them in tools like Webflow or WordPress."
+    },
+    {
+      "role": "Brand Designer",
+      "icon": "award",
+      "text": "Builds and maintains your visual identity: logos, type, color and the guidelines that keep it consistent."
+    },
+    {
+      "role": "Motion Designer/Video Editor",
+      "icon": "megaphone",
+      "text": "Edits video and creates motion graphics for ads, social posts and product content."
+    }
+  ],
   "video": {
     "src": "",
     "poster": ""

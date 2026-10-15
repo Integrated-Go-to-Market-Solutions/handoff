@@ -10,6 +10,45 @@
     "Email/Lifecycle Marketing Specialist",
     "Marketing Ops/Automation Specialist"
   ],
+  "intro": "Marketers who plan, create and run your campaigns, and keep your channels bringing in leads.",
+  "image": "/images/industries/agencies.webp",
+  "roleDetails": [
+    {
+      "role": "Marketing Coordinator",
+      "icon": "calendar",
+      "text": "Keeps campaigns on schedule, coordinates content and launches, and handles the day-to-day marketing tasks."
+    },
+    {
+      "role": "Content Writer/Strategist",
+      "icon": "lightbulb",
+      "text": "Plans and writes blog posts, emails, web copy and other content that brings in and educates buyers."
+    },
+    {
+      "role": "SEO Specialist",
+      "icon": "search",
+      "text": "Researches keywords, improves your site's pages and technical setup, and tracks how you rank in search."
+    },
+    {
+      "role": "Social Media Manager",
+      "icon": "megaphone",
+      "text": "Plans and posts content across your social channels, engages with followers and reports on what's working."
+    },
+    {
+      "role": "Paid Media/PPC Specialist",
+      "icon": "target",
+      "text": "Builds and manages ad campaigns on Google, Meta and LinkedIn, and tunes them for cost and results."
+    },
+    {
+      "role": "Email/Lifecycle Marketing Specialist",
+      "icon": "envelope",
+      "text": "Builds the emails and automated sequences that welcome, nurture and win back customers."
+    },
+    {
+      "role": "Marketing Ops/Automation Specialist",
+      "icon": "layers",
+      "text": "Runs your marketing tools and CRM, sets up automations and keeps lead data and reporting clean."
+    }
+  ],
   "video": {
     "src": "",
     "poster": ""
