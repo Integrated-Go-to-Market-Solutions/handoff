@@ -106,7 +106,7 @@ export function HiringHighway({ compact = false }: { compact?: boolean }) {
         >
           <div
             className={`shell w-full lg:py-8 short:py-4 ${
-              compact ? "pb-16 pt-16 md:pb-24 md:pt-24" : "pb-14 pt-14 md:pb-20 md:pt-20"
+              compact ? "section-space" : "pb-14 pt-14 md:pb-20 md:pt-20"
             }`}
           >
             <Reveal className="mx-auto max-w-6xl text-center">
@@ -126,7 +126,7 @@ export function HiringHighway({ compact = false }: { compact?: boolean }) {
               </p>
             </Reveal>
 
-            <div className="relative mt-10 lg:mt-12 short:mt-7">
+            <div className="relative section-gap short:mt-7">
               {/* Desktop only: the line runs through the centres of the icon slots. */}
               <div
                 className="absolute left-[12.5%] right-[12.5%] top-10 hidden h-1 rounded-full bg-white/10 lg:block"

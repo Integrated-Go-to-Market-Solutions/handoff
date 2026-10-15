@@ -31,7 +31,7 @@ export function Soul({ variant = "statement" }: { variant?: "statement" | "dicti
   if (variant === "dictionary") {
     const { intro, headword, pronunciation, partOfSpeech, definition } = soul.dictionary;
     return (
-      <section className="relative flex min-h-[85vh] items-center overflow-hidden bg-ink section-py-hero text-bone">
+      <section className="relative overflow-hidden bg-ink section-space text-bone">
         <Backdrop />
         <div className="shell relative text-center">
           <Reveal delay={250}>

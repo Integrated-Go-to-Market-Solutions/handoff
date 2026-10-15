@@ -309,7 +309,7 @@ export function TalentMap() {
     <section
       ref={sectionRef}
       id="meet-your-talent"
-      className="relative scroll-mt-24 overflow-hidden bg-[#141414] py-24 text-bone md:py-34 lg:py-5"
+      className="relative scroll-mt-24 overflow-hidden bg-[#141414] section-space text-bone"
     >
       <div className="shell relative grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-8">
         <Reveal className="mx-auto max-w-3xl text-center lg:mx-0 lg:text-left">

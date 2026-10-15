@@ -134,7 +134,7 @@ function CompareModels({ asPage = false }: { asPage?: boolean }) {
   const { columns, rows, featured } = modelsCompare;
   const cell = "flex items-center justify-center px-1.5 py-3.5 text-center sm:px-4 md:py-4";
   return (
-    <section id="models" className="relative overflow-hidden bg-ink section-py-hero text-bone">
+    <section id="models" className="relative overflow-hidden bg-ink section-space text-bone">
       <div className="shell relative">
         <div className="mx-auto max-w-5xl rounded-(--radius-card) border border-white/10 bg-ink-100 px-3 py-9 sm:px-8 md:px-10 md:py-12">
           <Reveal className="text-center">

@@ -37,8 +37,8 @@ export default function Home() {
       <AiTrained />
       <HiringHighway compact />
       <WhyLatam />
-      <CtaBand tone="onLight" className="bg-bone pb-14 md:pb-16" />
-      <Vibes order={[1, 0, 2]} slider tightTop />
+      <CtaBand tone="onLight" className="bg-bone pb-20 md:pb-32" />
+      <Vibes order={[1, 0, 2]} slider />
       <Soul variant="dictionary" />
       <ClientQuotes />
       <Models detailed />

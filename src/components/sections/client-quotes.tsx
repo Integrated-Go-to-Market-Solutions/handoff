@@ -371,7 +371,7 @@ export function ClientQuotes() {
   return (
     <section
       id="testimonials"
-      className="relative scroll-mt-18 overflow-hidden bg-bone pb-24 pt-14 text-ink md:pb-34 md:pt-20"
+      className="relative scroll-mt-18 overflow-hidden bg-bone section-space text-ink"
       aria-label="Client quotes"
     >
       <div className="shell relative">
@@ -383,7 +383,7 @@ export function ClientQuotes() {
             reveal for the whole row, so cards swiped in later aren't left
             waiting on their own entrance. */}
         <Reveal>
-          <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 [scrollbar-width:none] md:mx-auto md:mt-12 md:grid md:max-w-5xl md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0 md:pb-0 [&::-webkit-scrollbar]:hidden">
+          <div className="-mx-5 section-gap flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 [scrollbar-width:none] md:mx-auto md:grid md:max-w-5xl md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0 md:pb-0 [&::-webkit-scrollbar]:hidden">
             {clientQuotes.videos.map((video: any) => (
               <div key={video.company} className="w-[78%] shrink-0 snap-center sm:w-[60%] md:w-auto">
                 <VideoCard {...video} reduced={reduced} onOpen={() => setPlaying(video)} />

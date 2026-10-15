@@ -19,7 +19,7 @@ import { tinaField, useContent } from "@/components/tina/content";
 export function WhyLatam() {
   const { whyLatam } = useContent();
   return (
-    <section className="relative overflow-hidden bg-bone pb-10 pt-24 text-ink md:pb-12 md:pt-34">
+    <section className="relative overflow-hidden bg-bone pb-10 pt-20 text-ink md:pb-12 md:pt-32">
       <div className="shell relative">
         <Reveal className="max-w-5xl">
           <h2 data-tina-field={tinaField(whyLatam, "headline")} className="display text-[clamp(2.1rem,4.8vw,3.7rem)] text-ink">
@@ -30,7 +30,7 @@ export function WhyLatam() {
           </p>
         </Reveal>
 
-        <div className="mt-14 grid gap-5 md:grid-cols-3">
+        <div className="section-gap grid gap-5 md:grid-cols-3">
           {whyLatam.categories.map((category: any, i: number) => (
             <Reveal
               key={category.title}

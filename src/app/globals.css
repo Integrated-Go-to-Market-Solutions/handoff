@@ -129,6 +129,25 @@ body {
   }
 }
 
+/* One spacing standard (10/14 feedback: "consistent spacing between section
+   titles and borders"; numbers approved by Tom 10/15). section-space: 128px
+   from a section's edge to its first content, top and bottom (80px on
+   phones). section-gap: 56px from a title block to the content under it
+   (40px on phones). Declared as utilities so breakpoint classes such as
+   lg:py-8 can still override them. Rolling out page by page, homepage first. */
+@utility section-space {
+  padding-block: 5rem;
+  @media (width >= 48rem) {
+    padding-block: 8rem;
+  }
+}
+@utility section-gap {
+  margin-top: 2.5rem;
+  @media (width >= 48rem) {
+    margin-top: 3.5rem;
+  }
+}
+
 /* ---------- Type ---------- */
 /* Headlines are heavy, uppercase and tight. Rubik Bold, per the guidelines. */
 .display {

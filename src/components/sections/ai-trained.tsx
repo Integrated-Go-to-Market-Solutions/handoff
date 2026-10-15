@@ -50,7 +50,7 @@ export function AiTrained() {
   const track = aiTrained.tracks[active];
 
   return (
-    <section className="relative overflow-hidden bg-bone section-py text-ink" aria-labelledby={`${baseId}-heading`}>
+    <section className="relative overflow-hidden bg-bone section-space text-ink" aria-labelledby={`${baseId}-heading`}>
       <div className="shell relative">
         {/* Header: headline left, subhead right. */}
         <Reveal className="grid gap-6 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:items-end lg:gap-12">
@@ -70,7 +70,7 @@ export function AiTrained() {
         </Reveal>
 
         {/* Tools strip between hairlines. */}
-        <div className="mt-10 flex flex-col gap-4 border-y border-ink/10 py-5 md:flex-row md:items-center md:gap-8">
+        <div className="section-gap flex flex-col gap-4 border-y border-ink/10 py-5 md:flex-row md:items-center md:gap-8">
           <p className="eyebrow shrink-0 text-xs tracking-[0.16em] text-ink/70">{aiTrained.toolsLabel}</p>
           <ul className="flex flex-1 flex-wrap items-center justify-between gap-x-6 gap-y-3">
             {aiTrained.tools.map((tool: any) => (
