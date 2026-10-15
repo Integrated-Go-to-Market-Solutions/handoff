@@ -12,7 +12,11 @@ import { tinaField, useContent } from "@/components/tina/content";
 export function HeroBright({ subhead }: { subhead?: string } = {}) {
   const { hero } = useContent();
   return (
-    <section className="halftone relative overflow-hidden bg-ink pb-16 pt-14 md:pb-20 md:pt-20">
+    // Fills the first screen with the logo band (10/15, Tom's layout): the
+    // screen height minus the header (76px on phones, 72px from 768px) and
+    // the 94px logo band below, with the content centred. The padding still
+    // applies on short screens.
+    <section className="halftone relative flex min-h-[calc(100svh-4.75rem-5.875rem)] flex-col justify-center md:min-h-[calc(100svh-4.5rem-5.875rem)] overflow-hidden bg-ink pb-16 pt-14 md:pb-20 md:pt-20">
       {/* Team photo, grayscale and heavily darkened so it only adds texture
           behind the headline. Preloaded: it's the first thing on the page. */}
       <Image
