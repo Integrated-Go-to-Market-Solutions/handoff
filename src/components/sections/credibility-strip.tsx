@@ -16,16 +16,18 @@ import { tinaField, useContent } from "@/components/tina/content";
  * Phones: one row of cards that swipes sideways, bleeding to the screen
  * edge so the cut-off card reads as "more this way".
  *
- * The logo band rides white because most of the logo files are dark
- * artwork; the loop runs ~15% slower than 46s.
+ * The logo band is a frosted dark strip; the logos are inverted to light
+ * gray to read on it. The loop runs ~15% slower than 46s.
  */
 export function CredibilityStrip() {
   const { industries, industriesStrip } = useContent();
   return (
     <section className="relative overflow-hidden bg-ink text-bone" aria-labelledby="credibility-heading">
-      {/* White logo band on top: a clear seam between the hero and this section. */}
-      <div className="relative z-10 border-b border-ink/10 bg-white py-3">
-        <LogoMarquee bare durationSeconds={53} />
+      {/* Logo band on top: a faint frosted strip with the logos in light gray
+          (10/14 call: the white bar felt disruptive; Anthony suggested
+          something like iPhone's glass). Replaced the white band 10/15. */}
+      <div className="relative z-10 border-y border-white/10 bg-white/5 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-md">
+        <LogoMarquee bare onDark durationSeconds={53} />
       </div>
 
       <div className="hw-dots section-space">
