@@ -632,6 +632,10 @@ const testimonials = singleton("testimonials", "Testimonials", "testimonials", "
       img("poster", "Still image"),
       img("preview", "Silent preview"),
       img("full", "Full video"),
+      // Optional (10/15): when set, a LinkedIn icon shows under the video,
+      // as on the quote cards.
+      str("person", "Person in the video", "Used to label the LinkedIn link for screen readers."),
+      link("linkedin", "LinkedIn profile"),
     ],
   },
   {

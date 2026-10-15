@@ -32,6 +32,8 @@ function initials(name: string) {
 
 function VideoCard({
   company,
+  person,
+  linkedin,
   focus,
   poster,
   preview,
@@ -39,6 +41,8 @@ function VideoCard({
   onOpen,
 }: {
   company: string;
+  person?: string;
+  linkedin?: string;
   focus: string;
   poster: string;
   preview: string;
@@ -102,9 +106,21 @@ function VideoCard({
           Watch
         </span>
       </button>
-      {/* Text wordmark until the real logo files arrive. */}
-      <figcaption className="mt-4 text-center font-sans text-base font-bold uppercase tracking-[0.18em] text-ink/80 md:text-lg">
+      {/* Text wordmark until the real logo files arrive. The LinkedIn icon
+          matches the quote cards (Handoff, 10/15). */}
+      <figcaption className="mt-4 flex items-center justify-center gap-3 text-center font-sans text-base font-bold uppercase tracking-[0.18em] text-ink/80 md:text-lg">
         {company}
+        {linkedin && (
+          <a
+            href={linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${person || company} on LinkedIn (opens in a new tab)`}
+            className="shrink-0 rounded-full transition-transform duration-300 hover:scale-110 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cyan/40 motion-reduce:transition-none motion-reduce:hover:scale-100"
+          >
+            <LinkedInMark />
+          </a>
+        )}
       </figcaption>
     </figure>
   );
