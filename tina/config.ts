@@ -77,6 +77,8 @@ const site = singleton("site", "Site", "site", "/", [
   str("tagline", "Tagline"),
   link("bookCall", "Main booking page"),
   link("bookingUrl", "Book a call link", ),
+  // Shown after the contact form is sent, so the visitor can book straight away (10/15).
+  link("discoveryCallUrl", "Discovery call booking page (Cal.com)"),
   link("seeTalent", "Roles page"),
   {
     type: "object",
@@ -671,7 +673,11 @@ const about = singleton("about", "About", "about", "/about", [
         label: "Sides",
         list: true,
         ui: named("title"),
-        fields: [str("title", "Title"), str("body", "Paragraph")],
+        fields: [
+          str("title", "Title"),
+          str("body", "Paragraph"),
+          str("bookLink", "Link to open the booking page in a new tab"),
+        ],
       },
       str("closer", "Closing line"),
     ],

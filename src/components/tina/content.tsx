@@ -144,6 +144,7 @@ type ContentSite = {
   tagline: string;
   bookCall: string;
   bookingUrl: string;
+  discoveryCallUrl?: string;
   seeTalent: string;
   seo: { title: string; description: string };
   header: { hireLabel: string; hireHref: string; joinLabel: string; joinHref: string };

@@ -111,7 +111,7 @@ function Choice({
 }
 
 export function ContactForm() {
-  const { contactPage, departments } = useContent();
+  const { contactPage, departments, site } = useContent();
   const copy = contactPage.form;
   const other = copy.role.other;
   const roleGroups = departments.map((department) => ({
@@ -205,6 +205,23 @@ export function ContactForm() {
   const border = (key: keyof Values) => (errors[key] ? "border-red-400" : "border-ink/15");
 
   if (status === "ok") {
+    // After a successful send, offer the discovery call right away (10/15):
+    // the Cal.com page is embedded with their name, email and answers
+    // prefilled, so the booking arrives with the context.
+    const calBase = site.discoveryCallUrl;
+    const notes = [
+      `Role: ${values.role === other ? values.roleOther : values.role}`,
+      values.headcount && `How many: ${values.headcount}`,
+      values.timeline && `When: ${values.timeline}`,
+      values.company && `Company: ${values.company}`,
+      values.message && `Notes: ${values.message}`,
+    ]
+      .filter(Boolean)
+      .join("\n");
+    const calUrl = calBase
+      ? `${calBase}?${new URLSearchParams({ name: values.name, email: values.email, notes }).toString()}`
+      : null;
+
     return (
       <div
         ref={successRef}
@@ -219,6 +236,25 @@ export function ContactForm() {
         </span>
         <h2 className="display mt-5 text-2xl">{copy.success.title}</h2>
         <p className="mx-auto mt-3 max-w-[40ch] leading-relaxed text-ink/70">{copy.success.body}</p>
+        {calUrl && (
+          <>
+            <iframe
+              src={`${calUrl}&embed=true`}
+              title="Book your discovery call"
+              className="mt-6 h-[640px] w-full rounded-2xl border border-ink/10 bg-white md:h-[700px]"
+              loading="lazy"
+            />
+            <a
+              href={calUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-block py-2 text-sm font-semibold text-royal underline-offset-4 hover:underline"
+            >
+              {copy.success.bookLink}
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          </>
+        )}
       </div>
     );
   }

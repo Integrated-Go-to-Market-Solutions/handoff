@@ -48,7 +48,8 @@
     "sending": "Sending…",
     "success": {
       "title": "Thanks, we've got it.",
-      "body": "We'll be in touch within one business day to set up the call."
+      "body": "Pick a time for your discovery call below. Your answers are already in the booking.",
+      "bookLink": "Open the booking page in a new tab"
     },
     "error": "Sorry, that didn't go through. Please try again, or email hello@handoff.com and we'll pick it up there."
   }
