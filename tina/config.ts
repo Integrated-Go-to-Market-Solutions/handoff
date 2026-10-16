@@ -751,6 +751,20 @@ const careers = singleton("careers", "Careers", "careers", "/careers", [
   str("subhead", "Subhead"),
   str("body", "Paragraph"),
   button("cta", "Apply button"),
+  // The page the Apply buttons open (10/16): Handoff's Ashby job board,
+  // embedded at /careers/open-positions.
+  {
+    type: "object",
+    name: "openPositions",
+    label: "Open positions page",
+    fields: [
+      str("title", "Page title"),
+      seoDescription(),
+      str("headline", "Headline"),
+      link("jobBoardUrl", "Ashby job board"),
+      str("fallbackLink", "Link to open the job board in a new tab"),
+    ],
+  },
   str("whyHeadline", "Why heading"),
   {
     type: "object",

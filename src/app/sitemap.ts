@@ -7,7 +7,7 @@ import { SITE_URL } from "@/lib/seo";
  * pages come from the content folders, so new ones are listed automatically.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = ["/", "/how-it-works", "/industries", "/roles", "/pricing", "/results", "/about", "/careers", "/contact"];
+  const pages = ["/", "/how-it-works", "/industries", "/roles", "/pricing", "/results", "/about", "/careers", "/careers/open-positions", "/contact"];
   const fromContent = [
     ...listDocs("industries").map((doc) => `/industries/${doc.slug}`),
     ...listDocs("departments").map((doc) => `/roles/${doc.slug}`),
