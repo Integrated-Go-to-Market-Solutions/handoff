@@ -101,6 +101,7 @@ export const modelsCompare = {
     { label: "Benefits", values: [false, true] },
     { label: "Equipment and IT", values: [false, true] },
     { label: "Performance management", values: [false, true] },
+    { label: "Retention support", values: [false, true] },
     {
       label: "Best for",
       values: ["When you want them on your own team", "When you want us to carry the employment, compliance, and support"],
