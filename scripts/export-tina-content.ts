@@ -68,8 +68,8 @@ write("site/site.json", {
   },
   mobileCta: { label: "Talk to our team" },
   footer: {
-    email: "hello@handoff.com",
-    emailLabel: "hello@handoff.com",
+    email: "hello@talenthandoff.com",
+    emailLabel: "hello@talenthandoff.com",
     talkLabel: "Talk to Our Team",
     legal: "All rights reserved.",
     company: [

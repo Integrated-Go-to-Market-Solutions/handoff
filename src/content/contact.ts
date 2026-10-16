@@ -35,7 +35,7 @@ export const contactPage = {
       title: "Thanks, we've got it.",
       body: "We'll be in touch within one business day to set up the call.",
     },
-    error: "Sorry, that didn't go through. Please try again, or email hello@handoff.com and we'll pick it up there.",
+    error: "Sorry, that didn't go through. Please try again, or email hello@talenthandoff.com and we'll pick it up there.",
   },
   /** Used by the single-step form before Change 12. Kept for reference. */
   roleOptions: [
