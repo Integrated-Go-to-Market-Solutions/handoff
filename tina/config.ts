@@ -1,6 +1,5 @@
 import { defineConfig, type Collection, type TinaField } from "tinacms";
 import { bool, iconField, img, link, named, num, slugify, str, strings } from "./fields";
-import { wire, type Sketch } from "./wireframe";
 
 const branch =
   process.env.NEXT_PUBLIC_TINA_BRANCH ||
@@ -8,24 +7,10 @@ const branch =
   process.env.VERCEL_GIT_COMMIT_REF ||
   "main";
 
-/** Top-level groups become a wireframe of that section. Nested fields stay as inputs. */
-function present(fields: TinaField[], sketches: Partial<Record<string, Sketch>> = {}, order?: string[]): TinaField[] {
-  const rank = new Map((order ?? []).map((name, index) => [name, index]));
-  const sorted = order ? [...fields].sort((a, b) => (rank.get(a.name) ?? 100) - (rank.get(b.name) ?? 100)) : fields;
-  return sorted.map((field) => {
-    const sketch = sketches[field.name];
-    if (field.type !== "object" && !sketch) return field;
-    const current = field as TinaField & { ui?: { component?: unknown } };
-    if (current.ui?.component) return field;
-    return {
-      ...field,
-      ui: { ...current.ui, component: wire(sketch ?? "section") },
-    } as TinaField;
-  });
-}
-
-function asWireframe(collection: Collection, sketches?: Partial<Record<string, Sketch>>, order?: string[]): Collection {
-  return { ...collection, fields: present((collection.fields ?? []) as TinaField[], sketches, order) } as Collection;
+function ordered(fields: TinaField[], order?: string[]): TinaField[] {
+  if (!order?.length) return fields;
+  const rank = new Map(order.map((name, index) => [name, index]));
+  return [...fields].sort((a, b) => (rank.get(a.name) ?? 100) - (rank.get(b.name) ?? 100));
 }
 
 function singleton(
@@ -34,7 +19,6 @@ function singleton(
   folder: string,
   route: string,
   fields: TinaField[],
-  sketches?: Partial<Record<string, Sketch>>,
   order?: string[],
 ): Collection {
   return {
@@ -47,7 +31,7 @@ function singleton(
       allowedActions: { create: false, delete: false },
       router: () => route,
     },
-    fields: present(fields, sketches, order),
+    fields: ordered(fields, order),
   };
 }
 
@@ -461,17 +445,7 @@ const home = singleton("home", "Homepage", "home", "/", [
       },
     ],
   },
-], {
-  hero: "hero",
-  logos: "logos",
-  industriesStrip: "industries",
-  credibilityStats: "stats",
-  talentMap: "map",
-  aiTrained: "academy",
-  whyLatam: "reasons",
-  vibes: "clips",
-  soul: "dictionary",
-}, [
+], [
   "hero",
   "logos",
   "industriesStrip",
@@ -945,8 +919,6 @@ const talentTelescope = singleton(
         str("body", "Paragraph"),
         str("nameLabel", "Name label"),
         str("emailLabel", "Email label"),
-        str("positionLabel", "Position label"),
-        str("positionPlaceholder", "Position placeholder"),
         str("companyLabel", "Company label"),
         str("companyPlaceholder", "Company placeholder"),
         str("industryLabel", "Industry label"),
@@ -1023,11 +995,10 @@ const talentTelescope = singleton(
       fields: [str("headline", "Sign-off"), str("body", "Paragraph")],
     },
   ],
-  {},
   ["title", "description", "event", "cta", "form", "report", "talent", "proof", "education", "close"],
 );
 
-const industry: Collection = asWireframe({
+const industry: Collection = {
   name: "industry",
   label: "Industries",
   path: "content/industries",
@@ -1072,9 +1043,9 @@ const industry: Collection = asWireframe({
     strings("proofLogos", "Client logos", "Each entry is a logo's short name from Homepage, like oasis."),
     str("caseStudy", "Case study", "The case study's address name, like global-relocation. Leave blank for none."),
   ],
-});
+};
 
-const department: Collection = asWireframe({
+const department: Collection = {
   name: "department",
   label: "Departments",
   path: "content/departments",
@@ -1089,9 +1060,9 @@ const department: Collection = asWireframe({
     strings("roles", "Roles", "These are also the choices in the contact form."),
     video("video", "Role video"),
   ],
-});
+};
 
-const service: Collection = asWireframe({
+const service: Collection = {
   name: "service",
   label: "Services",
   path: "content/services",
@@ -1129,9 +1100,9 @@ const service: Collection = asWireframe({
       ],
     },
   ],
-});
+};
 
-const teamMember: Collection = asWireframe({
+const teamMember: Collection = {
   name: "teamMember",
   label: "Team",
   path: "content/team",
@@ -1146,9 +1117,9 @@ const teamMember: Collection = asWireframe({
     str("role", "Role"),
     img("photo", "Photo"),
   ],
-});
+};
 
-const caseStudy: Collection = asWireframe({
+const caseStudy: Collection = {
   name: "caseStudy",
   label: "Case studies",
   path: "content/case-studies",
@@ -1177,7 +1148,7 @@ const caseStudy: Collection = asWireframe({
     str("quote", "Quote"),
     str("attributionRole", "Who said it"),
   ],
-}, { heroStats: "stats", results: "stats" });
+};
 
 export default defineConfig({
   branch,
