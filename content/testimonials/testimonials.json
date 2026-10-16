@@ -7,14 +7,18 @@
       "focus": "50% 55%",
       "poster": "/video/testimonials-web/pivt.jpg",
       "preview": "/video/testimonials-web/pivt.mp4",
-      "full": "/video/testimonials-web/pivt-full.mp4"
+      "full": "/video/testimonials-web/pivt-full.mp4",
+      "person": "Lynn Greenberg",
+      "linkedin": "https://www.linkedin.com/in/lynn-greenberg-3515865a/"
     },
     {
       "company": "Quest Relocation",
       "focus": "50% 58%",
       "poster": "/video/testimonials-web/quest.jpg",
       "preview": "/video/testimonials-web/quest.mp4",
-      "full": "/video/testimonials-web/quest-full.mp4"
+      "full": "/video/testimonials-web/quest-full.mp4",
+      "person": "Robert Brezosky",
+      "linkedin": "https://www.linkedin.com/in/robertbrezosky/"
     },
     {
       "company": "Rincon Rehab",
