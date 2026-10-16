@@ -31,6 +31,8 @@ type TelescopePage = {
     body: string;
     nameLabel: string;
     emailLabel: string;
+    positionLabel: string;
+    positionPlaceholder: string;
     companyLabel: string;
     companyPlaceholder: string;
     industryLabel: string;
@@ -75,6 +77,15 @@ const labelClass = "mb-2 block text-sm font-semibold text-ink";
 
 function externalLink(href: string) {
   return /^https?:\/\//.test(href) ? { target: "_blank" as const, rel: "noopener noreferrer" } : {};
+}
+
+function Fact({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-(--radius-card) border border-white/10 bg-white/5 px-5 py-4">
+      <p className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-bone/50">{label}</p>
+      <p className="mt-1 text-base font-semibold text-bone">{value}</p>
+    </div>
+  );
 }
 
 function CalloutGroup({ label, items }: { label: string; items: Callout[] }) {
@@ -236,6 +247,7 @@ export function TalentTelescopeView() {
   const reportRoles = page.report.roles;
   const roles = useMemo(() => reportRoles ?? emptyRoles, [reportRoles]);
   const [selection, setSelection] = useState<string[] | null>(null);
+  const [position, setPosition] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
@@ -281,6 +293,15 @@ export function TalentTelescopeView() {
       ? page.report.empty
       : `${page.report.annualLabel}: ${money.format(savings)}, ${percent}% ${page.report.percentLabel}.`;
 
+  const choosePosition = (value: string) => {
+    setPosition(value);
+    if (!value) return;
+    setSelection((current) => {
+      const base = current ?? roles.map((role) => role.title);
+      return base.includes(value) ? base : [...base, value];
+    });
+  };
+
   const toggleRole = (title: string) => {
     setSelection((current) => {
       const base = current ?? roles.map((role) => role.title);
@@ -293,29 +314,34 @@ export function TalentTelescopeView() {
       <section className="tex-brick relative overflow-hidden pb-16 pt-14 md:pb-20 md:pt-20">
         <div className="shell relative">
           <Reveal className="max-w-4xl">
-            <ul className="mb-4 flex flex-wrap gap-1.5">
-              {(
-                [
-                  ["venue", page.event.venue],
-                  ["dates", page.event.dates],
-                  ["booth", page.event.booth],
-                ] as const
-              ).map(([field, value]) => (
-                <li key={field}>
-                  <span
-                    data-tina-field={tinaField(page.event, field)}
-                    className="inline-flex rounded-full border border-white/15 bg-black/30 px-3 py-1 text-[0.8125rem] font-medium text-bone/80"
-                  >
-                    {value}
-                  </span>
-                </li>
-              ))}
-            </ul>
             <h1 data-tina-field={tinaField(page.event, "headline")} className="display text-[clamp(2.6rem,6.2vw,4.8rem)] text-bone">
               {page.event.headline}
               <br />
               <span className="text-cyan">{page.event.headlineAccent}</span>
             </h1>
+          </Reveal>
+          <Reveal delay={80}>
+            <ul className="mt-10 grid gap-3 sm:grid-cols-3">
+              <li>
+                <Fact label="Venue" value={page.event.venue} />
+              </li>
+              <li>
+                <Fact label="Dates" value={page.event.dates} />
+              </li>
+              <li>
+                <Fact label="Find us" value={page.event.booth} />
+              </li>
+            </ul>
+          </Reveal>
+          <Reveal delay={180}>
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+              <span data-tina-field={tinaField(page.cta, "primaryLabel")}>
+                <Button href={page.cta.primaryHref}>{page.cta.primaryLabel}</Button>
+              </span>
+              <Button href="#telescope" variant="ghostDark">
+                {page.cta.secondaryLabel}
+              </Button>
+            </div>
           </Reveal>
         </div>
       </section>
@@ -366,6 +392,15 @@ export function TalentTelescopeView() {
                     />
                   </div>
                 </div>
+                <ComboField
+                  id="telescope-position"
+                  name="position"
+                  label={page.form.positionLabel}
+                  placeholder={page.form.positionPlaceholder}
+                  value={position}
+                  options={roles.map((role) => role.title)}
+                  onChange={choosePosition}
+                />
                 <div className="grid gap-5 sm:grid-cols-2">
                   <ComboField
                     id="telescope-company"
@@ -406,7 +441,7 @@ export function TalentTelescopeView() {
               </div>
               <p className="mt-4 max-w-[55ch] text-[0.97rem] leading-relaxed text-ink/70">{page.report.body}</p>
               <div className="mt-5 hidden text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-ink/45 lg:grid lg:grid-cols-[1.45fr_0.72fr_1fr] lg:items-center lg:pl-7">
-                <span>Role</span>
+                <span>{page.form.positionLabel}</span>
                 <span>Typical US hire</span>
                 <span className="rounded-t-xl bg-cyan/20 px-3 py-2 text-ink">Your Handoff cost</span>
               </div>
@@ -554,18 +589,12 @@ export function TalentTelescopeView() {
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-bone/70">{page.education.body}</p>
           </Reveal>
-          <ol className="mt-12 grid items-stretch gap-5 md:grid-cols-3">
+          <ol className="mt-12 grid gap-5 md:grid-cols-3">
             {(page.education.stats ?? []).map((stat, index) => (
-              <li key={stat.value} className="flex">
-                <Reveal delay={index * 80} className="flex flex-1">
-                  <article className="flex-1 rounded-(--radius-card) border border-white/10 bg-white/4 p-7">
-                    <p
-                      className={`display leading-none text-cyan whitespace-nowrap! ${
-                        stat.value.length > 4 ? "text-[clamp(2.15rem,4.8vw,3rem)] lg:text-5xl" : "text-5xl"
-                      }`}
-                    >
-                      {stat.value}
-                    </p>
+              <li key={stat.value}>
+                <Reveal delay={index * 80}>
+                  <article className="h-full rounded-(--radius-card) border border-white/10 bg-white/4 p-7">
+                    <p className="display text-5xl text-cyan">{stat.value}</p>
                     <p className="mt-4 text-[0.97rem] leading-relaxed text-bone/75">{stat.label}</p>
                   </article>
                 </Reveal>

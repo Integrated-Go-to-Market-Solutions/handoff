@@ -19,6 +19,8 @@
     "body": "Name, email, company, and industry stay on this page. Nothing is sent.",
     "nameLabel": "Name",
     "emailLabel": "Email",
+    "positionLabel": "Position",
+    "positionPlaceholder": "Choose a position",
     "companyLabel": "Company",
     "companyPlaceholder": "Search or enter a company",
     "industryLabel": "Industry",
@@ -118,8 +120,8 @@
         "label": "of global business-service leaders already operate in LATAM, or plan to within three years"
       },
       {
-        "value": "$35–64k",
-        "label": "On average, US companies save $35,000 to $64,000 annually (per hire) by hiring in Latin America compared to in the US"
+        "value": "84%",
+        "label": "of LATAM GBS centers now serve North America, up from 44% in 2016"
       },
       {
         "value": "72%",
