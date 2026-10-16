@@ -134,6 +134,7 @@ const site = singleton("site", "Site", "site", "/", [
       str("emailLabel", "Email label"),
       str("email", "Email address"),
       str("legal", "Copyright line", "Shown after the year and the site name."),
+      str("privacyLabel", "Privacy policy link"),
       {
         type: "object",
         name: "company",
@@ -898,6 +899,30 @@ const servicesPage = singleton("servicesPage", "Services page", "services-page",
   str("bestFitHeadline", "Best fit heading"),
 ]);
 
+// Privacy policy (10/16): a draft written from what the site actually
+// collects, for Handoff's counsel to review. While "Draft notice" is on, the
+// page shows the notice, stays out of search and out of the sitemap.
+const privacy = singleton("privacy", "Privacy policy", "privacy", "/privacy", [
+  str("title", "Page title"),
+  seoDescription(),
+  str("headline", "Headline"),
+  str("effectiveDate", "Effective date"),
+  bool("draft", "Draft notice", "Turn off once the policy is approved and in effect."),
+  str("draftNotice", "Draft notice text"),
+  {
+    type: "object",
+    name: "sections",
+    label: "Sections",
+    list: true,
+    ui: named("heading"),
+    fields: [
+      str("heading", "Heading"),
+      strings("paragraphs", "Paragraphs"),
+      strings("bullets", "Bulleted points", "Shown after the paragraphs. Leave empty for none."),
+    ],
+  },
+]);
+
 const industry: Collection = {
   name: "industry",
   label: "Industries",
@@ -1087,6 +1112,7 @@ export default defineConfig({
   schema: {
     collections: [
       site,
+      privacy,
       home,
       hiring,
       pricing,

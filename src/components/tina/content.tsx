@@ -154,6 +154,7 @@ type ContentSite = {
     emailLabel: string;
     talkLabel: string;
     legal: string;
+    privacyLabel?: string;
     company: { label: string; href: string }[];
   };
   marqueeCaption: string;

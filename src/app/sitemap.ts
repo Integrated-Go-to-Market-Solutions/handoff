@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { listDocs } from "@/lib/tina/files";
+import { listDocs, readDoc } from "@/lib/tina/files";
 import { SITE_URL } from "@/lib/seo";
 
 /**
@@ -13,5 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...listDocs("departments").map((doc) => `/roles/${doc.slug}`),
     ...listDocs("services").map((doc) => `/services/${doc.slug}`),
   ];
+  // The privacy policy is listed once it's out of draft.
+  if (!readDoc<{ draft?: boolean }>("privacy/privacy.json").draft) pages.push("/privacy");
   return [...pages, ...fromContent].map((path) => ({ url: `${SITE_URL}${path === "/" ? "" : path}` }));
 }

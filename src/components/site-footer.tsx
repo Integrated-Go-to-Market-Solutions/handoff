@@ -70,6 +70,18 @@ export function SiteFooter() {
           <span className="text-sm font-medium text-bone/70">
             &copy; {new Date().getFullYear()} <span data-tina-field={tinaField(site, "name")}>{site.name}</span>.{" "}
             <span data-tina-field={tinaField(site.footer, "legal")}>{site.footer.legal}</span>
+            {site.footer.privacyLabel && (
+              <>
+                {" "}
+                <Link
+                  href="/privacy"
+                  data-tina-field={tinaField(site.footer, "privacyLabel")}
+                  className="ml-2 underline-offset-4 transition-colors hover:text-cyan hover:underline"
+                >
+                  {site.footer.privacyLabel}
+                </Link>
+              </>
+            )}
           </span>
           <span data-tina-field={tinaField(site, "tagline")} className="display text-sm text-cyan">
             {site.tagline}
