@@ -12,9 +12,13 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const payload = await loadIndustry(slug);
-  const industry = payload?.data.industry as { name?: string; subhead?: string } | undefined;
+  const industry = payload?.data.industry as { name?: string; subhead?: string; seoTitle?: string; seoDescription?: string } | undefined;
   if (!industry) return {};
-  return pageMetadata(`/industries/${slug}`, `${industry.name} | Handoff`, industry.subhead);
+  return pageMetadata(
+    `/industries/${slug}`,
+    industry.seoTitle || `${industry.name} | Handoff`,
+    industry.seoDescription || industry.subhead,
+  );
 }
 
 export default async function IndustryPage({ params }: { params: Promise<{ slug: string }> }) {

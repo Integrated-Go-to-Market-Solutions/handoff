@@ -12,9 +12,13 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const payload = await loadService(slug);
-  const service = payload?.data.service as { name?: string; subhead?: string } | undefined;
+  const service = payload?.data.service as { name?: string; subhead?: string; seoTitle?: string; seoDescription?: string } | undefined;
   if (!service) return {};
-  return pageMetadata(`/services/${slug}`, `${service.name} | Handoff`, service.subhead);
+  return pageMetadata(
+    `/services/${slug}`,
+    service.seoTitle || `${service.name} | Handoff`,
+    service.seoDescription || service.subhead,
+  );
 }
 
 export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {

@@ -1,6 +1,13 @@
 import { defineConfig, type Collection, type TinaField } from "tinacms";
 import { bool, iconField, img, link, named, num, slugify, str, strings } from "./fields";
 
+// Search-only fields (10/16 site audit): what Google and the browser tab
+// show, without changing the copy on the page. Blank uses the page's own
+// title or intro.
+const seoTitle = () => str("seoTitle", "Search title", "Optional. Shown in the browser tab and as the link in Google. 30 to 60 characters.");
+const seoDescription = () =>
+  str("seoDescription", "Search description", "Optional. The summary under the link in Google. 120 to 160 characters.");
+
 const branch =
   process.env.NEXT_PUBLIC_TINA_BRANCH ||
   process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF ||
@@ -559,6 +566,7 @@ const cell: TinaField = {
 
 const pricing = singleton("pricing", "Pricing", "pricing", "/pricing", [
   str("title", "Page title"),
+  seoDescription(),
   {
     type: "object",
     name: "intro",
@@ -667,6 +675,7 @@ const testimonials = singleton("testimonials", "Testimonials", "testimonials", "
 
 const about = singleton("about", "About", "about", "/about", [
   str("title", "Page title"),
+  seoDescription(),
   str("headline", "Headline"),
   str("lead", "Lead"),
   {
@@ -736,6 +745,7 @@ const about = singleton("about", "About", "about", "/about", [
 
 const careers = singleton("careers", "Careers", "careers", "/careers", [
   str("title", "Page title"),
+  seoDescription(),
   str("eyebrow", "Small label"),
   str("headline", "Headline"),
   str("subhead", "Subhead"),
@@ -858,6 +868,7 @@ const rolesPage = singleton("rolesPage", "Roles page", "roles-page", "/roles", [
 
 const industriesPage = singleton("industriesPage", "Industries page", "industries-page", "/industries", [
   str("title", "Page title"),
+  seoDescription(),
   str("crumb", "Breadcrumb"),
   str("eyebrow", "Small label"),
   str("headline", "Headline"),
@@ -887,6 +898,8 @@ const industry: Collection = {
     str("navLabel", "Menu name"),
     iconField(),
     str("name", "Name"),
+    seoTitle(),
+    seoDescription(),
     str("descriptor", "Short line", "The line on the industries overview tile."),
     {
       type: "object",
@@ -966,6 +979,8 @@ const service: Collection = {
   fields: [
     num("order", "Order", "Lower numbers appear first in the menu."),
     str("name", "Name"),
+    seoTitle(),
+    seoDescription(),
     str("subhead", "Subhead"),
     str("howItWorks", "How it works"),
     str("detailHeadline", "Detail heading"),

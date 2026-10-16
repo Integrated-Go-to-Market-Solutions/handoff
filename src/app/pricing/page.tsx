@@ -7,8 +7,8 @@ import { loadPricing } from "@/lib/tina/load";
 
 export async function generateMetadata(): Promise<Metadata> {
   const result = await loadPricing();
-  const page = result.data.pricing as { title: string; intro: { subhead: string } };
-  return pageMetadata("/pricing", page.title, page.intro.subhead);
+  const page = result.data.pricing as { title: string; intro: { subhead: string }; seoDescription?: string };
+  return pageMetadata("/pricing", page.title, page.seoDescription || page.intro.subhead);
 }
 
 /**
