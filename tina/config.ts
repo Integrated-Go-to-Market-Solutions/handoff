@@ -1,5 +1,6 @@
 import { defineConfig, type Collection, type TinaField } from "tinacms";
 import { bool, iconField, img, link, named, num, slugify, str, strings } from "./fields";
+import { wire, type Sketch } from "./wireframe";
 
 const branch =
   process.env.NEXT_PUBLIC_TINA_BRANCH ||
@@ -7,12 +8,34 @@ const branch =
   process.env.VERCEL_GIT_COMMIT_REF ||
   "main";
 
+/** Top-level groups become a wireframe of that section. Nested fields stay as inputs. */
+function present(fields: TinaField[], sketches: Partial<Record<string, Sketch>> = {}, order?: string[]): TinaField[] {
+  const rank = new Map((order ?? []).map((name, index) => [name, index]));
+  const sorted = order ? [...fields].sort((a, b) => (rank.get(a.name) ?? 100) - (rank.get(b.name) ?? 100)) : fields;
+  return sorted.map((field) => {
+    const sketch = sketches[field.name];
+    if (field.type !== "object" && !sketch) return field;
+    const current = field as TinaField & { ui?: { component?: unknown } };
+    if (current.ui?.component) return field;
+    return {
+      ...field,
+      ui: { ...current.ui, component: wire(sketch ?? "section") },
+    } as TinaField;
+  });
+}
+
+function asWireframe(collection: Collection, sketches?: Partial<Record<string, Sketch>>, order?: string[]): Collection {
+  return { ...collection, fields: present((collection.fields ?? []) as TinaField[], sketches, order) } as Collection;
+}
+
 function singleton(
   name: string,
   label: string,
   folder: string,
   route: string,
   fields: TinaField[],
+  sketches?: Partial<Record<string, Sketch>>,
+  order?: string[],
 ): Collection {
   return {
     name,
@@ -24,7 +47,7 @@ function singleton(
       allowedActions: { create: false, delete: false },
       router: () => route,
     },
-    fields,
+    fields: present(fields, sketches, order),
   };
 }
 
@@ -438,6 +461,26 @@ const home = singleton("home", "Homepage", "home", "/", [
       },
     ],
   },
+], {
+  hero: "hero",
+  logos: "logos",
+  industriesStrip: "industries",
+  credibilityStats: "stats",
+  talentMap: "map",
+  aiTrained: "academy",
+  whyLatam: "reasons",
+  vibes: "clips",
+  soul: "dictionary",
+}, [
+  "hero",
+  "logos",
+  "industriesStrip",
+  "credibilityStats",
+  "talentMap",
+  "aiTrained",
+  "whyLatam",
+  "vibes",
+  "soul",
 ]);
 
 const hiring = singleton("hiring", "Hiring process", "hiring", "/how-it-works", [
@@ -853,7 +896,138 @@ const servicesPage = singleton("servicesPage", "Services page", "services-page",
   str("bestFitHeadline", "Best fit heading"),
 ]);
 
-const industry: Collection = {
+const callout = (name: string, label: string): TinaField => ({
+  type: "object",
+  name,
+  label,
+  list: true,
+  ui: named("title"),
+  fields: [iconField(), str("title", "Title"), str("body", "Line")],
+});
+
+const talentTelescope = singleton(
+  "talentTelescope",
+  "Talent Telescope",
+  "talent-telescope",
+  "/talent-telescope",
+  [
+    str("title", "Page title"),
+    str("description", "Page description"),
+    {
+      type: "object",
+      name: "event",
+      label: "Event",
+      fields: [
+        str("headline", "Headline"),
+        str("headlineAccent", "Second line"),
+        str("venue", "Venue"),
+        str("dates", "Dates"),
+        str("booth", "Booth"),
+      ],
+    },
+    {
+      type: "object",
+      name: "cta",
+      label: "Buttons",
+      fields: [
+        str("barLabel", "Sticky bar label"),
+        str("primaryLabel", "Primary button"),
+        link("primaryHref", "Primary button link"),
+        str("secondaryLabel", "Secondary button"),
+      ],
+    },
+    {
+      type: "object",
+      name: "form",
+      label: "Company details",
+      fields: [
+        str("headline", "Headline"),
+        str("body", "Paragraph"),
+        str("nameLabel", "Name label"),
+        str("emailLabel", "Email label"),
+        str("positionLabel", "Position label"),
+        str("positionPlaceholder", "Position placeholder"),
+        str("companyLabel", "Company label"),
+        str("companyPlaceholder", "Company placeholder"),
+        str("industryLabel", "Industry label"),
+        str("industryPlaceholder", "Industry placeholder"),
+        strings("companies", "Companies"),
+        strings("industries", "Industries"),
+      ],
+    },
+    {
+      type: "object",
+      name: "report",
+      label: "Cost savings report",
+      fields: [
+        str("headline", "Headline"),
+        str("body", "Paragraph"),
+        str("hireColumn", "Hire column"),
+        str("handoffColumn", "Handoff column"),
+        str("includeLabel", "Include label"),
+        str("annualLabel", "Savings label"),
+        str("percentLabel", "Percent caption"),
+        str("empty", "Empty message"),
+        {
+          type: "object",
+          name: "roles",
+          label: "Positions",
+          list: true,
+          ui: named("title"),
+          fields: [
+            str("title", "Position"),
+            num("hire", "US hire, annual"),
+            num("handoff", "Handoff, annual"),
+          ],
+        },
+      ],
+    },
+    {
+      type: "object",
+      name: "talent",
+      label: "Talent",
+      fields: [
+        str("headline", "Headline"),
+        {
+          type: "object",
+          name: "cards",
+          label: "People",
+          list: true,
+          ui: named("name"),
+          fields: [str("name", "Name"), str("role", "Role"), str("city", "City"), img("photo", "Photo")],
+        },
+      ],
+    },
+    {
+      type: "object",
+      name: "proof",
+      label: "Credibility",
+      fields: [
+        str("headline", "Headline"),
+        str("talentLabel", "Talent heading"),
+        str("handoffLabel", "Handoff heading"),
+        callout("talentItems", "Talent points"),
+        callout("handoffItems", "Handoff points"),
+      ],
+    },
+    {
+      type: "object",
+      name: "education",
+      label: "Education",
+      fields: [str("headline", "Headline"), str("body", "Paragraph"), stat("stats", "Statistics")],
+    },
+    {
+      type: "object",
+      name: "close",
+      label: "Close",
+      fields: [str("headline", "Sign-off"), str("body", "Paragraph")],
+    },
+  ],
+  {},
+  ["title", "description", "event", "cta", "form", "report", "talent", "proof", "education", "close"],
+);
+
+const industry: Collection = asWireframe({
   name: "industry",
   label: "Industries",
   path: "content/industries",
@@ -898,9 +1072,9 @@ const industry: Collection = {
     strings("proofLogos", "Client logos", "Each entry is a logo's short name from Homepage, like oasis."),
     str("caseStudy", "Case study", "The case study's address name, like global-relocation. Leave blank for none."),
   ],
-};
+});
 
-const department: Collection = {
+const department: Collection = asWireframe({
   name: "department",
   label: "Departments",
   path: "content/departments",
@@ -915,9 +1089,9 @@ const department: Collection = {
     strings("roles", "Roles", "These are also the choices in the contact form."),
     video("video", "Role video"),
   ],
-};
+});
 
-const service: Collection = {
+const service: Collection = asWireframe({
   name: "service",
   label: "Services",
   path: "content/services",
@@ -955,9 +1129,9 @@ const service: Collection = {
       ],
     },
   ],
-};
+});
 
-const teamMember: Collection = {
+const teamMember: Collection = asWireframe({
   name: "teamMember",
   label: "Team",
   path: "content/team",
@@ -972,9 +1146,9 @@ const teamMember: Collection = {
     str("role", "Role"),
     img("photo", "Photo"),
   ],
-};
+});
 
-const caseStudy: Collection = {
+const caseStudy: Collection = asWireframe({
   name: "caseStudy",
   label: "Case studies",
   path: "content/case-studies",
@@ -1003,7 +1177,7 @@ const caseStudy: Collection = {
     str("quote", "Quote"),
     str("attributionRole", "Who said it"),
   ],
-};
+}, { heroStats: "stats", results: "stats" });
 
 export default defineConfig({
   branch,
@@ -1034,6 +1208,7 @@ export default defineConfig({
       rolesPage,
       industriesPage,
       servicesPage,
+      talentTelescope,
       industry,
       department,
       service,

@@ -1,0 +1,136 @@
+{
+  "title": "Talent Telescope | Handoff",
+  "description": "A sample cost-savings report for WERC Global 26. Compare a US hire with Handoff talent from Latin America.",
+  "event": {
+    "headline": "The world is already",
+    "headlineAccent": "hiring in LATAM.",
+    "venue": "Hyatt Regency Chicago",
+    "dates": "Oct 27–30, 2026",
+    "booth": "Booth 700"
+  },
+  "cta": {
+    "barLabel": "WERC Global 26",
+    "primaryLabel": "Book a chat at booth 700",
+    "primaryHref": "/contact",
+    "secondaryLabel": "Take the Talent Telescope"
+  },
+  "form": {
+    "headline": "Company details",
+    "body": "Name, email, company, and industry stay on this page. Nothing is sent.",
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "positionLabel": "Position",
+    "positionPlaceholder": "Choose a position",
+    "companyLabel": "Company",
+    "companyPlaceholder": "Search or enter a company",
+    "industryLabel": "Industry",
+    "industryPlaceholder": "Choose an industry",
+    "companies": ["Amazon", "Americold", "C.H. Robinson", "CEVA Logistics", "Costco", "DB Schenker", "DHL", "DSV", "Expeditors", "FedEx", "GEODIS", "GXO", "Grainger", "J.B. Hunt", "Kuehne+Nagel", "Lineage", "Maersk", "NFI", "Penske Logistics", "Prologis", "Ryder", "Sysco", "Target", "The Home Depot", "UPS", "US Foods", "Walmart", "XPO", "Not listed"],
+    "industries": ["Corporate relocation", "Corporate housing", "Global business services", "Agencies", "E-commerce", "Other"]
+  },
+  "report": {
+    "headline": "Cost savings report",
+    "body": "See what each role costs through Handoff—and exactly what you save. Check the roles you want in the total.",
+    "hireColumn": "Hire",
+    "handoffColumn": "Handoff",
+    "includeLabel": "Include",
+    "annualLabel": "Annual savings",
+    "percentLabel": "of the US hire",
+    "empty": "Check a position to see the sample savings.",
+    "roles": [
+      { "title": "Digital Marketing Manager", "hire": 95000, "handoff": 36000 },
+      { "title": "Full-Stack Developer", "hire": 145000, "handoff": 54000 },
+      { "title": "AP/AR Specialist", "hire": 68000, "handoff": 22000 }
+    ]
+  },
+  "talent": {
+    "headline": "Meet the talent",
+    "cards": [
+      {
+        "name": "Valeria",
+        "role": "Digital Marketing Manager",
+        "city": "Guadalajara, Mexico",
+        "photo": "/images/team/jazmin-esparza.webp"
+      },
+      {
+        "name": "Diego",
+        "role": "Full-Stack Developer",
+        "city": "San José, Costa Rica",
+        "photo": "/images/team/jake-castro.webp"
+      },
+      {
+        "name": "Camila",
+        "role": "AP/AR Specialist",
+        "city": "Medellín, Colombia",
+        "photo": "/images/team/karla-patron.webp"
+      },
+      {
+        "name": "Mateo",
+        "role": "AI Developer",
+        "city": "Lima, Peru",
+        "photo": "/images/team/simon-quintero.webp"
+      }
+    ]
+  },
+  "proof": {
+    "headline": "What you get with the person",
+    "talentLabel": "The talent",
+    "handoffLabel": "The handoff",
+    "talentItems": [
+      {
+        "icon": "award",
+        "title": "Top 1% vetted",
+        "body": "Screened for the role, the hours, and the English."
+      },
+      {
+        "icon": "globe",
+        "title": "In your time zone",
+        "body": "Latin America, close enough to work your day."
+      },
+      {
+        "icon": "users",
+        "title": "Here to stay",
+        "body": "People we treat like teammates, not a rotating bench."
+      }
+    ],
+    "handoffItems": [
+      {
+        "icon": "clipboard",
+        "title": "Managed for you",
+        "body": "Payroll, equipment, and the day-to-day, handled."
+      },
+      {
+        "icon": "handshake",
+        "title": "A team behind them",
+        "body": "Recruiting, success, and support after the start date."
+      },
+      {
+        "icon": "rocket",
+        "title": "About two weeks",
+        "body": "To your top two candidates, on the roles we place most."
+      }
+    ]
+  },
+  "education": {
+    "headline": "The world is already doing this.",
+    "body": "Global business services moved. The talent shortage at home did not.",
+    "stats": [
+      {
+        "value": "90%",
+        "label": "of global business-service leaders already operate in LATAM, or plan to within three years"
+      },
+      {
+        "value": "84%",
+        "label": "of LATAM GBS centers now serve North America, up from 44% in 2016"
+      },
+      {
+        "value": "72%",
+        "label": "of US employers report struggling to find the skilled talent they need"
+      }
+    ]
+  },
+  "close": {
+    "headline": "weRC hard and weRC with heart.",
+    "body": "Fifteen minutes at booth 700 is enough to scope a role. Or take the sample report and bring it back to your team."
+  }
+}

@@ -29,7 +29,8 @@ export function MobileCta() {
   }, [pathname]);
 
   const onBookingPage = !/^https?:\/\//.test(site.bookingUrl) && pathname === site.bookingUrl;
-  const hidden = finaleInView || onBookingPage;
+  // Talent Telescope brings its own sticky bar, so this one steps aside.
+  const hidden = finaleInView || onBookingPage || pathname === "/talent-telescope";
 
   return (
     <div
