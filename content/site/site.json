@@ -107,5 +107,9 @@
       "label": "Talk to Our Team",
       "href": "/contact"
     }
+  },
+  "analytics": {
+    "gtmId": "",
+    "ga4Id": ""
   }
 }

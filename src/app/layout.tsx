@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
 import { rubik, serifFace, textFace } from "./fonts";
 import { SiteShell } from "@/components/tina/content";
@@ -18,8 +19,14 @@ export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const payload = await loadChrome();
+  // Website tracking, set in Tina (Site, Website tracking). Tag Manager wins
+  // if both IDs are filled in; with neither, nothing loads.
+  const site = (await loadSite()).data.site as { analytics?: { gtmId?: string; ga4Id?: string } };
+  const gtmId = site.analytics?.gtmId?.trim();
+  const ga4Id = site.analytics?.ga4Id?.trim();
   return (
     <html lang="en" className={`${rubik.variable} ${textFace.variable} ${serifFace.variable}`}>
+      {gtmId ? <GoogleTagManager gtmId={gtmId} /> : ga4Id ? <GoogleAnalytics gaId={ga4Id} /> : null}
       <body className="min-h-screen bg-ink pb-20 text-bone antialiased md:pb-0">
         {/* Keyboard users can jump past the menu (UX QA, 10/6). Hidden until
             it gets keyboard focus. */}

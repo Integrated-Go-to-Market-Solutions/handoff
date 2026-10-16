@@ -79,6 +79,17 @@ const site = singleton("site", "Site", "site", "/", [
   link("bookingUrl", "Book a call link", ),
   // Shown after the contact form is sent, so the visitor can book straight away (10/15).
   link("discoveryCallUrl", "Discovery call booking page (Cal.com)"),
+  // Website tracking (10/16). Paste one ID and the site loads it on every
+  // page; leave both blank for no tracking.
+  {
+    type: "object",
+    name: "analytics",
+    label: "Website tracking",
+    fields: [
+      str("gtmId", "Google Tag Manager container ID", "Looks like GTM-ABC1234. Use this one if you have it."),
+      str("ga4Id", "Google Analytics 4 measurement ID", "Looks like G-ABC1234XYZ. Only used when there's no Tag Manager ID."),
+    ],
+  },
   link("seeTalent", "Roles page"),
   {
     type: "object",
