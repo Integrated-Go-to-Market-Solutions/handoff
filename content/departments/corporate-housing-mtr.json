@@ -9,6 +9,40 @@
     "Turnover Coordinator",
     "Revenue/Pricing Analyst"
   ],
+  "intro": "Reservations, guest services and property coordinators who keep bookings, guests and turnovers moving through every season.",
+  "image": "/images/industries/corporate-housing.webp",
+  "roleDetails": [
+    {
+      "role": "Reservations Specialist",
+      "icon": "calendar",
+      "text": "Handles booking inquiries, manages the reservations calendar and keeps availability and rates accurate across channels."
+    },
+    {
+      "role": "Guest Services Coordinator",
+      "icon": "chat",
+      "text": "Answers guest and resident messages, handles requests and issues during the stay, and keeps reviews in good shape."
+    },
+    {
+      "role": "Leasing Coordinator",
+      "icon": "envelope",
+      "text": "Works leads from inquiry to signed lease: answers questions, schedules showings and gets the paperwork done."
+    },
+    {
+      "role": "Property/Portfolio Coordinator",
+      "icon": "building",
+      "text": "Tracks the units in your portfolio, coordinates maintenance and vendors, and keeps owner and property records up to date."
+    },
+    {
+      "role": "Turnover Coordinator",
+      "icon": "clock",
+      "text": "Schedules cleaning, inspections and repairs between stays so each unit is ready on time for the next guest."
+    },
+    {
+      "role": "Revenue/Pricing Analyst",
+      "icon": "trendingUp",
+      "text": "Watches occupancy, demand and competitor rates, and adjusts pricing to keep units booked at the right rate."
+    }
+  ],
   "video": {
     "src": "",
     "poster": ""

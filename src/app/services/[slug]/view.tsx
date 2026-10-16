@@ -58,7 +58,7 @@ export function ServiceView({ payload }: { payload: { data: any; query: string; 
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-ink pb-16 text-bone md:pb-24">
+      <section className="relative overflow-hidden bg-ink pb-20 text-bone md:pb-32">
         <div className="shell relative">
           <Reveal>
             <h2 className="display text-[clamp(1.8rem,4vw,3rem)]">{servicesPage.howHeadline}</h2>
@@ -67,7 +67,7 @@ export function ServiceView({ payload }: { payload: { data: any; query: string; 
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-bone section-py text-ink">
+      <section className="relative overflow-hidden bg-bone section-space text-ink">
         <div className="shell relative">
           <div className="grid gap-4 md:grid-cols-2">
             <Reveal className="h-full">

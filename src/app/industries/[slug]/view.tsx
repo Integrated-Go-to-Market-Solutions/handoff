@@ -79,14 +79,14 @@ export function IndustryView({ payload }: { payload: { data: any; query: string;
         </section>
       )}
 
-      <section className="relative overflow-hidden bg-bone section-py text-ink">
+      <section className="relative overflow-hidden bg-bone section-space text-ink">
         <div className="shell relative">
           <Reveal>
             <h2 className="display text-[clamp(2rem,4.8vw,3.6rem)]">{industry.problemHeadline}</h2>
             <p className="mt-6 text-pretty text-base leading-relaxed text-ink/70 md:text-lg">{industry.problemBody}</p>
           </Reveal>
 
-          <ul className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <ul className="section-gap grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {industry.triggers.map((trigger: string, i: number) => {
               const tone = cardTones[i % cardTones.length];
               return (
@@ -106,13 +106,13 @@ export function IndustryView({ payload }: { payload: { data: any; query: string;
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-ink section-py text-bone">
+      <section className="relative overflow-hidden bg-ink section-space text-bone">
         <div className="shell relative">
           <Reveal>
             <h2 className="display text-[clamp(1.9rem,4.2vw,3.1rem)]">{industry.rolesHeadline}</h2>
           </Reveal>
 
-          <Reveal delay={110} className="mt-10">
+          <Reveal delay={110} className="section-gap">
             <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {industry.roles.map((role: { name: string; department?: string }) => {
                 const department = role.department || "";
@@ -153,7 +153,7 @@ export function IndustryView({ payload }: { payload: { data: any; query: string;
       <HiringHighway compact />
 
       {study && (
-        <section className="relative overflow-hidden bg-ink section-py text-bone" aria-label="Case study">
+        <section className="relative overflow-hidden bg-ink section-space text-bone" aria-label="Case study">
           <div className="shell relative">
             <Reveal>
               <Link

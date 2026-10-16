@@ -10,7 +10,7 @@ import { tinaField, useContent } from "@/components/tina/content";
 export function PromoVideo() {
   const { process } = useContent();
   return (
-    <section className="hw-dots relative bg-ink pb-14 text-bone md:pb-20">
+    <section className="hw-dots relative bg-ink pb-20 text-bone md:pb-32">
       <div className="shell relative">
         <div className="mx-auto max-w-5xl overflow-hidden rounded-(--radius-brand) border-2 border-cyan/50 bg-ink shadow-[0_0_28px_-10px_rgba(61,214,189,0.6)]">
           <video

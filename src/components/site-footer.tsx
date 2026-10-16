@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { LogoLock } from "./brand";
 import { tinaField, useContent } from "@/components/tina/content";
+import { SocialLinks } from "./social-links";
 
 export function SiteFooter() {
   const { nav, site } = useContent();
@@ -29,9 +30,11 @@ export function SiteFooter() {
 
       <div className="shell relative py-16">
         <div className="grid gap-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
-          {/* Logo on its own row, so six link columns fit beneath it. */}
-          <div className="sm:col-span-2 md:col-span-3 lg:col-span-6">
+          {/* Logo on its own row, so six link columns fit beneath it, with the
+              social icons on the right. */}
+          <div className="flex flex-wrap items-center justify-between gap-6 sm:col-span-2 md:col-span-3 lg:col-span-6">
             <LogoLock />
+            <SocialLinks compact />
           </div>
 
           {columns.map((col) => (
@@ -67,6 +70,18 @@ export function SiteFooter() {
           <span className="text-sm font-medium text-bone/70">
             &copy; {new Date().getFullYear()} <span data-tina-field={tinaField(site, "name")}>{site.name}</span>.{" "}
             <span data-tina-field={tinaField(site.footer, "legal")}>{site.footer.legal}</span>
+            {site.footer.privacyLabel && (
+              <>
+                {" "}
+                <Link
+                  href="/privacy"
+                  data-tina-field={tinaField(site.footer, "privacyLabel")}
+                  className="ml-2 underline-offset-4 transition-colors hover:text-cyan hover:underline"
+                >
+                  {site.footer.privacyLabel}
+                </Link>
+              </>
+            )}
           </span>
           <span data-tina-field={tinaField(site, "tagline")} className="display text-sm text-cyan">
             {site.tagline}

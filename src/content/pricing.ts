@@ -86,14 +86,13 @@ export const modelsCompare = {
   rows: [
     {
       label: "The Hands-Off Hiring System",
-      note: "Sourcing, the Vet, and a shortlist of two for each role",
+      note: "Sourcing, the Vet (skills, English, AI fluency) and a shortlist of two",
       values: [true, true],
     },
-    { label: "Talent screened for skills, English, and AI fluency", values: [true, true] },
-    { label: "Work in your time zone, with client-ready English", values: [true, true] },
+    { label: "Talent in your time zone", values: [true, true] },
     {
       label: "The guarantee",
-      note: "$1,000 off your next search if none of the first four fits",
+      note: "A replacement at no cost if your hire doesn't work out within 90 days",
       values: [true, true],
     },
     { label: "Who employs them", values: ["You contract them directly", { text: "Handoff, as employer of record", accent: true }] },
@@ -102,7 +101,6 @@ export const modelsCompare = {
     { label: "Benefits", values: [false, true] },
     { label: "Equipment and IT", values: [false, true] },
     { label: "Performance management", values: [false, true] },
-    { label: "Retention support", values: [false, true] },
     {
       label: "Best for",
       values: ["When you want them on your own team", "When you want us to carry the employment, compliance, and support"],

@@ -9,6 +9,40 @@
     "Project Manager",
     "General Virtual Assistant"
   ],
+  "intro": "Assistants, coordinators and operations managers who keep the calendar, the inbox and the day-to-day running so you can focus on the business.",
+  "image": "/images/hero/team.webp",
+  "roleDetails": [
+    {
+      "role": "Executive Assistant",
+      "icon": "calendar",
+      "text": "Manages your calendar, inbox and travel, preps you for meetings, and follows up on what comes out of them."
+    },
+    {
+      "role": "Administrative Assistant",
+      "icon": "clipboard",
+      "text": "Handles scheduling, data entry, document prep and the routine admin that keeps an office running."
+    },
+    {
+      "role": "Operations Coordinator",
+      "icon": "layers",
+      "text": "Keeps projects and processes on track: tracks tasks, coordinates with vendors and makes sure handoffs between teams don't stall."
+    },
+    {
+      "role": "Operations Manager",
+      "icon": "building",
+      "text": "Runs the day-to-day operation, sets up the processes and tools, and manages the people who keep it moving."
+    },
+    {
+      "role": "Project Manager",
+      "icon": "target",
+      "text": "Plans the work, sets timelines, keeps everyone updated and makes sure projects ship on time and on budget."
+    },
+    {
+      "role": "General Virtual Assistant",
+      "icon": "chat",
+      "text": "Takes on a mix of admin, research, customer emails and scheduling, wherever your team needs another pair of hands."
+    }
+  ],
   "video": {
     "src": "",
     "poster": ""

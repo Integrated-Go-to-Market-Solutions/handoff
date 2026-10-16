@@ -11,11 +11,11 @@ import { tinaField, useContent } from "@/components/tina/content";
 export function ValuesVideo() {
   const { aboutPage } = useContent();
   return (
-    <section className="relative bg-bone section-py text-ink">
+    <section className="relative bg-bone section-space text-ink">
       <div className="shell grid items-center gap-10 md:grid-cols-[1fr_minmax(0,340px)] md:gap-16">
         <Reveal>
           <h2 data-tina-field={tinaField(aboutPage, "values")} className="display text-[clamp(2.1rem,4.8vw,3.7rem)]">{aboutPage.values.headline}</h2>
-          <dl className="mt-8 space-y-6">
+          <dl className="section-gap space-y-6">
             {aboutPage.values.items.map((value: any) => (
               <div key={value.name} className="border-l-4 border-cyan pl-5">
                 <dt className="display text-2xl text-royal md:text-3xl">{value.name}</dt>

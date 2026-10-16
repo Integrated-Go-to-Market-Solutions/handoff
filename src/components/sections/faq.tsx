@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Reveal } from "../reveal";
 import { tinaField, useContent } from "@/components/tina/content";
+import { jsonLd } from "@/lib/seo";
 
 /**
  * Native `<details>` opened with no transition at all — Nico's feedback on
@@ -49,10 +50,24 @@ function FaqItem({ q, a, delay }: { q: string; a: string; delay: number }) {
 export function Faq() {
   const { faqs } = useContent();
   return (
-    <section className="relative overflow-hidden bg-bone section-py-hero text-ink">
+    <section className="relative overflow-hidden bg-bone section-space text-ink">
+      {/* The same questions and answers as FAQ data, so search engines and AI
+          assistants can quote them (10/16 site audit). */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLd({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.q,
+            acceptedAnswer: { "@type": "Answer", text: faq.a },
+          })),
+        })}
+      />
       <div className="shell relative grid gap-14 lg:grid-cols-[0.85fr_1.15fr]">
         <Reveal>
-          <h2 className="display mt-5 text-[clamp(2.1rem,4.5vw,3.4rem)] text-ink">
+          <h2 className="display text-[clamp(2.1rem,4.5vw,3.4rem)] text-ink">
             The questions
             <br />
             <span className="text-royal">we actually get</span>

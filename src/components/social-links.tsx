@@ -45,10 +45,14 @@ function SocialMark({ platform }: { platform: "youtube" | "linkedin" | "instagra
   );
 }
 
-export function SocialLinks() {
+/**
+ * The social icons. Large on About; `compact` is the small row in the footer
+ * (10/16 site audit: most pages had no link to Handoff's social profiles).
+ */
+export function SocialLinks({ compact = false }: { compact?: boolean } = {}) {
   const { socialLinks } = useContent();
   return (
-    <nav aria-label="Handoff social media" className="mt-8 flex flex-wrap gap-4">
+    <nav aria-label="Handoff social media" className={compact ? "flex gap-2" : "mt-8 flex flex-wrap gap-4"}>
       {socialLinks.map((social) => (
         <a
           key={social.label}
@@ -57,10 +61,12 @@ export function SocialLinks() {
           rel="noreferrer"
           aria-label={social.label}
           data-tina-field={tinaField(social, "href")}
-          className="group grid h-18 w-18 place-items-center rounded-full transition-transform duration-300 hover:-translate-y-1 hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-royal md:h-20 md:w-20"
+          className={`group grid place-items-center rounded-full transition-transform duration-300 hover:-translate-y-1 hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-4 ${
+            compact ? "h-11 w-11 focus-visible:outline-cyan" : "h-18 w-18 focus-visible:outline-royal md:h-20 md:w-20"
+          }`}
         >
           <span className="grid h-full w-full place-items-center">
-            <span className="scale-[1.8] md:scale-[2]">
+            <span className={compact ? "scale-[1.25]" : "scale-[1.8] md:scale-[2]"}>
               <SocialMark platform={social.platform} />
             </span>
           </span>

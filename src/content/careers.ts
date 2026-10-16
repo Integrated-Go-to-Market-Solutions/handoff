@@ -13,7 +13,7 @@ export const careersPage = {
   headline: "Build your career with a team that has your back.",
   subhead: "Handoff places Latin American professionals inside top US companies, and stays with you after you are hired.",
   body: "You are not a profile in a database here. We learn what you do well, match you to a company where it fits, and stay in your corner once you are placed. If one role ends, we work to find you the next one.",
-  cta: { label: "Apply to join our talent pool", href: "https://talenthandoff.com/join-us" },
+  cta: { label: "Apply to join our talent pool", href: "/careers/open-positions" },
   whyHeadline: "Why Handoff",
   why: [
     {

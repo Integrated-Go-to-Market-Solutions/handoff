@@ -1,6 +1,13 @@
 import { defineConfig, type Collection, type TinaField } from "tinacms";
 import { bool, iconField, img, link, named, num, slugify, str, strings } from "./fields";
 
+// Search-only fields (10/16 site audit): what Google and the browser tab
+// show, without changing the copy on the page. Blank uses the page's own
+// title or intro.
+const seoTitle = () => str("seoTitle", "Search title", "Optional. Shown in the browser tab and as the link in Google. 30 to 60 characters.");
+const seoDescription = () =>
+  str("seoDescription", "Search description", "Optional. The summary under the link in Google. 120 to 160 characters.");
+
 const branch =
   process.env.NEXT_PUBLIC_TINA_BRANCH ||
   process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF ||
@@ -77,6 +84,19 @@ const site = singleton("site", "Site", "site", "/", [
   str("tagline", "Tagline"),
   link("bookCall", "Main booking page"),
   link("bookingUrl", "Book a call link", ),
+  // Shown after the contact form is sent, so the visitor can book straight away (10/15).
+  link("discoveryCallUrl", "Discovery call booking page (Cal.com)"),
+  // Website tracking (10/16). Paste one ID and the site loads it on every
+  // page; leave both blank for no tracking.
+  {
+    type: "object",
+    name: "analytics",
+    label: "Website tracking",
+    fields: [
+      str("gtmId", "Google Tag Manager container ID", "Looks like GTM-ABC1234. Use this one if you have it."),
+      str("ga4Id", "Google Analytics 4 measurement ID", "Looks like G-ABC1234XYZ. Only used when there's no Tag Manager ID."),
+    ],
+  },
   link("seeTalent", "Roles page"),
   {
     type: "object",
@@ -114,6 +134,7 @@ const site = singleton("site", "Site", "site", "/", [
       str("emailLabel", "Email label"),
       str("email", "Email address"),
       str("legal", "Copyright line", "Shown after the year and the site name."),
+      str("privacyLabel", "Privacy policy link"),
       {
         type: "object",
         name: "company",
@@ -179,8 +200,7 @@ const site = singleton("site", "Site", "site", "/", [
     fields: [
       str("headline", "Headline"),
       pair("Words before the colored word", "Colored word"),
-      str("closing", "Line under the headline"),
-      strings("jam", "Falling words", "The words that fall beside the closing animation. Keep about eight."),
+      str("closing", "Line under the headline", "Optional. Leave blank to show only the headline."),
       str("book", "Button"),
       str("body", "Paragraph"),
       button("primary", "Primary button"),
@@ -547,6 +567,7 @@ const cell: TinaField = {
 
 const pricing = singleton("pricing", "Pricing", "pricing", "/pricing", [
   str("title", "Page title"),
+  seoDescription(),
   {
     type: "object",
     name: "intro",
@@ -630,6 +651,10 @@ const testimonials = singleton("testimonials", "Testimonials", "testimonials", "
       img("poster", "Still image"),
       img("preview", "Silent preview"),
       img("full", "Full video"),
+      // Optional (10/15): when set, a LinkedIn icon shows under the video,
+      // as on the quote cards.
+      str("person", "Person in the video", "Used to label the LinkedIn link for screen readers."),
+      link("linkedin", "LinkedIn profile"),
     ],
   },
   {
@@ -651,6 +676,7 @@ const testimonials = singleton("testimonials", "Testimonials", "testimonials", "
 
 const about = singleton("about", "About", "about", "/about", [
   str("title", "Page title"),
+  seoDescription(),
   str("headline", "Headline"),
   str("lead", "Lead"),
   {
@@ -671,7 +697,11 @@ const about = singleton("about", "About", "about", "/about", [
         label: "Sides",
         list: true,
         ui: named("title"),
-        fields: [str("title", "Title"), str("body", "Paragraph")],
+        fields: [
+          str("title", "Title"),
+          str("body", "Paragraph"),
+          str("bookLink", "Link to open the booking page in a new tab"),
+        ],
       },
       str("closer", "Closing line"),
     ],
@@ -716,11 +746,26 @@ const about = singleton("about", "About", "about", "/about", [
 
 const careers = singleton("careers", "Careers", "careers", "/careers", [
   str("title", "Page title"),
+  seoDescription(),
   str("eyebrow", "Small label"),
   str("headline", "Headline"),
   str("subhead", "Subhead"),
   str("body", "Paragraph"),
   button("cta", "Apply button"),
+  // The page the Apply buttons open (10/16): Handoff's Ashby job board,
+  // embedded at /careers/open-positions.
+  {
+    type: "object",
+    name: "openPositions",
+    label: "Open positions page",
+    fields: [
+      str("title", "Page title"),
+      seoDescription(),
+      str("headline", "Headline"),
+      link("jobBoardUrl", "Ashby job board"),
+      str("fallbackLink", "Link to open the job board in a new tab"),
+    ],
+  },
   str("whyHeadline", "Why heading"),
   {
     type: "object",
@@ -838,6 +883,7 @@ const rolesPage = singleton("rolesPage", "Roles page", "roles-page", "/roles", [
 
 const industriesPage = singleton("industriesPage", "Industries page", "industries-page", "/industries", [
   str("title", "Page title"),
+  seoDescription(),
   str("crumb", "Breadcrumb"),
   str("eyebrow", "Small label"),
   str("headline", "Headline"),
@@ -851,6 +897,30 @@ const servicesPage = singleton("servicesPage", "Services page", "services-page",
   str("crumb", "Breadcrumb"),
   str("howHeadline", "How it works heading"),
   str("bestFitHeadline", "Best fit heading"),
+]);
+
+// Privacy policy (10/16): a draft written from what the site actually
+// collects, for Handoff's counsel to review. While "Draft notice" is on, the
+// page shows the notice, stays out of search and out of the sitemap.
+const privacy = singleton("privacy", "Privacy policy", "privacy", "/privacy", [
+  str("title", "Page title"),
+  seoDescription(),
+  str("headline", "Headline"),
+  str("effectiveDate", "Effective date"),
+  bool("draft", "Draft notice", "Turn off once the policy is approved and in effect."),
+  str("draftNotice", "Draft notice text"),
+  {
+    type: "object",
+    name: "sections",
+    label: "Sections",
+    list: true,
+    ui: named("heading"),
+    fields: [
+      str("heading", "Heading"),
+      strings("paragraphs", "Paragraphs"),
+      strings("bullets", "Bulleted points", "Shown after the paragraphs. Leave empty for none."),
+    ],
+  },
 ]);
 
 const industry: Collection = {
@@ -867,6 +937,8 @@ const industry: Collection = {
     str("navLabel", "Menu name"),
     iconField(),
     str("name", "Name"),
+    seoTitle(),
+    seoDescription(),
     str("descriptor", "Short line", "The line on the industries overview tile."),
     {
       type: "object",
@@ -913,6 +985,22 @@ const department: Collection = {
     num("order", "Order", "Lower numbers appear first in the menu."),
     str("name", "Name"),
     strings("roles", "Roles", "These are also the choices in the contact form."),
+    // Role page redesign (10/15). The intro and role descriptions started as
+    // AI-drafted placeholders, which Handoff approved until they replace them.
+    str("intro", "Intro", "One line under the department name."),
+    img("image", "Photo", "Shown in grayscale beside the intro."),
+    {
+      type: "object",
+      name: "roleDetails",
+      label: "Role descriptions",
+      list: true,
+      ui: named("role"),
+      fields: [
+        str("role", "Role", "Must match a role in the list above, word for word."),
+        iconField(),
+        str("text", "What they do"),
+      ],
+    },
     video("video", "Role video"),
   ],
 };
@@ -930,6 +1018,8 @@ const service: Collection = {
   fields: [
     num("order", "Order", "Lower numbers appear first in the menu."),
     str("name", "Name"),
+    seoTitle(),
+    seoDescription(),
     str("subhead", "Subhead"),
     str("howItWorks", "How it works"),
     str("detailHeadline", "Detail heading"),
@@ -1022,6 +1112,7 @@ export default defineConfig({
   schema: {
     collections: [
       site,
+      privacy,
       home,
       hiring,
       pricing,

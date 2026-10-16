@@ -28,6 +28,24 @@ const nextConfig: NextConfig = {
       { source: "/services", destination: "/services/direct-hire", permanent: false },
     ];
   },
+  // Baseline security headers on every response (10/16 site audit). The
+  // Content-Security-Policy only stops other sites from framing this one; a
+  // full script/style policy would need allowances for the Tina editor, the
+  // Cal.com embed, tracking and the videos, so it's left for later.
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "Content-Security-Policy", value: "frame-ancestors 'self'" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), browsing-topics=()" },
+        ],
+      },
+    ];
+  },
   async rewrites() {
     return [{ source: "/admin", destination: "/admin/index.html" }];
   },

@@ -8,6 +8,35 @@
     "Global Mobility Coordinator",
     "Expense & Reimbursement Coordinator"
   ],
+  "intro": "Coordinators and counselors who manage relocations end to end and keep transferees and their families moving on schedule.",
+  "image": "/images/industries/corporate-relocation.webp",
+  "roleDetails": [
+    {
+      "role": "Relocation Coordinator",
+      "icon": "pin",
+      "text": "Manages each move from start to finish: schedules services, coordinates vendors and keeps the transferee updated at every step."
+    },
+    {
+      "role": "Destination Services Coordinator",
+      "icon": "compass",
+      "text": "Sets up home-finding, school searches and area tours, and helps transferees settle into the new city."
+    },
+    {
+      "role": "Relocation Counselor",
+      "icon": "chat",
+      "text": "Walks transferees through their benefits and the move process, and answers their questions along the way."
+    },
+    {
+      "role": "Global Mobility Coordinator",
+      "icon": "globe",
+      "text": "Handles international assignments: immigration steps, shipments and the paperwork for each move."
+    },
+    {
+      "role": "Expense & Reimbursement Coordinator",
+      "icon": "clipboard",
+      "text": "Processes relocation expenses, checks them against policy and gets reimbursements paid on time."
+    }
+  ],
   "video": {
     "src": "",
     "poster": ""

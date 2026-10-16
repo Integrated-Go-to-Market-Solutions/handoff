@@ -11,6 +11,50 @@
     "BI Analyst",
     "Automation/Prompt Engineer"
   ],
+  "intro": "Engineers, scientists and analysts who build with AI and turn your data into reports and tools your team actually uses.",
+  "image": "/images/industries/startups.webp",
+  "roleDetails": [
+    {
+      "role": "AI Developer / AI Engineer",
+      "icon": "rocket",
+      "text": "Builds AI features and agents into your product and workflows, and connects models to your data and tools."
+    },
+    {
+      "role": "Machine Learning Engineer",
+      "icon": "layers",
+      "text": "Trains, tests and deploys machine learning models, and keeps them running and accurate in production."
+    },
+    {
+      "role": "Data Scientist",
+      "icon": "lightbulb",
+      "text": "Digs into your data to answer business questions, builds models and forecasts, and explains what the numbers mean."
+    },
+    {
+      "role": "Data Engineer",
+      "icon": "building",
+      "text": "Builds and maintains the pipelines and warehouse that move your data from source systems to where it gets used."
+    },
+    {
+      "role": "Data Analyst",
+      "icon": "search",
+      "text": "Pulls and cleans data, builds reports and dashboards, and answers day-to-day questions about the business."
+    },
+    {
+      "role": "Database Developer/Administrator",
+      "icon": "clipboard",
+      "text": "Designs, tunes and maintains your databases, and keeps them backed up, secure and fast."
+    },
+    {
+      "role": "BI Analyst",
+      "icon": "trendingUp",
+      "text": "Builds the dashboards and reporting in tools like Power BI, Tableau or Looker that leadership checks every week."
+    },
+    {
+      "role": "Automation/Prompt Engineer",
+      "icon": "target",
+      "text": "Automates repetitive work with AI and workflow tools, and writes and tests the prompts behind it."
+    }
+  ],
   "video": {
     "src": "",
     "poster": ""

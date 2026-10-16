@@ -50,7 +50,7 @@ export function AiTrained() {
   const track = aiTrained.tracks[active];
 
   return (
-    <section className="relative overflow-hidden bg-bone section-py text-ink" aria-labelledby={`${baseId}-heading`}>
+    <section className="relative overflow-hidden bg-bone section-space text-ink" aria-labelledby={`${baseId}-heading`}>
       <div className="shell relative">
         {/* Header: headline left, subhead right. */}
         <Reveal className="grid gap-6 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:items-end lg:gap-12">
@@ -70,21 +70,20 @@ export function AiTrained() {
         </Reveal>
 
         {/* Tools strip between hairlines. */}
-        <div className="mt-10 flex flex-col gap-4 border-y border-ink/10 py-5 md:flex-row md:items-center md:gap-8">
+        <div className="section-gap flex flex-col gap-4 border-y border-ink/10 py-5 md:flex-row md:items-center md:gap-8">
           <p className="eyebrow shrink-0 text-xs tracking-[0.16em] text-ink/70">{aiTrained.toolsLabel}</p>
           <ul className="flex flex-1 flex-wrap items-center justify-between gap-x-6 gap-y-3">
             {aiTrained.tools.map((tool: any) => (
               <li key={tool.name} className="flex items-center gap-2.5 text-base font-semibold text-ink">
-                <span className="grid h-9 w-9 place-items-center rounded-lg border border-ink/10 bg-white">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={tool.icon}
-                    alt=""
-                    width={20}
-                    height={20}
-                    className={`h-5 w-5 ${tool.mono ? "invert" : ""}`}
-                  />
-                </span>
+                {/* No box behind the icon, original colors (10/14 feedback). */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={tool.icon}
+                  alt=""
+                  width={24}
+                  height={24}
+                  className={`h-6 w-6 ${tool.mono ? "invert" : ""}`}
+                />
                 {tool.name}
               </li>
             ))}

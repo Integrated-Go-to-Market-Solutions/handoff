@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import { listDocs } from "@/lib/tina/files";
 import { loadService } from "@/lib/tina/load";
@@ -9,10 +10,15 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const payload = await loadService((await params).slug);
-  const service = payload?.data.service as { name?: string; subhead?: string } | undefined;
+  const { slug } = await params;
+  const payload = await loadService(slug);
+  const service = payload?.data.service as { name?: string; subhead?: string; seoTitle?: string; seoDescription?: string } | undefined;
   if (!service) return {};
-  return { title: `${service.name} | Handoff`, description: service.subhead };
+  return pageMetadata(
+    `/services/${slug}`,
+    service.seoTitle || `${service.name} | Handoff`,
+    service.seoDescription || service.subhead,
+  );
 }
 
 export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {

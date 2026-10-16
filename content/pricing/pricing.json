@@ -1,5 +1,5 @@
 {
-  "title": "Pricing | Handoff",
+  "title": "Pricing | Direct Hire vs. Managed Staffing | Handoff",
   "intro": {
     "headline": "Two ways to work together",
     "subhead": "Pick the model that fits how you want to bring on talent. Both run on the same Hands-Off Hiring System.",
@@ -67,7 +67,7 @@
     "rows": [
       {
         "label": "The Hands-Off Hiring System",
-        "note": "Sourcing, the Vet, and a shortlist of two for each role",
+        "note": "Sourcing, the Vet (skills, English, AI fluency) and a shortlist of two",
         "values": [
           {
             "kind": "check",
@@ -82,23 +82,7 @@
         ]
       },
       {
-        "label": "Talent screened for skills, English, and AI fluency",
-        "note": "",
-        "values": [
-          {
-            "kind": "check",
-            "text": "",
-            "accent": false
-          },
-          {
-            "kind": "check",
-            "text": "",
-            "accent": false
-          }
-        ]
-      },
-      {
-        "label": "Work in your time zone, with client-ready English",
+        "label": "Talent in your time zone",
         "note": "",
         "values": [
           {
@@ -115,7 +99,7 @@
       },
       {
         "label": "The guarantee",
-        "note": "$1,000 off your next search if none of the first four fits",
+        "note": "A replacement at no cost if your hire doesn't work out within 90 days",
         "values": [
           {
             "kind": "check",
@@ -226,22 +210,6 @@
         ]
       },
       {
-        "label": "Retention support",
-        "note": "",
-        "values": [
-          {
-            "kind": "dash",
-            "text": "",
-            "accent": false
-          },
-          {
-            "kind": "check",
-            "text": "",
-            "accent": false
-          }
-        ]
-      },
-      {
         "label": "Best for",
         "note": "",
         "values": [
@@ -258,5 +226,6 @@
         ]
       }
     ]
-  }
+  },
+  "seoDescription": "Pick the model that fits how you want to bring on talent. Both run on the same Hands-Off Hiring System. Talent salaries start at $1,600/month."
 }

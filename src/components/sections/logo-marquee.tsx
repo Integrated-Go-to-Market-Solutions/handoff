@@ -31,24 +31,28 @@ export function LogoMarquee({
   const track = (
     <div className="marquee-mask relative overflow-hidden">
       <div
-        className="marquee-track flex w-max items-center gap-20 px-10"
+        className="marquee-track flex w-max items-center gap-14 px-7"
         style={durationSeconds ? { animationDuration: `${durationSeconds}s` } : undefined}
       >
         {row.map((logo, i) =>
           logo.hasImage ? (
             // Wide wordmarks get a shorter box than stacked logos, so a
             // long name doesn't dwarf an icon-over-name logo (10/13).
+            // Logos are monochrome on every background (10/14 feedback,
+            // replacing the 10/13 call for color).
+            // Everything here is 70% of its 10/13 size: "reduce homepage
+            // logo sizes by at least 30%" (10/14 feedback).
             <div
               key={`${logo.slug}-${i}`}
-              className="grid h-24 w-55 shrink-0 place-items-center transition-transform duration-500 hover:scale-105"
+              className="grid h-17 w-38 shrink-0 place-items-center transition-transform duration-500 hover:scale-105"
             >
-              <div className={`relative w-full ${logo.stacked ? "h-21" : "h-12"}`}>
+              <div className={`relative w-full ${logo.stacked ? "h-15" : "h-8.5"}`}>
               <Image
                 src={logo.image}
                 alt={logo.name}
                 fill
-                sizes="220px"
-                className={`object-contain object-center ${onDark ? "opacity-80 grayscale invert" : ""}`}
+                sizes="160px"
+                className={`object-contain object-center grayscale ${onDark ? "opacity-80 invert" : ""}`}
               />
               </div>
             </div>
@@ -58,9 +62,9 @@ export function LogoMarquee({
             // instead of a broken image or a fabricated mark.
             <div
               key={`${logo.slug}-${i}`}
-              className="grid h-24 w-65 shrink-0 place-items-center transition-transform duration-500 hover:scale-105"
+              className="grid h-17 w-45 shrink-0 place-items-center transition-transform duration-500 hover:scale-105"
             >
-              <span className={`display text-xl ${onDark ? "text-bone/80" : "text-ink/70"}`}>{logo.name}</span>
+              <span className={`display text-sm ${onDark ? "text-bone/80" : "text-ink/70"}`}>{logo.name}</span>
             </div>
           ),
         )}

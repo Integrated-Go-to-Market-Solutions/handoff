@@ -32,6 +32,8 @@ function initials(name: string) {
 
 function VideoCard({
   company,
+  person,
+  linkedin,
   focus,
   poster,
   preview,
@@ -39,6 +41,8 @@ function VideoCard({
   onOpen,
 }: {
   company: string;
+  person?: string;
+  linkedin?: string;
   focus: string;
   poster: string;
   preview: string;
@@ -102,9 +106,21 @@ function VideoCard({
           Watch
         </span>
       </button>
-      {/* Text wordmark until the real logo files arrive. */}
-      <figcaption className="mt-4 text-center font-sans text-base font-bold uppercase tracking-[0.18em] text-ink/80 md:text-lg">
+      {/* Text wordmark until the real logo files arrive. The LinkedIn icon
+          matches the quote cards (Handoff, 10/15). */}
+      <figcaption className="mt-4 flex items-center justify-center gap-3 text-center font-sans text-base font-bold uppercase tracking-[0.18em] text-ink/80 md:text-lg">
         {company}
+        {linkedin && (
+          <a
+            href={linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${person || company} on LinkedIn (opens in a new tab)`}
+            className="shrink-0 rounded-full transition-transform duration-300 hover:scale-110 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cyan/40 motion-reduce:transition-none motion-reduce:hover:scale-100"
+          >
+            <LinkedInMark />
+          </a>
+        )}
       </figcaption>
     </figure>
   );
@@ -306,6 +322,9 @@ function QuoteCarousel({ reduced }: { reduced: boolean }) {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={`${slot.name} on LinkedIn (opens in a new tab)`}
+                        // The looping copy is inert already; tabIndex also
+                        // covers older browsers and static checkers (10/16 audit).
+                        tabIndex={copy === 1 ? -1 : undefined}
                         className="shrink-0 rounded-full transition-transform duration-300 hover:scale-110 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cyan/40 motion-reduce:transition-none motion-reduce:hover:scale-100"
                       >
                         <LinkedInMark />
@@ -371,7 +390,7 @@ export function ClientQuotes() {
   return (
     <section
       id="testimonials"
-      className="relative scroll-mt-18 overflow-hidden bg-bone pb-24 pt-14 text-ink md:pb-34 md:pt-20"
+      className="relative scroll-mt-18 overflow-hidden bg-bone section-space text-ink"
       aria-label="Client quotes"
     >
       <div className="shell relative">
@@ -383,7 +402,7 @@ export function ClientQuotes() {
             reveal for the whole row, so cards swiped in later aren't left
             waiting on their own entrance. */}
         <Reveal>
-          <div className="-mx-5 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 [scrollbar-width:none] md:mx-auto md:mt-12 md:grid md:max-w-5xl md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0 md:pb-0 [&::-webkit-scrollbar]:hidden">
+          <div className="-mx-5 section-gap flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 [scrollbar-width:none] md:mx-auto md:grid md:max-w-5xl md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0 md:pb-0 [&::-webkit-scrollbar]:hidden">
             {clientQuotes.videos.map((video: any) => (
               <div key={video.company} className="w-[78%] shrink-0 snap-center sm:w-[60%] md:w-auto">
                 <VideoCard {...video} reduced={reduced} onOpen={() => setPlaying(video)} />

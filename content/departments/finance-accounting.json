@@ -9,6 +9,40 @@
     "Financial Analyst",
     "Controller (senior)"
   ],
+  "intro": "Bookkeepers, accountants and analysts who keep your books current, close the month on time and get your numbers ready for decisions.",
+  "image": "/images/team-group.webp",
+  "roleDetails": [
+    {
+      "role": "Bookkeeper",
+      "icon": "clipboard",
+      "text": "Keeps your books current: categorizes transactions, reconciles bank and card accounts, and gets each month ready to close in QuickBooks or Xero."
+    },
+    {
+      "role": "Staff Accountant",
+      "icon": "layers",
+      "text": "Handles journal entries, account reconciliations and the month-end close, and keeps the general ledger clean for your controller or CPA."
+    },
+    {
+      "role": "AP/AR Specialist",
+      "icon": "envelope",
+      "text": "Processes vendor bills and payment runs, sends invoices, follows up on what's overdue, and keeps both ledgers matched."
+    },
+    {
+      "role": "Payroll Specialist",
+      "icon": "calendar",
+      "text": "Runs payroll on schedule, tracks hours, deductions and benefits, and keeps filings in order with your payroll provider."
+    },
+    {
+      "role": "Financial Analyst",
+      "icon": "trendingUp",
+      "text": "Builds the budgets, forecasts and monthly reports that show leadership where the money is going and what's coming next."
+    },
+    {
+      "role": "Controller (senior)",
+      "icon": "award",
+      "text": "Owns financial reporting and the close process, sets up controls, and gives leadership a clear view of the numbers."
+    }
+  ],
   "video": {
     "src": "",
     "poster": ""

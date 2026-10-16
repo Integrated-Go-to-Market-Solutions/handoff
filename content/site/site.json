@@ -3,6 +3,7 @@
   "tagline": "The team behind your team.",
   "bookCall": "/contact",
   "bookingUrl": "/contact",
+  "discoveryCallUrl": "https://cal.com/handoffdavid/discovery-call",
   "seeTalent": "/roles",
   "seo": {
     "title": "Handoff | The Best of LATAM. AI Powered People. Here to Stay.",
@@ -18,8 +19,8 @@
     "label": "Talk to our team"
   },
   "footer": {
-    "email": "hello@handoff.com",
-    "emailLabel": "hello@handoff.com",
+    "email": "hello@talenthandoff.com",
+    "emailLabel": "hello@talenthandoff.com",
     "talkLabel": "Talk to Our Team",
     "legal": "All rights reserved.",
     "company": [
@@ -35,7 +36,8 @@
         "label": "Careers",
         "href": "/careers"
       }
-    ]
+    ],
+    "privacyLabel": "Privacy Policy"
   },
   "marqueeCaption": "Trusted by teams that keep moving",
   "navLabels": {
@@ -90,22 +92,12 @@
     }
   ],
   "cta": {
-    "headline": "Stop being the bottleneck.",
+    "headline": "Focus on what you do best. Hand off the rest.",
     "headlineParts": {
-      "before": "Stop being the",
-      "accent": "bottleneck."
+      "before": "Focus on what you do best.",
+      "accent": "Hand off the rest."
     },
-    "closing": "Let Handoff take it from here.",
-    "jam": [
-      "Invoices",
-      "Scheduling",
-      "Follow-ups",
-      "Reporting",
-      "Hiring",
-      "Onboarding",
-      "Payroll",
-      "Inbox"
-    ],
+    "closing": "",
     "book": "Book a call",
     "body": "Bring the role you cannot get off your plate. One call is usually enough to scope it, pick the model and give you a real timeline.",
     "primary": {
@@ -116,5 +108,9 @@
       "label": "Talk to Our Team",
       "href": "/contact"
     }
+  },
+  "analytics": {
+    "gtmId": "GTM-K462KSGH",
+    "ga4Id": ""
   }
 }

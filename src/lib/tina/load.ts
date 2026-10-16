@@ -84,6 +84,13 @@ export async function loadCareers() {
   );
 }
 
+export async function loadPrivacy() {
+  return query(
+    (client) => client.queries.privacy({ relativePath: "privacy.json" }, { fetchOptions }) as Promise<QueryResult>,
+    () => tinaDoc("privacy", "privacy/privacy.json", readDoc("privacy/privacy.json")),
+  );
+}
+
 export async function loadContact() {
   return query(
     (client) => client.queries.contact({ relativePath: "contact.json" }, { fetchOptions }) as Promise<QueryResult>,

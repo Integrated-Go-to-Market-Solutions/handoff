@@ -1,0 +1,135 @@
+{
+  "title": "Privacy policy | How Handoff handles your information",
+  "seoDescription": "How Handoff collects, uses and protects information from www.talenthandoff.com, including the contact form, call booking, job applications and analytics.",
+  "headline": "Privacy policy",
+  "effectiveDate": "[EFFECTIVE DATE]",
+  "draft": true,
+  "draftNotice": "Draft for legal review. This policy is not in effect yet. Items in [brackets] need Handoff's confirmation.",
+  "sections": [
+    {
+      "heading": "Who we are",
+      "paragraphs": [
+        "This policy explains how [HANDOFF LEGAL ENTITY NAME] (\"Handoff,\" \"we,\" \"us\") collects, uses and shares information through our website, www.talenthandoff.com. Handoff places full-time Latin American professionals with US companies.",
+        "If you have a question about this policy or your information, contact us at [PRIVACY EMAIL]."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Information you give us",
+      "paragraphs": ["We collect the information you choose to send us:"],
+      "bullets": [
+        "Contact form: your name, work email, company, the role you're hiring for, how many people you need, your timeline and any message you add.",
+        "Discovery call booking: after you send the contact form, you can book a call through Cal.com. Your name, email and form answers are passed to the booking so you don't have to type them again, along with the time you pick.",
+        "Job applications: our open positions page shows our job board from Ashby. When you apply, Ashby collects your application for us, and Ashby's privacy policy also applies.",
+        "Emails you send to us at hello@talenthandoff.com."
+      ]
+    },
+    {
+      "heading": "Information collected automatically",
+      "paragraphs": [
+        "When you visit the site, we use Google Analytics, loaded through Google Tag Manager, to understand how the site is used. It records things like the pages you visit, how you arrived, your browser and device type, your approximate location based on your IP address, and some interactions, such as scrolling, clicks on outside links and video plays. Google Analytics uses cookies to do this.",
+        "Our hosting provider, Vercel, keeps standard server logs, including IP addresses and browser details, to run and secure the site."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "How we use your information",
+      "paragraphs": ["We use the information described above to:"],
+      "bullets": [
+        "Answer your inquiry and schedule the calls you book",
+        "Provide our recruiting and staffing services, including reviewing job applications",
+        "Understand how the site is used and improve it",
+        "Keep the site secure and prevent misuse",
+        "Meet our legal obligations",
+        "[CONFIRM: Send you follow-up emails about our services. You can opt out at any time.]"
+      ]
+    },
+    {
+      "heading": "How we share your information",
+      "paragraphs": [
+        "[CONFIRM: We don't sell your personal information.] We share it only with the service providers that help us run the site and our business, and only as needed for them to do that work:"
+      ],
+      "bullets": [
+        "Vercel (website hosting)",
+        "Google (Google Analytics, Google Tag Manager and Google Workspace email)",
+        "Cal.com (call scheduling)",
+        "Ashby (job applications)",
+        "[ANY OTHER SERVICES, FOR EXAMPLE A CRM SUCH AS HUBSPOT]"
+      ]
+    },
+    {
+      "heading": "Other disclosures",
+      "paragraphs": [
+        "We may also share information if the law requires it, to protect our rights or the safety of others, or as part of a merger, acquisition or sale of all or part of our business."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Cookies and your choices",
+      "paragraphs": [
+        "You can block or delete cookies in your browser settings, and you can opt out of Google Analytics with Google's browser add-on at tools.google.com/dlpage/gaoptout. The site still works without these cookies.",
+        "[CONFIRM: How the site responds to Do Not Track and Global Privacy Control signals.]"
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "How long we keep information",
+      "paragraphs": [
+        "We keep personal information only as long as we need it for the purposes above, or longer if the law requires it. Google Analytics keeps event data for [RETENTION PERIOD, FOR EXAMPLE 14 MONTHS]. [CONFIRM: How long contact form and application data are kept.]"
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Your rights",
+      "paragraphs": [
+        "Depending on where you live, you may have the right to access, correct or delete your personal information, to object to or limit how we use it, and to receive a copy of it. This includes rights under US state privacy laws, such as California's, Brazil's LGPD, and data protection laws in other countries where we work, such as [COUNTRIES, FOR EXAMPLE COLOMBIA AND MEXICO].",
+        "To make a request, email [PRIVACY EMAIL]. We may need to confirm your identity before we act on it. We won't treat you differently for using these rights."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "International transfers",
+      "paragraphs": [
+        "We work with people in the United States and Latin America, and our service providers may process information in the United States and other countries. [CONFIRM: Where Handoff stores candidate and client data, and the safeguards used for transfers.]"
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Security",
+      "paragraphs": [
+        "We use reasonable technical and organizational measures to protect your information. No website or system is completely secure, so please don't send sensitive information, such as government ID numbers or financial details, through the contact form or by email."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Children",
+      "paragraphs": [
+        "The site is meant for businesses and working professionals. It isn't directed at anyone under 18, and we don't knowingly collect their information."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Other websites",
+      "paragraphs": [
+        "The site links to other services, such as LinkedIn, YouTube, Instagram, Cal.com and Ashby. Their own privacy policies apply when you use them."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Changes to this policy",
+      "paragraphs": [
+        "We may update this policy. When we do, we'll change the effective date at the top of this page."
+      ],
+      "bullets": []
+    },
+    {
+      "heading": "Contact us",
+      "paragraphs": [
+        "[HANDOFF LEGAL ENTITY NAME]",
+        "[MAILING ADDRESS]",
+        "[PRIVACY EMAIL]"
+      ],
+      "bullets": []
+    }
+  ]
+}

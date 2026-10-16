@@ -18,23 +18,16 @@ import { tinaField, useContent } from "@/components/tina/content";
 export function Vibes({
   order,
   slider = false,
-  tightTop = false,
 }: {
   /** Clip indexes in display order; defaults to the content order (used by /v2). */
   order?: number[];
   /** One-at-a-time player with the middle reel as the main one (homepage). */
   slider?: boolean;
-  /** Less space above, when it follows another dark section (homepage). /v2 keeps the default. */
-  tightTop?: boolean;
 } = {}) {
   const { vibes } = useContent();
   const clips = order ? order.map((i) => vibes.clips[i]) : vibes.clips;
   return (
-    <section
-      className={`relative overflow-hidden bg-ink text-bone ${
-        tightTop ? "pb-24 pt-10 md:pb-34 md:pt-14" : "section-py"
-      }`}
-    >
+    <section className="relative overflow-hidden bg-ink section-space text-bone">
       <div className="shell relative z-10">
         <Reveal>
           <h2 data-tina-field={tinaField(vibes, "headline")} className="display text-[clamp(2.1rem,4.8vw,3.7rem)]">
@@ -48,11 +41,11 @@ export function Vibes({
         </Reveal>
 
         {slider ? (
-          <Reveal className="mt-14">
+          <Reveal className="section-gap">
             <VibesPlayer clips={clips} />
           </Reveal>
         ) : (
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 md:grid-cols-3">
+          <div className="section-gap grid gap-5 sm:grid-cols-2 md:grid-cols-3">
             {clips.map((clip: any, i: number) => (
               <Reveal key={clip.slug} delay={i * 110}>
                 <VideoLoop

@@ -9,6 +9,40 @@
     "Chat/Email Support Specialist",
     "Order & Returns Support Specialist"
   ],
+  "intro": "Support reps and success managers who answer customers quickly, solve problems on the first touch and keep accounts happy.",
+  "image": "/images/industries/ecommerce.webp",
+  "roleDetails": [
+    {
+      "role": "Customer Support Representative",
+      "icon": "chat",
+      "text": "Answers customer questions by phone, email and chat, solves problems and logs every case in your help desk."
+    },
+    {
+      "role": "Customer Success Manager",
+      "icon": "handshake",
+      "text": "Onboards new customers, checks in on how they're doing, and works to keep and grow the account."
+    },
+    {
+      "role": "Technical Support Specialist",
+      "icon": "search",
+      "text": "Troubleshoots product and technical issues, walks customers through fixes and escalates bugs with clear notes."
+    },
+    {
+      "role": "Help Desk/IT Support Specialist",
+      "icon": "bell",
+      "text": "Supports your internal team with accounts, devices, access and software issues."
+    },
+    {
+      "role": "Chat/Email Support Specialist",
+      "icon": "envelope",
+      "text": "Handles written support at volume, with clear, on-brand replies and fast response times."
+    },
+    {
+      "role": "Order & Returns Support Specialist",
+      "icon": "cart",
+      "text": "Tracks orders, handles returns, exchanges and refunds, and keeps customers updated until it's resolved."
+    }
+  ],
   "video": {
     "src": "",
     "poster": ""

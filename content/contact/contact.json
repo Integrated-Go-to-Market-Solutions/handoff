@@ -1,5 +1,5 @@
 {
-  "title": "Book a call | Handoff",
+  "title": "Book a call | Talk to our team | Handoff",
   "description": "Tell us the role you cannot get off your plate. One call to scope it, pick the right engagement model and get a realistic timeline.",
   "eyebrow": "Book a call",
   "headline": "Tell us the role you",
@@ -48,8 +48,9 @@
     "sending": "Sending…",
     "success": {
       "title": "Thanks, we've got it.",
-      "body": "We'll be in touch within one business day to set up the call."
+      "body": "Pick a time for your discovery call below. Your answers are already in the booking.",
+      "bookLink": "Open the booking page in a new tab"
     },
-    "error": "Sorry, that didn't go through. Please try again, or email hello@handoff.com and we'll pick it up there."
+    "error": "Sorry, that didn't go through. Please try again, or email hello@talenthandoff.com and we'll pick it up there."
   }
 }

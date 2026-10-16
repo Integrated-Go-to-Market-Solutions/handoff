@@ -1,5 +1,5 @@
 {
-  "title": "About | Handoff",
+  "title": "About Handoff | Latin American talent inside US companies",
   "headline": "Who we are",
   "lead": "Handoff places Latin America's top talent inside US companies, and stays with you after they're placed. The work is to match the right professional to your team and your culture, and to support them so they last.",
   "gap": {
@@ -49,5 +49,6 @@
     "poster": "/videos/handoff-values.jpg",
     "name": "Handoff values",
     "caption": "This is how we lead."
-  }
+  },
+  "seoDescription": "Handoff places Latin America's top talent inside US companies, and stays with you after they're placed to support them so they last."
 }

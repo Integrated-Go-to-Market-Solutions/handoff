@@ -41,12 +41,11 @@ export const socialLinks = [
 ] as const;
 
 export const cta = {
-  headline: "Stop being the bottleneck.",
-  headlineParts: { before: "Stop being the", accent: "bottleneck." },
-  /** Closing line of the animated finale. PLACEHOLDER copy. */
-  closing: "Let Handoff take it from here.",
-  /** Work items that fall down the sides of the finale. PLACEHOLDER copy. */
-  jam: ["Invoices", "Scheduling", "Follow-ups", "Reporting", "Hiring", "Onboarding", "Payroll", "Inbox"],
+  /** Handoff's slogan (10/14 call). */
+  headline: "Focus on what you do best. Hand off the rest.",
+  headlineParts: { before: "Focus on what you do best.", accent: "Hand off the rest." },
+  /** Optional line under the finale headline; blank shows none. */
+  closing: "",
   /** The finale's one button. Links to `site.bookingUrl`. */
   book: "Book a call",
   body: "Bring the role you cannot get off your plate. One call is usually enough to scope it, pick the model and give you a real timeline.",

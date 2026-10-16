@@ -144,6 +144,7 @@ type ContentSite = {
   tagline: string;
   bookCall: string;
   bookingUrl: string;
+  discoveryCallUrl?: string;
   seeTalent: string;
   seo: { title: string; description: string };
   header: { hireLabel: string; hireHref: string; joinLabel: string; joinHref: string };
@@ -153,6 +154,7 @@ type ContentSite = {
     emailLabel: string;
     talkLabel: string;
     legal: string;
+    privacyLabel?: string;
     company: { label: string; href: string }[];
   };
   marqueeCaption: string;
@@ -174,7 +176,6 @@ type ContentSite = {
     headline: string;
     headlineParts: { before: string; accent: string };
     closing: string;
-    jam: string[];
     book: string;
     body: string;
     primary: { label: string; href: string };

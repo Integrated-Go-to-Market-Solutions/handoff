@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { Models } from "@/components/sections/models";
 import { Faq } from "@/components/sections/faq";
 import { Finale } from "@/components/sections/finale";
@@ -6,8 +7,8 @@ import { loadPricing } from "@/lib/tina/load";
 
 export async function generateMetadata(): Promise<Metadata> {
   const result = await loadPricing();
-  const page = result.data.pricing as { title: string; intro: { subhead: string } };
-  return { title: page.title, description: page.intro.subhead };
+  const page = result.data.pricing as { title: string; intro: { subhead: string }; seoDescription?: string };
+  return pageMetadata("/pricing", page.title, page.seoDescription || page.intro.subhead);
 }
 
 /**
