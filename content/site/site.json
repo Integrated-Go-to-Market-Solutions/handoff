@@ -65,6 +65,11 @@
       "label": "Blog",
       "href": "#",
       "soon": true
+    },
+    {
+      "label": "Calculator",
+      "href": "#",
+      "soon": true
     }
   ],
   "socialLinks": [

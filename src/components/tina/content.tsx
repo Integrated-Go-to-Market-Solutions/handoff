@@ -59,7 +59,6 @@ export type Content = {
   careersPage: Doc;
   contactPage: Doc;
   resultsPage: Doc;
-  talentTelescopePage: Doc;
   rolesPage: Doc;
   industriesPage: Doc;
   servicesPage: Doc;
@@ -89,7 +88,6 @@ function buildContent(
   careers: any,
   contact: any,
   results: any,
-  talentTelescope: any,
   rolesPage: any,
   industriesPage: any,
   servicesPage: any,
@@ -129,7 +127,6 @@ function buildContent(
     careersPage: careers,
     contactPage: contact,
     resultsPage: results,
-    talentTelescopePage: talentTelescope,
     rolesPage,
     industriesPage,
     servicesPage,
@@ -255,7 +252,6 @@ type LiveSlice = {
   careers?: any;
   contact?: any;
   results?: any;
-  talentTelescope?: any;
   rolesPage?: any;
   industriesPage?: any;
   servicesPage?: any;
@@ -304,7 +300,6 @@ function assemble(raw: ChromePayload, siteDoc: ContentSite, live: LiveSlice = {}
     pick(raw.careers as TinaPayload, "careers", live.careers),
     pick(raw.contact as TinaPayload, "contact", live.contact),
     pick(raw.results as TinaPayload, "results", live.results),
-    pick(raw.talentTelescope as TinaPayload, "talentTelescope", live.talentTelescope),
     pick(raw.rolesPage as TinaPayload, "rolesPage", live.rolesPage),
     pick(raw.industriesPage as TinaPayload, "industriesPage", live.industriesPage),
     pick(raw.servicesPage as TinaPayload, "servicesPage", live.servicesPage),
@@ -333,7 +328,6 @@ function useAssembled(live: LiveSlice) {
       live.careers,
       live.contact,
       live.results,
-      live.talentTelescope,
       live.rolesPage,
       live.industriesPage,
       live.servicesPage,
@@ -398,13 +392,6 @@ function ContactForms({ children }: { children: React.ReactNode }) {
   const contact = usePageDoc(raw.contact as TinaPayload, true);
   const home = usePageDoc(raw.home as TinaPayload);
   const value = useAssembled({ contact: contact.data.contact, home: home.data.home });
-  return <Editor value={value}>{children}</Editor>;
-}
-
-function TalentTelescopeForms({ children }: { children: React.ReactNode }) {
-  const raw = useRaw();
-  const talentTelescope = usePageDoc(raw.talentTelescope as TinaPayload, true);
-  const value = useAssembled({ talentTelescope: talentTelescope.data.talentTelescope });
   return <Editor value={value}>{children}</Editor>;
 }
 
@@ -485,7 +472,6 @@ function PageForms({ children }: { children: React.ReactNode }) {
   if (path === "/careers") return <CareersForms>{children}</CareersForms>;
   if (path === "/contact") return <ContactForms>{children}</ContactForms>;
   if (path === "/results") return <ResultsForms>{children}</ResultsForms>;
-  if (path === "/talent-telescope") return <TalentTelescopeForms>{children}</TalentTelescopeForms>;
   if (path === "/roles") return <RolesForms>{children}</RolesForms>;
   if (path.startsWith("/roles/")) return <RoleDetailForms>{children}</RoleDetailForms>;
   if (path === "/industries") return <IndustriesForms>{children}</IndustriesForms>;

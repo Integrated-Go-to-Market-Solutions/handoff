@@ -483,8 +483,7 @@ body {
 }
 
 /* The sticky mobile CTA steps aside while the mobile menu is open. */
-html[data-menu-open] .mobile-cta,
-html[data-menu-open] .telescope-bar { display: none; }
+html[data-menu-open] .mobile-cta { display: none; }
 
 /* Finale: work items fall down the left and right edges and settle in two
    piles in the bottom corners. Settled is the default (server render, no JS,

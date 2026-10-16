@@ -98,19 +98,6 @@ export async function loadResults() {
   );
 }
 
-export async function loadTalentTelescope() {
-  return query(
-    (client) =>
-      client.queries.talentTelescope({ relativePath: "talent-telescope.json" }, { fetchOptions }) as Promise<QueryResult>,
-    () =>
-      tinaDoc(
-        "talentTelescope",
-        "talent-telescope/talent-telescope.json",
-        readDoc("talent-telescope/talent-telescope.json"),
-      ),
-  );
-}
-
 export async function loadRolesPage() {
   return query(
     (client) => client.queries.rolesPage({ relativePath: "roles-page.json" }, { fetchOptions }) as Promise<QueryResult>,
@@ -218,7 +205,6 @@ export async function loadChrome() {
     careers,
     contact,
     results,
-    talentTelescope,
     rolesPage,
     industriesPage,
     servicesPage,
@@ -238,7 +224,6 @@ export async function loadChrome() {
     loadCareers(),
     loadContact(),
     loadResults(),
-    loadTalentTelescope(),
     loadRolesPage(),
     loadIndustriesPage(),
     loadServicesPage(),
@@ -260,7 +245,6 @@ export async function loadChrome() {
     careers,
     contact,
     results,
-    talentTelescope,
     rolesPage,
     industriesPage,
     servicesPage,
