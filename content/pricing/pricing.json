@@ -210,6 +210,22 @@
         ]
       },
       {
+        "label": "Retention support",
+        "note": "",
+        "values": [
+          {
+            "kind": "dash",
+            "text": "",
+            "accent": false
+          },
+          {
+            "kind": "check",
+            "text": "",
+            "accent": false
+          }
+        ]
+      },
+      {
         "label": "Best for",
         "note": "",
         "values": [
