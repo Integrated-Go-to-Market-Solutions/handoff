@@ -1,5 +1,6 @@
 "use client";
 
+import { Fragment } from "react";
 import Image from "next/image";
 import { Button, CtaNote, Eyebrow } from "../brand";
 import { tinaField, useContent } from "@/components/tina/content";
@@ -44,21 +45,26 @@ export function HeroBright({ subhead }: { subhead?: string } = {}) {
               to stay on one line from phones up. */}
           <span className="hero-rise block whitespace-nowrap text-[clamp(1.5rem,calc((100vw-56px)/13.5),6rem)]">
             {hero.headlineLead.before} <span className="text-cyan">{hero.headlineLead.accent}</span>
-          </span>
+          </span>{" "}
+          {/* Real spaces between the lines and phrases (10/16 site audit), so
+              search engines and screen readers don't read "LATAM.AI" or
+              "People.Here" as one word. */}
           <span className="mt-2 block whitespace-nowrap text-[clamp(1rem,calc((100vw-56px)/19),3.6rem)] md:mt-3">
             {hero.headlineLines.slice(1).map((line: any, i: number) => (
-              <span
-                key={line.text}
-                className={`hero-rise inline-block ${i > 0 ? "ml-[0.35em]" : ""} ${
-                  line.tone === "cyan" ? "hero-shine" : ""
-                }`}
-                style={{
-                  animationDelay:
-                    line.tone === "cyan" ? `${0.25 + i * 0.2}s, ${1.4 + i * 0.2}s` : `${0.25 + i * 0.2}s`,
-                }}
-              >
-                {line.text}
-              </span>
+              <Fragment key={line.text}>
+                {i > 0 && " "}
+                <span
+                  className={`hero-rise inline-block ${i > 0 ? "ml-[0.1em]" : ""} ${
+                    line.tone === "cyan" ? "hero-shine" : ""
+                  }`}
+                  style={{
+                    animationDelay:
+                      line.tone === "cyan" ? `${0.25 + i * 0.2}s, ${1.4 + i * 0.2}s` : `${0.25 + i * 0.2}s`,
+                  }}
+                >
+                  {line.text}
+                </span>
+              </Fragment>
             ))}
           </span>
         </h1>

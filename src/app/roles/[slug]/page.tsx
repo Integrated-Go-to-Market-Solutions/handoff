@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import { listDocs } from "@/lib/tina/files";
 import { loadDepartment } from "@/lib/tina/load";
@@ -9,13 +10,15 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const payload = await loadDepartment((await params).slug);
+  const { slug } = await params;
+  const payload = await loadDepartment(slug);
   const department = payload?.data.department as { name?: string; roles?: string[] } | undefined;
   if (!department) return {};
-  return {
-    title: `${department.name} roles | Handoff`,
-    description: `${department.name} roles Handoff places: ${(department.roles || []).join(", ")}.`,
-  };
+  return pageMetadata(
+    `/roles/${slug}`,
+    `${department.name} roles | Handoff`,
+    `${department.name} roles Handoff places: ${(department.roles || []).join(", ")}.`,
+  );
 }
 
 export default async function DepartmentPage({ params }: { params: Promise<{ slug: string }> }) {

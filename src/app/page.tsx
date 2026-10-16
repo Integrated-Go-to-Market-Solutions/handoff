@@ -1,3 +1,6 @@
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
+import { loadSite } from "@/lib/tina/load";
 import { HeroBright } from "@/components/sections/hero-bright";
 import { CredibilityStrip } from "@/components/sections/credibility-strip";
 import { KpiBand } from "@/components/sections/kpi-band";
@@ -27,6 +30,11 @@ import { CtaBand } from "@/components/sections/cta-band";
  * The "You are the bottleneck" Problem section was removed 2026-10-05 per
  * direct instruction. Its component and copy stay in the repo, unused.
  */
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = ((await loadSite()).data.site as { seo: { title: string; description: string } }).seo;
+  return pageMetadata("/", seo.title, seo.description);
+}
+
 export default function Home() {
   return (
     <>
