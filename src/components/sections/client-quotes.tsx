@@ -322,6 +322,9 @@ function QuoteCarousel({ reduced }: { reduced: boolean }) {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={`${slot.name} on LinkedIn (opens in a new tab)`}
+                        // The looping copy is inert already; tabIndex also
+                        // covers older browsers and static checkers (10/16 audit).
+                        tabIndex={copy === 1 ? -1 : undefined}
                         className="shrink-0 rounded-full transition-transform duration-300 hover:scale-110 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cyan/40 motion-reduce:transition-none motion-reduce:hover:scale-100"
                       >
                         <LinkedInMark />
