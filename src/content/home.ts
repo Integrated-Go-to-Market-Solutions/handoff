@@ -12,7 +12,7 @@ export const hero = {
     { text: "The best of" },
     { text: "LATAM.", tone: "royal" },
     { text: "AI Powered People." },
-    { text: "Here to stay.", tone: "cyan" },
+    { text: "Here to Stay.", tone: "cyan" },
   ] as { text: string; tone?: "royal" | "cyan" }[],
   /**
    * One entry per line in the live hero. Line 1 is split so "LATAM." can
@@ -22,7 +22,7 @@ export const hero = {
   headlineLines: [
     { text: "Hire the best of LATAM." },
     { text: "AI Powered People." },
-    { text: "Here to stay.", tone: "cyan" },
+    { text: "Here to Stay.", tone: "cyan" },
   ] as { text: string; tone?: "cyan" }[],
   imageAlt: "The Handoff team",
   /** Tom's hero copy (10/7), with "Latin America talent" corrected to "Latin American talent". */
