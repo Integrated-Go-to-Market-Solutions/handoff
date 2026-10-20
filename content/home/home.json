@@ -251,6 +251,13 @@
       "image": "/images/logos/doorspot.webp",
       "hasImage": true,
       "stacked": false
+    },
+    {
+      "slug": "quest-relocation",
+      "name": "Quest Relocation",
+      "image": "/images/logos/quest-relocation-mono.webp",
+      "hasImage": true,
+      "stacked": true
     }
   ],
   "aiTrained": {

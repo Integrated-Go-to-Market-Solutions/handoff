@@ -244,6 +244,7 @@ export const logos = [
   { slug: "do-good-cfo", name: "Do Good CFO", hasImage: true, stacked: true },
   { slug: "igtms", name: "IGTMS", hasImage: true },
   { slug: "doorspot", name: "DoorSpot", hasImage: true },
+  { slug: "quest-relocation", name: "Quest Relocation", hasImage: true, stacked: true },
 ] as const;
 
 /**
