@@ -669,6 +669,7 @@ const testimonials = singleton("testimonials", "Testimonials", "testimonials", "
       str("name", "Name"),
       str("title", "Title"),
       str("company", "Company"),
+      img("photo", "Headshot", "A square headshot. Shows in the round badge next to the name; the initials show without one."),
       str("linkedin", "LinkedIn", "A full https link, or leave the placeholder until you have the real profile."),
     ],
   },

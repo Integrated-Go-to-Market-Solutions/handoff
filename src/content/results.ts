@@ -2,8 +2,8 @@
 /**
  * Client proof. Five client-approved quotes, verbatim (the em dashes in
  * Robert Horsley's quote are the approved wording, an exception to the
- * no-em-dash rule). No photos or LinkedIn links yet, so cards show an
- * initials avatar and `linkedin` stays empty until real profiles land.
+ * no-em-dash rule). Headshots arrived from Handoff on 10/15; a card
+ * without a `photo` falls back to an initials avatar.
  */
 export const clientQuotes = {
   eyebrow: "In their words",
@@ -34,6 +34,7 @@ export const clientQuotes = {
       name: "Steve Frey",
       title: "CEO",
       company: "Oasis",
+      photo: "/images/testimonials/steve-frey.webp",
       linkedin: "https://www.linkedin.com/",
     },
     {
@@ -43,6 +44,7 @@ export const clientQuotes = {
       name: "Robert Horsley",
       title: "Co-Founder & COO",
       company: "WorkRight",
+      photo: "/images/testimonials/robert-horsley.webp",
       linkedin: "https://www.linkedin.com/",
     },
     {
@@ -52,6 +54,7 @@ export const clientQuotes = {
       name: "Bob Rosing",
       title: "CEO",
       company: "Dwellworks",
+      photo: "/images/testimonials/bob-rosing.webp",
       linkedin: "https://www.linkedin.com/",
     },
     {
@@ -61,6 +64,7 @@ export const clientQuotes = {
       name: "Ryan Hoover",
       title: "Founder & CEO",
       company: "United Corporate Housing",
+      photo: "/images/testimonials/ryan-hoover.webp",
       linkedin: "https://www.linkedin.com/",
     },
   ],
