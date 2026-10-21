@@ -68,15 +68,15 @@
       "name": "Indira Priscilla",
       "role": "Sales Development Representative",
       "department": "sales",
-      "salary": "$1,700/mo",
-      "youtubeId": "Lmz0EhBMWCE"
+      "salary": "$2,500/mo",
+      "youtubeId": "SN-ugC7Wjjs"
     },
     {
       "name": "Luisa Bosch",
       "role": "Operations Manager",
       "department": "admin-operations",
-      "salary": "$3,700/mo",
-      "youtubeId": "PFyFHUqFR6s"
+      "salary": "$2,400/mo",
+      "youtubeId": "EWtEo6iaKCk"
     },
     {
       "name": "Arturo Cedillo",
@@ -96,8 +96,8 @@
       "name": "Maria Toraya",
       "role": "Relocation Coordinator",
       "department": "corporate-relocation",
-      "salary": "$2,900/mo",
-      "youtubeId": "-uKFa_MSFAw"
+      "salary": "$2,200/mo",
+      "youtubeId": "hmQ6hcTdRls"
     }
   ]
 }
