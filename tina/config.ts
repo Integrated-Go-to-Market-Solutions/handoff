@@ -889,6 +889,21 @@ const rolesPage = singleton("rolesPage", "Roles page", "roles-page", "/roles", [
   str("closing", "Closing line"),
   str("otherDepartments", "Other departments heading"),
   str("cta", "Button"),
+  str("videosHint", "Swipe hint (phones)"),
+  {
+    type: "object",
+    name: "videos",
+    label: "Talent videos (hero)",
+    list: true,
+    ui: named("name"),
+    fields: [
+      str("name", "Stage name"),
+      str("role", "Role"),
+      str("department", "Department", "The department's page name, like finance-accounting. Cards are grouped in this order."),
+      str("salary", "Monthly salary", "As shown, like $2,200/mo."),
+      str("youtubeId", "YouTube video ID", "The code after /shorts/ in the YouTube link."),
+    ],
+  },
 ]);
 
 const industriesPage = singleton("industriesPage", "Industries page", "industries-page", "/industries", [

@@ -5,5 +5,99 @@
   "subhead": "We fill roles across departments and seniority, from specialists to department heads. These are the ones we place most.",
   "closing": "This is a sample of the roles we fill most, not the limit. If the one you need is not here, tell us.",
   "otherDepartments": "Other departments",
-  "cta": "Book a call"
+  "cta": "Book a call",
+  "videosHint": "Swipe to see more",
+  "videos": [
+    {
+      "name": "Ximena L",
+      "role": "Data Analyst",
+      "department": "data-ai",
+      "salary": "$3,400/mo",
+      "youtubeId": "l5AC9ppsebc"
+    },
+    {
+      "name": "Angélica Martinez",
+      "role": "AI & Automations Developer",
+      "department": "data-ai",
+      "salary": "$4,900/mo",
+      "youtubeId": "qH9AHleqo5M"
+    },
+    {
+      "name": "Gabriel Peralta",
+      "role": "Full Stack Engineer",
+      "department": "software-engineering",
+      "salary": "$6,200/mo",
+      "youtubeId": "5nimQEA67RE"
+    },
+    {
+      "name": "Victor Patrón",
+      "role": "Customer Success Manager",
+      "department": "customer-support",
+      "salary": "$3,400/mo",
+      "youtubeId": "Msh2DAu9frI"
+    },
+    {
+      "name": "Dania Guzmán",
+      "role": "Senior Bookkeeper",
+      "department": "finance-accounting",
+      "salary": "$2,300/mo",
+      "youtubeId": "lGr16AThq40"
+    },
+    {
+      "name": "Sofía Rivero",
+      "role": "Accounting Manager",
+      "department": "finance-accounting",
+      "salary": "$4,200/mo",
+      "youtubeId": "4IrLH3XKPmk"
+    },
+    {
+      "name": "Jessica Cardenas",
+      "role": "AP/AR Specialist",
+      "department": "finance-accounting",
+      "salary": "$1,300/mo",
+      "youtubeId": "UHYfbw_RV9Y"
+    },
+    {
+      "name": "Flavio Moraes",
+      "role": "Digital Marketing Manager",
+      "department": "marketing",
+      "salary": "$3,700/mo",
+      "youtubeId": "cFZ8xClehuo"
+    },
+    {
+      "name": "Indira Priscilla",
+      "role": "Sales Development Representative",
+      "department": "sales",
+      "salary": "$1,700/mo",
+      "youtubeId": "Lmz0EhBMWCE"
+    },
+    {
+      "name": "Luisa Bosch",
+      "role": "Operations Manager",
+      "department": "admin-operations",
+      "salary": "$3,700/mo",
+      "youtubeId": "PFyFHUqFR6s"
+    },
+    {
+      "name": "Arturo Cedillo",
+      "role": "Reservations Manager",
+      "department": "corporate-housing-mtr",
+      "salary": "$2,200/mo",
+      "youtubeId": "F9SpWBwRzw4"
+    },
+    {
+      "name": "Alejandra Diaz",
+      "role": "Guest Services Specialist",
+      "department": "corporate-housing-mtr",
+      "salary": "$1,800/mo",
+      "youtubeId": "RSROlJAq8ro"
+    },
+    {
+      "name": "Maria Toraya",
+      "role": "Relocation Coordinator",
+      "department": "corporate-relocation",
+      "salary": "$2,900/mo",
+      "youtubeId": "-uKFa_MSFAw"
+    }
+  ]
 }
