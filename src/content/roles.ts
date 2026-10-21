@@ -161,14 +161,13 @@ export const departments: readonly Department[] = [
   },
   {
     slug: "admin-operations",
-    name: "VAs, Admin & Operations",
+    name: "Executive & Operations Support",
     roles: [
       "Executive Assistant",
       "Administrative Assistant",
       "Operations Coordinator",
       "Operations Manager",
       "Project Manager",
-      "General Virtual Assistant",
     ],
   },
   {

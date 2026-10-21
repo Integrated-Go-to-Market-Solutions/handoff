@@ -17,7 +17,7 @@
       "name": "Managed Staffing",
       "forWho": "Companies building a team",
       "price": "~$3,500/month",
-      "terms": "Supervised, managed team members",
+      "terms": "We employ and support them; you direct the work",
       "copy": "We recruit, employ, train, and performance manage, with extra structure and accountability. You get the outcome and one point of accountability. Ideal for higher-risk functions.",
       "points": [
         "Handoff owns recruiting, employment and management",
@@ -37,17 +37,17 @@
     },
     {
       "tag": "Ready to Go",
-      "name": "Recruitment & Placement",
+      "name": "Direct Hire",
       "forWho": "Smaller teams and one-off hires",
       "price": "~$1,600/month",
-      "terms": "Direct hire model",
+      "terms": "We find the person; they join your team",
       "copy": "We find and vet the person, you employ them directly. Includes a 90-day guarantee. Three of our last four new clients started here.",
       "points": [
         "Direct hire model",
         "Lowest ongoing cost of the two models",
         "Full ownership of the relationship"
       ],
-      "extrasLabel": "How Recruitment & Placement works",
+      "extrasLabel": "How Direct Hire works",
       "extras": [
         "We find and vet the person",
         "You employ them directly",

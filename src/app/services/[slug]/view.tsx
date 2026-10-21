@@ -45,7 +45,9 @@ export function ServiceView({ payload }: { payload: { data: any; query: string; 
           <Breadcrumb items={[{ label: "Home", href: "/" }, { label: servicesPage.crumb }, { label: service.name }]} />
           <ServiceSwitch current={service.slug} className="mb-8" />
           <Reveal>
-            <Eyebrow className="mb-4">{modelsIntro.headline}</Eyebrow>
+            {/* "Services", not the pricing page's "Two ways to work together":
+                that read oddly above a page about one model (Ryan's review, 10/20). */}
+            <Eyebrow className="mb-4">{site.navLabels.services}</Eyebrow>
             <h1 data-tina-field={tinaField(service, "name")} className="display text-[clamp(2.5rem,6vw,4.6rem)] text-bone">
               {service.name}
             </h1>

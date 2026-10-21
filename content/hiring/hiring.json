@@ -11,7 +11,7 @@
     {
       "n": "01",
       "title": "Discovery",
-      "body": "We learn the role, the team it joins, and what a strong fit looks like to you. That profile sets the bar for the search.",
+      "body": "We learn about your team, where and why they need support, and what a strong candidate fit looks like. Your ideal talent profile then sets the bar for our search.",
       "bulletsLead": "",
       "bullets": [],
       "after": ""
@@ -33,8 +33,8 @@
     },
     {
       "n": "03",
-      "title": "The Shortlist",
-      "body": "You see two. We bring you two candidates matched to the role, with their video, assessment results, and our notes. You interview both and choose.",
+      "title": "Your Shortlist",
+      "body": "You see two. We present two candidates matched to your ideal talent profile, with their video submissions, assessment results and our notes. You host the interviews and choose the best fit.",
       "bulletsLead": "",
       "bullets": [],
       "after": ""
@@ -49,7 +49,7 @@
     }
   ],
   "closer": {
-    "line": "Every hire after your first gets easier. We learn your company, your culture, your bar for 'great.' By hire five, you might not meet the candidate until their first day.",
+    "line": "Every hire after your first gets easier. We learn your company, your culture, your bar for 'great.' By hire five, many clients trust us enough to skip straight to day one.",
     "cta": "Start at step one"
   },
   "pageCloser": {

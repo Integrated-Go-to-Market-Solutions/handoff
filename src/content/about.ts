@@ -7,7 +7,7 @@
 export const team = [
   { slug: "jazmin-esparza", name: "Jazmin Esparza", role: "Chief of Staff" },
   { slug: "jake-castro", name: "Jake Castro", role: "VP of Automation" },
-  { slug: "karla-patron", name: "Karla Patrón", role: "Marketing Specialist" },
+  { slug: "karla-patron", name: "Karla Patrón", role: "Head of Marketing" },
   { slug: "catalina-saldarriaga", name: "Catalina Saldarriaga", role: "Operations Manager" },
   { slug: "simon-quintero", name: "Simon Quintero", role: "Executive Assistant" },
   { slug: "leidy-quintero", name: "Leidy Quintero", role: "Project Manager" },

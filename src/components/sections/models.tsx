@@ -36,7 +36,7 @@ function ClassicModels() {
           </h2>
           <p className="mt-6 max-w-[58ch] text-lg leading-relaxed text-bone/70">
             Start with the level of ownership that fits your team. Managed
-            Staffing is the full-service path, and Recruitment & Placement is
+            Staffing is the full-service path, and Direct Hire is
             the simplest way to make one great hire.
           </p>
         </Reveal>

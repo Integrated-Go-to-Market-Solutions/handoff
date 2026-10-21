@@ -170,7 +170,7 @@ export const resultsPage = {
   numbers: [
     { value: "92%", label: "Of placements still with their company after a year" },
     { value: "2 weeks", label: "To your top two candidates" },
-    { value: "Top 1%", label: "Of talent" },
+    { value: "500+", label: "Placements in four years" },
   ],
   videos: {
     headline: "Video testimonials",
