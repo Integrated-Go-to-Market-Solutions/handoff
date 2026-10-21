@@ -682,6 +682,14 @@ const about = singleton("about", "About", "about", "/about", [
   str("lead", "Lead"),
   {
     type: "object",
+    name: "beats",
+    label: "Who we are, in short beats",
+    list: true,
+    ui: named("lead"),
+    fields: [str("lead", "Bold lead-in"), str("body", "Text")],
+  },
+  {
+    type: "object",
     name: "gap",
     label: "Opportunity gap",
     fields: [str("headline", "Headline"), str("body", "Paragraph")],
@@ -839,6 +847,7 @@ const contact = singleton("contact", "Contact", "contact", "/contact", [
       str("email", "Email field"),
       str("company", "Company field"),
       str("message", "Message field"),
+      str("referral", "Referral field", "Optional question about who sent them. Goes into the booking notes."),
       str("next", "Next button"),
       str("back", "Back button"),
       str("submit", "Submit button"),
