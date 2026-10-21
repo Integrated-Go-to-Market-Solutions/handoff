@@ -258,6 +258,13 @@
       "image": "/images/logos/quest-relocation-mono.webp",
       "hasImage": true,
       "stacked": true
+    },
+    {
+      "slug": "rincon-rehab",
+      "name": "Rincon Rehab",
+      "image": "/images/logos/rincon-rehab-mono.webp",
+      "hasImage": true,
+      "stacked": false
     }
   ],
   "aiTrained": {

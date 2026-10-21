@@ -245,6 +245,7 @@ export const logos = [
   { slug: "igtms", name: "IGTMS", hasImage: true },
   { slug: "doorspot", name: "DoorSpot", hasImage: true },
   { slug: "quest-relocation", name: "Quest Relocation", hasImage: true, stacked: true },
+  { slug: "rincon-rehab", name: "Rincon Rehab", hasImage: true },
 ] as const;
 
 /**
