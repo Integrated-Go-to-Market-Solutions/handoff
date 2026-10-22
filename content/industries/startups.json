@@ -18,6 +18,12 @@
     "This is your first 3rd party hire, and you are not sure how to get it right.",
     "You tried a freelancer and spent more time managing them than the work gave back."
   ],
+  "triggerIcons": [
+    "trendingUp",
+    "bag",
+    "compass",
+    "clock"
+  ],
   "rolesHeadline": "Here are the roles we fill most for startups",
   "roles": [
     {
@@ -42,7 +48,10 @@
     }
   ],
   "rolesCloser": "Talent you pick yourself, in your working hours, with client-ready English and real AI skills, there to own the role and not just clear tasks.",
-  "proofLogos": [],
+  "proofLogos": [
+    "doorspot",
+    "pivt"
+  ],
   "caseStudy": "",
   "seoTitle": "Startups | Talent that already works with AI | Handoff",
   "seoDescription": "Get startup roles off your plate, owned by talent that already works with AI, in your working hours and with client-ready English."

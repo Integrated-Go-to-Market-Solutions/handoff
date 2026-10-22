@@ -4,7 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/reveal";
 import { Breadcrumb } from "@/components/breadcrumb";
-import { Button, CtaNote, Eyebrow, cardGlow, cardTones } from "@/components/brand";
+import { Button, Eyebrow } from "@/components/brand";
+import { Icon, type IconName } from "@/components/icon";
 import { KpiRibbon } from "@/components/kpi-ribbon";
 import { WhyLatam } from "@/components/sections/why-latam";
 import { HiringHighway } from "@/components/sections/hiring-highway";
@@ -13,13 +14,23 @@ import { Finale } from "@/components/sections/finale";
 import { FlightPaths } from "@/components/flight-paths";
 import { tinaField, useContent, useLiveDoc } from "@/components/tina/content";
 
+/** Problem cards: dark gray, teal and light gray, no royal blue (W-68). */
+const triggerTones = [
+  { card: "border-ink bg-linear-to-br from-ink-300 to-ink text-bone", icon: "text-cyan" },
+  { card: "border-cyan bg-linear-to-br from-cyan to-cyan-dim text-ink", icon: "text-ink" },
+  { card: "border-ink/10 bg-white text-ink", icon: "text-cyan-dim" },
+  { card: "border-ink bg-linear-to-br from-ink-300 to-ink text-bone", icon: "text-cyan" },
+] as const;
+
 export function IndustryView({ payload }: { payload: { data: any; query: string; variables: { relativePath?: string } } }) {
   const industry = useLiveDoc(payload, "industry");
   const slug = payload.variables.relativePath?.split("/").pop()?.replace(/\.json$/, "");
   const { logos, caseStudies, industriesPage, resultsPage, site } = useContent();
-  const proofLogos = (logos as { slug: string; name: string; image?: string; hasImage?: boolean }[]).filter((logo) =>
-    (industry.proofLogos as string[] | undefined)?.includes(logo.slug),
-  );
+  // In the order listed on the industry, not the homepage order.
+  const allLogos = logos as { slug: string; name: string; image?: string; hasImage?: boolean; stacked?: boolean }[];
+  const proofLogos = ((industry.proofLogos as string[] | undefined) ?? [])
+    .map((slug) => allLogos.find((logo) => logo.slug === slug))
+    .filter((logo): logo is (typeof allLogos)[number] => Boolean(logo));
   const study = industry.caseStudy
     ? (caseStudies as { slug: string; tag: string; title: string; subhead: string; heroStats: { label: string; value: string }[] }[]).find(
         (item) => item.slug === industry.caseStudy,
@@ -66,28 +77,32 @@ export function IndustryView({ payload }: { payload: { data: any; query: string;
               {industry.name}
             </h1>
             <p className="mt-5 text-lg font-medium leading-relaxed text-bone/80 md:text-xl">{industry.subhead}</p>
+            {/* No "Dedicated teammates..." line under the button here (10/22 live review, W-66). */}
             <div className="mt-8">
               <Button href={site.bookCall}>{industriesPage.cta}</Button>
-              <CtaNote className="mt-3" />
             </div>
           </Reveal>
         </div>
       </section>
 
-      {proofLogos.length > 0 && (
-        <section className="border-y border-ink/10 bg-white py-3" aria-label="Clients">
-          <ul className="shell flex flex-wrap items-center justify-center gap-x-16 gap-y-4">
-            {proofLogos.map((logo) => (
-              <li key={logo.slug}>
-                {logo.hasImage && logo.image ? (
-                  <span className="relative block h-24 w-60">
-                    <Image src={logo.image} alt={logo.name} fill sizes="240px" className="object-contain" />
+      {/* This industry's clients, grayed out on the same frosted dark strip as
+          the homepage logos (10/22 live review, W-70). Logos without a file
+          yet are left out rather than shown as text. */}
+      {proofLogos.some((logo) => logo.hasImage && logo.image) && (
+        <section
+          className="border-y border-white/10 bg-ink py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
+          aria-label="Clients"
+        >
+          <ul className="shell flex flex-wrap items-center justify-center gap-x-12 gap-y-3 md:gap-x-16">
+            {proofLogos
+              .filter((logo) => logo.hasImage && logo.image)
+              .map((logo) => (
+                <li key={logo.slug} className="grid h-17 w-38 place-items-center">
+                  <span className={`relative block w-full ${logo.stacked ? "h-15" : "h-8.5"}`}>
+                    <Image src={logo.image!} alt={logo.name} fill sizes="160px" className="object-contain grayscale opacity-80 invert" />
                   </span>
-                ) : (
-                  <span className="display text-xl text-ink/70">{logo.name}</span>
-                )}
-              </li>
-            ))}
+                </li>
+              ))}
           </ul>
         </section>
       )}
@@ -100,14 +115,14 @@ export function IndustryView({ payload }: { payload: { data: any; query: string;
           </Reveal>
 
           <ul className="section-gap grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            {/* Icons instead of numbers, in gray and teal only (10/22 live review, W-68). */}
             {industry.triggers.map((trigger: string, i: number) => {
-              const tone = cardTones[i % cardTones.length];
+              const tone = triggerTones[i % triggerTones.length];
+              const icon = (industry.triggerIcons?.[i] || "target") as IconName;
               return (
                 <Reveal key={trigger} delay={i * 90} as="li" className="h-full">
-                  <div className={`flex h-full flex-col justify-between rounded-(--radius-card) p-6 ${cardGlow} ${tone.card}`}>
-                    <span className={`display text-2xl ${tone.accent}`} aria-hidden="true">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
+                  <div className={`flex h-full flex-col justify-between rounded-(--radius-card) border-2 p-6 ${tone.card}`}>
+                    <Icon name={icon} strokeWidth={1.4} className={`h-10 w-10 ${tone.icon}`} />
                     <p className="mt-8 text-base font-semibold leading-snug">{trigger}</p>
                   </div>
                 </Reveal>

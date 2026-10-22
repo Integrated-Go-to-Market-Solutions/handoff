@@ -22,12 +22,15 @@ const FILL_SHARE = 0.8;
  * `compact` is the homepage version: shorter pin, the body copy hidden on
  * phones, and a button through to /how-it-works.
  *
+ * `hero` opens /how-it-works (10/22 live review, W-61): the title is the
+ * page's h1 and the button scrolls down to the step-by-step detail.
+ *
  * All four cards are the same size: each icon sits in an identical slot, so
  * the cards start on one line, and the cards stretch to the tallest one.
  * The closing line and button sit inside the pinned view, just under the
  * cards.
  */
-export function HiringHighway({ compact = false }: { compact?: boolean }) {
+export function HiringHighway({ compact = false, hero = false }: { compact?: boolean; hero?: boolean }) {
   const { process, site } = useContent();
   const trackRef = useRef<HTMLDivElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
@@ -93,6 +96,7 @@ export function HiringHighway({ compact = false }: { compact?: boolean }) {
 
   const steps = process.steps;
   const last = steps.length - 1;
+  const Heading = hero ? "h1" : "h2";
 
   return (
     <section id="process" className="hw-dots relative scroll-mt-20 bg-ink text-bone">
@@ -110,7 +114,7 @@ export function HiringHighway({ compact = false }: { compact?: boolean }) {
             }`}
           >
             <Reveal className="mx-auto max-w-6xl text-center">
-              <h2
+              <Heading
                 data-tina-field={tinaField(process, "titleParts")}
                 className={`display short:text-[2.6rem] ${
                   compact ? "text-[clamp(2rem,4.4vw,3.4rem)]" : "text-[clamp(2.1rem,4.8vw,3.8rem)]"
@@ -119,7 +123,7 @@ export function HiringHighway({ compact = false }: { compact?: boolean }) {
                 {process.titleParts.before}{" "}
                 <span className="hw-swipe">{process.titleParts.swipe}</span>{" "}
                 {process.titleParts.after}
-              </h2>
+              </Heading>
               {/* Supporting line (not the old "Four steps…" tagline). */}
               <p className="mx-auto mt-4 max-w-[58ch] text-balance text-base leading-relaxed text-bone/70 md:text-lg short:mt-2 short:text-base">
                 {process.body}
@@ -193,7 +197,9 @@ export function HiringHighway({ compact = false }: { compact?: boolean }) {
                 {process.closer.line}
               </p>
               <div className="mt-5 short:mt-4">
-                {compact ? (
+                {hero ? (
+                  <Button href="#timeline">{process.teaserCta}</Button>
+                ) : compact ? (
                   <Button href={process.teaserHref}>{process.teaserCta}</Button>
                 ) : (
                   <>

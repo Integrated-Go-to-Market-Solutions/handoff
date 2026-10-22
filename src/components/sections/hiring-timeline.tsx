@@ -19,6 +19,11 @@ import { tinaField, useContent } from "@/components/tina/content";
  * line fill (it's shown full), and posters instead of autoplay.
  *
  * The homepage keeps the compact horizontal version (HiringHighway).
+ *
+ * 10/22 live review: on /how-it-works the horizontal version is the hero
+ * (W-61), so this section drops its own title (`withIntro`); the step
+ * numbers sit inside the dots instead of "Step one" labels (W-62); and the
+ * page ends on the site's closing section, not a second CTA block here.
  */
 
 const REDUCED = "(prefers-reduced-motion: reduce)";
@@ -93,10 +98,10 @@ function StepVideo({
   );
 }
 
-export function HiringTimeline() {
+export function HiringTimeline({ withIntro = true }: { withIntro?: boolean }) {
   const { process, site } = useContent();
   const steps = process.steps;
-  const { labels, videos, cta } = process.timeline;
+  const { videos, cta } = process.timeline;
   const last = steps.length - 1;
   const listRef = useRef<HTMLOListElement>(null);
   const fillRef = useRef<HTMLDivElement>(null);
@@ -144,17 +149,23 @@ export function HiringTimeline() {
   return (
     <section id="timeline" className="hw-dots relative scroll-mt-18 bg-ink text-bone">
       <div className="shell pb-16 pt-14 md:pb-24 md:pt-20">
-        <Reveal className="mx-auto max-w-4xl text-center">
-          <h1 data-tina-field={tinaField(process, "titleParts")} className="display text-[clamp(2.1rem,4.8vw,3.8rem)]">
-            {process.titleParts.before} <span className="hw-swipe">{process.titleParts.swipe}</span>{" "}
-            {process.titleParts.after}
-          </h1>
-          <p className="mx-auto mt-5 max-w-[58ch] text-balance text-base leading-relaxed text-bone/70 md:text-lg">
-            {process.body}
-          </p>
-        </Reveal>
+        {withIntro ? (
+          <Reveal className="mx-auto max-w-4xl text-center">
+            <h1 data-tina-field={tinaField(process, "titleParts")} className="display text-[clamp(2.1rem,4.8vw,3.8rem)]">
+              {process.titleParts.before} <span className="hw-swipe">{process.titleParts.swipe}</span>{" "}
+              {process.titleParts.after}
+            </h1>
+            <p className="mx-auto mt-5 max-w-[58ch] text-balance text-base leading-relaxed text-bone/70 md:text-lg">
+              {process.body}
+            </p>
+          </Reveal>
+        ) : (
+          <h2 className="sr-only">
+            {process.titleParts.before} {process.titleParts.swipe} {process.titleParts.after}
+          </h2>
+        )}
 
-        <ol ref={listRef} className="relative mx-auto mt-14 max-w-6xl md:mt-20">
+        <ol ref={listRef} className={`relative mx-auto max-w-6xl ${withIntro ? "mt-14 md:mt-20" : ""}`}>
           {/* The rail: a faint track with a cyan fill growing down it. */}
           <div className="absolute bottom-0 left-3.75 top-0 w-1 rounded-full bg-white/10 md:left-4.75" aria-hidden="true">
             <div
@@ -182,11 +193,9 @@ export function HiringTimeline() {
                   } ${i === current && !reduced ? "scale-110" : ""}`}
                   aria-hidden="true"
                 >
-                  {isEnd ? (
-                    <HandoffCheckIcon cut={lit ? "#1f1f1f" : "#3dd6bd"} className="h-5 w-5 md:h-6 md:w-6" />
-                  ) : (
-                    <span className={`h-2.5 w-2.5 rounded-full ${lit ? "bg-ink" : "bg-white/40"}`} />
-                  )}
+                  <span className={`text-sm font-bold leading-none md:text-base ${lit ? "text-ink" : "text-bone/70"}`}>
+                    {i + 1}
+                  </span>
                 </span>
 
                 <div
@@ -197,10 +206,7 @@ export function HiringTimeline() {
                   }`}
                 >
                   <Reveal>
-                    <p className={`eyebrow text-[0.75rem] tracking-[0.22em] ${isEnd ? "text-ink/70" : "text-cyan"}`}>
-                      {labels[i]}
-                    </p>
-                    <h2 className="display mt-3 flex items-center gap-3 text-[clamp(1.7rem,3vw,2.5rem)] leading-tight">
+                    <h2 className="display flex items-center gap-3 text-[clamp(1.7rem,3vw,2.5rem)] leading-tight">
                       {isEnd && (
                         <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-ink" aria-hidden="true">
                           <HandoffCheckIcon cut="#3dd6bd" className="h-6 w-6" />
@@ -241,18 +247,6 @@ export function HiringTimeline() {
           })}
         </ol>
 
-        <Reveal className="mt-16 text-center md:mt-20">
-          <h2 className="display text-[clamp(1.8rem,4vw,3rem)]">{process.pageCloser.headline}</h2>
-          <p className="mx-auto mt-4 text-balance font-text text-lg font-medium leading-relaxed text-bone/85 md:text-xl">
-            {process.pageCloser.line}
-          </p>
-          <div className="mt-6">
-            <Button href={site.bookCall} size="lg">
-              {process.pageCloser.cta}
-            </Button>
-            <CtaNote className="mt-3" />
-          </div>
-        </Reveal>
       </div>
     </section>
   );

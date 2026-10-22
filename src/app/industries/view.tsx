@@ -1,9 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { Reveal } from "@/components/reveal";
-import { Button, Eyebrow, cardGlow, cardTones } from "@/components/brand";
-import { Icon, type IconName } from "@/components/icon";
+import { Button, Eyebrow } from "@/components/brand";
+import { IndustryCards } from "@/components/sections/industry-cards";
 import { Finale } from "@/components/sections/finale";
 import { tinaField, useContent } from "@/components/tina/content";
 
@@ -23,39 +22,22 @@ export function IndustriesView() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-bone section-space text-ink">
-        <div className="shell relative">
-          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {industries.map((industry, i) => {
-              const tone = cardTones[i % cardTones.length];
-              return (
-                <Reveal as="li" key={industry.slug} delay={Math.min(i, 5) * 70} className="h-full">
-                  <Link
-                    href={`/industries/${industry.slug}`}
-                    className={`group flex h-full flex-col rounded-(--radius-card) p-7 focus-visible:outline-none md:p-8 ${cardGlow} ${tone.card}`}
-                  >
-                    <div className="flex items-start justify-between gap-4">
-                      <Icon name={industry.icon as IconName} strokeWidth={1.25} className={`h-11 w-11 ${tone.accent}`} />
-                      <span aria-hidden="true" className={`text-xl transition-transform duration-300 group-hover:translate-x-1 ${tone.accent}`}>
-                        &rarr;
-                      </span>
-                    </div>
-                    <h2 className="mt-6 text-base font-semibold uppercase tracking-[0.04em] md:text-lg">{industry.name}</h2>
-                    <p className={`mt-2 text-[0.95rem] leading-relaxed ${tone.muted}`}>{industry.descriptor}</p>
-                  </Link>
-                </Reveal>
-              );
-            })}
-            <Reveal as="li" delay={350} className="h-full">
-              <div className="flex h-full flex-col rounded-(--radius-card) border-2 border-cyan bg-linear-to-br from-royal to-azure-deep p-7 text-bone shadow-[0_0_28px_-10px_rgba(61,214,189,0.6)] md:p-8">
+      {/* Same photo cards as the homepage (10/22 live review, W-65). */}
+      <section className="relative overflow-hidden bg-ink text-bone" aria-label={industriesPage.crumb}>
+        <div className="hw-dots pb-20 md:pb-28">
+          <div className="shell relative">
+            <IndustryCards industries={industries} />
+
+            <Reveal className="mt-10 rounded-(--radius-card) border-2 border-cyan/40 bg-ink-100 p-7 md:flex md:items-center md:justify-between md:gap-10 md:p-9">
+              <div>
                 <h2 className="text-base font-semibold uppercase tracking-[0.04em] text-white md:text-lg">{industriesPage.otherHeadline}</h2>
-                <p className="mt-2 flex-1 text-[0.95rem] leading-relaxed text-bone/90">{industriesPage.otherBody}</p>
-                <div className="mt-6">
-                  <Button href={site.bookCall}>{industriesPage.cta}</Button>
-                </div>
+                <p className="mt-2 max-w-[60ch] text-[0.95rem] leading-relaxed text-bone/80">{industriesPage.otherBody}</p>
+              </div>
+              <div className="mt-6 shrink-0 md:mt-0">
+                <Button href={site.bookCall}>{industriesPage.cta}</Button>
               </div>
             </Reveal>
-          </ul>
+          </div>
         </div>
       </section>
 

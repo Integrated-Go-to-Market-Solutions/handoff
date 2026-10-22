@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
 import { HiringTimeline } from "@/components/sections/hiring-timeline";
-import { PromoVideo } from "@/components/sections/promo-video";
+import { HiringHighway } from "@/components/sections/hiring-highway";
 import { Finale } from "@/components/sections/finale";
 import { loadHiring } from "@/lib/tina/load";
 
@@ -14,8 +14,10 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function HowItWorksPage() {
   return (
     <>
-      <HiringTimeline />
-      <PromoVideo />
+      {/* 10/22 live review: the horizontal system up top (W-61), the step
+          detail below, and the closing section only, no video section (W-63). */}
+      <HiringHighway hero />
+      <HiringTimeline withIntro={false} />
       <Finale />
     </>
   );

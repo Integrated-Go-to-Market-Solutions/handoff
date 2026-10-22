@@ -18,6 +18,12 @@
     "You are quoting work you are not sure you can staff.",
     "You tried cheaper offshore support and the quality did not hold up."
   ],
+  "triggerIcons": [
+    "layers",
+    "users",
+    "clipboard",
+    "globe"
+  ],
   "rolesHeadline": "Here are the roles we fill most in relocation",
   "roles": [
     {
@@ -42,7 +48,12 @@
     }
   ],
   "rolesCloser": "Talent you choose yourself, in your clients' time zone, with client-ready English and the AI skills to move faster on the same work. They know a delayed move is a family waiting in a hotel.",
-  "proofLogos": [],
+  "proofLogos": [
+    "dwellworks",
+    "pivt",
+    "nyc-navigator",
+    "quest-relocation"
+  ],
   "caseStudy": "global-relocation",
   "seoTitle": "",
   "seoDescription": "New contracts arrive faster than you can staff them. Scale relocation with coordinators who work in your clients' time zone."
