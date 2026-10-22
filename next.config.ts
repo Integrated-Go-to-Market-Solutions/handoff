@@ -5,7 +5,12 @@ const nextConfig: NextConfig = {
   // Production never renders it; this just keeps preview screenshots clean.
   devIndicators: false,
   images: {
+    // AVIF first (about 20% smaller than WebP), WebP next; browsers that take
+    // neither get the original file (10/20, Corporate Relocation hero).
+    formats: ["image/avif", "image/webp"],
     remotePatterns: [
+      // YouTube's video stills for the talent videos on /roles.
+      { protocol: "https", hostname: "i.ytimg.com", pathname: "/vi/**" },
       {
         protocol: "https",
         hostname: "assets.tina.io",

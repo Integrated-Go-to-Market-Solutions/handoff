@@ -2,14 +2,20 @@
 
 import { useEffect, useRef } from "react";
 
-/** Full-screen video pop-up. Closes on the X, Escape, or a click on the backdrop. */
+/**
+ * Full-screen video pop-up. Closes on the X, Escape, or a click on the backdrop.
+ * Plays a file from the site (`src`) or, with `youtubeId`, an unlisted YouTube
+ * video, whose player only loads once the pop-up opens.
+ */
 export function VideoModal({
   src,
+  youtubeId,
   label,
   onClose,
   vertical = false,
 }: {
-  src: string;
+  src?: string;
+  youtubeId?: string;
   label: string;
   onClose: () => void;
   vertical?: boolean;
@@ -36,14 +42,26 @@ export function VideoModal({
       onClick={(e) => e.target === e.currentTarget && onClose()}
       className="fixed inset-0 z-100 grid place-items-center bg-ink/90 p-4 backdrop-blur-sm"
     >
-      <div className={`relative w-full ${vertical ? "max-w-[min(90vw,480px)]" : "max-w-4xl"}`}>
-        <video
-          src={src}
-          controls
-          autoPlay
-          playsInline
-          className="block max-h-[85vh] w-full rounded-(--radius-card) border-2 border-cyan bg-ink"
-        />
+      <div className={`relative w-full ${vertical ? "max-w-[min(90vw,480px,calc(85vh*0.5625))]" : "max-w-4xl"}`}>
+        {youtubeId ? (
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&playsinline=1&rel=0&modestbranding=1`}
+            title={label}
+            allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+            allowFullScreen
+            className={`block w-full rounded-(--radius-card) border-2 border-cyan bg-ink ${
+              vertical ? "aspect-9/16 max-h-[85vh]" : "aspect-video"
+            }`}
+          />
+        ) : (
+          <video
+            src={src}
+            controls
+            autoPlay
+            playsInline
+            className="block max-h-[85vh] w-full rounded-(--radius-card) border-2 border-cyan bg-ink"
+          />
+        )}
         <button
           ref={closeRef}
           type="button"

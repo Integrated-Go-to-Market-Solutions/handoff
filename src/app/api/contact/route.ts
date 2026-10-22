@@ -22,6 +22,7 @@ type Payload = {
   email?: string;
   company?: string;
   message?: string; // optional
+  referral?: string; // optional
   fax?: string; // honeypot
 };
 
@@ -69,6 +70,7 @@ export async function POST(request: Request) {
     email: text(body.email),
     company: text(body.company),
     message: text(body.message, 2000) || null,
+    referral: text(body.referral) || null,
     receivedAt: new Date().toISOString(),
   });
 

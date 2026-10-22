@@ -1,7 +1,21 @@
 {
   "title": "About Handoff | Latin American talent inside US companies",
   "headline": "Who we are",
-  "lead": "Handoff places Latin America's top talent inside US companies, and stays with you after they're placed. The work is to match the right professional to your team and your culture, and to support them so they last.",
+  "lead": "Handoff is a team of Latin American professionals placing talent like ourselves inside US companies. Our own team is built from the same people we find for our clients.",
+  "beats": [
+    {
+      "lead": "What holds us together",
+      "body": "Our purpose. The work connects us, and that connection makes the work we do matter even more. Every placement opens a door for the next person, and the people who walk through it become the ones who hold it open next."
+    },
+    {
+      "lead": "Alma",
+      "body": "Spanish for \"soul.\" It's the name of our internal platform and how we see every person we place: not a profile in a database, but a teammate who stays."
+    },
+    {
+      "lead": "We are building towards",
+      "body": "1 million talented people across Latin America doing meaningful, valuable work, one placement at a time."
+    }
+  ],
   "gap": {
     "headline": "Talent is everywhere. Opportunity isn't.",
     "body": "Skilled professionals live everywhere. The chance to work with great companies doesn't reach all of them. Handoff closes that gap."
@@ -22,7 +36,7 @@
   },
   "founder": {
     "headline": "The founder",
-    "body": "Our founder spent over a decade hiring in this industry before starting Handoff. That's why the recruiting runs deepest in corporate housing and relocation, and why the Hands-Off Hiring System is built the way it is, from years of doing the hiring firsthand."
+    "body": "Anthony \"AG\" Gonzalez has spent his career building teams across borders. Along the way, he saw exceptional talent and growing companies in need of that talent, continually missing each other. His turning point was realizing that when the two connect, both win. Companies gain the people they need to scale, and professionals gain the opportunity their talent has earned. That's why he started Handoff: so leaders can focus on what they do best and hand off the rest."
   },
   "values": {
     "headline": "What we live by",

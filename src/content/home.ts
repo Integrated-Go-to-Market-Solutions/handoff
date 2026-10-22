@@ -12,7 +12,7 @@ export const hero = {
     { text: "The best of" },
     { text: "LATAM.", tone: "royal" },
     { text: "AI Powered People." },
-    { text: "Here to stay.", tone: "cyan" },
+    { text: "Here to Stay.", tone: "cyan" },
   ] as { text: string; tone?: "royal" | "cyan" }[],
   /**
    * One entry per line in the live hero. Line 1 is split so "LATAM." can
@@ -22,14 +22,14 @@ export const hero = {
   headlineLines: [
     { text: "Hire the best of LATAM." },
     { text: "AI Powered People." },
-    { text: "Here to stay.", tone: "cyan" },
+    { text: "Here to Stay.", tone: "cyan" },
   ] as { text: string; tone?: "cyan" }[],
   imageAlt: "The Handoff team",
   /** Tom's hero copy (10/7), with "Latin America talent" corrected to "Latin American talent". */
   body: "Handoff places full-time, dedicated Latin American talent inside US companies, screened to the top 1%.",
   primary: { label: "Get Started Today", href: site.bookCall },
   secondary: { label: "Talk to Our Team", href: site.bookCall },
-  note: "Full-time, dedicated teammates. Not a marketplace.",
+  note: "Dedicated teammates through Direct Hire or Managed Staffing. Not a marketplace.",
   /**
    * Rewritten per feedback that "7 of us, all hired this way" read unclear.
    * The number stays; the caption now says what it is proof of.
@@ -100,15 +100,16 @@ export const proofStats = [
 ] as const;
 
 /**
- * Homepage section 2 copy (Tom's T3 from the 10/5 call, workshopped 10/5).
+ * Homepage section 2 copy (Tom's T3 from the 10/5 call, workshopped 10/5;
+ * rewritten 10/20 from Ryan's review, which softened line B).
  * Headline and line A: Anthony's point that the talent has worked in the
  * client's industry ("two to five years", his words on the call; confirm
  * before launch). Line B: Tom's point that Handoff doesn't put forward
  * anyone outside the field.
  */
 export const industriesStrip = {
-  headline: "Hire people who have already done this work in your industry.",
-  body: "The people we place have spent two to five years in industries like yours, so they arrive knowing how the work runs. We don't put forward candidates from outside your field.",
+  headline: "Hire people who've already done this work.",
+  body: "Our talent averages about five years in their role and industry, so they arrive knowing how the work runs. 94% of clients say their hire added value in the first week.",
 };
 
 /**
@@ -117,9 +118,9 @@ export const industriesStrip = {
  * Anthony confirmed in the Pulse answers.
  */
 export const credibilityStats = [
-  { value: "$50K+", label: "Saved per hire" },
-  { value: "96%+", label: "Client retention" },
-  { value: "Top 1%", label: "Of talent" },
+  { value: "92%", label: "Still with their company after a year" },
+  { value: "500+", label: "Placements in four years" },
+  { value: "40+", label: "Clients in talent mobility" },
 ] as const;
 
 /**
@@ -244,6 +245,8 @@ export const logos = [
   { slug: "do-good-cfo", name: "Do Good CFO", hasImage: true, stacked: true },
   { slug: "igtms", name: "IGTMS", hasImage: true },
   { slug: "doorspot", name: "DoorSpot", hasImage: true },
+  { slug: "quest-relocation", name: "Quest Relocation", hasImage: true, stacked: true },
+  { slug: "rincon-rehab", name: "Rincon Rehab", hasImage: true },
 ] as const;
 
 /**
@@ -299,7 +302,7 @@ export const process = {
     },
   ] as { n: string; title: string; body: string; bulletsLead?: string; bullets?: string[]; after?: string }[],
   closer: {
-    line: "Every hire after your first gets easier. We learn your company, your culture, your bar for 'great.' By hire five, you might not meet the candidate until their first day.",
+    line: "Every hire after your first gets easier. We learn your company, your culture, your bar for 'great.' By hire five, many clients trust us enough to skip straight to day one.",
     cta: "Start at step one",
   },  /** The /how-it-works close: Tom's content doc, 10/5. The homepage keeps `closer`. */
   pageCloser: {
@@ -528,7 +531,7 @@ export const aiTrained = {
 export const faqs = [
   {
     q: "How is this different from Upwork or a VA agency?",
-    a: "Marketplaces sell you hours from someone juggling several clients. We place one dedicated, full-time person, employed on our own entity, recruited for your specific role. We are not a virtual assistant marketplace and we are not a staffing agency that disappears after the invoice clears.",
+    a: "Marketplaces sell you hours from someone juggling several clients. We place one dedicated, full-time person, recruited for your specific role. With Direct Hire you contract them directly, and with Managed Staffing we employ them. We are not a virtual assistant marketplace and we are not a staffing agency that disappears after the invoice clears.",
   },
   {
     q: "What does it cost?",

@@ -86,6 +86,28 @@ function arc(a: Pt, b: Pt, bend: number) {
 
 const pct = (p: Pt) => ({ left: `${(p.x / VB_W) * 100}%`, top: `${(p.y / VB_H) * 100}%` });
 
+/* The part of the outline in view, in the same 1014x1293 units: a crop
+   that zooms the map in (10/14 feedback: "zoomed-in map instead of full
+   Latin American map"). The land, routes and pulses are clipped to it; pins
+   outside it are left out. Pins and labels stay their normal size. */
+// North zoom, 5 pins (Karla, 10/16: "ok to leave Sao Paulo and Argentina
+// out"): Guadalajara to Recife, with the land fading out below Lima.
+const VIEW = { x: 40, y: 60, w: 974, h: 700 };
+const inView = (p: Pt) => p.x > VIEW.x && p.x < VIEW.x + VIEW.w && p.y > VIEW.y && p.y < VIEW.y + VIEW.h;
+const cropFade =
+  VIEW.y + VIEW.h < VB_H
+    ? {
+        WebkitMaskImage: "linear-gradient(to bottom, black 78%, transparent)",
+        maskImage: "linear-gradient(to bottom, black 78%, transparent)",
+      }
+    : undefined;
+const stage = {
+  left: `${(-VIEW.x / VIEW.w) * 100}%`,
+  top: `${(-VIEW.y / VIEW.h) * 100}%`,
+  width: `${(VB_W / VIEW.w) * 100}%`,
+  height: `${(VB_H / VIEW.h) * 100}%`,
+};
+
 /* The pins drop in top to bottom (they're listed in that order) and all
    have landed 3s after the map scrolls into view. */
 const PIN_IN_MS = 500;
@@ -160,16 +182,18 @@ function Avatar({ photo, className }: { photo: string | null; className: string 
 
 export function TalentMap() {
   const { cta, departments, site, talentMap } = useContent();
-  const talent = pins.map((pin, i) => {
-    const profile = talentMap.profiles[i];
-    const department = departments.find((d) => d.slug === profile?.department);
-    return {
-      ...pin,
-      ...profile,
-      href: `/roles/${profile?.department}`,
-      departmentName: department?.name ?? "all",
-    };
-  });
+  const talent = pins
+    .map((pin, i) => {
+      const profile = talentMap.profiles[i];
+      const department = departments.find((d) => d.slug === profile?.department);
+      return {
+        ...pin,
+        ...profile,
+        href: `/roles/${profile?.department}`,
+        departmentName: department?.name ?? "all",
+      };
+    })
+    .filter(inView);
   const router = useRouter();
   const [active, setActive] = useState<number | null>(null);
   const cardId = useId();
@@ -222,7 +246,8 @@ export function TalentMap() {
     const section = sectionRef.current;
     if (!card || !pin || !wrap || !section) return;
     const place = () => {
-      const { side, lgSide } = pins[active];
+      // `talent`, not `pins`: pins outside the crop are filtered out.
+      const { side, lgSide } = talent[active];
       const lg = window.matchMedia("(min-width: 1024px)").matches;
       placeCard(card, pin, wrap, section, (lg && lgSide) || side);
     };
@@ -341,9 +366,20 @@ export function TalentMap() {
               the right-hand labels stay on screen. */}
           <div
             ref={wrapRef}
-            className="relative mx-auto w-full max-w-[360px] sm:max-w-[450px] md:max-w-[600px] lg:ml-0 lg:h-[clamp(680px,calc(100svh-72px-1rem),760px)] lg:w-auto lg:max-w-full xl:mx-auto xl:h-[clamp(700px,calc(100svh-72px),56rem)] 2xl:h-[clamp(720px,calc((100svh-72px)*1.08),62rem)]"
-            style={{ aspectRatio: `${VB_W} / ${VB_H}` }}
+            className={
+              // A crop wider than it is tall fills the column's width; the
+              // full, tall map is sized off the screen height (above).
+              VIEW.w > VIEW.h
+                ? "relative w-full"
+                : "relative mx-auto w-full max-w-[360px] sm:max-w-[450px] md:max-w-[600px] lg:ml-0 lg:h-[clamp(680px,calc(100svh-72px-1rem),760px)] lg:w-auto lg:max-w-full xl:mx-auto xl:h-[clamp(700px,calc(100svh-72px),56rem)] 2xl:h-[clamp(720px,calc((100svh-72px)*1.08),62rem)]"
+            }
+            style={{ aspectRatio: `${VIEW.w} / ${VIEW.h}` }}
           >
+            {/* Land, routes and pulses, clipped to the crop. Where the crop cuts
+                the continent off at the bottom, the land fades out instead of
+                ending on a hard line. */}
+            <div className="absolute inset-0 overflow-hidden" style={cropFade} aria-hidden="true">
+            <div className="absolute" style={stage}>
             <div
               className="absolute inset-0 bg-linear-to-b from-[#3d3d3d] to-[#2a2a2a]"
               style={{
@@ -386,6 +422,12 @@ export function TalentMap() {
                 <span className="absolute inset-[40%] rounded-full bg-[#2fae98]" />
               </span>
             ))}
+            </div>
+            </div>
+
+            {/* Pins, on the same stage but not clipped, so labels can reach
+                past the map edge. */}
+            <div className="pointer-events-none absolute" style={stage}>
 
             {talent.map((t, i) => {
               const isOpen = active === i;
@@ -401,7 +443,7 @@ export function TalentMap() {
                   {...pinHandlers(i)}
                   aria-label={`${t.name}, ${t.role}, ${t.city}. See ${t.departmentName} roles`}
                   aria-describedby={isOpen ? cardId : undefined}
-                  className={`group absolute -translate-x-1/2 -translate-y-1/2 outline-none ${isOpen ? "z-20" : "z-10"}`}
+                  className={`group pointer-events-auto absolute -translate-x-1/2 -translate-y-1/2 outline-none ${isOpen ? "z-20" : "z-10"}`}
                   style={pct(t)}
                 >
                   <span
@@ -436,6 +478,7 @@ export function TalentMap() {
                 </button>
               );
             })}
+            </div>
 
             {open && (
               <div

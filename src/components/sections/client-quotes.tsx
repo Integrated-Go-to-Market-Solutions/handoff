@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { Reveal } from "../reveal";
 import { VideoModal } from "../video-modal";
@@ -304,14 +305,22 @@ function QuoteCarousel({ reduced }: { reduced: boolean }) {
                     {slot.quote}
                   </blockquote>
                   <figcaption className="mt-6 flex items-center gap-3 border-t border-ink/10 pt-5">
-                    <span
-                      className={`grid h-10 w-10 shrink-0 place-items-center rounded-full text-sm font-bold tracking-wide ${
-                        avatarTones[i % avatarTones.length]
-                      }`}
-                      aria-hidden="true"
-                    >
-                      {initials(slot.name)}
-                    </span>
+                    {slot.photo ? (
+                      // Client headshot (10/15, from Handoff). The name sits
+                      // right beside it, so the image itself is decorative.
+                      <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full ring-1 ring-ink/10" aria-hidden="true">
+                        <Image src={slot.photo} alt="" fill sizes="40px" className="object-cover" />
+                      </span>
+                    ) : (
+                      <span
+                        className={`grid h-10 w-10 shrink-0 place-items-center rounded-full text-sm font-bold tracking-wide ${
+                          avatarTones[i % avatarTones.length]
+                        }`}
+                        aria-hidden="true"
+                      >
+                        {initials(slot.name)}
+                      </span>
+                    )}
                     <div className="min-w-0 flex-1">
                       <p className="text-sm font-bold text-ink">{slot.name}</p>
                       {byline && <p className="mt-0.5 text-[0.8rem] text-ink/60">{byline}</p>}

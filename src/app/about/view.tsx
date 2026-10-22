@@ -21,6 +21,21 @@ export function AboutView() {
             <p className="mt-6 text-pretty text-lg leading-relaxed text-bone/75 md:text-xl">{aboutPage.lead}</p>
           </Reveal>
 
+          {/* Who we are in short beats: what holds us together, Alma, and
+              where we're going (Ryan's review, 10/20). */}
+          {aboutPage.beats?.length > 0 && (
+            <Reveal delay={90}>
+              <ul className="section-gap grid gap-6 md:grid-cols-3">
+                {aboutPage.beats.map((beat: { lead: string; body: string }) => (
+                  <li key={beat.lead} className="border-l-4 border-cyan pl-5">
+                    <p className="text-base font-bold text-white md:text-lg">{beat.lead}</p>
+                    <p className="mt-2 text-pretty text-base leading-relaxed text-bone/75">{beat.body}</p>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          )}
+
           <Reveal delay={150}>
             <SocialLinks />
           </Reveal>

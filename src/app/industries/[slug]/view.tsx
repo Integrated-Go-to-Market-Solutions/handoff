@@ -10,10 +10,12 @@ import { WhyLatam } from "@/components/sections/why-latam";
 import { HiringHighway } from "@/components/sections/hiring-highway";
 import { ClientQuotes } from "@/components/sections/client-quotes";
 import { Finale } from "@/components/sections/finale";
+import { FlightPaths } from "@/components/flight-paths";
 import { tinaField, useContent, useLiveDoc } from "@/components/tina/content";
 
 export function IndustryView({ payload }: { payload: { data: any; query: string; variables: { relativePath?: string } } }) {
   const industry = useLiveDoc(payload, "industry");
+  const slug = payload.variables.relativePath?.split("/").pop()?.replace(/\.json$/, "");
   const { logos, caseStudies, industriesPage, resultsPage, site } = useContent();
   const proofLogos = (logos as { slug: string; name: string; image?: string; hasImage?: boolean }[]).filter((logo) =>
     (industry.proofLogos as string[] | undefined)?.includes(logo.slug),
@@ -27,17 +29,28 @@ export function IndustryView({ payload }: { payload: { data: any; query: string;
   return (
     <>
       <section className="halftone relative overflow-hidden bg-ink section-py-tight text-bone">
-        <div className="absolute inset-0 md:left-auto md:w-[60%]" aria-hidden="true">
+        <div className="absolute inset-0 md:left-auto md:w-[60%]">
           <Image
             src={industry.heroImage.src}
-            alt=""
+            alt={industry.heroImage.alt ?? ""}
             fill
             preload
             sizes="(min-width: 768px) 60vw, 100vw"
             className="object-cover grayscale mask-[linear-gradient(to_right,transparent,black_45%)] max-md:mask-none"
             style={{ objectPosition: industry.heroImage.focus }}
           />
-          <div className="absolute inset-0 bg-ink/80 md:bg-ink/45" />
+          <div className="absolute inset-0 bg-ink/80 md:bg-ink/60 lg:bg-ink/45" aria-hidden="true" />
+          {/* Scrim under the headline and subhead where they run onto the
+              photo, so the text keeps WCAG AA contrast at every width. */}
+          <div
+            className="absolute inset-0 hidden bg-linear-to-r from-ink/90 via-ink/60 via-55% to-transparent md:block"
+            aria-hidden="true"
+          />
+          {/* Above the tint so it reads on wide screens; phones crop the
+              photo to the middle and dim it, so it's left off there. */}
+          {slug === "corporate-relocation" && (
+            <FlightPaths className="mask-[linear-gradient(to_right,transparent,black_45%)] max-md:hidden" />
+          )}
         </div>
         <div className="shell relative z-10">
           <Breadcrumb

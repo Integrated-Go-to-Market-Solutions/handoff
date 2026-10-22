@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Reveal } from "@/components/reveal";
 import { Button, cardGlow, cardTones } from "@/components/brand";
 import { Finale } from "@/components/sections/finale";
+import { TalentVideos } from "@/components/sections/talent-videos";
 import { tinaField, useContent } from "@/components/tina/content";
 
 export function RolesView() {
@@ -19,6 +20,7 @@ export function RolesView() {
             <p className="mt-5 text-lg font-medium leading-relaxed text-bone/80">{rolesPage.subhead}</p>
           </Reveal>
         </div>
+        <TalentVideos videos={rolesPage.videos ?? []} departments={departments} hint={rolesPage.videosHint} />
       </section>
 
       <section className="relative overflow-hidden bg-bone section-space text-ink">

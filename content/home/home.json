@@ -15,7 +15,7 @@
         "tone": ""
       },
       {
-        "text": "Here to stay.",
+        "text": "Here to Stay.",
         "tone": ""
       }
     ],
@@ -30,7 +30,7 @@
       "label": "Talk to Our Team",
       "href": "/contact"
     },
-    "note": "Full-time, dedicated teammates. Not a marketplace."
+    "note": "Dedicated teammates through Direct Hire or Managed Staffing. Not a marketplace."
   },
   "whyLatam": {
     "headline": "Why US teams work nearshore with LATAM talent",
@@ -71,29 +71,29 @@
     ]
   },
   "industriesStrip": {
-    "headline": "Hire people who have already done this work in your industry.",
-    "body": "The people we place have spent two to five years in industries like yours, so they arrive knowing how the work runs. We don't put forward candidates from outside your field."
+    "headline": "Hire people who've already done this work.",
+    "body": "Our talent averages about five years in their role and industry, so they arrive knowing how the work runs. 94% of clients say their hire added value in the first week."
   },
   "credibilityStats": [
     {
-      "value": "$50K+",
-      "label": "Saved per hire"
+      "value": "92%",
+      "label": "Still with their company after a year"
     },
     {
-      "value": "96%+",
-      "label": "Client retention"
+      "value": "500+",
+      "label": "Placements in four years"
     },
     {
-      "value": "Top 1%",
-      "label": "Of talent"
+      "value": "40+",
+      "label": "Clients in talent mobility"
     }
   ],
   "talentMap": {
     "heading": {
-      "before": "Meet your",
-      "link": "talent"
+      "before": "Meet the",
+      "link": "roles we place"
     },
-    "intro": "The roles we place most, from Mexico to Patagonia. Hover or tap a pin to see who you could be working with.",
+    "intro": "From Mexico to Patagonia, specialists to senior leads. Hover over or tap the map to see the roles and skills we place most.",
     "cta": {
       "label": "Explore all roles",
       "href": "/roles"
@@ -249,6 +249,20 @@
       "slug": "doorspot",
       "name": "DoorSpot",
       "image": "/images/logos/doorspot.webp",
+      "hasImage": true,
+      "stacked": false
+    },
+    {
+      "slug": "quest-relocation",
+      "name": "Quest Relocation",
+      "image": "/images/logos/quest-relocation-mono.webp",
+      "hasImage": true,
+      "stacked": true
+    },
+    {
+      "slug": "rincon-rehab",
+      "name": "Rincon Rehab",
+      "image": "/images/logos/rincon-rehab-mono.webp",
       "hasImage": true,
       "stacked": false
     }

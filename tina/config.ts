@@ -669,6 +669,7 @@ const testimonials = singleton("testimonials", "Testimonials", "testimonials", "
       str("name", "Name"),
       str("title", "Title"),
       str("company", "Company"),
+      img("photo", "Headshot", "A square headshot. Shows in the round badge next to the name; the initials show without one."),
       str("linkedin", "LinkedIn", "A full https link, or leave the placeholder until you have the real profile."),
     ],
   },
@@ -679,6 +680,14 @@ const about = singleton("about", "About", "about", "/about", [
   seoDescription(),
   str("headline", "Headline"),
   str("lead", "Lead"),
+  {
+    type: "object",
+    name: "beats",
+    label: "Who we are, in short beats",
+    list: true,
+    ui: named("lead"),
+    fields: [str("lead", "Bold lead-in"), str("body", "Text")],
+  },
   {
     type: "object",
     name: "gap",
@@ -838,6 +847,7 @@ const contact = singleton("contact", "Contact", "contact", "/contact", [
       str("email", "Email field"),
       str("company", "Company field"),
       str("message", "Message field"),
+      str("referral", "Referral field", "Optional question about who sent them. Goes into the booking notes."),
       str("next", "Next button"),
       str("back", "Back button"),
       str("submit", "Submit button"),
@@ -879,6 +889,21 @@ const rolesPage = singleton("rolesPage", "Roles page", "roles-page", "/roles", [
   str("closing", "Closing line"),
   str("otherDepartments", "Other departments heading"),
   str("cta", "Button"),
+  str("videosHint", "Swipe hint (phones)"),
+  {
+    type: "object",
+    name: "videos",
+    label: "Talent videos (hero)",
+    list: true,
+    ui: named("name"),
+    fields: [
+      str("name", "Stage name"),
+      str("role", "Role"),
+      str("department", "Department", "The department's page name, like finance-accounting. Cards are grouped in this order."),
+      str("salary", "Monthly salary", "As shown, like $2,200/mo."),
+      str("youtubeId", "YouTube video ID", "The code after /shorts/ in the YouTube link."),
+    ],
+  },
 ]);
 
 const industriesPage = singleton("industriesPage", "Industries page", "industries-page", "/industries", [

@@ -48,7 +48,7 @@ export const cta = {
   closing: "",
   /** The finale's one button. Links to `site.bookingUrl`. */
   book: "Book a call",
-  body: "Bring the role you cannot get off your plate. One call is usually enough to scope it, pick the model and give you a real timeline.",
+  body: "Tell us about the work, and we'll help you shape the role around it. One 30-minute call is usually enough to scope it.",
   primary: { label: "Get Started Today", href: site.bookCall },
   secondary: { label: "Talk to Our Team", href: site.bookCall },
 };

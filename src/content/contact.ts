@@ -2,11 +2,11 @@
 export const contactPage = {
   title: "Book a call | Handoff",
   description:
-    "Tell us the role you cannot get off your plate. One call to scope it, pick the right engagement model and get a realistic timeline.",
+    "Where is your team stretched thin? Tell us about the work, and we'll help you shape the role around it in one 30-minute call.",
   eyebrow: "Book a call",
-  headline: "Tell us the role you",
-  headlineAccent: "cannot get off your plate.",
-  body: "One call is usually enough to scope the role, pick the right model and give you a realistic timeline. If we are not the right fit, we will tell you on that call rather than sell you something that will not work.",
+  headline: "Where is your team",
+  headlineAccent: "stretched thin?",
+  body: "Tell us about the work, and we'll help you shape the role around it. One 30-minute call is usually enough to scope it. If we are not the right fit, we will tell you on that call rather than sell you something that will not work.",
   expect: [
     "A working session, not a pitch deck",
     "A straight answer on which model fits and what it costs",

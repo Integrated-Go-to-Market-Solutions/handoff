@@ -22,6 +22,7 @@ type Values = {
   email: string;
   company: string;
   message: string;
+  referral: string;
   fax: string; // honeypot
 };
 type Errors = Partial<Record<keyof Values, string>>;
@@ -128,6 +129,7 @@ export function ContactForm() {
     email: "",
     company: "",
     message: "",
+    referral: "",
     fax: "",
   });
   const [errors, setErrors] = useState<Errors>({});
@@ -214,6 +216,7 @@ export function ContactForm() {
       values.headcount && `How many: ${values.headcount}`,
       values.timeline && `When: ${values.timeline}`,
       values.company && `Company: ${values.company}`,
+      values.referral && `Referred by: ${values.referral}`,
       values.message && `Notes: ${values.message}`,
     ]
       .filter(Boolean)
@@ -411,6 +414,22 @@ export function ContactForm() {
             />
             <FieldError id="company-error" message={errors.company} />
           </div>
+          {copy.referral && (
+            // Most clients arrive through a referral; this records who sent
+            // them (Ryan's review, 10/20). Optional.
+            <div>
+              <label htmlFor="referral" className={label}>
+                {copy.referral} <span className="font-normal text-ink/40">(optional)</span>
+              </label>
+              <input
+                id="referral"
+                name="referral"
+                value={values.referral}
+                onChange={(e) => set("referral")(e.target.value)}
+                className={`${field} border-ink/15`}
+              />
+            </div>
+          )}
           <div>
             <label htmlFor="message" className={label}>
               {copy.message} <span className="font-normal text-ink/40">(optional)</span>

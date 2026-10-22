@@ -32,7 +32,7 @@ export const models = [
   },
   {
     tag: "Ready to Go",
-    name: "Recruitment & Placement",
+    name: "Direct Hire",
     forWho: "Smaller teams and one-off hires",
     price: "~$1,600/month",
     terms: "Direct hire model",
@@ -43,7 +43,7 @@ export const models = [
       "Full ownership of the relationship",
     ],
     /** The existing card copy, split into points (no new claims). */
-    extrasLabel: "How Recruitment & Placement works",
+    extrasLabel: "How Direct Hire works",
     extras: [
       "We find and vet the person",
       "You employ them directly",
