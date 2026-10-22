@@ -281,6 +281,30 @@
       "hasImage": true,
       "stacked": false,
       "industryOnly": true
+    },
+    {
+      "slug": "all-that-housing",
+      "name": "All That Housing",
+      "image": "/images/logos/all-that-housing-mono.webp",
+      "hasImage": true,
+      "stacked": true,
+      "industryOnly": true
+    },
+    {
+      "slug": "margle-media",
+      "name": "Margle Media",
+      "image": "/images/logos/margle-media-mono.webp",
+      "hasImage": true,
+      "stacked": true,
+      "industryOnly": true
+    },
+    {
+      "slug": "axiolo",
+      "name": "Axiolo",
+      "image": "/images/logos/axiolo-mono.webp",
+      "hasImage": true,
+      "stacked": false,
+      "industryOnly": true
     }
   ],
   "aiTrained": {
