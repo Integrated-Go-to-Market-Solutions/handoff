@@ -18,6 +18,13 @@
   "mobileCta": {
     "label": "Book a call"
   },
+  "consent": {
+    "text": "We use analytics cookies to see how the site is used. You can accept or decline, and change your choice anytime under Cookie Settings in the footer.",
+    "decline": "Decline",
+    "accept": "Accept",
+    "settings": "Cookie Settings",
+    "label": "Cookie choices"
+  },
   "footer": {
     "email": "hello@talenthandoff.com",
     "emailLabel": "hello@talenthandoff.com",

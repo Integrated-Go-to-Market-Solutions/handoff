@@ -16,7 +16,9 @@
     },
     {
       "heading": "Information you give us",
-      "paragraphs": ["We collect the information you choose to send us:"],
+      "paragraphs": [
+        "We collect the information you choose to send us:"
+      ],
       "bullets": [
         "Contact form: your name, work email, company, the role you're hiring for, how many people you need, your timeline and any message you add.",
         "Discovery call booking: after you send the contact form, you can book a call through Cal.com. Your name, email and form answers are passed to the booking so you don't have to type them again, along with the time you pick.",
@@ -34,7 +36,9 @@
     },
     {
       "heading": "How we use your information",
-      "paragraphs": ["We use the information described above to:"],
+      "paragraphs": [
+        "We use the information described above to:"
+      ],
       "bullets": [
         "Answer your inquiry and schedule the calls you book",
         "Provide our recruiting and staffing services, including reviewing job applications",
@@ -65,8 +69,9 @@
     {
       "heading": "Cookies and your choices",
       "paragraphs": [
+        "Google Analytics only sets its cookies after you accept them in the cookie banner. You can change your choice anytime with Cookie Settings in the footer.",
         "You can block or delete cookies in your browser settings, and you can opt out of Google Analytics with Google's browser add-on at tools.google.com/dlpage/gaoptout. The site still works without these cookies.",
-        "The site doesn't currently respond to browser Do Not Track or Global Privacy Control signals."
+        "If your browser sends a Global Privacy Control signal, we treat it as declining analytics cookies. The site doesn't currently respond to browser Do Not Track signals."
       ],
       "bullets": []
     },

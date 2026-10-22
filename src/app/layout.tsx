@@ -5,6 +5,7 @@ import { rubik, serifFace, textFace } from "./fonts";
 import { SiteShell } from "@/components/tina/content";
 import { loadSite, loadChrome } from "@/lib/tina/load";
 import { SHARE_IMAGE, SITE_NAME, SITE_URL, jsonLd } from "@/lib/seo";
+import { consentDefaultScript } from "@/components/cookie-consent";
 
 export async function generateMetadata(): Promise<Metadata> {
   const result = await loadSite();
@@ -35,6 +36,11 @@ export default async function RootLayout({
   const ga4Id = site.analytics?.ga4Id?.trim();
   return (
     <html lang="en" className={`${rubik.variable} ${textFace.variable} ${serifFace.variable}`}>
+      <head>
+        {/* Consent Mode v2 defaults, before any Google tag: analytics and ad
+            cookies stay off until the visitor accepts in the cookie banner. */}
+        <script dangerouslySetInnerHTML={{ __html: consentDefaultScript }} />
+      </head>
       {gtmId ? <GoogleTagManager gtmId={gtmId} /> : ga4Id ? <GoogleAnalytics gaId={ga4Id} /> : null}
       <body className="min-h-screen bg-ink pb-20 text-bone antialiased md:pb-0">
         {/* Who Handoff is, for search engines and AI assistants (10/16 site
