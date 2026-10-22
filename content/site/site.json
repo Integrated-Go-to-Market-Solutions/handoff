@@ -10,18 +10,18 @@
     "description": "We help the best US companies hire Latin America's top 1% talent — vetted, AI powered, and ready to make an impact from day one."
   },
   "header": {
-    "hireLabel": "Hire Today",
+    "hireLabel": "Book a Call",
     "hireHref": "/contact",
     "joinLabel": "Join Our Talent Pool",
     "joinHref": "/careers"
   },
   "mobileCta": {
-    "label": "Talk to our team"
+    "label": "Book a call"
   },
   "footer": {
     "email": "hello@talenthandoff.com",
     "emailLabel": "hello@talenthandoff.com",
-    "talkLabel": "Talk to Our Team",
+    "talkLabel": "Book a Call",
     "legal": "All rights reserved.",
     "company": [
       {
@@ -101,7 +101,7 @@
     "book": "Book a call",
     "body": "Tell us about the work, and we'll help you shape the role around it. One 30-minute call is usually enough to scope it.",
     "primary": {
-      "label": "Get Started Today",
+      "label": "Book a call",
       "href": "/contact"
     },
     "secondary": {

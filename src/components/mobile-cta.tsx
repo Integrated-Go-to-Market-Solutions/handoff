@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { tinaField, useContent } from "@/components/tina/content";
 
 /**
- * Phones only: a small "Talk to our team" button pinned to the bottom of the
+ * Phones only: a small "Book a call" button pinned to the bottom of the
  * screen. Hidden while the mobile menu is open (the header sets
  * `data-menu-open` on <html>, see globals.css), while the closing section's
  * own "Book a call" is on screen, and on the booking page itself. The body
