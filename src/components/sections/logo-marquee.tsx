@@ -25,7 +25,8 @@ export function LogoMarquee({
   exclude?: readonly string[];
 }) {
   const { logos, site } = useContent();
-  const shown = logos.filter((logo) => !exclude.includes(logo.slug));
+  // Industry-only logos (10/22, W-70) appear on industry pages, not in this strip.
+  const shown = logos.filter((logo) => !exclude.includes(logo.slug) && !logo.industryOnly);
   const row = [...shown, ...shown];
 
   const track = (

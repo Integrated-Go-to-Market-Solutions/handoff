@@ -18,6 +18,12 @@
     "You are turning down units because your team cannot keep up with the coordination.",
     "You tried a VA for guest and resident messages and got someone who could not make a judgment call."
   ],
+  "triggerIcons": [
+    "calendar",
+    "handshake",
+    "home",
+    "chat"
+  ],
   "rolesHeadline": "Here are the roles we fill most across corporate housing, mid‑term, and short‑term rentals",
   "roles": [
     {
@@ -43,9 +49,9 @@
   ],
   "rolesCloser": "Our founder spent over a decade hiring in this industry. It is where our recruiting is deepest and where we are surest of the fit.",
   "proofLogos": [
-    "oasis",
     "united-corporate-housing",
-    "dwellworks"
+    "oasis",
+    "altovita"
   ],
   "caseStudy": "",
   "seoTitle": "Corporate Housing | From reservations to turnovers | Handoff",

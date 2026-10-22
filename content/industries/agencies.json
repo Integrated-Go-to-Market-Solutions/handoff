@@ -18,6 +18,12 @@
     "You are staffing client work with freelancers who go quiet mid-project.",
     "Your senior people are producing work instead of reviewing it."
   ],
+  "triggerIcons": [
+    "award",
+    "bag",
+    "clock",
+    "users"
+  ],
   "rolesHeadline": "Here are the roles we fill most for agencies",
   "roles": [
     {
@@ -42,7 +48,11 @@
     }
   ],
   "rolesCloser": "Talent you choose yourself, in your time zone, with the AI skills to carry client work end to end, so your senior team reviews instead of produces.",
-  "proofLogos": [],
+  "proofLogos": [
+    "do-good-cfo",
+    "igtms",
+    "good-carma"
+  ],
   "caseStudy": "",
   "seoTitle": "Agencies | Delivery that scales with the account | Handoff",
   "seoDescription": "Add agency delivery that scales with the account, end to end: talent you choose yourself, in your time zone, with the AI skills to carry client work."

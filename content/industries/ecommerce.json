@@ -18,6 +18,12 @@
     "You are answering customer email after hours.",
     "You hired a VA who escalated every refund and every upset customer back to you."
   ],
+  "triggerIcons": [
+    "cart",
+    "rocket",
+    "envelope",
+    "chat"
+  ],
   "rolesHeadline": "Here are the roles we fill most in e-commerce",
   "roles": [
     {
@@ -42,7 +48,11 @@
     }
   ],
   "rolesCloser": "Talent you choose yourself, with the assurance to handle a refund or an upset customer without sending it back to you, on your hours.",
-  "proofLogos": [],
+  "proofLogos": [
+    "snap-supplements",
+    "earth-side-farms",
+    "charcharms"
+  ],
   "caseStudy": "",
   "seoTitle": "E-Commerce | Stay open through every spike | Handoff",
   "seoDescription": "The store has to stay open even when you're short-staffed. Staff e-commerce to stay open through every spike, calls handled."

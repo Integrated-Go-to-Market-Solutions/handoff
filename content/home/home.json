@@ -265,6 +265,22 @@
       "image": "/images/logos/rincon-rehab-mono.webp",
       "hasImage": true,
       "stacked": false
+    },
+    {
+      "slug": "nyc-navigator",
+      "name": "NYC Navigator",
+      "image": "/images/logos/nyc-navigator-trim.webp",
+      "hasImage": true,
+      "stacked": true,
+      "industryOnly": true
+    },
+    {
+      "slug": "good-carma",
+      "name": "Good Carma Consulting",
+      "image": "/images/logos/good-carma.webp",
+      "hasImage": true,
+      "stacked": false,
+      "industryOnly": true
     }
   ],
   "aiTrained": {

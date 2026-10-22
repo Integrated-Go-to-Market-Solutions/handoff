@@ -342,6 +342,7 @@ const home = singleton("home", "Homepage", "home", "/", [
       img("image", "Logo"),
       bool("hasImage", "Show the image", "Turn off to show the company name as text until a logo file exists."),
       bool("stacked", "Tall logo", "Turn on when the logo stacks an icon above the name."),
+      bool("industryOnly", "Industry pages only", "Turn on to keep this logo out of the homepage strip and show it only on industry pages that list it."),
     ],
   },
   {
@@ -991,6 +992,7 @@ const industry: Collection = {
     str("problemHeadline", "Problem headline"),
     str("problemBody", "Problem paragraph"),
     strings("triggers", "Triggers"),
+    { ...iconField("triggerIcons", "Trigger icons"), list: true, description: "One icon per trigger, in the same order." } as TinaField,
     str("rolesHeadline", "Roles headline"),
     {
       type: "object",
