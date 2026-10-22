@@ -10,7 +10,7 @@ export const models = [
     tag: "Most popular",
     name: "Managed Staffing",
     forWho: "Companies building a team",
-    price: "~$3,500/month",
+    price: "From $3,500/month",
     terms: "Supervised, managed team members",
     copy: "We recruit, employ, train, and performance manage, with extra structure and accountability. You get the outcome and one point of accountability. Ideal for higher-risk functions.",
     points: [
