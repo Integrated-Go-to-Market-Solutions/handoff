@@ -305,6 +305,14 @@
       "hasImage": true,
       "stacked": false,
       "industryOnly": true
+    },
+    {
+      "slug": "nido",
+      "name": "Nido",
+      "image": "/images/logos/nido-mono.webp",
+      "hasImage": true,
+      "stacked": false,
+      "industryOnly": true
     }
   ],
   "aiTrained": {
