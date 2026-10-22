@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { CookieSettingsLink } from "@/components/cookie-consent";
 import { LogoLock } from "./brand";
 import { tinaField, useContent } from "@/components/tina/content";
 import { SocialLinks } from "./social-links";
@@ -82,6 +83,7 @@ export function SiteFooter() {
                 </Link>
               </>
             )}
+            <CookieSettingsLink className="ml-4 underline-offset-4 transition-colors hover:text-cyan hover:underline" />
           </span>
           <span data-tina-field={tinaField(site, "tagline")} className="display text-sm text-cyan">
             {site.tagline}

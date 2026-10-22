@@ -8,6 +8,7 @@ import { repoMedia } from "@/lib/tina/media";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { MobileCta } from "@/components/mobile-cta";
+import { CookieConsent } from "@/components/cookie-consent";
 
 export { tinaField };
 
@@ -149,6 +150,7 @@ type ContentSite = {
   seo: { title: string; description: string };
   header: { hireLabel: string; hireHref: string; joinLabel: string; joinHref: string };
   mobileCta: { label: string };
+  consent?: { text?: string; decline?: string; accept?: string; settings?: string; label?: string };
   footer: {
     email: string;
     emailLabel: string;
@@ -501,6 +503,7 @@ export function SiteShell({ payload, children }: { payload: ChromePayload; child
           {children}
           <SiteFooter />
           <MobileCta />
+          <CookieConsent />
         </PageForms>
       </LiveSiteContext.Provider>
     </RawContext.Provider>

@@ -27,8 +27,8 @@ export const hero = {
   imageAlt: "The Handoff team",
   /** Tom's hero copy (10/7), with "Latin America talent" corrected to "Latin American talent". */
   body: "Handoff places full-time, dedicated Latin American talent inside US companies, screened to the top 1%.",
-  primary: { label: "Get Started Today", href: site.bookCall },
-  secondary: { label: "Talk to Our Team", href: site.bookCall },
+  primary: { label: "Book a call", href: site.bookCall },
+  secondary: { label: "Book a call", href: site.bookCall },
   note: "Dedicated teammates through Direct Hire or Managed Staffing. Not a marketplace.",
   /**
    * Rewritten per feedback that "7 of us, all hired this way" read unclear.
@@ -303,7 +303,7 @@ export const process = {
   ] as { n: string; title: string; body: string; bulletsLead?: string; bullets?: string[]; after?: string }[],
   closer: {
     line: "Every hire after your first gets easier. We learn your company, your culture, your bar for 'great.' By hire five, many clients trust us enough to skip straight to day one.",
-    cta: "Start at step one",
+    cta: "Book a call",
   },  /** The /how-it-works close: Tom's content doc, 10/5. The homepage keeps `closer`. */
   pageCloser: {
     headline: "Start with the role",
@@ -325,7 +325,7 @@ export const process = {
    */
   timeline: {
     labels: ["Step one", "Step two", "Step three", "Step four"],
-    cta: { label: "Hire Today", step: 0 },
+    cta: { label: "Book a call", step: 0 },
     videos: [
       { src: "/videos/handoff-promo.mp4", poster: "/videos/handoff-promo.jpg", focus: "50% 50%", vertical: false },
       { src: "/videos/remote-culture.mp4", poster: "/videos/remote-culture.jpg", focus: "50% 30%", vertical: true },

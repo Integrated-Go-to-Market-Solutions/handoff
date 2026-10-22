@@ -127,6 +127,18 @@ const site = singleton("site", "Site", "site", "/", [
   },
   {
     type: "object",
+    name: "consent",
+    label: "Cookie banner",
+    fields: [
+      str("text", "Banner text", "Shown until a visitor accepts or declines analytics cookies. The privacy policy link follows it."),
+      str("decline", "Decline button"),
+      str("accept", "Accept button"),
+      str("settings", "Footer link", "Reopens the banner so a visitor can change their choice."),
+      str("label", "Screen reader label"),
+    ],
+  },
+  {
+    type: "object",
     name: "footer",
     label: "Footer",
     fields: [
