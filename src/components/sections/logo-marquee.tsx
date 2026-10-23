@@ -15,6 +15,7 @@ export function LogoMarquee({
   durationSeconds,
   onDark = false,
   exclude = [],
+  only,
 }: {
   bare?: boolean;
   /** Overrides the default 46s loop from globals.css. */
@@ -23,10 +24,14 @@ export function LogoMarquee({
   onDark?: boolean;
   /** Logo slugs to leave out of this instance (the full list stays for /v2). */
   exclude?: readonly string[];
+  /** Show just these logos, in this order (an industry page's clients). */
+  only?: readonly string[];
 }) {
   const { logos, site } = useContent();
   // Industry-only logos (10/22, W-70) appear on industry pages, not in this strip.
-  const shown = logos.filter((logo) => !exclude.includes(logo.slug) && !logo.industryOnly);
+  const shown = only
+    ? only.flatMap((slug) => logos.filter((logo) => logo.slug === slug && logo.hasImage))
+    : logos.filter((logo) => !exclude.includes(logo.slug) && !logo.industryOnly);
   const row = [...shown, ...shown];
 
   const track = (

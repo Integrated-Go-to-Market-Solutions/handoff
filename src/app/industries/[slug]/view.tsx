@@ -11,6 +11,7 @@ import { WhyLatam } from "@/components/sections/why-latam";
 import { HiringHighway } from "@/components/sections/hiring-highway";
 import { ClientQuotes } from "@/components/sections/client-quotes";
 import { Finale } from "@/components/sections/finale";
+import { LogoMarquee } from "@/components/sections/logo-marquee";
 import { FlightPaths } from "@/components/flight-paths";
 import { tinaField, useContent, useLiveDoc } from "@/components/tina/content";
 
@@ -31,6 +32,7 @@ export function IndustryView({ payload }: { payload: { data: any; query: string;
   const proofLogos = ((industry.proofLogos as string[] | undefined) ?? [])
     .map((slug) => allLogos.find((logo) => logo.slug === slug))
     .filter((logo): logo is (typeof allLogos)[number] => Boolean(logo));
+  const shownLogos = proofLogos.filter((logo) => logo.hasImage && logo.image);
   const study = industry.caseStudy
     ? (caseStudies as { slug: string; tag: string; title: string; subhead: string; heroStats: { label: string; value: string }[] }[]).find(
         (item) => item.slug === industry.caseStudy,
@@ -88,22 +90,25 @@ export function IndustryView({ payload }: { payload: { data: any; query: string;
       {/* This industry's clients, grayed out on the same frosted dark strip as
           the homepage logos (10/22 live review, W-70). Logos without a file
           yet are left out rather than shown as text. */}
-      {proofLogos.some((logo) => logo.hasImage && logo.image) && (
+      {shownLogos.length > 0 && (
         <section
           className="border-y border-white/10 bg-ink py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]"
           aria-label="Clients"
         >
-          <ul className="shell flex flex-wrap items-center justify-center gap-x-12 gap-y-3 md:gap-x-16">
-            {proofLogos
-              .filter((logo) => logo.hasImage && logo.image)
-              .map((logo) => (
+          {/* More than six won't fit on one line, so those scroll like the homepage strip. */}
+          {shownLogos.length > 6 ? (
+            <LogoMarquee bare onDark only={shownLogos.map((logo) => logo.slug)} durationSeconds={shownLogos.length * 5} />
+          ) : (
+            <ul className="shell flex flex-wrap items-center justify-center gap-x-12 gap-y-3 md:gap-x-16">
+              {shownLogos.map((logo) => (
                 <li key={logo.slug} className="grid h-17 w-38 place-items-center">
                   <span className={`relative block w-full ${logo.stacked ? "h-15" : "h-8.5"}`}>
                     <Image src={logo.image!} alt={logo.name} fill sizes="160px" className="object-contain grayscale opacity-80 invert" />
                   </span>
                 </li>
               ))}
-          </ul>
+            </ul>
+          )}
         </section>
       )}
 
