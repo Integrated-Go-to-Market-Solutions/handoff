@@ -313,6 +313,62 @@
       "hasImage": true,
       "stacked": false,
       "industryOnly": true
+    },
+    {
+      "slug": "woodford-rentals",
+      "name": "Woodford Rentals",
+      "image": "/images/logos/woodford-rentals-mono.webp",
+      "hasImage": true,
+      "stacked": true,
+      "industryOnly": true
+    },
+    {
+      "slug": "keyluxe-suites",
+      "name": "Keyluxe Suites",
+      "image": "/images/logos/keyluxe-suites-mono.webp",
+      "hasImage": true,
+      "stacked": false,
+      "industryOnly": true
+    },
+    {
+      "slug": "dlux-suites",
+      "name": "dluxSuites",
+      "image": "/images/logos/dlux-suites-mono.webp",
+      "hasImage": true,
+      "stacked": false,
+      "industryOnly": true
+    },
+    {
+      "slug": "turnkey-housing",
+      "name": "TurnKey Housing",
+      "image": "/images/logos/turnkey-housing-mono.webp",
+      "hasImage": true,
+      "stacked": true,
+      "industryOnly": true
+    },
+    {
+      "slug": "we-are-guru",
+      "name": "Guru",
+      "image": "/images/logos/we-are-guru-mono.webp",
+      "hasImage": true,
+      "stacked": true,
+      "industryOnly": true
+    },
+    {
+      "slug": "apt-122",
+      "name": "APT-122",
+      "image": "/images/logos/apt-122-mono.webp",
+      "hasImage": true,
+      "stacked": false,
+      "industryOnly": true
+    },
+    {
+      "slug": "bloxr",
+      "name": "BLOXR",
+      "image": "/images/logos/bloxr-mono.webp",
+      "hasImage": true,
+      "stacked": true,
+      "industryOnly": true
     }
   ],
   "aiTrained": {
