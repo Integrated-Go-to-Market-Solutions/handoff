@@ -19,16 +19,18 @@ export function HeroBright({ subhead }: { subhead?: string } = {}) {
     // applies on short screens.
     <section className="halftone relative flex min-h-[calc(100svh-4.75rem-5.875rem)] flex-col justify-center md:min-h-[calc(100svh-4.5rem-5.875rem)] overflow-hidden bg-ink pb-16 pt-14 md:pb-20 md:pt-20">
       {/* Team photo, grayscale and heavily darkened so it only adds texture
-          behind the headline. Preloaded: it's the first thing on the page. */}
+          behind the headline. Preloaded: it's the first thing on the page.
+          Tablet and up only: on a phone the tall crop showed mostly drapes
+          (Tom, 10/27), so phones get the photo as its own image below. */}
       <Image
         src={hero.image}
         alt={hero.imageAlt}
         fill
         preload
         sizes="100vw"
-        className="object-cover object-[50%_35%] grayscale"
+        className="object-cover object-[50%_35%] grayscale max-md:hidden"
       />
-      <div className="absolute inset-0" aria-hidden="true">
+      <div className="absolute inset-0 max-md:hidden" aria-hidden="true">
         <div className="absolute inset-0 bg-ink/70" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgb(31_31_31/0.55),transparent_75%)]" />
         <div className="absolute inset-0 bg-linear-to-t from-ink via-transparent to-ink/60" />
@@ -76,6 +78,18 @@ export function HeroBright({ subhead }: { subhead?: string } = {}) {
         <div className="mt-8">
           <Button href={hero.primary.href}>{hero.primary.label}</Button>
           <CtaNote className="mt-4" />
+        </div>
+
+        {/* Phones: the whole team, framed on the group instead of the drapes. */}
+        <div className="relative mx-auto mt-10 aspect-3/2 w-full overflow-hidden rounded-(--radius-card) border-2 border-white/10 md:hidden">
+          <Image
+            src={hero.image}
+            alt={hero.imageAlt}
+            fill
+            sizes="100vw"
+            className="origin-[50%_60%] scale-[1.35] object-cover grayscale"
+          />
+          <div className="absolute inset-0 bg-linear-to-t from-ink/50 via-transparent to-transparent" aria-hidden="true" />
         </div>
       </div>
     </section>
