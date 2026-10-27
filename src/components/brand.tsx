@@ -132,12 +132,13 @@ export function Pill({
 
 /**
  * The site's existing line under a CTA button (`hero.note`), used under every
- * primary CTA in the page body. Not in the header.
+ * primary CTA in the page body. Not in the header. Hidden on phones
+ * (Anthony, 10/27).
  */
 export function CtaNote({ tone = "onDark", className = "" }: { tone?: "onDark" | "onLight"; className?: string }) {
   const { hero } = useContent();
   return (
-    <p data-tina-field={tinaField(hero, "note")} className={`text-sm ${tone === "onDark" ? "text-bone/60" : "text-ink/55"} ${className}`}>
+    <p data-tina-field={tinaField(hero, "note")} className={`text-sm max-md:hidden ${tone === "onDark" ? "text-bone/60" : "text-ink/55"} ${className}`}>
       {hero.note}
     </p>
   );

@@ -83,7 +83,7 @@ export function Finale() {
             {cta.book}
           </Button>
         </div>
-        <p className="mt-5 text-sm text-bone/60">{hero.note}</p>
+        <p className="mt-5 text-sm text-bone/60 max-md:hidden">{hero.note}</p>
       </div>
     </section>
   );
