@@ -1,15 +1,14 @@
 "use client";
 
 import { Reveal } from "@/components/reveal";
-import { TalentCard } from "@/components/talent-card";
 import { Soul } from "@/components/sections/soul";
 import { ValuesVideo } from "@/components/sections/values-video";
 import { SocialLinks } from "@/components/social-links";
 import { tinaField, useContent } from "@/components/tina/content";
-import { Button, cardGlow, cardTones } from "@/components/brand";
+import { Button } from "@/components/brand";
 
 export function AboutView() {
-  const { aboutPage, site, team } = useContent();
+  const { aboutPage, site } = useContent();
   return (
     <>
       <section className="relative overflow-hidden bg-ink section-py-hero">
@@ -21,78 +20,40 @@ export function AboutView() {
             <p className="mt-6 text-pretty text-lg leading-relaxed text-bone/75 md:text-xl">{aboutPage.lead}</p>
           </Reveal>
 
-          {/* Who we are in short beats: what holds us together, Alma, and
-              where we're going (Ryan's review, 10/20). */}
-          {aboutPage.beats?.length > 0 && (
-            <Reveal delay={90}>
-              <ul className="section-gap grid gap-6 md:grid-cols-3">
-                {aboutPage.beats.map((beat: { lead: string; body: string }) => (
-                  <li key={beat.lead} className="border-l-4 border-cyan pl-5">
-                    <p className="text-base font-bold text-white md:text-lg">{beat.lead}</p>
-                    <p className="mt-2 text-pretty text-base leading-relaxed text-bone/75">{beat.body}</p>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-          )}
-
           <Reveal delay={150}>
             <SocialLinks />
           </Reveal>
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-ink pb-20 text-bone md:pb-32">
-        <div className="shell relative">
-          <Reveal>
-            <h2 className="display text-[clamp(2rem,4.8vw,3.6rem)]">{aboutPage.gap.headline}</h2>
-            <p className="mt-6 text-pretty text-lg leading-relaxed text-bone/75 md:text-xl">{aboutPage.gap.body}</p>
-          </Reveal>
-
-          <Reveal delay={90} className="mt-16">
-            <h2 className="display text-[clamp(1.8rem,4vw,3rem)]">{aboutPage.winWin.headline}</h2>
-          </Reveal>
-          <div className="section-gap grid gap-4 md:grid-cols-2">
-            {aboutPage.winWin.sides.map((side: { title: string; body: string }, i: number) => {
-              const tone = cardTones[i === 0 ? 1 : 0];
-              return (
-                <Reveal key={side.title} delay={i * 90} className="h-full">
-                  <div className={`h-full rounded-(--radius-card) p-7 md:p-8 ${cardGlow} ${tone.card}`}>
-                    <h3 className="text-base font-semibold uppercase tracking-[0.04em] md:text-lg">{side.title}</h3>
-                    <p className={`mt-3 text-pretty text-base leading-relaxed md:text-lg ${tone.muted}`}>{side.body}</p>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
-          <p className="mt-8 text-pretty border-l-4 border-cyan pl-5 text-base leading-relaxed text-bone/80 md:text-lg">
-            {aboutPage.winWin.closer}
-          </p>
-
-          <Reveal className="mt-16">
-            <h2 className="display text-[clamp(1.8rem,4vw,3rem)]">{aboutPage.founder.headline}</h2>
-            <p className="mt-6 text-pretty text-lg leading-relaxed text-bone/75 md:text-xl">{aboutPage.founder.body}</p>
-          </Reveal>
-        </div>
-      </section>
+      {/* After the hero: what holds us together, Alma, and where we're going,
+          in that order (10/28 live review, W-76). "Talent is everywhere",
+          "A win on both sides", "The founder" and "Our team" came off the
+          page (W-77); their copy stays in Tina. */}
+      {(aboutPage.beats ?? []).map((beat: { lead: string; body: string }, i: number) => {
+        const light = i % 2 === 1;
+        return (
+          <section
+            key={beat.lead}
+            className={`relative overflow-hidden section-space ${light ? "bg-bone text-ink" : "bg-ink text-bone"} ${i === 0 ? "pt-0!" : ""}`}
+          >
+            <div className="shell relative">
+              <Reveal className="max-w-4xl">
+                <h2 className="display text-[clamp(2rem,4.8vw,3.6rem)]">{beat.lead}</h2>
+                <p className={`mt-6 text-pretty text-lg leading-relaxed md:text-xl ${light ? "text-ink/75" : "text-bone/80"}`}>
+                  {beat.body}
+                </p>
+              </Reveal>
+            </div>
+          </section>
+        );
+      })}
 
       <ValuesVideo />
 
-      <section className="bg-ink section-space text-bone">
-        <div className="shell">
-          <Reveal>
-            <h2 className="display text-[clamp(1.8rem,4vw,3rem)]">{aboutPage.teamHeadline}</h2>
-          </Reveal>
-        </div>
-        <div className="shell section-gap flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 sm:grid sm:grid-cols-3 sm:overflow-visible lg:grid-cols-4">
-          {team.map((person, i) => (
-            <TalentCard key={person.slug} slug={person.slug} name={person.name} role={person.role} photo={person.photo} index={i} />
-          ))}
-        </div>
-      </section>
-
       <Soul variant="dictionary" />
 
+      {/* Ends on the tagline and Book a call (W-78). */}
       <section className="bg-ink section-space text-bone">
         <div className="shell">
           <Reveal>

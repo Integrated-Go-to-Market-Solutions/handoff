@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Reveal } from "@/components/reveal";
-import { Button, cardGlow, cardTones } from "@/components/brand";
+import { Button } from "@/components/brand";
 import { Finale } from "@/components/sections/finale";
 import { TalentVideos } from "@/components/sections/talent-videos";
 import { tinaField, useContent } from "@/components/tina/content";
@@ -26,13 +26,14 @@ export function RolesView() {
       <section className="relative overflow-hidden bg-bone section-space text-ink">
         <div className="shell relative">
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {/* One gray box style instead of the multicolor cards (10/28 live review, W-74). */}
             {departments.map((department, i) => {
-              const tone = cardTones[i % cardTones.length];
+              const tone = { accent: "text-cyan", muted: "text-bone/70" };
               return (
                 <Reveal key={department.slug} delay={Math.min(i, 5) * 60} as="li" className="h-full">
                   <Link
                     href={`/roles/${department.slug}`}
-                    className={`group flex h-full flex-col rounded-(--radius-card) p-6 focus-visible:outline-none md:p-7 ${cardGlow} ${tone.card}`}
+                    className="group flex h-full flex-col rounded-(--radius-card) border-2 border-ink bg-linear-to-br from-ink-300 to-ink p-6 text-bone transition-[border-color,transform] duration-300 hover:-translate-y-1 hover:border-cyan focus-visible:border-cyan focus-visible:outline-none motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:p-7"
                   >
                     <div className="flex items-start justify-between gap-4">
                       <h2 className="display text-xl leading-tight md:text-2xl">{department.name}</h2>
