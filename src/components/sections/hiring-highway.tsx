@@ -23,7 +23,9 @@ const FILL_SHARE = 0.8;
  * phones, and a button through to /how-it-works.
  *
  * `hero` opens /how-it-works (10/22 live review, W-61): the title is the
- * page's h1 and the button scrolls down to the step-by-step detail.
+ * page's h1 and the button scrolls down to the step-by-step detail. No
+ * scroll animation there, and the cards show the step names only, since
+ * the copy is right below (10/28, W-72).
  *
  * All four cards are the same size: each icon sits in an identical slot, so
  * the cards start on one line, and the cards stretch to the tallest one.
@@ -51,7 +53,7 @@ export function HiringHighway({ compact = false, hero = false }: { compact?: boo
     let raf = 0;
     const update = () => {
       raf = 0;
-      if (reduced.matches) {
+      if (reduced.matches || hero) {
         line.style.setProperty("--hs-fill", "1");
         for (const s of steps) s?.classList.add("in");
         return;
@@ -92,7 +94,7 @@ export function HiringHighway({ compact = false, hero = false }: { compact?: boo
       reduced.removeEventListener("change", schedule);
       if (raf) cancelAnimationFrame(raf);
     };
-  }, []);
+  }, [hero]);
 
   const steps = process.steps;
   const last = steps.length - 1;
@@ -102,11 +104,15 @@ export function HiringHighway({ compact = false, hero = false }: { compact?: boo
     <section id="process" className="hw-dots relative scroll-mt-20 bg-ink text-bone">
       <div
         ref={trackRef}
-        className={`relative ${compact ? "lg:h-[210vh]" : "lg:h-[250vh]"} motion-reduce:lg:h-auto`}
+        className={`relative ${hero ? "" : compact ? "lg:h-[210vh]" : "lg:h-[250vh]"} motion-reduce:lg:h-auto`}
       >
         <div
           ref={stickyRef}
-          className="lg:sticky lg:top-18 lg:flex lg:h-[calc(100vh-72px)] lg:flex-col lg:justify-center motion-reduce:lg:static motion-reduce:lg:h-auto"
+          className={
+            hero
+              ? ""
+              : "lg:sticky lg:top-18 lg:flex lg:h-[calc(100vh-72px)] lg:flex-col lg:justify-center motion-reduce:lg:static motion-reduce:lg:h-auto"
+          }
         >
           <div
             className={`shell w-full lg:py-8 short:py-4 ${
@@ -174,6 +180,7 @@ export function HiringHighway({ compact = false, hero = false }: { compact?: boo
                         } ${compact ? "" : "md:p-6"}`}
                       >
                         <h3 className="display text-xl leading-tight">{step.title}</h3>
+                        {!hero && (
                         <p
                           className={`mt-2 font-text leading-relaxed ${isEnd ? "text-ink/85" : "text-bone/75"} ${
                             compact ? "hidden text-sm md:block" : "text-[0.95rem] short:text-sm"
@@ -181,6 +188,7 @@ export function HiringHighway({ compact = false, hero = false }: { compact?: boo
                         >
                           {step.body}
                         </p>
+                        )}
                       </div>
                     </li>
                   );
