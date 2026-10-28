@@ -43,7 +43,7 @@ export const clientQuotes = {
         "Product, GTM, content, events — Handoff has staffed nearly every function we've needed as WorkRight scales, and each hire has been strong enough that we didn't have to think twice.",
       name: "Robert Horsley",
       title: "Co-Founder & COO",
-      company: "WorkRight",
+      company: "Fragomen WorkRight",
       photo: "/images/testimonials/robert-horsley.webp",
       linkedin: "https://www.linkedin.com/",
     },

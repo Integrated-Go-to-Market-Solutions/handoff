@@ -369,6 +369,22 @@
       "hasImage": true,
       "stacked": true,
       "industryOnly": true
+    },
+    {
+      "slug": "maha-global",
+      "name": "MAHA Global",
+      "image": "/images/logos/maha-global-mono.webp",
+      "hasImage": true,
+      "stacked": false,
+      "industryOnly": true
+    },
+    {
+      "slug": "fragomen-workright",
+      "name": "Fragomen WorkRight",
+      "image": "/images/logos/fragomen-workright-mono.webp",
+      "hasImage": true,
+      "stacked": false,
+      "industryOnly": true
     }
   ],
   "aiTrained": {
