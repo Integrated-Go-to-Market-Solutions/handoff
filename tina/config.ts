@@ -795,7 +795,7 @@ const careers = singleton("careers", "Careers", "careers", "/careers", [
     label: "Reasons",
     list: true,
     ui: named("lead"),
-    fields: [str("lead", "Bold start"), str("rest", "Rest of the line")],
+    fields: [str("lead", "Bold start"), str("rest", "Rest of the line"), iconField()],
   },
   str("lookForHeadline", "Who we look for heading"),
   str("lookFor", "Who we look for"),

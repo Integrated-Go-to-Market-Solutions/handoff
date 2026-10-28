@@ -12,19 +12,23 @@
   "why": [
     {
       "lead": "Work with the best US companies that take you seriously.",
-      "rest": "We are selective about where we place you, and about who we bring on alongside you."
+      "rest": "We are selective about where we place you, and about who we bring on alongside you.",
+      "icon": "building"
     },
     {
       "lead": "Get paid for the work you do,",
-      "rest": "in roles that treat you as part of the team instead of a task to offload."
+      "rest": "in roles that treat you as part of the team instead of a task to offload.",
+      "icon": "bag"
     },
     {
       "lead": "Grow.",
-      "rest": "We screen for how well you work with AI tools and we help you get sharper at it, because it is how our talent moves faster on the same work."
+      "rest": "We screen for how well you work with AI tools and we help you get sharper at it, because it is how our talent moves faster on the same work.",
+      "icon": "trendingUp"
     },
     {
       "lead": "Stay.",
-      "rest": "Most of our placements are built to last. If a role ends, finding your next one is our job, not yours."
+      "rest": "Most of our placements are built to last. If a role ends, finding your next one is our job, not yours.",
+      "icon": "handshake"
     }
   ],
   "lookForHeadline": "Who we look for",

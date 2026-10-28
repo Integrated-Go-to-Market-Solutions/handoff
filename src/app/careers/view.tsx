@@ -1,5 +1,6 @@
 "use client";
 
+import { Icon, type IconName } from "@/components/icon";
 import { Reveal } from "@/components/reveal";
 import { Button, Eyebrow, cardGlow, cardTones } from "@/components/brand";
 import { VideoLoop } from "@/components/video-loop";
@@ -36,18 +37,17 @@ export function CareersView() {
             <h2 className="display text-[clamp(2rem,4.8vw,3.6rem)]">{careersPage.whyHeadline}</h2>
           </Reveal>
           <ul className="section-gap grid gap-4 sm:grid-cols-2">
-            {careersPage.why.map((item: { lead: string; rest: string }, i: number) => {
-              const tone = cardTones[i % cardTones.length];
-              return (
-                <Reveal as="li" key={item.lead} delay={i * 80} className="h-full">
-                  <div className={`h-full rounded-(--radius-card) p-7 md:p-8 ${cardGlow} ${tone.card}`}>
-                    <p className={`text-pretty text-base leading-relaxed md:text-lg ${tone.muted}`}>
-                      <span className={`font-semibold ${tone.accent}`}>{item.lead}</span> {item.rest}
-                    </p>
-                  </div>
-                </Reveal>
-              );
-            })}
+            {/* Gray cards with an icon each (10/28 live review, W-79). */}
+            {careersPage.why.map((item: { lead: string; rest: string; icon?: string }, i: number) => (
+              <Reveal as="li" key={item.lead} delay={i * 80} className="h-full">
+                <div className="h-full rounded-(--radius-card) border-2 border-ink bg-linear-to-br from-ink-300 to-ink p-7 text-bone md:p-8">
+                  <Icon name={(item.icon || "star") as IconName} strokeWidth={1.4} className="h-10 w-10 text-cyan" />
+                  <p className="mt-6 text-pretty text-base leading-relaxed text-bone/75 md:text-lg">
+                    <span className="font-semibold text-white">{item.lead}</span> {item.rest}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
           </ul>
         </div>
       </section>
