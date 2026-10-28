@@ -118,7 +118,7 @@ export const industriesStrip = {
  * Anthony confirmed in the Pulse answers.
  */
 export const credibilityStats = [
-  { value: "92%", label: "Still with their company after a year" },
+  { value: "92%", label: "With their company after a year" },
   { value: "500+", label: "Placements in four years" },
   { value: "40+", label: "Clients in talent mobility" },
 ] as const;
