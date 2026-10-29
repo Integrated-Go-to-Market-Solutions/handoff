@@ -57,7 +57,7 @@ export const whyLatam = {
       bullets: [
         "Deep pool of educated, professional talent",
         "Strong English proficiency across key markets",
-        "Experience working with U.S. companies, tools, and processes",
+        "Experience working with US companies, tools, and processes",
         "High accountability and work ethic",
       ],
     },
@@ -66,8 +66,8 @@ export const whyLatam = {
       tagline: "Talent easy to reach",
       icon: "clock",
       bullets: [
-        "Minimal time difference with the U.S.",
-        "Talent works standard U.S. business hours",
+        "Minimal time difference with the US",
+        "Talent works standard US business hours",
         "Real-time collaboration, not overnight handoffs",
         "Faster feedback loops and fewer delays",
       ],
@@ -77,9 +77,9 @@ export const whyLatam = {
       tagline: "A world of talent close to your culture",
       icon: "users",
       bullets: [
-        "Strong alignment with U.S. business culture",
+        "Strong alignment with US business culture",
         "Clear communication, proactive problem-solving",
-        "Familiarity with U.S. expectations around ownership, deadlines, and quality",
+        "Familiarity with US expectations around ownership, deadlines, and quality",
       ],
     },
   ],
