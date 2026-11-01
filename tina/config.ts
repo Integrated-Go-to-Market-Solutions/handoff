@@ -691,15 +691,54 @@ const testimonials = singleton("testimonials", "Testimonials", "testimonials", "
 const about = singleton("about", "About", "about", "/about", [
   str("title", "Page title"),
   seoDescription(),
+  str("eyebrow", "Small label"),
   str("headline", "Headline"),
+  str("headlineAccent", "Headline, last word in teal"),
   str("lead", "Lead"),
+  str("leadStrong", "Lead, bold sentence at the end"),
   {
     type: "object",
-    name: "beats",
-    label: "Who we are, in short beats",
-    list: true,
-    ui: named("lead"),
-    fields: [str("lead", "Bold lead-in"), str("body", "Text")],
+    name: "heroVideo",
+    label: "Hero video (YouTube)",
+    fields: [
+      str("youtubeId", "YouTube video ID", "The part after youtu.be/ in the share link, e.g. hKCOa7bs-4w."),
+      str("title", "Video title", "Read out by screen readers."),
+    ],
+  },
+  {
+    type: "object",
+    name: "goal",
+    label: "Building towards",
+    fields: [str("eyebrow", "Small label"), str("number", "Big number"), str("body", "Line under the number")],
+  },
+  {
+    type: "object",
+    name: "purpose",
+    label: "What holds us together",
+    fields: [
+      str("eyebrow", "Small label"),
+      str("headline", "Headline"),
+      str("lead", "Lead sentence"),
+      str("accent", "End of the lead sentence, in blue"),
+      str("body", "Paragraph"),
+    ],
+  },
+  {
+    type: "object",
+    name: "alma",
+    label: "Alma",
+    fields: [
+      str("eyebrow", "Small label"),
+      str("headword", "Word"),
+      str("pronunciation", "Pronunciation"),
+      str("partOfSpeech", "Part of speech"),
+      str("gloss", "Meaning"),
+      str("body", "Paragraph"),
+      str("struck", "Crossed-out line"),
+      str("line", "Closing line"),
+      str("accent", "End of the closing line, in teal"),
+      img("background", "Background photo"),
+    ],
   },
   {
     type: "object",
@@ -739,6 +778,7 @@ const about = singleton("about", "About", "about", "/about", [
     name: "values",
     label: "Values",
     fields: [
+      str("eyebrow", "Small label"),
       str("headline", "Headline"),
       {
         type: "object",

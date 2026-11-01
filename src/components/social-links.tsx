@@ -46,11 +46,31 @@ function SocialMark({ platform }: { platform: "youtube" | "linkedin" | "instagra
 }
 
 /**
- * The social icons. Large on About; `compact` is the small row in the footer
- * (10/16 site audit: most pages had no link to Handoff's social profiles).
+ * The social icons. `compact` is the small row in the footer (10/16 site
+ * audit: most pages had no link to Handoff's social profiles); `pills` is the
+ * labelled row in the About hero (Handoff's 11/1 About mockup).
  */
-export function SocialLinks({ compact = false }: { compact?: boolean } = {}) {
+export function SocialLinks({ compact = false, pills = false }: { compact?: boolean; pills?: boolean } = {}) {
   const { socialLinks } = useContent();
+  if (pills) {
+    return (
+      <nav aria-label="Handoff social media" className="mt-6 flex flex-wrap gap-2.5">
+        {socialLinks.map((social) => (
+          <a
+            key={social.label}
+            href={social.href}
+            target="_blank"
+            rel="noreferrer"
+            data-tina-field={tinaField(social, "href")}
+            className="inline-flex items-center gap-2 rounded-full border border-white/15 py-1.5 pl-2 pr-4 text-sm font-semibold text-bone/85 transition-colors duration-300 hover:border-cyan hover:text-bone focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan"
+          >
+            <SocialMark platform={social.platform} />
+            {social.label}
+          </a>
+        ))}
+      </nav>
+    );
+  }
   return (
     <nav aria-label="Handoff social media" className={compact ? "flex gap-2" : "mt-8 flex flex-wrap gap-4"}>
       {socialLinks.map((social) => (
