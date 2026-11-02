@@ -8,13 +8,12 @@ import { SocialLinks } from "@/components/social-links";
 import { Finale } from "@/components/sections/finale";
 import { tinaField, useContent } from "@/components/tina/content";
 
-/** "01 — Our values": the number, a short rule, then the label. */
+/** "01  Our values": the number, then the label, like the site's other eyebrows. */
 function SectionLabel({ n, children, tone }: { n: string; children: React.ReactNode; tone: "royal" | "cyan" | "ink" }) {
   const color = { royal: "text-royal", cyan: "text-cyan", ink: "text-ink" }[tone];
   return (
-    <p className={`eyebrow flex items-center gap-2.5 text-xs tracking-[0.2em] md:text-[0.8125rem] ${color}`}>
+    <p className={`eyebrow flex items-center gap-3 text-xs tracking-[0.2em] md:text-[0.8125rem] ${color}`}>
       <span>{n}</span>
-      <span aria-hidden="true" className="h-px w-5 bg-current" />
       <span>{children}</span>
     </p>
   );
@@ -45,8 +44,7 @@ export function AboutView() {
         <div className="shell relative">
           <div className="grid gap-8 md:grid-cols-2 md:items-end md:gap-14">
             <Reveal>
-              <p className="eyebrow flex items-center gap-2.5 text-xs tracking-[0.2em] text-cyan md:text-[0.8125rem]">
-                <span aria-hidden="true" className="h-px w-6 bg-current" />
+              <p className="eyebrow text-xs tracking-[0.2em] text-cyan md:text-[0.8125rem]">
                 {aboutPage.eyebrow}
               </p>
               <h1 data-tina-field={tinaField(aboutPage, "headline")} className="display mt-5 text-[clamp(3rem,7.5vw,6rem)] text-bone">
@@ -144,11 +142,13 @@ export function AboutView() {
         </div>
       </section>
 
-      {/* 5. Alma, as a dictionary entry over the team photo */}
+      {/* 5. Alma, as a dictionary entry over Latin America at night (NASA
+          Black Marble 2016, public domain; credited in the corner). */}
       <section className="relative overflow-hidden bg-ink section-space text-bone">
         <div className="absolute inset-0" aria-hidden="true">
-          <Image src={alma.background} alt="" fill sizes="100vw" className="object-cover grayscale" />
-          <div className="absolute inset-0 bg-ink/85" />
+          <Image src={alma.background} alt="" fill sizes="100vw" className="object-cover object-[68%_50%] md:object-center" />
+          <div className="absolute inset-0 bg-ink/20" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(31,31,31,0.6),transparent_65%)]" />
           <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.07)_1px,transparent_1.2px)] bg-size-[14px_14px]" />
         </div>
         <div className="shell relative text-center">
@@ -184,6 +184,9 @@ export function AboutView() {
             </p>
           </Reveal>
         </div>
+        {alma.credit && (
+          <p className="absolute bottom-3 right-4 text-[0.6875rem] text-bone/40 md:right-6">{alma.credit}</p>
+        )}
       </section>
 
       <Finale />

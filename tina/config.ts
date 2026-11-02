@@ -738,6 +738,7 @@ const about = singleton("about", "About", "about", "/about", [
       str("line", "Closing line"),
       str("accent", "End of the closing line, in teal"),
       img("background", "Background photo"),
+      str("credit", "Photo credit", "Small line in the bottom corner."),
     ],
   },
   {
