@@ -8,6 +8,7 @@ import { Icon, type IconName } from "@/components/icon";
 import { HiringHighway } from "@/components/sections/hiring-highway";
 import { Finale } from "@/components/sections/finale";
 import { tinaField, useContent, useLiveDoc } from "@/components/tina/content";
+import { roleAnchor } from "@/lib/role-anchor";
 
 /**
  * Department (role) page, redesigned 10/15 per the 10/14 feedback ("less
@@ -139,7 +140,7 @@ export function DepartmentView({ payload }: { payload: { data: any; query: strin
               const detail = details.find((d) => d.role === role);
               return (
                 <Reveal key={role} delay={Math.min(i, 5) * 60} as="li" className="h-full">
-                  <div className="flex h-full flex-col rounded-(--radius-card) border-2 border-ink/8 bg-bone/60 p-6 transition-[border-color,box-shadow] duration-300 hover:border-royal/35 hover:shadow-md md:p-7">
+                  <div id={roleAnchor(role)} className="flex h-full scroll-mt-28 target:border-royal/60 target:shadow-md flex-col rounded-(--radius-card) border-2 border-ink/8 bg-bone/60 p-6 transition-[border-color,box-shadow] duration-300 hover:border-royal/35 hover:shadow-md md:p-7">
                     <Icon name={(detail?.icon as IconName) || "users"} strokeWidth={1.25} className="h-10 w-10 text-royal" />
                     <h3 className="display mt-5 text-xl leading-tight text-ink">{role}</h3>
                     {detail?.text && <p className="mt-3 flex-1 text-[0.97rem] leading-relaxed text-ink/75">{detail.text}</p>}

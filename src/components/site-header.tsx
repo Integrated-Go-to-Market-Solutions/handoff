@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { tinaField, useContent, type NavItem } from "@/components/tina/content";
+import { roleAnchor } from "@/lib/role-anchor";
 
 /**
  * Dropdowns open on hover and stay open while focus is inside them (for the
@@ -191,8 +192,18 @@ function RolesMega({ item }: { item: NavItem }) {
           <div className="px-6 py-3">
             <p className="eyebrow text-xs text-bone/50">{department.name}</p>
             <ul className="mt-3 space-y-2 text-[0.9rem] leading-snug text-bone/80">
+              {/* Each role opens its card on the department page (11/6: Tom
+                  found the roles here weren't clickable). */}
               {department.roles.map((role: any) => (
-                <li key={role}>{role}</li>
+                <li key={role}>
+                  <Link
+                    href={`/roles/${department.slug}#${roleAnchor(role)}`}
+                    onClick={releaseFocus}
+                    className="-mx-2 block rounded-lg px-2 py-0.5 transition-colors hover:bg-white/5 hover:text-cyan focus-visible:text-cyan focus-visible:outline-none"
+                  >
+                    {role}
+                  </Link>
+                </li>
               ))}
             </ul>
             <Link
