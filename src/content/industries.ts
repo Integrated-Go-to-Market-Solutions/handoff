@@ -55,6 +55,7 @@ export const industries = [
       { name: "Quality Assurance Specialist" },
       { name: "Guest and Resident Coordinator", department: "corporate-housing-mtr" },
       { name: "Bookkeeper", department: "finance-accounting" },
+      { name: "Guest Services Specialist", department: "corporate-housing-mtr" },
     ],
     rolesCloser:
       "Our founder spent over a decade hiring in this industry. It is where our recruiting is deepest and where we are surest of the fit.",
@@ -86,6 +87,7 @@ export const industries = [
       { name: "Client Services Lead", department: "customer-support" },
       { name: "Quality Assurance Specialist" },
       { name: "Bookkeeper", department: "finance-accounting" },
+      { name: "Relocation Coordinator", department: "corporate-relocation" },
     ],
     rolesCloser:
       "Talent you choose yourself, in your clients' time zone, with client-ready English and the AI skills to move faster on the same work. They know a delayed move is a family waiting in a hotel.",
@@ -117,6 +119,7 @@ export const industries = [
       { name: "Full Stack Developer", department: "software-engineering" },
       { name: "AI & Automations Developer", department: "data-ai" },
       { name: "Customer Support Lead", department: "customer-support" },
+      { name: "Bookkeeper", department: "finance-accounting" },
     ],
     rolesCloser:
       "Talent you pick yourself, in your working hours, with client-ready English and real AI skills, there to own the role and not just clear tasks.",
@@ -148,6 +151,7 @@ export const industries = [
       { name: "Graphic / Motion Designer", department: "design" },
       { name: "Project Manager", department: "admin-operations" },
       { name: "SEO Specialist", department: "marketing" },
+      { name: "Content Writer", department: "marketing" },
     ],
     rolesCloser:
       "Talent you choose yourself, in your time zone, with the AI skills to carry client work end to end, so your senior team reviews instead of produces.",
@@ -179,6 +183,7 @@ export const industries = [
       { name: "Email / Retention Marketing Manager", department: "marketing" },
       { name: "Paid Media Buyer", department: "marketing" },
       { name: "Bookkeeper", department: "finance-accounting" },
+      { name: "Graphic / Motion Designer", department: "design" },
     ],
     rolesCloser:
       "Talent you choose yourself, with the assurance to handle a refund or an upset customer without sending it back to you, on your hours.",
