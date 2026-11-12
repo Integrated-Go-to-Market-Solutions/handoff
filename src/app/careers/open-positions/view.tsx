@@ -33,7 +33,7 @@ export function OpenPositionsView() {
         <div className="shell relative">
           <AshbyJobBoard boardUrl={open.jobBoardUrl} />
           <a
-            href={open.jobBoardUrl}
+            href={`${open.jobBoardUrl}?utm_source=talenthandoff.com`}
             target="_blank"
             rel="noopener noreferrer"
             data-tina-field={tinaField(open, "fallbackLink")}

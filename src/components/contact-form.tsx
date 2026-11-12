@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { CtaNote } from "./brand";
 import { useContent } from "@/components/tina/content";
+import { track } from "@/lib/track";
 
 /**
  * Two short steps: the role first (what, how many, when), then contact
@@ -156,6 +157,32 @@ export function ContactForm() {
     if (status === "ok") successRef.current?.focus();
   }, [status]);
 
+  // "Hire a [role]" on a role card opens this page with ?role=, so the role
+  // arrives picked (W-52). Only a role from the list is accepted.
+  useEffect(() => {
+    const role = new URLSearchParams(window.location.search).get("role");
+    if (!role || !roleGroups.some((group) => group.roles.includes(role))) return;
+    // Deferred a frame so it isn't a synchronous setState in the effect.
+    const raf = requestAnimationFrame(() => setValues((v) => (v.role ? v : { ...v, role })));
+    return () => cancelAnimationFrame(raf);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Cal.com's embed tells the page when a booking is made; counted once (W-52).
+  useEffect(() => {
+    if (status !== "ok") return;
+    let sent = false;
+    const onMessage = (event: MessageEvent) => {
+      if (sent || !/^https:\/\/([a-z0-9-]+\.)*cal\.com$/.test(event.origin)) return;
+      const data = event.data as { type?: string; fullType?: string } | null;
+      if (!/bookingSuccessful/.test(`${data?.type ?? ""} ${data?.fullType ?? ""}`)) return;
+      sent = true;
+      track("book_call_complete", { role: values.role === other ? values.roleOther : values.role });
+    };
+    window.addEventListener("message", onMessage);
+    return () => window.removeEventListener("message", onMessage);
+  }, [status, values.role, values.roleOther, other]);
+
   /** Shows the errors, announces them and focuses the first invalid field. */
   const report = (found: Errors) => {
     setErrors(found);
@@ -172,6 +199,7 @@ export function ContactForm() {
     setAnnounce("");
     moved.current = true;
     setStep(2);
+    track("form_start", { role: values.role === other ? values.roleOther : values.role });
   };
 
   const back = () => {
@@ -198,6 +226,12 @@ export function ContactForm() {
       });
       if (!res.ok) throw new Error(String(res.status));
       setStatus("ok");
+      // Role, headcount and timeline only: never the name, email or company.
+      track("generate_lead", {
+        role: values.role === other ? values.roleOther : values.role,
+        headcount: values.headcount,
+        timeline: values.timeline,
+      });
     } catch {
       setStatus("error");
     }

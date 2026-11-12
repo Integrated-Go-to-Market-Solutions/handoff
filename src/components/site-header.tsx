@@ -227,12 +227,14 @@ function HeaderCtas({ block = false, onNavigate }: { block?: boolean; onNavigate
       label: site.header.hireLabel,
       href: site.header.hireHref,
       field: "hireLabel" as const,
+      track: undefined,
       className: "border-cyan bg-cyan text-ink hover:bg-ink hover:text-cyan",
     },
     {
       label: site.header.joinLabel,
       href: site.header.joinHref,
       field: "joinLabel" as const,
+      track: "talent_pool_click",
       className: "border-cyan bg-white text-ink hover:bg-cyan",
     },
   ];
@@ -243,6 +245,7 @@ function HeaderCtas({ block = false, onNavigate }: { block?: boolean; onNavigate
           key={cta.label}
           href={cta.href}
           onClick={onNavigate}
+          data-track={cta.track}
           data-tina-field={tinaField(site.header, cta.field)}
           className={`inline-flex items-center justify-center whitespace-nowrap rounded-full border-2 font-semibold transition-colors duration-300 ${cta.className} ${
             block ? "w-full px-6 py-3.5 text-base" : "px-3.5 py-1.5 text-[0.8rem]"

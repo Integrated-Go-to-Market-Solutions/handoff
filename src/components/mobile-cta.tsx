@@ -41,6 +41,7 @@ export function MobileCta() {
       <Link
         href={site.bookingUrl}
         tabIndex={hidden ? -1 : undefined}
+        data-track-location="phone bar"
         data-tina-field={tinaField(site.mobileCta, "label")}
         className="inline-flex items-center gap-2 rounded-full bg-cyan px-6 py-3 text-[0.95rem] font-semibold text-ink shadow-[0_10px_28px_-8px_rgba(0,0,0,0.7)] ring-2 ring-ink/10"
         {...(/^https?:\/\//.test(site.bookingUrl) ? { target: "_blank", rel: "noopener noreferrer" } : {})}

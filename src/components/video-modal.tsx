@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { track } from "@/lib/track";
 
 /**
  * Full-screen video pop-up. Closes on the X, Escape, or a click on the backdrop.
@@ -21,6 +22,15 @@ export function VideoModal({
   vertical?: boolean;
 }) {
   const closeRef = useRef<HTMLButtonElement>(null);
+
+  // Counted once per opening (W-52). The ref keeps React's development
+  // double run from counting it twice.
+  const counted = useRef(false);
+  useEffect(() => {
+    if (counted.current) return;
+    counted.current = true;
+    track("video_play", { video: label });
+  }, [label]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
