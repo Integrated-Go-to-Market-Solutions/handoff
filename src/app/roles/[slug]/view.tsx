@@ -145,7 +145,10 @@ export function DepartmentView({ payload }: { payload: { data: any; query: strin
                     <h3 className="display mt-5 text-xl leading-tight text-ink">{role}</h3>
                     {detail?.text && <p className="mt-3 flex-1 text-[0.97rem] leading-relaxed text-ink/75">{detail.text}</p>}
                     <Link
-                      href={site.bookCall}
+                      href={`${site.bookCall}?role=${encodeURIComponent(role)}`}
+                      data-track="role_hire_click"
+                      data-role={role}
+                      data-department={department.slug}
                       className="mt-6 inline-flex items-center gap-1.5 self-start rounded-full bg-ink px-4 py-2.5 text-sm font-bold text-white transition-colors hover:bg-royal focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cyan/40"
                     >
                       {hireLabel(role)}

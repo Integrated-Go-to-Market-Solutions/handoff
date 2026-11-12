@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
+import { track } from "@/lib/track";
 
 /**
  * 9:16 loop that plays while on screen. Starts muted because every browser
@@ -85,6 +86,8 @@ export function VideoLoop({
     setMuted(next);
 
     if (!next) {
+      // The loop plays muted on its own; turning the sound on is the play (W-52).
+      track("video_play", { video: name || caption });
       el.volume = 1;
       void el.play().catch(() => {});
       window.dispatchEvent(

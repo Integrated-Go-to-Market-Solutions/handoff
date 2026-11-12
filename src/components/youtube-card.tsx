@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { track } from "@/lib/track";
 
 /**
  * A 16:9 YouTube video that shows its still and a play button until it's
@@ -21,7 +22,15 @@ export function YouTubeCard({ id, title, className = "" }: { id: string; title: 
           className="absolute inset-0 h-full w-full"
         />
       ) : (
-        <button type="button" onClick={() => setPlaying(true)} aria-label={`Play video: ${title}`} className="group absolute inset-0 block h-full w-full">
+        <button
+          type="button"
+          onClick={() => {
+            setPlaying(true);
+            track("video_play", { video: title });
+          }}
+          aria-label={`Play video: ${title}`}
+          className="group absolute inset-0 block h-full w-full"
+        >
           <Image
             src={`https://i.ytimg.com/vi/${id}/maxresdefault.jpg`}
             alt=""

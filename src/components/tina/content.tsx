@@ -8,6 +8,7 @@ import { repoMedia } from "@/lib/tina/media";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { MobileCta } from "@/components/mobile-cta";
+import { TrackClicks } from "@/components/track-clicks";
 import { CookieConsent } from "@/components/cookie-consent";
 
 export { tinaField };
@@ -504,6 +505,7 @@ export function SiteShell({ payload, children }: { payload: ChromePayload; child
           <SiteFooter />
           <MobileCta />
           <CookieConsent />
+          <TrackClicks />
         </PageForms>
       </LiveSiteContext.Provider>
     </RawContext.Provider>
