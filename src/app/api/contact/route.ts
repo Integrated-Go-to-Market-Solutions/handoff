@@ -5,9 +5,10 @@ import { NextResponse } from "next/server";
  *
  * Every submission goes to the "Website contact form" in Handoff's HubSpot
  * (11/14), so a lead is kept whether or not they go on to book the Cal.com
- * call. It uses HubSpot's form submission API, which needs only the portal ID
- * and the form's ID (HUBSPOT_PORTAL_ID and HUBSPOT_FORM_ID in Vercel), not a
- * private token. The contact properties it fills are listed in HUBSPOT_FIELDS.
+ * call. It uses HubSpot's form submission API, which needs only the portal ID,
+ * the form's ID and the account's region (HUBSPOT_PORTAL_ID, HUBSPOT_FORM_ID
+ * and HUBSPOT_REGION in Vercel; Handoff's account is in na2), not a private
+ * token. The contact properties it fills are listed in HUBSPOT_FIELDS.
  *
  * The lead is also written to the server log. If HubSpot isn't set up yet or
  * rejects the submission, the visitor still sees the booking step and the
@@ -103,6 +104,9 @@ async function sendToHubSpot(lead: Lead, request: Request): Promise<string> {
   const portalId = process.env.HUBSPOT_PORTAL_ID;
   const formId = process.env.HUBSPOT_FORM_ID;
   if (!portalId || !formId) return "not set up";
+  // Accounts outside HubSpot's original US data center submit to their own host.
+  const region = process.env.HUBSPOT_REGION;
+  const host = region && region !== "na1" ? `api-${region}.hsforms.com` : "api.hsforms.com";
 
   const fields = Object.entries(HUBSPOT_FIELDS(lead))
     .filter(([, value]) => value)
@@ -113,7 +117,7 @@ async function sendToHubSpot(lead: Lead, request: Request): Promise<string> {
   const pageUri = request.headers.get("referer") || undefined;
 
   try {
-    const res = await fetch(`https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`, {
+    const res = await fetch(`https://${host}/submissions/v3/integration/submit/${portalId}/${formId}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
