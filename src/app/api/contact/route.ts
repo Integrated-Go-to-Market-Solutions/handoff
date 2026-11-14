@@ -3,13 +3,16 @@ import { NextResponse } from "next/server";
 /**
  * Lead intake.
  *
- * TODO (blocked on credentials): forward to HubSpot once Nicole has the API
- * key and portal ID. The 8/6 call named HubSpot as the CRM and Ashby as the
- * ATS. Until then this validates, logs server-side and returns success so the
- * form is fully wired and testable.
+ * Every submission goes to the "Website contact form" in Handoff's HubSpot
+ * (11/14), so a lead is kept whether or not they go on to book the Cal.com
+ * call. It uses HubSpot's form submission API, which needs only the portal ID,
+ * the form's ID and the account's region (HUBSPOT_PORTAL_ID, HUBSPOT_FORM_ID
+ * and HUBSPOT_REGION in Vercel; Handoff's account is in na2), not a private
+ * token. The contact properties it fills are listed in HUBSPOT_FIELDS.
  *
- * When wiring HubSpot, add HUBSPOT_TOKEN to the Vercel project env and POST to
- * the Forms or CRM Objects API here. Do not put the token in client code.
+ * The lead is also written to the server log. If HubSpot isn't set up yet or
+ * rejects the submission, the visitor still sees the booking step and the
+ * log line is marked so it can be found.
  */
 
 /** The two-step form (Change 12): the role first, then contact details. */
@@ -61,18 +64,83 @@ export async function POST(request: Request) {
     );
   }
 
-  console.log("[handoff] new lead", {
-    role: text(body.role),
-    roleOther: body.role === "Other" ? text(body.roleOther) : null,
+  const lead = {
+    role: body.role === "Other" ? text(body.roleOther) : text(body.role),
     headcount: text(body.headcount),
     timeline: text(body.timeline),
     name: text(body.name),
     email: text(body.email),
     company: text(body.company),
-    message: text(body.message, 2000) || null,
-    referral: text(body.referral) || null,
-    receivedAt: new Date().toISOString(),
-  });
+    message: text(body.message, 2000),
+    referral: text(body.referral),
+  };
+
+  const hubspot = await sendToHubSpot(lead, request);
+  console.log(`[handoff] new lead (hubspot: ${hubspot})`, { ...lead, receivedAt: new Date().toISOString() });
 
   return NextResponse.json({ ok: true });
+}
+
+type Lead = { role: string; headcount: string; timeline: string; name: string; email: string; company: string; message: string; referral: string };
+
+/** HubSpot contact property for each answer. The custom ones are created in HubSpot first. */
+const HUBSPOT_FIELDS = (lead: Lead) => {
+  const [firstname, ...rest] = lead.name.split(/\s+/);
+  return {
+    firstname,
+    lastname: rest.join(" "),
+    email: lead.email,
+    company: lead.company,
+    hiring_role: lead.role,
+    hiring_headcount: lead.headcount,
+    hiring_timeline: lead.timeline,
+    referred_by: lead.referral,
+    message: lead.message,
+  };
+};
+
+/** Returns "sent", "not set up" or "failed <status>" for the log line. */
+async function sendToHubSpot(lead: Lead, request: Request): Promise<string> {
+  const portalId = process.env.HUBSPOT_PORTAL_ID;
+  const formId = process.env.HUBSPOT_FORM_ID;
+  if (!portalId || !formId) return "not set up";
+  // Accounts outside HubSpot's original US data center submit to their own host.
+  const region = process.env.HUBSPOT_REGION;
+  const host = region && region !== "na1" ? `api-${region}.hsforms.com` : "api.hsforms.com";
+
+  const fields = Object.entries(HUBSPOT_FIELDS(lead))
+    .filter(([, value]) => value)
+    .map(([name, value]) => ({ objectTypeId: "0-1", name, value }));
+  // HubSpot's visitor cookie, when its tracking code is running and the
+  // visitor accepted cookies, ties the submission to their page views.
+  const hutk = request.headers.get("cookie")?.match(/(?:^|;\s*)hubspotutk=([^;]+)/)?.[1];
+  // HubSpot marks submissions as spam when the page isn't on a domain
+  // registered in the account (11/14: the staging test was blocked), so the
+  // page is always reported on www.talenthandoff.com, staging included.
+  const path = (() => {
+    try {
+      return new URL(request.headers.get("referer") || "/contact", "https://www.talenthandoff.com").pathname;
+    } catch {
+      return "/contact";
+    }
+  })();
+  const pageUri = `https://www.talenthandoff.com${path}`;
+
+  try {
+    const res = await fetch(`https://${host}/submissions/v3/integration/submit/${portalId}/${formId}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        submittedAt: Date.now(),
+        fields,
+        context: { ...(hutk && { hutk }), pageUri, pageName: "Book a call" },
+      }),
+    });
+    if (res.ok) return "sent";
+    console.error("[handoff] hubspot rejected the lead", res.status, await res.text());
+    return `failed ${res.status}`;
+  } catch (error) {
+    console.error("[handoff] hubspot unreachable", error);
+    return "failed network";
+  }
 }
