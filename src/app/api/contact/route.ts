@@ -114,7 +114,17 @@ async function sendToHubSpot(lead: Lead, request: Request): Promise<string> {
   // HubSpot's visitor cookie, when its tracking code is running and the
   // visitor accepted cookies, ties the submission to their page views.
   const hutk = request.headers.get("cookie")?.match(/(?:^|;\s*)hubspotutk=([^;]+)/)?.[1];
-  const pageUri = request.headers.get("referer") || undefined;
+  // HubSpot marks submissions as spam when the page isn't on a domain
+  // registered in the account (11/14: the staging test was blocked), so the
+  // page is always reported on www.talenthandoff.com, staging included.
+  const path = (() => {
+    try {
+      return new URL(request.headers.get("referer") || "/contact", "https://www.talenthandoff.com").pathname;
+    } catch {
+      return "/contact";
+    }
+  })();
+  const pageUri = `https://www.talenthandoff.com${path}`;
 
   try {
     const res = await fetch(`https://${host}/submissions/v3/integration/submit/${portalId}/${formId}`, {
@@ -123,7 +133,7 @@ async function sendToHubSpot(lead: Lead, request: Request): Promise<string> {
       body: JSON.stringify({
         submittedAt: Date.now(),
         fields,
-        context: { ...(hutk && { hutk }), ...(pageUri && { pageUri }), pageName: "Book a call" },
+        context: { ...(hutk && { hutk }), pageUri, pageName: "Book a call" },
       }),
     });
     if (res.ok) return "sent";
